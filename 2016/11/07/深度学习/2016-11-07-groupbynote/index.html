@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Tool,Hexo," />
+  <meta name="keywords" content="pandas,studynote,groupBy," />
 
 
 
@@ -84,19 +84,25 @@
 
 
 
-<meta name="description" content="Hexo介绍使用 Hexo 为自己在 Github 上建一个静态 Blog 站点
-用 Hexo 搭建个人博客-01：6 步初体验">
+<meta name="description" content="Filtration：doc: filter
+
+The filter method returns a subset of the original object. Suppose we want to take only elements that belong to groups with a group sum greater than 2.
+The argument of filter m">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo搭建个人BLOG">
-<meta property="og:url" content="http://jingchen2222.github.io./2016/11/06/tools/2016-11-06-hexo1/index.html">
+<meta property="og:title" content="Group By: split-apply-combine">
+<meta property="og:url" content="http://jingchen2222.github.io./2016/11/07/深度学习/2016-11-07-groupbynote/index.html">
 <meta property="og:site_name" content="Chen22'S BLOG">
-<meta property="og:description" content="Hexo介绍使用 Hexo 为自己在 Github 上建一个静态 Blog 站点
-用 Hexo 搭建个人博客-01：6 步初体验">
-<meta property="og:updated_time" content="2016-11-06T12:34:19.000Z">
+<meta property="og:description" content="Filtration：doc: filter
+
+The filter method returns a subset of the original object. Suppose we want to take only elements that belong to groups with a group sum greater than 2.
+The argument of filter m">
+<meta property="og:updated_time" content="2016-11-07T12:42:58.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo搭建个人BLOG">
-<meta name="twitter:description" content="Hexo介绍使用 Hexo 为自己在 Github 上建一个静态 Blog 站点
-用 Hexo 搭建个人博客-01：6 步初体验">
+<meta name="twitter:title" content="Group By: split-apply-combine">
+<meta name="twitter:description" content="Filtration：doc: filter
+
+The filter method returns a subset of the original object. Suppose we want to take only elements that belong to groups with a group sum greater than 2.
+The argument of filter m">
 
 
 
@@ -117,10 +123,10 @@
 
 
 
-  <link rel="canonical" href="http://jingchen2222.github.io./2016/11/06/tools/2016-11-06-hexo1/"/>
+  <link rel="canonical" href="http://jingchen2222.github.io./2016/11/07/深度学习/2016-11-07-groupbynote/"/>
 
 
-  <title> Hexo搭建个人BLOG | Chen22'S BLOG </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title> Group By: split-apply-combine | Chen22'S BLOG </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
 <body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
@@ -260,7 +266,7 @@
             
             
               
-                Hexo搭建个人BLOG
+                Group By: split-apply-combine
               
             
           </h1>
@@ -272,8 +278,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-06T19:57:00+08:00" content="2016-11-06">
-              2016-11-06
+            <time itemprop="dateCreated" datetime="2016-11-07T17:07:00+08:00" content="2016-11-07">
+              2016-11-07
             </time>
           </span>
 
@@ -286,8 +292,32 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/MAC进阶/" itemprop="url" rel="index">
-                    <span itemprop="name">MAC进阶</span>
+                  <a href="/categories/study/" itemprop="url" rel="index">
+                    <span itemprop="name">study</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/study/深度学习/" itemprop="url" rel="index">
+                    <span itemprop="name">深度学习</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/study/深度学习/pandas/" itemprop="url" rel="index">
+                    <span itemprop="name">pandas</span>
                   </a>
                 </span>
 
@@ -319,48 +349,68 @@
       
 
       
-        <h2 id="Hexo介绍"><a href="#Hexo介绍" class="headerlink" title="Hexo介绍"></a>Hexo介绍</h2><p><a href="http://xiaolai.li/2016/06/22/makecs-build-a-blog-with-hexo-on-github/" title="使用 Hexo 为自己在 Github 上建一个静态 Blog 站点" target="_blank" rel="external">使用 Hexo 为自己在 Github 上建一个静态 Blog 站点</a></p>
-<p><a href="http://www.jianshu.com/p/6bd12ab160fa" title="用 Hexo 搭建个人博客-01：6 步初体验" target="_blank" rel="external">用 Hexo 搭建个人博客-01：6 步初体验</a></p>
+        <h3 id="Filtration："><a href="#Filtration：" class="headerlink" title="Filtration："></a>Filtration：</h3><p><strong>doc</strong>: <a href="http://pandas.pydata.org/pandas-docs/version/0.18.1/generated/pandas.DataFrame.filter.html" title="filter" target="_blank" rel="external">filter</a></p>
+<blockquote>
+<p>The filter method returns a subset of the original object. Suppose we want to take only elements that belong to groups with a group sum greater than 2.</p>
+<p>The argument of filter must be a function that, applied to the group as a whole, returns True or False.</p>
+</blockquote>
 <a id="more"></a>
-<h2 id="环境和工具准备"><a href="#环境和工具准备" class="headerlink" title="环境和工具准备"></a>环境和工具准备</h2><h3 id="工具准备"><a href="#工具准备" class="headerlink" title="工具准备"></a>工具准备</h3><ul>
-<li>git</li>
-<li>npm</li>
-<li>hexo</li>
-</ul>
-<h3 id="GIT"><a href="#GIT" class="headerlink" title="GIT"></a>GIT</h3><h4 id="GIT安装"><a href="#GIT安装" class="headerlink" title="GIT安装"></a>GIT安装</h4><p>关于GIT的用法，可以参考<a href="http://iissnan.com/progit/" title="《Pro Git》" target="_blank" rel="external">《Pro Git》</a>。</p>
-<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">git -v</span></div></pre></td></tr></table></figure>
-<h3 id="NPM"><a href="#NPM" class="headerlink" title="NPM"></a>NPM</h3><figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">npm</span> -v</div></pre></td></tr></table></figure>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><h3 id="REPO准备"><a href="#REPO准备" class="headerlink" title="REPO准备"></a>REPO准备</h3><ul>
-<li>准备一个REPO<ul>
-<li>自己本来就有</li>
-<li>REPO的申请方法可以参考</li>
+<h4 id="Keys"><a href="#Keys" class="headerlink" title="Keys"></a>Keys</h4><ul>
+<li>subset</li>
+<li>of original object</li>
+<li>usage<ul>
+<li>argument is function, applied to the group</li>
+<li>dropna=False,</li>
+<li>with multiple columns, filters should  specify a column as the filter criterion.</li>
 </ul>
 </li>
 </ul>
-<h3 id="安装HEXO"><a href="#安装HEXO" class="headerlink" title="安装HEXO"></a>安装HEXO</h3><ul>
-<li>npm install hexo -g</li>
-<li>npm install hexo-cli -g<ul>
-<li>这一步出错，暂时不管</li>
+<h3 id="Flexible-apply："><a href="#Flexible-apply：" class="headerlink" title="Flexible apply："></a>Flexible apply：</h3><blockquote>
+<p>Use the apply function, which can be substituted for both aggregate and transform in many standard use cases<br>apply can act as a reducer, transformer, or filter function, depending on exactly what is passed to it.</p>
+</blockquote>
+<p><strong>Warning</strong>:</p>
+<blockquote>
+<p>In the current implementation apply calls func twice on the first group to decide whether it can take a fast or slow code path. This can lead to unexpected behavior if func has side-effects, as they will take effect twice for the first group.</p>
+</blockquote>
+<p><strong><em>side-effects</em></strong></p>
+<blockquote>
+<p>In computer science, a function or expression is said to have a side effect if it modifies some state or has an observable interaction with calling functions or the outside world. For</p>
+</blockquote>
+<h3 id="Plotting"><a href="#Plotting" class="headerlink" title="Plotting"></a>Plotting</h3><blockquote>
+<p>Groupby also works with some plotting methods.</p>
+</blockquote>
+<h3 id="Regrouping-by-factor"><a href="#Regrouping-by-factor" class="headerlink" title="Regrouping by factor**"></a>Regrouping by factor**</h3><blockquote>
+<p>Regroup columns of a DataFrame according to their sum, and sum the aggregated ones.</p>
+</blockquote>
+<h4 id="Keys-1"><a href="#Keys-1" class="headerlink" title="Keys:"></a>Keys:</h4><ul>
+<li>re-group col</li>
+<li>according sum</li>
+<li>sum the  aggregated ones</li>
 </ul>
-</li>
+<h4 id="resolve"><a href="#resolve" class="headerlink" title="resolve"></a>resolve</h4><ul>
+<li>group col: axis = 1</li>
+<li>according sum: df.sum()</li>
+<li>sum the agg: grouped.sum</li>
 </ul>
-<h3 id="准备本地目录"><a href="#准备本地目录" class="headerlink" title="准备本地目录"></a>准备本地目录</h3><ul>
-<li>clone到本地，这部似乎是非必须的</li>
-<li>Hexo初始化本地目录</li>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">df.groupby(df.sum(), axis=<span class="number">1</span>).sum()</div></pre></td></tr></table></figure>
+<h3 id="Groupby-by-Indexer-to-‘resample’-data"><a href="#Groupby-by-Indexer-to-‘resample’-data" class="headerlink" title="Groupby by Indexer to ‘resample’ data"></a>Groupby by Indexer to ‘resample’ data</h3><blockquote>
+<p>Resampling produces new hypothetical samples</p>
+<p>resample to work on indices that are non-datetimelike</p>
+</blockquote>
+<p><strong>USE</strong>:</p>
+<blockquote>
+<p>df.index // 5 returns a binary array which is used to determine what get’s selected for the groupby operation.</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">df.groupby(df.index // <span class="number">5</span>).std()</div></pre></td></tr></table></figure>
+<h3 id="Returning-a-Series-to-propagate-names"><a href="#Returning-a-Series-to-propagate-names" class="headerlink" title="Returning a Series to propagate names"></a>Returning a Series to propagate names</h3><blockquote>
+<p>Group DataFrame columns, compute a set of metrics and return a named Series.</p>
+<p>The Series name is used as the name for the column index.</p>
+<p>useful in conjunction with  stacking in which the column index name will be used as the name of the inserted column:</p>
+</blockquote>
+<h4 id="Keys-2"><a href="#Keys-2" class="headerlink" title="Keys"></a>Keys</h4><ul>
+<li>compute a set of metrics and return a named Series</li>
 </ul>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">hexo init xiaoerjingang<span class="selector-class">.github</span><span class="selector-class">.io</span></div><div class="line">cd xiaoerjingang<span class="selector-class">.github</span><span class="selector-class">.io</span></div><div class="line">npm install hexo-deployer-git --save</div><div class="line">hexo generate</div><div class="line">hexo server</div></pre></td></tr></table></figure>
-<ul>
-<li><p>在地址栏里输入： localhost:4000</p>
-</li>
-<li><p>发布到github上</p>
-<ul>
-<li>编辑_config.yml：</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight dts"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">deploy</div><div class="line"><span class="symbol">  type:</span> git</div><div class="line"><span class="symbol">  repo:</span> https:<span class="comment">//github.com/yourname/yourname.github.io.git</span></div></pre></td></tr></table></figure>
-<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><h3 id="标签页"><a href="#标签页" class="headerlink" title="标签页"></a>标签页</h3><p>在终端窗口下，定位到 Hexo 站点目录下。使用 hexo new page 新建一个页面，命名为 tags ：<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ <span class="keyword">cd</span> your-hexo-site</div><div class="line">$ hexo <span class="keyword">new</span> page <span class="keyword">tags</span></div></pre></td></tr></table></figure></p>
-<h3 id="分类页"><a href="#分类页" class="headerlink" title="分类页"></a>分类页</h3><p>在终端窗口下，定位到 Hexo 站点目录下。使用 hexo new page 新建一个页面，命名为 categories ：<br><figure class="highlight elixir"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$ </span>cd your-hexo-site</div><div class="line"><span class="variable">$ </span>hexo new page categories</div></pre></td></tr></table></figure></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">compute_metrics</span><span class="params">(x)</span>:</span></div><div class="line">  result = &#123;<span class="string">'b_sum'</span>: x[<span class="string">'b'</span>].sum(), <span class="string">'c_mean'</span>: x[<span class="string">'c'</span>].mean()&#125;</div><div class="line">  <span class="keyword">return</span> pd.Series(result, name=<span class="string">'metrics'</span>)</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -383,9 +433,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Tool/" rel="tag">#Tool</a>
+            <a href="/tags/pandas/" rel="tag">#pandas</a>
           
-            <a href="/tags/Hexo/" rel="tag">#Hexo</a>
+            <a href="/tags/studynote/" rel="tag">#studynote</a>
+          
+            <a href="/tags/groupBy/" rel="tag">#groupBy</a>
           
         </div>
       
@@ -394,16 +446,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/11/06/tools/markdown_syntax_help/" rel="next" title="markdown 语法测试">
-                <i class="fa fa-chevron-left"></i> markdown 语法测试
+              <a href="/2016/11/07/周报/20161031-20161106-一周践行反馈/" rel="next" title="20161031-20161106_一周践行反馈">
+                <i class="fa fa-chevron-left"></i> 20161031-20161106_一周践行反馈
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/11/07/周报/当下不能杂——一周践行反馈（20161025-20161030）/" rel="prev" title="当下不能杂——一周践行反馈（20161025-20161030）">
-                当下不能杂——一周践行反馈（20161025-20161030） <i class="fa fa-chevron-right"></i>
+              <a href="/2016/11/07/深度学习/2016-11-07-merge-join-and-concatenate/" rel="prev" title="Merge, join, and concatenate">
+                Merge, join, and concatenate <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -518,7 +570,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Hexo介绍"><span class="nav-number">1.</span> <span class="nav-text">Hexo介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#环境和工具准备"><span class="nav-number">2.</span> <span class="nav-text">环境和工具准备</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#工具准备"><span class="nav-number">2.1.</span> <span class="nav-text">工具准备</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GIT"><span class="nav-number">2.2.</span> <span class="nav-text">GIT</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#GIT安装"><span class="nav-number">2.2.1.</span> <span class="nav-text">GIT安装</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NPM"><span class="nav-number">2.3.</span> <span class="nav-text">NPM</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装"><span class="nav-number">3.</span> <span class="nav-text">安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#REPO准备"><span class="nav-number">3.1.</span> <span class="nav-text">REPO准备</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装HEXO"><span class="nav-number">3.2.</span> <span class="nav-text">安装HEXO</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#准备本地目录"><span class="nav-number">3.3.</span> <span class="nav-text">准备本地目录</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置"><span class="nav-number">4.</span> <span class="nav-text">配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#标签页"><span class="nav-number">4.1.</span> <span class="nav-text">标签页</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分类页"><span class="nav-number">4.2.</span> <span class="nav-text">分类页</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Filtration："><span class="nav-number">1.</span> <span class="nav-text">Filtration：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Keys"><span class="nav-number">1.1.</span> <span class="nav-text">Keys</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Flexible-apply："><span class="nav-number">2.</span> <span class="nav-text">Flexible apply：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Plotting"><span class="nav-number">3.</span> <span class="nav-text">Plotting</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Regrouping-by-factor"><span class="nav-number">4.</span> <span class="nav-text">Regrouping by factor**</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Keys-1"><span class="nav-number">4.1.</span> <span class="nav-text">Keys:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#resolve"><span class="nav-number">4.2.</span> <span class="nav-text">resolve</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Groupby-by-Indexer-to-‘resample’-data"><span class="nav-number">5.</span> <span class="nav-text">Groupby by Indexer to ‘resample’ data</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Returning-a-Series-to-propagate-names"><span class="nav-number">6.</span> <span class="nav-text">Returning a Series to propagate names</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Keys-2"><span class="nav-number">6.1.</span> <span class="nav-text">Keys</span></a></li></ol></li></ol></div>
             
           </div>
         </section>

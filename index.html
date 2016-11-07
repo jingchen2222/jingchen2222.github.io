@@ -1,5 +1,1368 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>define at 22</title><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/4.2.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.0/grids-responsive-min.css"><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.0.0/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">define at 22</h1><a id="logo" href="/.">define at 22</a><p class="description"></p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h2 class="post-title"><a href="/2016/11/06/tools/2016-11-06-hexo1/">Hexo搭建个人BLOG</a></h2><div class="post-meta">2016-11-06</div><div class="post-content"><h2 id="Hexo介绍"><a href="#Hexo介绍" class="headerlink" title="Hexo介绍"></a>Hexo介绍</h2><p><a href="http://xiaolai.li/2016/06/22/makecs-build-a-blog-with-hexo-on-github/" title="使用 Hexo 为自己在 Github 上建一个静态 Blog 站点">使用 Hexo 为自己在 Github 上建一个静态 Blog 站点</a></p>
-<p><a href="http://www.jianshu.com/p/6bd12ab160fa" title="用 Hexo 搭建个人博客-01：6 步初体验">用 Hexo 搭建个人博客-01：6 步初体验</a></p></div><p class="readmore"><a href="/2016/11/06/tools/2016-11-06-hexo1/">阅读更多</a></p></div><div class="post"><h2 class="post-title"><a href="/2016/11/06/markdown_syntax_help/">markdown 语法测试</a></h2><div class="post-meta">2016-11-06</div><div class="post-content"><h2 id="Enable-code-highlight"><a href="#Enable-code-highlight" class="headerlink" title="Enable code highlight"></a>Enable code highlight</h2><p>this is c language</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> **argv)</span> </span>&#123;</div><div class="line">  <span class="keyword">int</span> a;</div><div class="line">  <span class="keyword">int</span> b;</div><div class="line">  <span class="built_in">printf</span>(<span class="string">"a+b = %d"</span>, a+b);</div><div class="line">&#125;</div></pre></td></tr></table></figure></div><p class="readmore"><a href="/2016/11/06/markdown_syntax_help/">阅读更多</a></p></div><div class="post"><h2 class="post-title"><a href="/2016/11/06/20161105/">20161105日课</a></h2><div class="post-meta">2016-11-06</div><div class="post-content"><h3 id="关于英语"><a href="#关于英语" class="headerlink" title="关于英语"></a>关于英语</h3><p>  今天发现一个英语学习网站，它提倡Create Connection的方式学英文，而不是我所熟知的那种依赖规则（语法）的方式。这恰好解答了自己在英语学习上的迷思——如何把脑子里面零零散散的单次组织起来，变成正确、有意义的句子乃至段落。也正因如此，我一口气将相关的几篇文章读下，并对Phrase进行归类。</p></div><p class="readmore"><a href="/2016/11/06/20161105/">阅读更多</a></p></div><div class="post"><h2 class="post-title"><a href="/2016/11/06/hello-world/">Hello World</a></h2><div class="post-meta">2016-11-06</div><div class="post-content"><p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a><br></div><p class="readmore"><a href="/2016/11/06/hello-world/">阅读更多</a></p></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" class="search-form"><input type="text" name="q" maxlength="20" placeholder="Search"/><input type="hidden" name="sitesearch" value="http://jingchen2222.github.io."/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Diary/">Diary</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Diary/Tool/">Tool</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Diary/学习方法论/">学习方法论</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/MAC进阶/">MAC进阶</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/日课/" style="font-size: 15px;">日课</a> <a href="/tags/学习方法论法/" style="font-size: 15px;">学习方法论法</a> <a href="/tags/英语/" style="font-size: 15px;">英语</a> <a href="/tags/写作/" style="font-size: 15px;">写作</a> <a href="/tags/markdown/" style="font-size: 15px;">markdown</a> <a href="/tags/hexo/" style="font-size: 15px;">hexo</a> <a href="/tags/Tool/" style="font-size: 15px;">Tool</a> <a href="/tags/Hexo/" style="font-size: 15px;">Hexo</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最新文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/11/06/tools/2016-11-06-hexo1/">Hexo搭建个人BLOG</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/06/markdown_syntax_help/">markdown 语法测试</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/06/20161105/">20161105日课</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/06/hello-world/">Hello World</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="http://www.example1.com/" title="site-name1" target="_blank">site-name1</a><ul></ul><a href="http://www.example2.com/" title="site-name2" target="_blank">site-name2</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">© <a href="/." rel="nofollow">define at 22.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a id="rocket" href="#top" class="show"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="/css/jquery.fancybox.css?v=0.0.0"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Chen22'S BLOG">
+<meta property="og:url" content="http://jingchen2222.github.io./index.html">
+<meta property="og:site_name" content="Chen22'S BLOG">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chen22'S BLOG">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://jingchen2222.github.io./"/>
+
+
+  <title> Chen22'S BLOG </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container one-collumn sidebar-position-left 
+   page-home 
+ ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Chen22'S BLOG</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br />
+            
+            日程
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts-expand">
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/11/07/深度学习/2016-11-07-merge-join-and-concatenate/" itemprop="url">
+                  Merge, join, and concatenate
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-11-07T19:58:00+08:00" content="2016-11-07">
+              2016-11-07
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/pandas/" itemprop="url" rel="index">
+                    <span itemprop="name">pandas</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/pandas/深度学习/" itemprop="url" rel="index">
+                    <span itemprop="name">深度学习</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="Concatenating-objects"><a href="#Concatenating-objects" class="headerlink" title="Concatenating objects"></a>Concatenating objects</h2><blockquote>
+<p>The concat function (in the main pandas namespace) does all of the heavy lifting of performing concatenation operations along an axis while performing optional set logic (union or intersection) of the indexes (if any) on the other axes. Note that I say “if any” because there is only a single possible axis of concatenation for Series.</p>
+</blockquote>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/11/07/深度学习/2016-11-07-merge-join-and-concatenate/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/11/07/深度学习/2016-11-07-groupbynote/" itemprop="url">
+                  Group By: split-apply-combine
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-11-07T17:07:00+08:00" content="2016-11-07">
+              2016-11-07
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/study/" itemprop="url" rel="index">
+                    <span itemprop="name">study</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/study/深度学习/" itemprop="url" rel="index">
+                    <span itemprop="name">深度学习</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/study/深度学习/pandas/" itemprop="url" rel="index">
+                    <span itemprop="name">pandas</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="Filtration："><a href="#Filtration：" class="headerlink" title="Filtration："></a>Filtration：</h3><p><strong>doc</strong>: <a href="http://pandas.pydata.org/pandas-docs/version/0.18.1/generated/pandas.DataFrame.filter.html" title="filter">filter</a></p>
+<blockquote>
+<p>The filter method returns a subset of the original object. Suppose we want to take only elements that belong to groups with a group sum greater than 2.</p>
+<p>The argument of filter must be a function that, applied to the group as a whole, returns True or False.</p>
+</blockquote>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/11/07/深度学习/2016-11-07-groupbynote/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/11/07/周报/20161031-20161106-一周践行反馈/" itemprop="url">
+                  20161031-20161106_一周践行反馈
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-11-07T10:15:00+08:00" content="2016-11-07">
+              2016-11-07
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/周报/" itemprop="url" rel="index">
+                    <span itemprop="name">周报</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="这周主要做几件事："><a href="#这周主要做几件事：" class="headerlink" title="这周主要做几件事："></a>这周主要做几件事：</h3><ul>
+<li><p><strong>坐享清晨</strong>：3小时，完成度6/7，11.6 MISS</p>
+</li>
+<li><p><strong>深度学习</strong>: 15.5  </p>
+<ul>
+<li>pandas基础</li>
+<li>哈佛作业</li>
+<li>PANDAS的知识管理</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p><strong>区块链</strong>：2小时; 精通比特币精阅读，完成度（46%)</p>
+</li>
+<li><p><strong>写作</strong>： 4.5小时</p>
+</li>
+<li><p><strong>英语</strong>：5小时，听harry poter 14章 75%.</p>
+</li>
+<li><p><strong>编程功强化</strong> 1小时</p>
+</li>
+<li><p><strong>长篇阅读</strong> 19.5</p>
+<ul>
+<li>曾国藩家书:2.5小时，完成度：71%</li>
+<li>《The 4 hour workweek: 12小时，完成度8.4%</li>
+<li>其他文章，方法论、新概念相关: 5小时；阅读感想2篇</li>
+</ul>
+</li>
+</ul>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/11/07/周报/20161031-20161106-一周践行反馈/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/11/07/周报/当下不能杂——一周践行反馈（20161025-20161030）/" itemprop="url">
+                  当下不能杂——一周践行反馈（20161025-20161030）
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-11-07T10:05:00+08:00" content="2016-11-07">
+              2016-11-07
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/周报/" itemprop="url" rel="index">
+                    <span itemprop="name">周报</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="一周总结"><a href="#一周总结" class="headerlink" title="一周总结"></a>一周总结</h3><h4 id="这周主要做几件事："><a href="#这周主要做几件事：" class="headerlink" title="这周主要做几件事："></a>这周主要做几件事：</h4><p><strong>坐享清晨</strong>：4-5小时，完成度6/7，10.29日MISS。</p>
+<p><strong>深度学习</strong>：21小时，完成情况：<br>学习路径规划+python基础+Numpy基础+matplotlib的64个rules+scipy（10%）+pandas（15%）</p>
+<p><strong>区块链</strong>：12小时，精通比特币精阅读，完成度（36%）+ 比特币冷钱包 + 其他相关文章阅读</p>
+<p><strong>写作</strong>： 7小时，逻辑的定义学习+写作；写作——输入练习：研磨阅读练习。研磨阅读体会（构思中）</p>
+<p><strong>英语</strong>：5小时，听harry poter 14章 75%.</p>
+<p><strong>编程功强化</strong> 4-5小时，设计模式，完成度80%</p>
+<p><strong>长篇阅读</strong> 3-4小时，曾国藩家书，完成度：66%</p>
+<h4 id="评价"><a href="#评价" class="headerlink" title="评价"></a>评价</h4><p><em>坐享清晨</em>：继续延续以前的站桩、打坐习惯。29日有意外事故打乱节奏，更主要的可能是前一晚没睡好。保证充足睡眠。</p>
+<p><strong>深度学习+区块链技术</strong>：每天消耗4-6个小时不等。基本在进度上</p>
+<p><strong>写作</strong>：<font color="brown">研磨阅读</font>摸索点自己的套路了，需要<font color="brown">固化阅读方法</font>，第二周继续时间，继续提高了技术型文章阅读理解速度。</p>
+<p><strong>英语</strong>：进度不尽人意。以前一周一章节的聆听、理解（90%）。生词熟记还没加上。  </p>
+<font color="brown">英语需要重新指定计划</font>
+
+<p><em>长期阅读</em>：进度不尽人意</p>
+<p><em>时间安排</em>： 任务太散。原来计划每天都跟进以上所有事情，发现一天任务太多，心思容易花。</p>
+<h4 id="建议"><a href="#建议" class="headerlink" title="建议"></a>建议</h4><ol>
+<li>在进度上的，保持节奏</li>
+<li>英语还有更明确的计划，短期目标，任务分解</li>
+<li>长期阅读：不要将阅读作为一天的最后一件事，人比较疲惫。</li>
+<li>整体时间安排需要更灵活：下周需要调整方案。有些项目（英语、阅读可以隔天）</li>
+<li>写作练习，需要产出量化方式</li>
+</ol>
+<table><br><br><tbody><br><br><tr><br><br><td>日期</td><br><br><td>10月25日</td><br><br><td>10月26日</td><br><br><td>10月27日</td><br><br><td>10月28日</td><br><br><td>10月29日</td><br><br><td>10月30日</td><br><br><td>10月31日</td><br><br></tr><br><br><tr><br><br><td>项目</td><br><br><td>周一</td><br><br><td>周二</td><br><br><td>周三</td><br><br><td>周四</td><br><br><td>周五</td><br><br><td>周六</td><br><br><td>周日</td><br><br></tr><br><br><tr><br><br><td>区块链</td><br><br><td>精通比特比阅读（5%）</td><br><br><td>比特币冷热钱包技术</td><br><br><td>精通比特币（10%）</td><br><br><td>精通比特币-12%</td><br><br><td>精通比特币-27%</td><br><br><td>无</td><br><br><td>精通比特币</td><br><br></tr><br><br><tr><br><br><td>区块链</td><br><br><td>精通比特币-15%</td><br><br><td>zcash了解</td><br><br><td>无</td><br><br><td>精通比特币（36%）</td><br><br></tr><br><br><tr><br><br><td>DP</td><br><br><td>学习路径学习</td><br><br><td>python（30%）</td><br><br><td>python（70%）</td><br><br><td>NumPy-50%</td><br><br><td>NumPy-70%</td><br><br><td>NumPy-95%</td><br><br><td>pandas(15%0</td><br><br></tr><br><br><tr><br><br><td>DP</td><br><br><td>python（10%）</td><br><br><td>python（40%）</td><br><br><td>python（90%）</td><br><br><td>深度学习第一个月排期</td><br><br><td>NumPy-70%</td><br><br><td>Scipy-(20%)</td><br><br><td>pandas(15%)</td><br><br></tr><br><br><tr><br><br><td>DP</td><br><br><td>python（20%）</td><br><br><td>python（50%)</td><br><br><td>python(100%)</td><br><br><td>matplotlib(30%）+ 64 rules(80%)</td><br><br><td>PYTHON数据开发环境构建</td><br><br></tr><br><br><tr><br><br><td>DP/区块链</td><br><br><td>pandas(10%)</td><br><br></tr><br><br><tr><br><br><td>编程强化</td><br><br><td>设计模式（50%）</td><br><br><td>无</td><br><br><td>设计模式(60%)</td><br><br><td>设计模式-70%</td><br><br><td>无</td><br><br><td>无</td><br><br><td>设计模式-80%</td><br><br></tr><br><br><tr><br><br><td>写作+思考</td><br><br><td>形式逻辑、非形式逻辑概念学习</td><br><br><td>写作课</td><br><br><td>研磨词性的阅读（1）：编程强化+研磨词性=出奇好的理解效果</td><br><br><td>阅读研磨（2）：材料阅读：研磨词、定义、句子关系</td><br><br><td>阅读研磨（3）：</td><br><br><td>死磕定义的阅读（1）</td><br><br><td>python数据开发环境笔记+死磕定义阅读——设计模式阅读过程回顾</td><br><br></tr><br><br><tr><br><br><td>自由学习</td><br><br><td>深度学习路径</td><br><br><td>冷钱包部署</td><br><br><td>阿禅小程序应用分享live</td><br><br><td>zcash币</td><br><br><td>精通比特币</td><br><br></tr><br><br><tr><br><br><td>短篇阅读</td><br><br><td>《如何消化一本书》+《如何阅读一本书》评论+硅谷来信</td><br><br><td>硅谷来信（10min）</td><br><br><td>人人都能用英语（——精度章节）</td><br><br><td>硅谷来信+区块链文章</td><br><br><td>硅谷来信</td><br><br><td>硅谷来信</td><br><br><td>硅谷来信</td><br><br></tr><br><br><tr><br><br><td>晨起+坐享</td><br><br><td>20min(Day 2)</td><br><br><td>30min</td><br><br><td>40min(day4)</td><br><br><td>1hour(day5)</td><br><br><td>40hour</td><br><br><td>无（处理家里事故）</td><br><br><td>20min</td><br><br></tr><br><br><tr><br><br><td>长篇阅读</td><br><br><td>曾国藩家书（60%）</td><br><br><td>曾国藩家书</td><br><br><td>曾国藩家书（65%）</td><br><br><td>无</td><br><br><td>无</td><br><br></tr><br><br><tr><br><br><td>英语</td><br><br><td>harryPoter chapter14（50%）</td><br><br><td>harryPoter chapter14（55%）</td><br><br><td>harryPoter chapter14(60%)</td><br><br><td>harryPoter 14（70%）</td><br><br><td>无</td><br><br><td>harryPoter 14（75%）</td><br><br><td>无</td><br><br></tr><br><br></tbody><br><br></table>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/11/06/tools/2016-11-06-hexo1/" itemprop="url">
+                  Hexo搭建个人BLOG
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-11-06T19:57:00+08:00" content="2016-11-06">
+              2016-11-06
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/MAC进阶/" itemprop="url" rel="index">
+                    <span itemprop="name">MAC进阶</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="Hexo介绍"><a href="#Hexo介绍" class="headerlink" title="Hexo介绍"></a>Hexo介绍</h2><p><a href="http://xiaolai.li/2016/06/22/makecs-build-a-blog-with-hexo-on-github/" title="使用 Hexo 为自己在 Github 上建一个静态 Blog 站点">使用 Hexo 为自己在 Github 上建一个静态 Blog 站点</a></p>
+<p><a href="http://www.jianshu.com/p/6bd12ab160fa" title="用 Hexo 搭建个人博客-01：6 步初体验">用 Hexo 搭建个人博客-01：6 步初体验</a></p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/11/06/tools/2016-11-06-hexo1/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/11/06/tools/markdown_syntax_help/" itemprop="url">
+                  markdown 语法测试
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-11-06T17:47:00+08:00" content="2016-11-06">
+              2016-11-06
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Tool/" itemprop="url" rel="index">
+                    <span itemprop="name">Tool</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="Enable-code-highlight"><a href="#Enable-code-highlight" class="headerlink" title="Enable code highlight"></a>Enable code highlight</h2><p>this is c language</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> **argv)</span> </span>&#123;</div><div class="line">  <span class="keyword">int</span> a;</div><div class="line">  <span class="keyword">int</span> b;</div><div class="line">  <span class="built_in">printf</span>(<span class="string">"a+b = %d"</span>, a+b);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/11/06/tools/markdown_syntax_help/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/11/06/Diary/20161105/" itemprop="url">
+                  20161105日课
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-11-06T16:47:00+08:00" content="2016-11-06">
+              2016-11-06
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Diary/" itemprop="url" rel="index">
+                    <span itemprop="name">Diary</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Diary/学习方法论/" itemprop="url" rel="index">
+                    <span itemprop="name">学习方法论</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="关于英语"><a href="#关于英语" class="headerlink" title="关于英语"></a>关于英语</h3><p>  今天发现一个英语学习网站，它提倡Create Connection的方式学英文，而不是我所熟知的那种依赖规则（语法）的方式。这恰好解答了自己在英语学习上的迷思——如何把脑子里面零零散散的单次组织起来，变成正确、有意义的句子乃至段落。也正因如此，我一口气将相关的几篇文章读下，并对Phrase进行归类。</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/11/06/Diary/20161105/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+  </section>
+
+  
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="陈22" />
+          <p class="site-author-name" itemprop="name">陈22</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">陈22</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+</span>
+<span id="busuanzi_container_site_uv">
+  本站访客数<span id="busuanzi_value_site_uv"></span>人次
+</span>
+<script>
+  var birthDay = new Date("11/20/2014");
+  var now = new Date();
+  var duration = now.getTime() - birthDay.getTime();
+  var total= Math.floor(duration / (1000 * 60 * 60 * 24));
+  document.getElementById("showDays").innerHTML = "本站已运行 "+total+" 天";
+</script>
+<span id="showDays"></span>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

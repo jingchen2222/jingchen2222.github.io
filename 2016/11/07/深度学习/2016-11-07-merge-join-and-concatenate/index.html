@@ -1,0 +1,789 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="pandas,深度学习,merge,study," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="Concatenating objects
+The concat function (in the main pandas namespace) does all of the heavy lifting of performing concatenation operations along an axis while performing optional set logic (union o">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Merge, join, and concatenate">
+<meta property="og:url" content="http://jingchen2222.github.io./2016/11/07/深度学习/2016-11-07-merge-join-and-concatenate/index.html">
+<meta property="og:site_name" content="Chen22'S BLOG">
+<meta property="og:description" content="Concatenating objects
+The concat function (in the main pandas namespace) does all of the heavy lifting of performing concatenation operations along an axis while performing optional set logic (union o">
+<meta property="og:updated_time" content="2016-11-07T12:05:25.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Merge, join, and concatenate">
+<meta name="twitter:description" content="Concatenating objects
+The concat function (in the main pandas namespace) does all of the heavy lifting of performing concatenation operations along an axis while performing optional set logic (union o">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://jingchen2222.github.io./2016/11/07/深度学习/2016-11-07-merge-join-and-concatenate/"/>
+
+
+  <title> Merge, join, and concatenate | Chen22'S BLOG </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Chen22'S BLOG</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br />
+            
+            日程
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Merge, join, and concatenate
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-11-07T19:58:00+08:00" content="2016-11-07">
+              2016-11-07
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/pandas/" itemprop="url" rel="index">
+                    <span itemprop="name">pandas</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/pandas/深度学习/" itemprop="url" rel="index">
+                    <span itemprop="name">深度学习</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="Concatenating-objects"><a href="#Concatenating-objects" class="headerlink" title="Concatenating objects"></a>Concatenating objects</h2><blockquote>
+<p>The concat function (in the main pandas namespace) does all of the heavy lifting of performing concatenation operations along an axis while performing optional set logic (union or intersection) of the indexes (if any) on the other axes. Note that I say “if any” because there is only a single possible axis of concatenation for Series.</p>
+</blockquote>
+<a id="more"></a>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">pd.concat(objs, axis=<span class="number">0</span>, join=<span class="string">'outer'</span>, join_axes=<span class="keyword">None</span>, ignore_index=<span class="keyword">False</span>,</div><div class="line">          keys=<span class="keyword">None</span>, levels=<span class="keyword">None</span>, names=<span class="keyword">None</span>, verify_integrity=<span class="keyword">False</span>,</div><div class="line">          copy=<span class="keyword">True</span>)</div></pre></td></tr></table></figure>
+<h3 id="argument"><a href="#argument" class="headerlink" title="argument:"></a>argument:</h3><ul>
+<li>objs: a sequence or mapping of Series, DataFrame, or Panel objects.<ul>
+<li>when is dict<ul>
+<li>keys = keys of dict</li>
+</ul>
+</li>
+<li>None objects will be dropped silently unless they are all None. (in which case a ValueError will be raised.)</li>
+</ul>
+</li>
+<li>axis : {0, 1, …}, default 0.<ul>
+<li>0,  to concatenate along rows</li>
+<li>1, concat along cols</li>
+</ul>
+</li>
+<li>join : {‘inner’, ‘outer’},How to handle indexes on other axis(es).<ul>
+<li>default ‘outer’.</li>
+<li>outer for union</li>
+<li>inner for intersection.</li>
+</ul>
+</li>
+<li>ignore_index : boolean, default False.<ul>
+<li>If True, do not use the index values .</li>
+</ul>
+</li>
+<li>join_axes : list of Index objects. Specific indexes to use for the other n - 1 axes instead of performing inner/outer set logic.</li>
+<li>keys : sequence, default None.<ul>
+<li>when hierarchical index, as the outermost level.</li>
+<li>If multiple levels passed, should contain tuples.</li>
+<li>use keys when we want to associate specific keys with each of the pieces of the chopped up DataFrame</li>
+<li>resulting object’s index has a hierarchical index.</li>
+</ul>
+</li>
+<li>levels : list of sequences, default None.<ul>
+<li>use for constructing a MultiIndex.</li>
+<li>when None, they will be inferred from the keys.</li>
+</ul>
+</li>
+<li>names : list, default None.<ul>
+<li>Names for the levels in the resulting hierarchical index.</li>
+</ul>
+</li>
+<li>verify_integrity : boolean, default False.<ul>
+<li>Check duplicates.</li>
+</ul>
+</li>
+<li>copy : boolean, default True.<ul>
+<li>If False, do not copy data unnecessarily.</li>
+</ul>
+</li>
+</ul>
+<h3 id="Set-logic-on-the-other-axes"><a href="#Set-logic-on-the-other-axes" class="headerlink" title="Set logic on the other axes"></a>Set logic on the other axes</h3><ul>
+<li><p>Take the (sorted) union of them all, join=’outer’.</p>
+<ul>
+<li>ALL INDEX KEEP</li>
+</ul>
+</li>
+<li><p>Take the intersection, join=’inner’.</p>
+<ul>
+<li>KEEP intersection indexes</li>
+</ul>
+</li>
+<li><p>Use a specific index BY join_axes argument</p>
+<ul>
+<li>reuse the exact index from the original DataFrame</li>
+</ul>
+</li>
+</ul>
+<h3 id="More-concatenating-with-group-keys"><a href="#More-concatenating-with-group-keys" class="headerlink" title="More concatenating with group keys"></a>More concatenating with group keys</h3><blockquote>
+<p>A fairly common use of the keys argument is to override the column names when creating a new DataFrame based on existing Series. Notice how the default behaviour consists on letting the resulting DataFrame inherits the parent Series’ name, when these existed.</p>
+<p>Through the keys argument we can override the existing column names.</p>
+</blockquote>
+<h3 id="Appending-rows-to-a-DataFrame"><a href="#Appending-rows-to-a-DataFrame" class="headerlink" title="Appending rows to a DataFrame"></a>Appending rows to a DataFrame</h3><h4 id="Keys"><a href="#Keys" class="headerlink" title="Keys:"></a>Keys:</h4><ul>
+<li>Append a row <strong>by passing a Series or dict</strong> to append</li>
+<li>use ignore_index with this method to instruct DataFrame to discard its index</li>
+</ul>
+<h3 id="Concatenating-using-append"><a href="#Concatenating-using-append" class="headerlink" title="Concatenating using append"></a>Concatenating using append</h3><blockquote>
+<p>A useful shortcut to concat are the append instance methods on Series and DataFrame.</p>
+</blockquote>
+<h3 id="Database-style-DataFrame-joining-merging"><a href="#Database-style-DataFrame-joining-merging" class="headerlink" title="Database-style DataFrame joining/merging"></a>Database-style DataFrame joining/merging</h3><blockquote>
+<p>pandas has full-featured, high performance in-memory join operations idiomatically very similar to relational databases like SQL. These methods perform significantly better (in some cases well over an order of magnitude better) than other open source implementations (like base::merge.data.frame in R). The reason for this is careful algorithmic design and internal layout of the data in DataFrame.</p>
+</blockquote>
+<ul>
+<li>hight performance, join operations, like SQL</li>
+<li>better than other open source implementations</li>
+<li>might be interested in a comparison with SQL.</li>
+<li>merge<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">pd.merge(left, right, how=<span class="string">'inner'</span>,</div><div class="line">on=<span class="keyword">None</span>, left_on=<span class="keyword">None</span>, right_on=<span class="keyword">None</span>,</div><div class="line">left_index=<span class="keyword">False</span>, right_index=<span class="keyword">False</span>,</div><div class="line">sort=<span class="keyword">True</span>, suffixes=(<span class="string">'_x'</span>, <span class="string">'_y'</span>),</div><div class="line">copy=<span class="keyword">True</span>, indicator=<span class="keyword">False</span>)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="argument-1"><a href="#argument-1" class="headerlink" title="argument"></a>argument</h3><ul>
+<li>left</li>
+<li>right</li>
+<li>how</li>
+<li>on:<ul>
+<li>Columns (names) to join on</li>
+<li>both in left and right</li>
+</ul>
+</li>
+<li>left_on<ul>
+<li>from left cols</li>
+<li>use as keys</li>
+</ul>
+</li>
+<li>right_on<ul>
+<li>from right cols</li>
+<li>use as keys</li>
+</ul>
+</li>
+<li>left_index<ul>
+<li>if true: use the index (row labels) from the left DataFrame as its join key(s).</li>
+</ul>
+</li>
+<li>right_index<ul>
+<li>if true: use the index (row labels) from the right DataFrame as its join key(s).</li>
+</ul>
+</li>
+<li>how<ul>
+<li>One of ‘left’, ‘right’, ‘outer’, ‘inner’</li>
+</ul>
+</li>
+<li>sort<ul>
+<li>if true, Sort the result DataFrame by the join keys</li>
+</ul>
+</li>
+<li>suffixes</li>
+<li>copy</li>
+<li>indicator</li>
+</ul>
+<h3 id="Joining-a-single-Index-to-a-Multi-index"><a href="#Joining-a-single-Index-to-a-Multi-index" class="headerlink" title="Joining a single Index to a Multi-index"></a>Joining a single Index to a Multi-index</h3><blockquote>
+<p>You can join a singly-indexed DataFrame with a level of a multi-indexed DataFrame. The level will match on the name of the index of the singly-indexed frame against a level name of the multi-indexed frame.</p>
+</blockquote>
+<h3 id="Joining-with-two-multi-indexes"><a href="#Joining-with-two-multi-indexes" class="headerlink" title="Joining with two multi-indexes"></a>Joining with two multi-indexes</h3><h3 id="Overlapping-value-columns"><a href="#Overlapping-value-columns" class="headerlink" title="Overlapping value columns"></a>Overlapping value columns</h3><h3 id="Joining-multiple-DataFrame-or-Panel-objects"><a href="#Joining-multiple-DataFrame-or-Panel-objects" class="headerlink" title="Joining multiple DataFrame or Panel objects"></a>Joining multiple DataFrame or Panel objects</h3><h3 id="Merging-together-values-within-Series-or-DataFrame-columns"><a href="#Merging-together-values-within-Series-or-DataFrame-columns" class="headerlink" title="Merging together values within Series or DataFrame columns"></a>Merging together values within Series or DataFrame columns</h3><h2 id="Timeseries-friendly-merging"><a href="#Timeseries-friendly-merging" class="headerlink" title="Timeseries friendly merging"></a>Timeseries friendly merging</h2><h3 id="Merging-Ordered-Data"><a href="#Merging-Ordered-Data" class="headerlink" title="Merging Ordered Data"></a>Merging Ordered Data</h3><blockquote>
+<p>A merge_ordered() function allows combining time series and other ordered data. In particular it has an optional fill_method keyword to fill/interpolate missing data:</p>
+</blockquote>
+<ul>
+<li>merge_ordered</li>
+<li>combining time series and other ordered data</li>
+<li>fill_method fill/interpolate missing data:</li>
+</ul>
+<h3 id="Merging-AsOf"><a href="#Merging-AsOf" class="headerlink" title="Merging AsOf"></a>Merging AsOf</h3><ul>
+<li>merge_asof method</li>
+<li>match on nearest key rather than equal keys</li>
+<li>tolerance, e.g. tolerance=pd.Timedelta(‘2ms’)</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/pandas/" rel="tag">#pandas</a>
+          
+            <a href="/tags/深度学习/" rel="tag">#深度学习</a>
+          
+            <a href="/tags/merge/" rel="tag">#merge</a>
+          
+            <a href="/tags/study/" rel="tag">#study</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/11/07/深度学习/2016-11-07-groupbynote/" rel="next" title="Group By: split-apply-combine">
+                <i class="fa fa-chevron-left"></i> Group By: split-apply-combine
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="陈22" />
+          <p class="site-author-name" itemprop="name">陈22</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Concatenating-objects"><span class="nav-number">1.</span> <span class="nav-text">Concatenating objects</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#argument"><span class="nav-number">1.1.</span> <span class="nav-text">argument:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Set-logic-on-the-other-axes"><span class="nav-number">1.2.</span> <span class="nav-text">Set logic on the other axes</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#More-concatenating-with-group-keys"><span class="nav-number">1.3.</span> <span class="nav-text">More concatenating with group keys</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Appending-rows-to-a-DataFrame"><span class="nav-number">1.4.</span> <span class="nav-text">Appending rows to a DataFrame</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Keys"><span class="nav-number">1.4.1.</span> <span class="nav-text">Keys:</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Concatenating-using-append"><span class="nav-number">1.5.</span> <span class="nav-text">Concatenating using append</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Database-style-DataFrame-joining-merging"><span class="nav-number">1.6.</span> <span class="nav-text">Database-style DataFrame joining/merging</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#argument-1"><span class="nav-number">1.7.</span> <span class="nav-text">argument</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Joining-a-single-Index-to-a-Multi-index"><span class="nav-number">1.8.</span> <span class="nav-text">Joining a single Index to a Multi-index</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Joining-with-two-multi-indexes"><span class="nav-number">1.9.</span> <span class="nav-text">Joining with two multi-indexes</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Overlapping-value-columns"><span class="nav-number">1.10.</span> <span class="nav-text">Overlapping value columns</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Joining-multiple-DataFrame-or-Panel-objects"><span class="nav-number">1.11.</span> <span class="nav-text">Joining multiple DataFrame or Panel objects</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Merging-together-values-within-Series-or-DataFrame-columns"><span class="nav-number">1.12.</span> <span class="nav-text">Merging together values within Series or DataFrame columns</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Timeseries-friendly-merging"><span class="nav-number">2.</span> <span class="nav-text">Timeseries friendly merging</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Merging-Ordered-Data"><span class="nav-number">2.1.</span> <span class="nav-text">Merging Ordered Data</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Merging-AsOf"><span class="nav-number">2.2.</span> <span class="nav-text">Merging AsOf</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">陈22</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+</span>
+<span id="busuanzi_container_site_uv">
+  本站访客数<span id="busuanzi_value_site_uv"></span>人次
+</span>
+<script>
+  var birthDay = new Date("11/20/2014");
+  var now = new Date();
+  var duration = now.getTime() - birthDay.getTime();
+  var total= Math.floor(duration / (1000 * 60 * 60 * 24));
+  document.getElementById("showDays").innerHTML = "本站已运行 "+total+" 天";
+</script>
+<span id="showDays"></span>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
