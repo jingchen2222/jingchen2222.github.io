@@ -84,25 +84,25 @@
 
 
 
-<meta name="description" content="Filtration：doc: filter
+<meta name="description" content="Filtration&amp;#xFF1A;doc: filter
 
 The filter method returns a subset of the original object. Suppose we want to take only elements that belong to groups with a group sum greater than 2.
-The argument of filter m">
+The argument of f">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Group By: split-apply-combine">
 <meta property="og:url" content="http://jingchen2222.github.io./2016/11/07/深度学习/2016-11-07-groupbynote/index.html">
 <meta property="og:site_name" content="Chen22'S BLOG">
-<meta property="og:description" content="Filtration：doc: filter
+<meta property="og:description" content="Filtration&amp;#xFF1A;doc: filter
 
 The filter method returns a subset of the original object. Suppose we want to take only elements that belong to groups with a group sum greater than 2.
-The argument of filter m">
+The argument of f">
 <meta property="og:updated_time" content="2016-11-07T12:42:58.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Group By: split-apply-combine">
-<meta name="twitter:description" content="Filtration：doc: filter
+<meta name="twitter:description" content="Filtration&amp;#xFF1A;doc: filter
 
 The filter method returns a subset of the original object. Suppose we want to take only elements that belong to groups with a group sum greater than 2.
-The argument of filter m">
+The argument of f">
 
 
 
@@ -349,7 +349,7 @@ The argument of filter m">
       
 
       
-        <h3 id="Filtration："><a href="#Filtration：" class="headerlink" title="Filtration："></a>Filtration：</h3><p><strong>doc</strong>: <a href="http://pandas.pydata.org/pandas-docs/version/0.18.1/generated/pandas.DataFrame.filter.html" title="filter" target="_blank" rel="external">filter</a></p>
+        <h3 id="Filtration&#xFF1A;"><a href="#Filtration&#xFF1A;" class="headerlink" title="Filtration&#xFF1A;"></a>Filtration&#xFF1A;</h3><p><strong>doc</strong>: <a href="http://pandas.pydata.org/pandas-docs/version/0.18.1/generated/pandas.DataFrame.filter.html" title="filter" target="_blank" rel="external">filter</a></p>
 <blockquote>
 <p>The filter method returns a subset of the original object. Suppose we want to take only elements that belong to groups with a group sum greater than 2.</p>
 <p>The argument of filter must be a function that, applied to the group as a whole, returns True or False.</p>
@@ -365,7 +365,7 @@ The argument of filter m">
 </ul>
 </li>
 </ul>
-<h3 id="Flexible-apply："><a href="#Flexible-apply：" class="headerlink" title="Flexible apply："></a>Flexible apply：</h3><blockquote>
+<h3 id="Flexible-apply&#xFF1A;"><a href="#Flexible-apply&#xFF1A;" class="headerlink" title="Flexible apply&#xFF1A;"></a>Flexible apply&#xFF1A;</h3><blockquote>
 <p>Use the apply function, which can be substituted for both aggregate and transform in many standard use cases<br>apply can act as a reducer, transformer, or filter function, depending on exactly what is passed to it.</p>
 </blockquote>
 <p><strong>Warning</strong>:</p>
@@ -393,13 +393,13 @@ The argument of filter m">
 <li>sum the agg: grouped.sum</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">df.groupby(df.sum(), axis=<span class="number">1</span>).sum()</div></pre></td></tr></table></figure>
-<h3 id="Groupby-by-Indexer-to-‘resample’-data"><a href="#Groupby-by-Indexer-to-‘resample’-data" class="headerlink" title="Groupby by Indexer to ‘resample’ data"></a>Groupby by Indexer to ‘resample’ data</h3><blockquote>
+<h3 id="Groupby-by-Indexer-to-&#x2018;resample&#x2019;-data"><a href="#Groupby-by-Indexer-to-&#x2018;resample&#x2019;-data" class="headerlink" title="Groupby by Indexer to &#x2018;resample&#x2019; data"></a>Groupby by Indexer to &#x2018;resample&#x2019; data</h3><blockquote>
 <p>Resampling produces new hypothetical samples</p>
 <p>resample to work on indices that are non-datetimelike</p>
 </blockquote>
 <p><strong>USE</strong>:</p>
 <blockquote>
-<p>df.index // 5 returns a binary array which is used to determine what get’s selected for the groupby operation.</p>
+<p>df.index // 5 returns a binary array which is used to determine what get&#x2019;s selected for the groupby operation.</p>
 </blockquote>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">df.groupby(df.index // <span class="number">5</span>).std()</div></pre></td></tr></table></figure>
 <h3 id="Returning-a-Series-to-propagate-names"><a href="#Returning-a-Series-to-propagate-names" class="headerlink" title="Returning a Series to propagate names"></a>Returning a Series to propagate names</h3><blockquote>
@@ -410,7 +410,7 @@ The argument of filter m">
 <h4 id="Keys-2"><a href="#Keys-2" class="headerlink" title="Keys"></a>Keys</h4><ul>
 <li>compute a set of metrics and return a named Series</li>
 </ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">compute_metrics</span><span class="params">(x)</span>:</span></div><div class="line">  result = &#123;<span class="string">'b_sum'</span>: x[<span class="string">'b'</span>].sum(), <span class="string">'c_mean'</span>: x[<span class="string">'c'</span>].mean()&#125;</div><div class="line">  <span class="keyword">return</span> pd.Series(result, name=<span class="string">'metrics'</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">compute_metrics</span><span class="params">(x)</span>:</span></div><div class="line">  result = {<span class="string">&apos;b_sum&apos;</span>: x[<span class="string">&apos;b&apos;</span>].sum(), <span class="string">&apos;c_mean&apos;</span>: x[<span class="string">&apos;c&apos;</span>].mean()}</div><div class="line">  <span class="keyword">return</span> pd.Series(result, name=<span class="string">&apos;metrics&apos;</span>)</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -532,7 +532,7 @@ The argument of filter m">
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>

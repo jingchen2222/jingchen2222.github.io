@@ -92,7 +92,7 @@ The concat function (in the main pandas namespace) does all of the heavy lifting
 <meta property="og:site_name" content="Chen22'S BLOG">
 <meta property="og:description" content="Concatenating objects
 The concat function (in the main pandas namespace) does all of the heavy lifting of performing concatenation operations along an axis while performing optional set logic (union o">
-<meta property="og:updated_time" content="2016-11-07T12:05:25.000Z">
+<meta property="og:updated_time" content="2016-11-11T13:18:10.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Merge, join, and concatenate">
 <meta name="twitter:description" content="Concatenating objects
@@ -286,8 +286,8 @@ The concat function (in the main pandas namespace) does all of the heavy lifting
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/pandas/" itemprop="url" rel="index">
-                    <span itemprop="name">pandas</span>
+                  <a href="/categories/study/" itemprop="url" rel="index">
+                    <span itemprop="name">study</span>
                   </a>
                 </span>
 
@@ -298,8 +298,20 @@ The concat function (in the main pandas namespace) does all of the heavy lifting
 
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/pandas/深度学习/" itemprop="url" rel="index">
+                  <a href="/categories/study/深度学习/" itemprop="url" rel="index">
                     <span itemprop="name">深度学习</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/study/深度学习/pandas/" itemprop="url" rel="index">
+                    <span itemprop="name">pandas</span>
                   </a>
                 </span>
 
@@ -332,10 +344,10 @@ The concat function (in the main pandas namespace) does all of the heavy lifting
 
       
         <h2 id="Concatenating-objects"><a href="#Concatenating-objects" class="headerlink" title="Concatenating objects"></a>Concatenating objects</h2><blockquote>
-<p>The concat function (in the main pandas namespace) does all of the heavy lifting of performing concatenation operations along an axis while performing optional set logic (union or intersection) of the indexes (if any) on the other axes. Note that I say “if any” because there is only a single possible axis of concatenation for Series.</p>
+<p>The concat function (in the main pandas namespace) does all of the heavy lifting of performing concatenation operations along an axis while performing optional set logic (union or intersection) of the indexes (if any) on the other axes. Note that I say &#x201C;if any&#x201D; because there is only a single possible axis of concatenation for Series.</p>
 </blockquote>
 <a id="more"></a>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">pd.concat(objs, axis=<span class="number">0</span>, join=<span class="string">'outer'</span>, join_axes=<span class="keyword">None</span>, ignore_index=<span class="keyword">False</span>,</div><div class="line">          keys=<span class="keyword">None</span>, levels=<span class="keyword">None</span>, names=<span class="keyword">None</span>, verify_integrity=<span class="keyword">False</span>,</div><div class="line">          copy=<span class="keyword">True</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">pd.concat(objs, axis=<span class="number">0</span>, join=<span class="string">&apos;outer&apos;</span>, join_axes=<span class="keyword">None</span>, ignore_index=<span class="keyword">False</span>,</div><div class="line">          keys=<span class="keyword">None</span>, levels=<span class="keyword">None</span>, names=<span class="keyword">None</span>, verify_integrity=<span class="keyword">False</span>,</div><div class="line">          copy=<span class="keyword">True</span>)</div></pre></td></tr></table></figure>
 <h3 id="argument"><a href="#argument" class="headerlink" title="argument:"></a>argument:</h3><ul>
 <li>objs: a sequence or mapping of Series, DataFrame, or Panel objects.<ul>
 <li>when is dict<ul>
@@ -345,13 +357,13 @@ The concat function (in the main pandas namespace) does all of the heavy lifting
 <li>None objects will be dropped silently unless they are all None. (in which case a ValueError will be raised.)</li>
 </ul>
 </li>
-<li>axis : {0, 1, …}, default 0.<ul>
+<li>axis : {0, 1, &#x2026;}, default 0.<ul>
 <li>0,  to concatenate along rows</li>
 <li>1, concat along cols</li>
 </ul>
 </li>
-<li>join : {‘inner’, ‘outer’},How to handle indexes on other axis(es).<ul>
-<li>default ‘outer’.</li>
+<li>join : {&#x2018;inner&#x2019;, &#x2018;outer&#x2019;},How to handle indexes on other axis(es).<ul>
+<li>default &#x2018;outer&#x2019;.</li>
 <li>outer for union</li>
 <li>inner for intersection.</li>
 </ul>
@@ -365,7 +377,7 @@ The concat function (in the main pandas namespace) does all of the heavy lifting
 <li>when hierarchical index, as the outermost level.</li>
 <li>If multiple levels passed, should contain tuples.</li>
 <li>use keys when we want to associate specific keys with each of the pieces of the chopped up DataFrame</li>
-<li>resulting object’s index has a hierarchical index.</li>
+<li>resulting object&#x2019;s index has a hierarchical index.</li>
 </ul>
 </li>
 <li>levels : list of sequences, default None.<ul>
@@ -387,12 +399,12 @@ The concat function (in the main pandas namespace) does all of the heavy lifting
 </li>
 </ul>
 <h3 id="Set-logic-on-the-other-axes"><a href="#Set-logic-on-the-other-axes" class="headerlink" title="Set logic on the other axes"></a>Set logic on the other axes</h3><ul>
-<li><p>Take the (sorted) union of them all, join=’outer’.</p>
+<li><p>Take the (sorted) union of them all, join=&#x2019;outer&#x2019;.</p>
 <ul>
 <li>ALL INDEX KEEP</li>
 </ul>
 </li>
-<li><p>Take the intersection, join=’inner’.</p>
+<li><p>Take the intersection, join=&#x2019;inner&#x2019;.</p>
 <ul>
 <li>KEEP intersection indexes</li>
 </ul>
@@ -404,7 +416,7 @@ The concat function (in the main pandas namespace) does all of the heavy lifting
 </li>
 </ul>
 <h3 id="More-concatenating-with-group-keys"><a href="#More-concatenating-with-group-keys" class="headerlink" title="More concatenating with group keys"></a>More concatenating with group keys</h3><blockquote>
-<p>A fairly common use of the keys argument is to override the column names when creating a new DataFrame based on existing Series. Notice how the default behaviour consists on letting the resulting DataFrame inherits the parent Series’ name, when these existed.</p>
+<p>A fairly common use of the keys argument is to override the column names when creating a new DataFrame based on existing Series. Notice how the default behaviour consists on letting the resulting DataFrame inherits the parent Series&#x2019; name, when these existed.</p>
 <p>Through the keys argument we can override the existing column names.</p>
 </blockquote>
 <h3 id="Appending-rows-to-a-DataFrame"><a href="#Appending-rows-to-a-DataFrame" class="headerlink" title="Appending rows to a DataFrame"></a>Appending rows to a DataFrame</h3><h4 id="Keys"><a href="#Keys" class="headerlink" title="Keys:"></a>Keys:</h4><ul>
@@ -421,7 +433,7 @@ The concat function (in the main pandas namespace) does all of the heavy lifting
 <li>hight performance, join operations, like SQL</li>
 <li>better than other open source implementations</li>
 <li>might be interested in a comparison with SQL.</li>
-<li>merge<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">pd.merge(left, right, how=<span class="string">'inner'</span>,</div><div class="line">on=<span class="keyword">None</span>, left_on=<span class="keyword">None</span>, right_on=<span class="keyword">None</span>,</div><div class="line">left_index=<span class="keyword">False</span>, right_index=<span class="keyword">False</span>,</div><div class="line">sort=<span class="keyword">True</span>, suffixes=(<span class="string">'_x'</span>, <span class="string">'_y'</span>),</div><div class="line">copy=<span class="keyword">True</span>, indicator=<span class="keyword">False</span>)</div></pre></td></tr></table></figure>
+<li>merge<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">pd.merge(left, right, how=<span class="string">&apos;inner&apos;</span>,</div><div class="line">on=<span class="keyword">None</span>, left_on=<span class="keyword">None</span>, right_on=<span class="keyword">None</span>,</div><div class="line">left_index=<span class="keyword">False</span>, right_index=<span class="keyword">False</span>,</div><div class="line">sort=<span class="keyword">True</span>, suffixes=(<span class="string">&apos;_x&apos;</span>, <span class="string">&apos;_y&apos;</span>),</div><div class="line">copy=<span class="keyword">True</span>, indicator=<span class="keyword">False</span>)</div></pre></td></tr></table></figure>
 </li>
 </ul>
 <h3 id="argument-1"><a href="#argument-1" class="headerlink" title="argument"></a>argument</h3><ul>
@@ -452,7 +464,7 @@ The concat function (in the main pandas namespace) does all of the heavy lifting
 </ul>
 </li>
 <li>how<ul>
-<li>One of ‘left’, ‘right’, ‘outer’, ‘inner’</li>
+<li>One of &#x2018;left&#x2019;, &#x2018;right&#x2019;, &#x2018;outer&#x2019;, &#x2018;inner&#x2019;</li>
 </ul>
 </li>
 <li>sort<ul>
@@ -477,7 +489,7 @@ The concat function (in the main pandas namespace) does all of the heavy lifting
 <h3 id="Merging-AsOf"><a href="#Merging-AsOf" class="headerlink" title="Merging AsOf"></a>Merging AsOf</h3><ul>
 <li>merge_asof method</li>
 <li>match on nearest key rather than equal keys</li>
-<li>tolerance, e.g. tolerance=pd.Timedelta(‘2ms’)</li>
+<li>tolerance, e.g. tolerance=pd.Timedelta(&#x2018;2ms&#x2019;)</li>
 </ul>
 
       
@@ -602,7 +614,7 @@ The concat function (in the main pandas namespace) does all of the heavy lifting
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>

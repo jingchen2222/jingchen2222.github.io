@@ -308,19 +308,7 @@
 
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/study/深度学习/pandas/" itemprop="url" rel="index">
-                    <span itemprop="name">pandas</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/study/深度学习/pandas/assignment/" itemprop="url" rel="index">
+                  <a href="/categories/study/深度学习/assignment/" itemprop="url" rel="index">
                     <span itemprop="name">assignment</span>
                   </a>
                 </span>
@@ -354,8 +342,7 @@
 
       
         
-          
-            <h2 id="1-3-1-1-What-are-NumPy-and-NumPy-arrays"><a href="#1-3-1-1-What-are-NumPy-and-NumPy-arrays" class="headerlink" title="1.3.1.1. What are NumPy and NumPy arrays?"></a>1.3.1.1. What are NumPy and NumPy arrays?</h2><h3 id="1-3-1-1-1-NumPy-arrays"><a href="#1-3-1-1-1-NumPy-arrays" class="headerlink" title="1.3.1.1.1. NumPy arrays"></a>1.3.1.1.1. NumPy arrays</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div></pre></td></tr></table></figure>
+          <h2 id="1-3-1-1-What-are-NumPy-and-NumPy-arrays"><a href="#1-3-1-1-What-are-NumPy-and-NumPy-arrays" class="headerlink" title="1.3.1.1. What are NumPy and NumPy arrays?"></a>1.3.1.1. What are NumPy and NumPy arrays?</h2><h3 id="1-3-1-1-1-NumPy-arrays"><a href="#1-3-1-1-1-NumPy-arrays" class="headerlink" title="1.3.1.1.1. NumPy arrays"></a>1.3.1.1.1. NumPy arrays</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">a = np.array([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>])</div><div class="line">a</div></pre></td></tr></table></figure>
 <pre><code>array([1, 2, 3, 4])
 </code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">L = range(<span class="number">1000</span>)</div><div class="line">%timeit [i**<span class="number">2</span> <span class="keyword">for</span> i <span class="keyword">in</span> L]</div></pre></td></tr></table></figure>
@@ -369,249 +356,12 @@
 </blockquote>
 <font color="brown"><strong>I cannot find the numpy run faster.</strong></font>
 
-<p>Because, with 100000 loops and best of 3: 1.72 &#xB5;s per loop, the implemention would consume at most 172<em>1000 us. Besides, the normal loops only spent 93.9</em>1000us.</p>
-<h1 id="1-3-1-2-Creating-arrays"><a href="#1-3-1-2-Creating-arrays" class="headerlink" title="1.3.1.2. Creating arrays"></a>1.3.1.2. Creating arrays</h1><h2 id="1-3-1-2-1-Manual-construction-of-arrays"><a href="#1-3-1-2-1-Manual-construction-of-arrays" class="headerlink" title="1.3.1.2.1. Manual construction of arrays"></a>1.3.1.2.1. Manual construction of arrays</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">a = np.array([<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>])</div><div class="line">a</div></pre></td></tr></table></figure>
-<p>array([0, 1, 2, 3])</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">b = np.array([[<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>], [<span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]])</div><div class="line">b</div></pre></td></tr></table></figure>
-<pre><code>array([[0, 1, 2],
-       [3, 4, 5]])
-</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">b.ndim</div></pre></td></tr></table></figure>
-<pre><code>2
-</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">b.shape</div></pre></td></tr></table></figure>
-<pre><code>(2, 3)
-</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">len(b)</div></pre></td></tr></table></figure>
-<pre><code>2
-</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">c = np.array([[[<span class="number">1</span>], [<span class="number">2</span>]], [[<span class="number">3</span>], [<span class="number">4</span>]]])</div><div class="line">c</div></pre></td></tr></table></figure>
-<pre><code>array([[[1],
-        [2]],
-
-       [[3],
-        [4]]])
-</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">c.shape</div></pre></td></tr></table></figure>
-<pre><code>(2, 2, 1)
-</code></pre><h3 id="Exercise-Simple-arrays"><a href="#Exercise-Simple-arrays" class="headerlink" title="Exercise: Simple arrays"></a>Exercise: Simple arrays</h3><p>Create a simple two dimensional array. First, redo the examples from above. And then create your own: how about odd numbers counting backwards on the first row, and even numbers on the second?<br>Use the functions len(), numpy.shape() on these arrays. How do they relate to each other? And to the ndim attribute of the arrays?</p>
-<h3 id="Task"><a href="#Task" class="headerlink" title="Task:"></a>Task:</h3><ul>
-<li>create 2 dim array</li>
-<li>Redo the examples from above</li>
-<li>create your own<ul>
-<li>odd numbers counting backwards on first row</li>
-<li>even numbers on the second</li>
-</ul>
-</li>
-<li>function len(), numpy.shape apply</li>
-<li>How do they relate to each other, And to the ndim</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">a = np.array([</div><div class="line">[<span class="number">9</span>,<span class="number">7</span>,<span class="number">5</span>,<span class="number">3</span>,<span class="number">1</span>],</div><div class="line">[<span class="number">8</span>,<span class="number">6</span>,<span class="number">4</span>,<span class="number">2</span>,<span class="number">0</span>]])</div><div class="line">a</div><div class="line">len(a)</div><div class="line">a.shape</div><div class="line">a.ndim</div></pre></td></tr></table></figure>
-<pre><code>2
-</code></pre><h3 id="1-3-1-2-2-Functions-for-creating-arrays"><a href="#1-3-1-2-2-Functions-for-creating-arrays" class="headerlink" title="1.3.1.2.2. Functions for creating arrays"></a>1.3.1.2.2. Functions for creating arrays</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">a = np.random.rand(<span class="number">4</span>)       <span class="comment"># uniform in [0, 1]</span></div><div class="line">a  </div><div class="line"></div><div class="line"></div><div class="line">b = np.random.randn(<span class="number">4</span>)      <span class="comment"># Gaussian</span></div><div class="line">b  </div><div class="line"></div><div class="line"></div><div class="line">c = np.random.seed()        <span class="comment"># Setting the random seed</span></div></pre></td></tr></table></figure>
-<h3 id="Exercise-Creating-arrays-using-functions"><a href="#Exercise-Creating-arrays-using-functions" class="headerlink" title="Exercise: Creating arrays using functions"></a>Exercise: Creating arrays using functions</h3><p>Experiment with arange, linspace, ones, zeros, eye and diag.<br>Create different kinds of arrays with random numbers.<br>Try setting the seed before creating an array with random values.<br>Look at the function np.empty. What does it do? When might this be useful?</p>
-<h3 id="Task-1"><a href="#Task-1" class="headerlink" title="Task:"></a>Task:</h3><ul>
-<li>Test arange, linspace, ones, zeros, eye and diag</li>
-<li>create different kinds of arrays with random numbers.</li>
-<li>Try setting the seed before creating an array with random values.</li>
-<li>Look at np.empty. What do it do ? When might this be useful</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">np.arange(<span class="number">20</span>,<span class="number">0</span>,<span class="number">-2</span>)</div><div class="line">np.linspace(<span class="number">1</span>,<span class="number">19</span>,num=<span class="number">9</span>,endpoint=<span class="keyword">True</span>, retstep=<span class="keyword">True</span>)</div><div class="line">np.ones((<span class="number">3</span>,<span class="number">4</span>))</div><div class="line">np.zeros((<span class="number">3</span>,<span class="number">4</span>))</div><div class="line">np.eye(<span class="number">4</span>)</div><div class="line">np.diag([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>])</div><div class="line"></div><div class="line"><span class="comment"># np.diag(np.reshape(np.arange(0,16), (4,4)))</span></div><div class="line"><span class="comment"># np.arange?</span></div></pre></td></tr></table></figure>
-<pre><code>array([[1, 0, 0, 0],
-       [0, 2, 0, 0],
-       [0, 0, 3, 0],
-       [0, 0, 0, 4]])
-</code></pre><h3 id="Key-Point"><a href="#Key-Point" class="headerlink" title="Key Point"></a>Key Point</h3><ul>
-<li>Signature: np.diag(v, k=0)</li>
-<li>Docstring:<br><font color="brown">Extract a diagonal</font>or construct a diagonal array.</li>
-<li>Parameters</li>
-<li>v : array_like<br>  If <code>v</code> is a 2-D array, return a copy of its <code>k</code>-th diagonal.<br>  If <code>v</code> is a 1-D array, return a 2-D array with <code>v</code> on the <code>k</code>-th<br>  diagonal.</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">np.random.seed(<span class="number">1200</span>)</div><div class="line">np.random.randn(<span class="number">10</span>)</div></pre></td></tr></table></figure>
-<pre><code>array([ 0.52202163,  0.06994681,  0.86923015,  0.42455383, -0.22096011,
-       -0.63208633, -0.45569908, -0.68187405,  0.38716295, -0.00974795])
-</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">np.random.seed(<span class="number">2200</span>)</div><div class="line">np.random.randn(<span class="number">10</span>)</div></pre></td></tr></table></figure>
-<pre><code>array([-0.78537866,  0.95078196, -0.02769646, -1.23586006, -0.5781107 ,
-        0.71370111, -0.68691587,  1.08717324,  0.02441534, -1.22960993])
-</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">np.empty((<span class="number">4</span>,<span class="number">5</span>))</div></pre></td></tr></table></figure>
-<pre><code>array([[ -3.10503618e+231,  -3.10503618e+231,   1.58101007e-322,
-          0.00000000e+000,   0.00000000e+000],
-       [  0.00000000e+000,   0.00000000e+000,   0.00000000e+000,
-          0.00000000e+000,   0.00000000e+000],
-       [  0.00000000e+000,   0.00000000e+000,  -3.10503618e+231,
-         -3.10503618e+231,  -3.10503618e+231],
-       [ -3.10503618e+231,  -3.10503618e+231,  -3.10503618e+231,
-         -3.10503618e+231,  -3.10503618e+231]])
-</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">np.empty((<span class="number">4</span>,<span class="number">7</span>))</div></pre></td></tr></table></figure>
-<pre><code>array([[ -3.10503618e+231,  -3.10503618e+231,   1.97626258e-322,
-          0.00000000e+000,   0.00000000e+000,   0.00000000e+000,
-          0.00000000e+000],
-       [  0.00000000e+000,   0.00000000e+000,   0.00000000e+000,
-          0.00000000e+000,   0.00000000e+000,  -3.10503618e+231,
-         -3.10503618e+231],
-       [  1.67982320e-322,   2.20419081e-314,  -3.10503618e+231,
-         -3.10503618e+231,   2.12199581e-314,   2.12199579e-314,
-          0.00000000e+000],
-       [  0.00000000e+000,   6.93481139e-310,   0.00000000e+000,
-          0.00000000e+000,   0.00000000e+000,   6.93481139e-310,
-          6.93481139e-310]])
-</code></pre><h4 id="Key-Points"><a href="#Key-Points" class="headerlink" title="Key Points:"></a>Key Points:</h4><p><font color="brown">Docstring:</font><br>empty(shape, dtype=float, order=&#x2019;C&#x2019;)</p>
-<p>Return a new array of given shape and type, without initializing entries.</p>
-<h2 id="1-3-1-3-Basic-data-types"><a href="#1-3-1-3-Basic-data-types" class="headerlink" title="1.3.1.3. Basic data types"></a>1.3.1.3. Basic data types</h2><p>You may have noticed that, in some instances, array elements are displayed with a trailing dot (e.g. 2. vs 2). This is due to a difference in the data-type used:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">a = np.array([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>])</div><div class="line">a.dtype</div></pre></td></tr></table></figure>
-<pre><code>dtype(&apos;int64&apos;)
-</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">b = np.array([<span class="number">1.</span>, <span class="number">2.</span>, <span class="number">3.</span>])</div><div class="line">b.dtype</div></pre></td></tr></table></figure>
-<pre><code>dtype(&apos;float64&apos;)
-</code></pre><p>You can explicitly specify which data-type you want:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">c = np.array([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], dtype=float)</div><div class="line">c.dtype</div></pre></td></tr></table></figure>
-<pre><code>dtype(&apos;float64&apos;)
-</code></pre><p>The default data type is floating point:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">a = np.ones((<span class="number">3</span>, <span class="number">3</span>))</div><div class="line">a.dtype</div></pre></td></tr></table></figure>
-<pre><code>dtype(&apos;float64&apos;)
-</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">d = np.array([<span class="number">1</span>+<span class="number">2j</span>, <span class="number">3</span>+<span class="number">4j</span>, <span class="number">5</span>+<span class="number">6</span>*<span class="number">1j</span>])</div><div class="line">d.dtype</div></pre></td></tr></table></figure>
-<pre><code>dtype(&apos;complex128&apos;)
-</code></pre><h2 id="1-3-1-4-Basic-visualization"><a href="#1-3-1-4-Basic-visualization" class="headerlink" title="1.3.1.4. Basic visualization"></a>1.3.1.4. Basic visualization</h2><p>From the notebook, enable plots in the notebook. The inline is important for the notebook, so that plots are displayed in the notebook and not in a new window.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">%matplotlib inline</div></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</div></pre></td></tr></table></figure>
-<p>you have to use show explicitly if you have not enabled interactive plots with %matplotlib</p>
-<h3 id="Exercise-Simple-visualizations"><a href="#Exercise-Simple-visualizations" class="headerlink" title="Exercise: Simple visualizations"></a>Exercise: Simple visualizations</h3><p>Plot some simple arrays: a cosine as a function of time and a 2D matrix.<br>Try using the gray colormap on the 2D matrix.</p>
-<h3 id="Task-2"><a href="#Task-2" class="headerlink" title="Task"></a>Task</h3><ul>
-<li>Plot simple arrays, a cosine as a function of time</li>
-<li>2D m</li>
-<li>gray colormap on the 2D matrix</li>
-</ul>
-<h4 id="Task-One"><a href="#Task-One" class="headerlink" title="Task One"></a>Task One</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># np.lookfor(&quot;function cos&quot;)</span></div><div class="line"><span class="comment"># help(np.cos)</span></div><div class="line"><span class="comment"># np.info(np.cos)</span></div><div class="line"><span class="comment"># np.cos(np.array([0, np.pi/2, np.pi]))</span></div><div class="line"></div><div class="line">t = np.linspace(<span class="number">0</span>,<span class="number">4</span>*np.pi,<span class="number">1000</span>)</div><div class="line">y = np.cos(t)</div><div class="line">plt.plot(t,y)</div></pre></td></tr></table></figure>
-<pre><code>[&lt;matplotlib.lines.Line2D at 0x10aaa9a50&gt;]
-</code></pre><p><img src="/2016/11/11/Assignment/NumpyExc/output_42_1.png" alt="png"></p>
-<h4 id="Task-Two"><a href="#Task-Two" class="headerlink" title="Task Two"></a>Task Two</h4><p>Plot 2D matrix</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">a = np.random.randn(<span class="number">100</span>,<span class="number">100</span>)</div><div class="line">plt.plot(a[<span class="number">0</span>],a[<span class="number">1</span>])</div><div class="line"><span class="comment"># help(np.random.rand)</span></div></pre></td></tr></table></figure>
-<pre><code>[&lt;matplotlib.lines.Line2D at 0x10ab27c10&gt;]
-</code></pre><p><img src="/2016/11/11/Assignment/NumpyExc/output_44_1.png" alt="png"></p>
-<h4 id="Task-Three"><a href="#Task-Three" class="headerlink" title="Task Three"></a>Task Three</h4><p>gray colormap on the 2D matrix</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">a = np.random.randn(<span class="number">100</span>,<span class="number">100</span>)</div><div class="line">plt.imshow(a)</div><div class="line"><span class="comment"># help(np.random.rand)</span></div><div class="line">plt.colorbar()</div></pre></td></tr></table></figure>
-<matplotlib.colorbar.colorbar at="" 0x10b9c5910="">
-
-<!-- ![png](output_46_1.png) -->
-<p><img src="/2016/11/11/Assignment/NumpyExc/output_46_1.png" alt="png"></p>
-<h2 id="1-3-1-5-Indexing-and-slicing"><a href="#1-3-1-5-Indexing-and-slicing" class="headerlink" title="1.3.1.5. Indexing and slicing"></a>1.3.1.5. Indexing and slicing</h2><blockquote>
-<p>The items of an array can be accessed and assigned to the same way as other Python sequences (e.g. lists):</p>
-</blockquote>
-<h3 id="Exercise-Indexing-and-slicing"><a href="#Exercise-Indexing-and-slicing" class="headerlink" title="Exercise: Indexing and slicing"></a>Exercise: Indexing and slicing</h3><p>Try the different flavours of slicing, using start, end and step: starting from a linspace, try to obtain odd numbers counting backwards, and even numbers counting forwards.<br>Reproduce the slices in the diagram above. You may use the following expression to create the array:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">np.arange(<span class="number">6</span>) + np.arange(<span class="number">0</span>, <span class="number">51</span>, <span class="number">10</span>)[:, np.newaxis]</div></pre></td></tr></table></figure></p>
-<h3 id="Task-3"><a href="#Task-3" class="headerlink" title="Task"></a>Task</h3><ul>
-<li>different slicing , using start , end and step</li>
-<li>starting form a linespace, try to obtain odd number counting backwards</li>
-<li>even numbers counting forwards</li>
-<li>reproduce the slices in the diagram above</li>
-</ul>
-<h4 id="Task-One-different-slicing-using-start-end-and-step"><a href="#Task-One-different-slicing-using-start-end-and-step" class="headerlink" title="Task One: different slicing , using start , end and step"></a>Task One: different slicing , using start , end and step</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">a = np.arange(<span class="number">0</span>,<span class="number">20</span>,<span class="number">2</span>)</div><div class="line">a</div></pre></td></tr></table></figure>
-<pre><code>array([ 0,  2,  4,  6,  8, 10, 12, 14, 16, 18])
-</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">a[<span class="number">1</span>:]</div><div class="line">a[:<span class="number">-1</span>]</div><div class="line">a[<span class="number">1</span>:<span class="number">-1</span>:<span class="number">2</span>]</div></pre></td></tr></table></figure>
-<pre><code>array([ 2,  6, 10, 14])
-</code></pre><h4 id="Task-Two-1"><a href="#Task-Two-1" class="headerlink" title="Task Two:"></a>Task Two:</h4><ul>
-<li>starting form a linespace, try to obtain odd number counting backwards</li>
-<li>even numbers counting forwards</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">a = np.linspace(<span class="number">1</span>,<span class="number">20</span>,num=<span class="number">20</span>)</div><div class="line">a[<span class="number">1</span>::<span class="number">2</span>]</div><div class="line">a[<span class="number">18</span>::<span class="number">-2</span>]</div><div class="line"><span class="comment"># a[1:20:2]</span></div></pre></td></tr></table></figure>
-<pre><code>array([ 19.,  17.,  15.,  13.,  11.,   9.,   7.,   5.,   3.,   1.])
-</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">np.arange(<span class="number">6</span>) + np.arange(<span class="number">0</span>, <span class="number">51</span>, <span class="number">10</span>)[:, np.newaxis]</div><div class="line"><span class="comment"># np.arange(6)</span></div><div class="line"><span class="comment"># np.arange(0, 51, 10)[:, np.newaxis]</span></div></pre></td></tr></table></figure>
-<pre><code>array([[ 0,  1,  2,  3,  4,  5],
-       [10, 11, 12, 13, 14, 15],
-       [20, 21, 22, 23, 24, 25],
-       [30, 31, 32, 33, 34, 35],
-       [40, 41, 42, 43, 44, 45],
-       [50, 51, 52, 53, 54, 55]])
-</code></pre><h3 id="Exercise-Array-creation"><a href="#Exercise-Array-creation" class="headerlink" title="Exercise: Array creation"></a>Exercise: Array creation</h3><p>Create the following arrays (with correct data types):<br><figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">[[<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>],</div><div class="line"> [<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>],</div><div class="line"> [<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">2</span>],</div><div class="line"> [<span class="number">1</span>, <span class="number">6</span>, <span class="number">1</span>, <span class="number">1</span>]]</div><div class="line"></div><div class="line">[[<span class="number">0.</span>, <span class="number">0.</span>, <span class="number">0.</span>, <span class="number">0.</span>, <span class="number">0.</span>],</div><div class="line"> [<span class="number">2.</span>, <span class="number">0.</span>, <span class="number">0.</span>, <span class="number">0.</span>, <span class="number">0.</span>],</div><div class="line"> [<span class="number">0.</span>, <span class="number">3.</span>, <span class="number">0.</span>, <span class="number">0.</span>, <span class="number">0.</span>],</div><div class="line"> [<span class="number">0.</span>, <span class="number">0.</span>, <span class="number">4.</span>, <span class="number">0.</span>, <span class="number">0.</span>],</div><div class="line"> [<span class="number">0.</span>, <span class="number">0.</span>, <span class="number">0.</span>, <span class="number">5.</span>, <span class="number">0.</span>],</div><div class="line"> [<span class="number">0.</span>, <span class="number">0.</span>, <span class="number">0.</span>, <span class="number">0.</span>, <span class="number">6.</span>]]</div></pre></td></tr></table></figure></p>
-<ul>
-<li>Hint:<blockquote>
-<p>Individual array elements can be accessed similarly to a list, e.g. a[1] or a[1, 2].</p>
-</blockquote>
-</li>
-<li>Hint:<blockquote>
-<p>Examine the docstring for diag.</p>
-</blockquote>
-</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">a = np.ones((<span class="number">4</span>,<span class="number">4</span>))</div><div class="line">a[<span class="number">2</span>][<span class="number">3</span>] = <span class="number">2</span></div><div class="line">a[<span class="number">3</span>][<span class="number">1</span>] = <span class="number">6</span></div><div class="line">a</div></pre></td></tr></table></figure>
-<pre><code>array([[ 1.,  1.,  1.,  1.],
-       [ 1.,  1.,  1.,  1.],
-       [ 1.,  1.,  1.,  2.],
-       [ 1.,  6.,  1.,  1.]])
-</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">b = np.zeros((<span class="number">6</span>,<span class="number">5</span>))</div><div class="line">b[<span class="number">1</span>:] = np.diag(np.arange(<span class="number">2</span>,<span class="number">7</span>))</div><div class="line">b</div></pre></td></tr></table></figure>
-<pre><code>array([[ 0.,  0.,  0.,  0.,  0.],
-       [ 2.,  0.,  0.,  0.,  0.],
-       [ 0.,  3.,  0.,  0.,  0.],
-       [ 0.,  0.,  4.,  0.,  0.],
-       [ 0.,  0.,  0.,  5.,  0.],
-       [ 0.,  0.,  0.,  0.,  6.]])
-</code></pre><h2 id="1-3-1-6-Copies-and-views"><a href="#1-3-1-6-Copies-and-views" class="headerlink" title="1.3.1.6. Copies and views"></a>1.3.1.6. Copies and views</h2><blockquote>
-<p>A slicing operation creates a view on the original array, which is just a way of accessing array data. Thus the original array is not copied in memory. You can use np.may_share_memory() to check if two arrays share the same memory block. Note however, that this uses heuristics and may give you false positives.<br>When modifying the view, the original array is modified as well:</p>
-</blockquote>
-<h3 id="Worked-example-Prime-number-sieve"><a href="#Worked-example-Prime-number-sieve" class="headerlink" title="Worked example: Prime number sieve"></a>Worked example: Prime number sieve</h3><p>Compute prime numbers in 0&#x2013;99, with a sieve</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">is_prime = np.ones((<span class="number">100</span>),dtype=bool)</div><div class="line">is_prime</div></pre></td></tr></table></figure>
-<pre><code>array([ True,  True,  True,  True,  True,  True,  True,  True,  True,
-        True,  True,  True,  True,  True,  True,  True,  True,  True,
-        True,  True,  True,  True,  True,  True,  True,  True,  True,
-        True,  True,  True,  True,  True,  True,  True,  True,  True,
-        True,  True,  True,  True,  True,  True,  True,  True,  True,
-        True,  True,  True,  True,  True,  True,  True,  True,  True,
-        True,  True,  True,  True,  True,  True,  True,  True,  True,
-        True,  True,  True,  True,  True,  True,  True,  True,  True,
-        True,  True,  True,  True,  True,  True,  True,  True,  True,
-        True,  True,  True,  True,  True,  True,  True,  True,  True,
-        True,  True,  True,  True,  True,  True,  True,  True,  True,  True], dtype=bool)
-</code></pre><p>Cross out 0 and 1 which are not primes:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">is_prime[:<span class="number">2</span>] = <span class="number">0</span></div><div class="line">is_prime</div></pre></td></tr></table></figure>
-<pre><code>array([False, False,  True,  True,  True,  True,  True,  True,  True,
-        True,  True,  True,  True,  True,  True,  True,  True,  True,
-        True,  True,  True,  True,  True,  True,  True,  True,  True,
-        True,  True,  True,  True,  True,  True,  True,  True,  True,
-        True,  True,  True,  True,  True,  True,  True,  True,  True,
-        True,  True,  True,  True,  True,  True,  True,  True,  True,
-        True,  True,  True,  True,  True,  True,  True,  True,  True,
-        True,  True,  True,  True,  True,  True,  True,  True,  True,
-        True,  True,  True,  True,  True,  True,  True,  True,  True,
-        True,  True,  True,  True,  True,  True,  True,  True,  True,
-        True,  True,  True,  True,  True,  True,  True,  True,  True,  True], dtype=bool)
-</code></pre><p>For each integer j starting from 2, cross out its higher multiples:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">j_max =int(np.sqrt(len(is_prime)<span class="number">-1</span>))</div><div class="line"></div><div class="line"><span class="keyword">for</span> j <span class="keyword">in</span> np.arange(<span class="number">2</span>,j_max):</div><div class="line">    is_prime[j*<span class="number">2</span>::j] = <span class="keyword">False</span></div><div class="line">is_prime</div></pre></td></tr></table></figure>
-<pre><code>array([False, False,  True,  True, False,  True, False,  True, False,
-       False, False,  True, False,  True, False, False, False,  True,
-       False,  True, False, False, False,  True, False, False, False,
-       False, False,  True, False,  True, False, False, False, False,
-       False,  True, False, False, False,  True, False,  True, False,
-       False, False,  True, False, False, False, False, False,  True,
-       False, False, False, False, False,  True, False,  True, False,
-       False, False, False, False,  True, False, False, False,  True,
-       False,  True, False, False, False, False, False,  True, False,
-       False, False,  True, False, False, False, False, False,  True,
-       False, False, False, False, False, False, False,  True, False, False], dtype=bool)
-</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">num = np.arange(<span class="number">0</span>,<span class="number">100</span>)</div><div class="line">num</div><div class="line">prime_num = num[is_prime]</div><div class="line">prime_num</div><div class="line"><span class="comment"># is_prime</span></div></pre></td></tr></table></figure>
-<pre><code>array([ 2,  3,  5,  7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59,
-       61, 67, 71, 73, 79, 83, 89, 97])
-</code></pre><h2 id="1-3-1-7-Fancy-indexing"><a href="#1-3-1-7-Fancy-indexing" class="headerlink" title="1.3.1.7. Fancy indexing"></a>1.3.1.7. Fancy indexing</h2><blockquote>
-<p>NumPy arrays can be indexed with slices, but also with boolean or integer arrays (masks). This method is called fancy indexing. It creates copies not views.</p>
-</blockquote>
-<p>Indexing with a mask can be very useful to assign a new value to a sub-array:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">a = np.arange(<span class="number">100</span>)</div><div class="line">a[a % <span class="number">3</span> == <span class="number">0</span>] = <span class="number">-1</span></div><div class="line">a</div></pre></td></tr></table></figure>
-<pre><code>array([-1,  1,  2, -1,  4,  5, -1,  7,  8, -1, 10, 11, -1, 13, 14, -1, 16,
-       17, -1, 19, 20, -1, 22, 23, -1, 25, 26, -1, 28, 29, -1, 31, 32, -1,
-       34, 35, -1, 37, 38, -1, 40, 41, -1, 43, 44, -1, 46, 47, -1, 49, 50,
-       -1, 52, 53, -1, 55, 56, -1, 58, 59, -1, 61, 62, -1, 64, 65, -1, 67,
-       68, -1, 70, 71, -1, 73, 74, -1, 76, 77, -1, 79, 80, -1, 82, 83, -1,
-       85, 86, -1, 88, 89, -1, 91, 92, -1, 94, 95, -1, 97, 98, -1])
-</code></pre><h4 id="1-3-1-7-2-Indexing-with-an-array-of-integers"><a href="#1-3-1-7-2-Indexing-with-an-array-of-integers" class="headerlink" title="1.3.1.7.2. Indexing with an array of integers"></a>1.3.1.7.2. Indexing with an array of integers</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">a = np.arange(<span class="number">0</span>, <span class="number">100</span>, <span class="number">10</span>)</div><div class="line">a[[<span class="number">2</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">2</span>]]</div></pre></td></tr></table></figure>
-<pre><code>array([20, 30, 20, 40, 20])
-</code></pre><p> When a new array is created by indexing with an array of integers, the new array has the same shape than the array of integers:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">a = np.arange(<span class="number">10</span>)</div><div class="line">idx = np.array([[<span class="number">3</span>, <span class="number">4</span>], [<span class="number">9</span>, <span class="number">7</span>]])</div><div class="line">idx.shape</div><div class="line">a[idx]</div></pre></td></tr></table></figure>
-<pre><code>array([[3, 4],
-       [9, 7]])
-</code></pre><h3 id="Exercise-Fancy-indexing"><a href="#Exercise-Fancy-indexing" class="headerlink" title="Exercise: Fancy indexing"></a>Exercise: Fancy indexing</h3><p>Again, reproduce the fancy indexing shown in the diagram above.<br>Use fancy indexing on the left and array creation on the right to assign values into an array, for instance by setting parts of the array in the diagram above to zero.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">a = np.arange(<span class="number">1</span>,<span class="number">6</span>) + np.arange(<span class="number">0</span>,<span class="number">51</span>,<span class="number">10</span>)[:,np.newaxis]</div><div class="line">a</div><div class="line">a[<span class="number">3</span>:,<span class="number">3</span>:] = <span class="number">0</span></div></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">a</div></pre></td></tr></table></figure>
-<pre><code>array([[ 1,  2,  3,  4,  5],
-       [11, 12, 13, 14, 15],
-       [21, 22, 23, 24, 25],
-       [31, 32, 33,  0,  0],
-       [41, 42, 43,  0,  0],
-       [51, 52, 53,  0,  0]])
-</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure>
-</matplotlib.colorbar.colorbar>
-          
+<p>Because, with 100000 loops and best of 3: 1.72 &#xB5;s per loop, the implemention would consume at most 172<em>1000 us. Besides, the normal loops only spent 93.9</em>1000us.<br></p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/11/11/Assignment/NumpyExc/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -687,8 +437,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/pandas/" itemprop="url" rel="index">
-                    <span itemprop="name">pandas</span>
+                  <a href="/categories/study/" itemprop="url" rel="index">
+                    <span itemprop="name">study</span>
                   </a>
                 </span>
 
@@ -699,8 +449,20 @@
 
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/pandas/深度学习/" itemprop="url" rel="index">
+                  <a href="/categories/study/深度学习/" itemprop="url" rel="index">
                     <span itemprop="name">深度学习</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/study/深度学习/pandas/" itemprop="url" rel="index">
+                    <span itemprop="name">pandas</span>
                   </a>
                 </span>
 
@@ -734,7 +496,7 @@
       
         
           <h2 id="Concatenating-objects"><a href="#Concatenating-objects" class="headerlink" title="Concatenating objects"></a>Concatenating objects</h2><blockquote>
-<p>The concat function (in the main pandas namespace) does all of the heavy lifting of performing concatenation operations along an axis while performing optional set logic (union or intersection) of the indexes (if any) on the other axes. Note that I say “if any” because there is only a single possible axis of concatenation for Series.</p>
+<p>The concat function (in the main pandas namespace) does all of the heavy lifting of performing concatenation operations along an axis while performing optional set logic (union or intersection) of the indexes (if any) on the other axes. Note that I say &#x201C;if any&#x201D; because there is only a single possible axis of concatenation for Series.</p>
 </blockquote>
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/11/07/深度学习/2016-11-07-merge-join-and-concatenate/#more" rel="contents">
@@ -874,7 +636,7 @@
 
       
         
-          <h3 id="Filtration："><a href="#Filtration：" class="headerlink" title="Filtration："></a>Filtration：</h3><p><strong>doc</strong>: <a href="http://pandas.pydata.org/pandas-docs/version/0.18.1/generated/pandas.DataFrame.filter.html" title="filter">filter</a></p>
+          <h3 id="Filtration&#xFF1A;"><a href="#Filtration&#xFF1A;" class="headerlink" title="Filtration&#xFF1A;"></a>Filtration&#xFF1A;</h3><p><strong>doc</strong>: <a href="http://pandas.pydata.org/pandas-docs/version/0.18.1/generated/pandas.DataFrame.filter.html" title="filter">filter</a></p>
 <blockquote>
 <p>The filter method returns a subset of the original object. Suppose we want to take only elements that belong to groups with a group sum greater than 2.</p>
 <p>The argument of filter must be a function that, applied to the group as a whole, returns True or False.</p>
@@ -1142,29 +904,29 @@
       
         
           
-            <h3 id="一周总结"><a href="#一周总结" class="headerlink" title="一周总结"></a>一周总结</h3><h4 id="这周主要做几件事："><a href="#这周主要做几件事：" class="headerlink" title="这周主要做几件事："></a>这周主要做几件事：</h4><p><strong>坐享清晨</strong>：4-5小时，完成度6/7，10.29日MISS。</p>
-<p><strong>深度学习</strong>：21小时，完成情况：<br>学习路径规划+python基础+Numpy基础+matplotlib的64个rules+scipy（10%）+pandas（15%）</p>
-<p><strong>区块链</strong>：12小时，精通比特币精阅读，完成度（36%）+ 比特币冷钱包 + 其他相关文章阅读</p>
-<p><strong>写作</strong>： 7小时，逻辑的定义学习+写作；写作——输入练习：研磨阅读练习。研磨阅读体会（构思中）</p>
-<p><strong>英语</strong>：5小时，听harry poter 14章 75%.</p>
-<p><strong>编程功强化</strong> 4-5小时，设计模式，完成度80%</p>
-<p><strong>长篇阅读</strong> 3-4小时，曾国藩家书，完成度：66%</p>
-<h4 id="评价"><a href="#评价" class="headerlink" title="评价"></a>评价</h4><p><em>坐享清晨</em>：继续延续以前的站桩、打坐习惯。29日有意外事故打乱节奏，更主要的可能是前一晚没睡好。保证充足睡眠。</p>
-<p><strong>深度学习+区块链技术</strong>：每天消耗4-6个小时不等。基本在进度上</p>
-<p><strong>写作</strong>：<font color="brown">研磨阅读</font>摸索点自己的套路了，需要<font color="brown">固化阅读方法</font>，第二周继续时间，继续提高了技术型文章阅读理解速度。</p>
-<p><strong>英语</strong>：进度不尽人意。以前一周一章节的聆听、理解（90%）。生词熟记还没加上。  </p>
-<font color="brown">英语需要重新指定计划</font>
+            <h3 id="&#x4E00;&#x5468;&#x603B;&#x7ED3;"><a href="#&#x4E00;&#x5468;&#x603B;&#x7ED3;" class="headerlink" title="&#x4E00;&#x5468;&#x603B;&#x7ED3;"></a>&#x4E00;&#x5468;&#x603B;&#x7ED3;</h3><h4 id="&#x8FD9;&#x5468;&#x4E3B;&#x8981;&#x505A;&#x51E0;&#x4EF6;&#x4E8B;&#xFF1A;"><a href="#&#x8FD9;&#x5468;&#x4E3B;&#x8981;&#x505A;&#x51E0;&#x4EF6;&#x4E8B;&#xFF1A;" class="headerlink" title="&#x8FD9;&#x5468;&#x4E3B;&#x8981;&#x505A;&#x51E0;&#x4EF6;&#x4E8B;&#xFF1A;"></a>&#x8FD9;&#x5468;&#x4E3B;&#x8981;&#x505A;&#x51E0;&#x4EF6;&#x4E8B;&#xFF1A;</h4><p><strong>&#x5750;&#x4EAB;&#x6E05;&#x6668;</strong>&#xFF1A;4-5&#x5C0F;&#x65F6;&#xFF0C;&#x5B8C;&#x6210;&#x5EA6;6/7&#xFF0C;10.29&#x65E5;MISS&#x3002;</p>
+<p><strong>&#x6DF1;&#x5EA6;&#x5B66;&#x4E60;</strong>&#xFF1A;21&#x5C0F;&#x65F6;&#xFF0C;&#x5B8C;&#x6210;&#x60C5;&#x51B5;&#xFF1A;<br>&#x5B66;&#x4E60;&#x8DEF;&#x5F84;&#x89C4;&#x5212;+python&#x57FA;&#x7840;+Numpy&#x57FA;&#x7840;+matplotlib&#x7684;64&#x4E2A;rules+scipy&#xFF08;10%&#xFF09;+pandas&#xFF08;15%&#xFF09;</p>
+<p><strong>&#x533A;&#x5757;&#x94FE;</strong>&#xFF1A;12&#x5C0F;&#x65F6;&#xFF0C;&#x7CBE;&#x901A;&#x6BD4;&#x7279;&#x5E01;&#x7CBE;&#x9605;&#x8BFB;&#xFF0C;&#x5B8C;&#x6210;&#x5EA6;&#xFF08;36%&#xFF09;+ &#x6BD4;&#x7279;&#x5E01;&#x51B7;&#x94B1;&#x5305; + &#x5176;&#x4ED6;&#x76F8;&#x5173;&#x6587;&#x7AE0;&#x9605;&#x8BFB;</p>
+<p><strong>&#x5199;&#x4F5C;</strong>&#xFF1A; 7&#x5C0F;&#x65F6;&#xFF0C;&#x903B;&#x8F91;&#x7684;&#x5B9A;&#x4E49;&#x5B66;&#x4E60;+&#x5199;&#x4F5C;&#xFF1B;&#x5199;&#x4F5C;&#x2014;&#x2014;&#x8F93;&#x5165;&#x7EC3;&#x4E60;&#xFF1A;&#x7814;&#x78E8;&#x9605;&#x8BFB;&#x7EC3;&#x4E60;&#x3002;&#x7814;&#x78E8;&#x9605;&#x8BFB;&#x4F53;&#x4F1A;&#xFF08;&#x6784;&#x601D;&#x4E2D;&#xFF09;</p>
+<p><strong>&#x82F1;&#x8BED;</strong>&#xFF1A;5&#x5C0F;&#x65F6;&#xFF0C;&#x542C;harry poter 14&#x7AE0; 75%.</p>
+<p><strong>&#x7F16;&#x7A0B;&#x529F;&#x5F3A;&#x5316;</strong> 4-5&#x5C0F;&#x65F6;&#xFF0C;&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;&#xFF0C;&#x5B8C;&#x6210;&#x5EA6;80%</p>
+<p><strong>&#x957F;&#x7BC7;&#x9605;&#x8BFB;</strong> 3-4&#x5C0F;&#x65F6;&#xFF0C;&#x66FE;&#x56FD;&#x85E9;&#x5BB6;&#x4E66;&#xFF0C;&#x5B8C;&#x6210;&#x5EA6;&#xFF1A;66%</p>
+<h4 id="&#x8BC4;&#x4EF7;"><a href="#&#x8BC4;&#x4EF7;" class="headerlink" title="&#x8BC4;&#x4EF7;"></a>&#x8BC4;&#x4EF7;</h4><p><em>&#x5750;&#x4EAB;&#x6E05;&#x6668;</em>&#xFF1A;&#x7EE7;&#x7EED;&#x5EF6;&#x7EED;&#x4EE5;&#x524D;&#x7684;&#x7AD9;&#x6869;&#x3001;&#x6253;&#x5750;&#x4E60;&#x60EF;&#x3002;29&#x65E5;&#x6709;&#x610F;&#x5916;&#x4E8B;&#x6545;&#x6253;&#x4E71;&#x8282;&#x594F;&#xFF0C;&#x66F4;&#x4E3B;&#x8981;&#x7684;&#x53EF;&#x80FD;&#x662F;&#x524D;&#x4E00;&#x665A;&#x6CA1;&#x7761;&#x597D;&#x3002;&#x4FDD;&#x8BC1;&#x5145;&#x8DB3;&#x7761;&#x7720;&#x3002;</p>
+<p><strong>&#x6DF1;&#x5EA6;&#x5B66;&#x4E60;+&#x533A;&#x5757;&#x94FE;&#x6280;&#x672F;</strong>&#xFF1A;&#x6BCF;&#x5929;&#x6D88;&#x8017;4-6&#x4E2A;&#x5C0F;&#x65F6;&#x4E0D;&#x7B49;&#x3002;&#x57FA;&#x672C;&#x5728;&#x8FDB;&#x5EA6;&#x4E0A;</p>
+<p><strong>&#x5199;&#x4F5C;</strong>&#xFF1A;<font color="brown">&#x7814;&#x78E8;&#x9605;&#x8BFB;</font>&#x6478;&#x7D22;&#x70B9;&#x81EA;&#x5DF1;&#x7684;&#x5957;&#x8DEF;&#x4E86;&#xFF0C;&#x9700;&#x8981;<font color="brown">&#x56FA;&#x5316;&#x9605;&#x8BFB;&#x65B9;&#x6CD5;</font>&#xFF0C;&#x7B2C;&#x4E8C;&#x5468;&#x7EE7;&#x7EED;&#x65F6;&#x95F4;&#xFF0C;&#x7EE7;&#x7EED;&#x63D0;&#x9AD8;&#x4E86;&#x6280;&#x672F;&#x578B;&#x6587;&#x7AE0;&#x9605;&#x8BFB;&#x7406;&#x89E3;&#x901F;&#x5EA6;&#x3002;</p>
+<p><strong>&#x82F1;&#x8BED;</strong>&#xFF1A;&#x8FDB;&#x5EA6;&#x4E0D;&#x5C3D;&#x4EBA;&#x610F;&#x3002;&#x4EE5;&#x524D;&#x4E00;&#x5468;&#x4E00;&#x7AE0;&#x8282;&#x7684;&#x8046;&#x542C;&#x3001;&#x7406;&#x89E3;&#xFF08;90%&#xFF09;&#x3002;&#x751F;&#x8BCD;&#x719F;&#x8BB0;&#x8FD8;&#x6CA1;&#x52A0;&#x4E0A;&#x3002;  </p>
+<font color="brown">&#x82F1;&#x8BED;&#x9700;&#x8981;&#x91CD;&#x65B0;&#x6307;&#x5B9A;&#x8BA1;&#x5212;</font>
 
-<p><em>长期阅读</em>：进度不尽人意</p>
-<p><em>时间安排</em>： 任务太散。原来计划每天都跟进以上所有事情，发现一天任务太多，心思容易花。</p>
-<h4 id="建议"><a href="#建议" class="headerlink" title="建议"></a>建议</h4><ol>
-<li>在进度上的，保持节奏</li>
-<li>英语还有更明确的计划，短期目标，任务分解</li>
-<li>长期阅读：不要将阅读作为一天的最后一件事，人比较疲惫。</li>
-<li>整体时间安排需要更灵活：下周需要调整方案。有些项目（英语、阅读可以隔天）</li>
-<li>写作练习，需要产出量化方式</li>
+<p><em>&#x957F;&#x671F;&#x9605;&#x8BFB;</em>&#xFF1A;&#x8FDB;&#x5EA6;&#x4E0D;&#x5C3D;&#x4EBA;&#x610F;</p>
+<p><em>&#x65F6;&#x95F4;&#x5B89;&#x6392;</em>&#xFF1A; &#x4EFB;&#x52A1;&#x592A;&#x6563;&#x3002;&#x539F;&#x6765;&#x8BA1;&#x5212;&#x6BCF;&#x5929;&#x90FD;&#x8DDF;&#x8FDB;&#x4EE5;&#x4E0A;&#x6240;&#x6709;&#x4E8B;&#x60C5;&#xFF0C;&#x53D1;&#x73B0;&#x4E00;&#x5929;&#x4EFB;&#x52A1;&#x592A;&#x591A;&#xFF0C;&#x5FC3;&#x601D;&#x5BB9;&#x6613;&#x82B1;&#x3002;</p>
+<h4 id="&#x5EFA;&#x8BAE;"><a href="#&#x5EFA;&#x8BAE;" class="headerlink" title="&#x5EFA;&#x8BAE;"></a>&#x5EFA;&#x8BAE;</h4><ol>
+<li>&#x5728;&#x8FDB;&#x5EA6;&#x4E0A;&#x7684;&#xFF0C;&#x4FDD;&#x6301;&#x8282;&#x594F;</li>
+<li>&#x82F1;&#x8BED;&#x8FD8;&#x6709;&#x66F4;&#x660E;&#x786E;&#x7684;&#x8BA1;&#x5212;&#xFF0C;&#x77ED;&#x671F;&#x76EE;&#x6807;&#xFF0C;&#x4EFB;&#x52A1;&#x5206;&#x89E3;</li>
+<li>&#x957F;&#x671F;&#x9605;&#x8BFB;&#xFF1A;&#x4E0D;&#x8981;&#x5C06;&#x9605;&#x8BFB;&#x4F5C;&#x4E3A;&#x4E00;&#x5929;&#x7684;&#x6700;&#x540E;&#x4E00;&#x4EF6;&#x4E8B;&#xFF0C;&#x4EBA;&#x6BD4;&#x8F83;&#x75B2;&#x60EB;&#x3002;</li>
+<li>&#x6574;&#x4F53;&#x65F6;&#x95F4;&#x5B89;&#x6392;&#x9700;&#x8981;&#x66F4;&#x7075;&#x6D3B;&#xFF1A;&#x4E0B;&#x5468;&#x9700;&#x8981;&#x8C03;&#x6574;&#x65B9;&#x6848;&#x3002;&#x6709;&#x4E9B;&#x9879;&#x76EE;&#xFF08;&#x82F1;&#x8BED;&#x3001;&#x9605;&#x8BFB;&#x53EF;&#x4EE5;&#x9694;&#x5929;&#xFF09;</li>
+<li>&#x5199;&#x4F5C;&#x7EC3;&#x4E60;&#xFF0C;&#x9700;&#x8981;&#x4EA7;&#x51FA;&#x91CF;&#x5316;&#x65B9;&#x5F0F;</li>
 </ol>
-<table><br><br><tbody><br><br><tr><br><br><td>日期</td><br><br><td>10月25日</td><br><br><td>10月26日</td><br><br><td>10月27日</td><br><br><td>10月28日</td><br><br><td>10月29日</td><br><br><td>10月30日</td><br><br><td>10月31日</td><br><br></tr><br><br><tr><br><br><td>项目</td><br><br><td>周一</td><br><br><td>周二</td><br><br><td>周三</td><br><br><td>周四</td><br><br><td>周五</td><br><br><td>周六</td><br><br><td>周日</td><br><br></tr><br><br><tr><br><br><td>区块链</td><br><br><td>精通比特比阅读（5%）</td><br><br><td>比特币冷热钱包技术</td><br><br><td>精通比特币（10%）</td><br><br><td>精通比特币-12%</td><br><br><td>精通比特币-27%</td><br><br><td>无</td><br><br><td>精通比特币</td><br><br></tr><br><br><tr><br><br><td>区块链</td><br><br><td>精通比特币-15%</td><br><br><td>zcash了解</td><br><br><td>无</td><br><br><td>精通比特币（36%）</td><br><br></tr><br><br><tr><br><br><td>DP</td><br><br><td>学习路径学习</td><br><br><td>python（30%）</td><br><br><td>python（70%）</td><br><br><td>NumPy-50%</td><br><br><td>NumPy-70%</td><br><br><td>NumPy-95%</td><br><br><td>pandas(15%0</td><br><br></tr><br><br><tr><br><br><td>DP</td><br><br><td>python（10%）</td><br><br><td>python（40%）</td><br><br><td>python（90%）</td><br><br><td>深度学习第一个月排期</td><br><br><td>NumPy-70%</td><br><br><td>Scipy-(20%)</td><br><br><td>pandas(15%)</td><br><br></tr><br><br><tr><br><br><td>DP</td><br><br><td>python（20%）</td><br><br><td>python（50%)</td><br><br><td>python(100%)</td><br><br><td>matplotlib(30%）+ 64 rules(80%)</td><br><br><td>PYTHON数据开发环境构建</td><br><br></tr><br><br><tr><br><br><td>DP/区块链</td><br><br><td>pandas(10%)</td><br><br></tr><br><br><tr><br><br><td>编程强化</td><br><br><td>设计模式（50%）</td><br><br><td>无</td><br><br><td>设计模式(60%)</td><br><br><td>设计模式-70%</td><br><br><td>无</td><br><br><td>无</td><br><br><td>设计模式-80%</td><br><br></tr><br><br><tr><br><br><td>写作+思考</td><br><br><td>形式逻辑、非形式逻辑概念学习</td><br><br><td>写作课</td><br><br><td>研磨词性的阅读（1）：编程强化+研磨词性=出奇好的理解效果</td><br><br><td>阅读研磨（2）：材料阅读：研磨词、定义、句子关系</td><br><br><td>阅读研磨（3）：</td><br><br><td>死磕定义的阅读（1）</td><br><br><td>python数据开发环境笔记+死磕定义阅读——设计模式阅读过程回顾</td><br><br></tr><br><br><tr><br><br><td>自由学习</td><br><br><td>深度学习路径</td><br><br><td>冷钱包部署</td><br><br><td>阿禅小程序应用分享live</td><br><br><td>zcash币</td><br><br><td>精通比特币</td><br><br></tr><br><br><tr><br><br><td>短篇阅读</td><br><br><td>《如何消化一本书》+《如何阅读一本书》评论+硅谷来信</td><br><br><td>硅谷来信（10min）</td><br><br><td>人人都能用英语（——精度章节）</td><br><br><td>硅谷来信+区块链文章</td><br><br><td>硅谷来信</td><br><br><td>硅谷来信</td><br><br><td>硅谷来信</td><br><br></tr><br><br><tr><br><br><td>晨起+坐享</td><br><br><td>20min(Day 2)</td><br><br><td>30min</td><br><br><td>40min(day4)</td><br><br><td>1hour(day5)</td><br><br><td>40hour</td><br><br><td>无（处理家里事故）</td><br><br><td>20min</td><br><br></tr><br><br><tr><br><br><td>长篇阅读</td><br><br><td>曾国藩家书（60%）</td><br><br><td>曾国藩家书</td><br><br><td>曾国藩家书（65%）</td><br><br><td>无</td><br><br><td>无</td><br><br></tr><br><br><tr><br><br><td>英语</td><br><br><td>harryPoter chapter14（50%）</td><br><br><td>harryPoter chapter14（55%）</td><br><br><td>harryPoter chapter14(60%)</td><br><br><td>harryPoter 14（70%）</td><br><br><td>无</td><br><br><td>harryPoter 14（75%）</td><br><br><td>无</td><br><br></tr><br><br></tbody><br><br></table>
+<table><br><br><tbody><br><br><tr><br><br><td>&#x65E5;&#x671F;</td><br><br><td>10&#x6708;25&#x65E5;</td><br><br><td>10&#x6708;26&#x65E5;</td><br><br><td>10&#x6708;27&#x65E5;</td><br><br><td>10&#x6708;28&#x65E5;</td><br><br><td>10&#x6708;29&#x65E5;</td><br><br><td>10&#x6708;30&#x65E5;</td><br><br><td>10&#x6708;31&#x65E5;</td><br><br></tr><br><br><tr><br><br><td>&#x9879;&#x76EE;</td><br><br><td>&#x5468;&#x4E00;</td><br><br><td>&#x5468;&#x4E8C;</td><br><br><td>&#x5468;&#x4E09;</td><br><br><td>&#x5468;&#x56DB;</td><br><br><td>&#x5468;&#x4E94;</td><br><br><td>&#x5468;&#x516D;</td><br><br><td>&#x5468;&#x65E5;</td><br><br></tr><br><br><tr><br><br><td>&#x533A;&#x5757;&#x94FE;</td><br><br><td>&#x7CBE;&#x901A;&#x6BD4;&#x7279;&#x6BD4;&#x9605;&#x8BFB;&#xFF08;5%&#xFF09;</td><br><br><td>&#x6BD4;&#x7279;&#x5E01;&#x51B7;&#x70ED;&#x94B1;&#x5305;&#x6280;&#x672F;</td><br><br><td>&#x7CBE;&#x901A;&#x6BD4;&#x7279;&#x5E01;&#xFF08;10%&#xFF09;</td><br><br><td>&#x7CBE;&#x901A;&#x6BD4;&#x7279;&#x5E01;-12%</td><br><br><td>&#x7CBE;&#x901A;&#x6BD4;&#x7279;&#x5E01;-27%</td><br><br><td>&#x65E0;</td><br><br><td>&#x7CBE;&#x901A;&#x6BD4;&#x7279;&#x5E01;</td><br><br></tr><br><br><tr><br><br><td>&#x533A;&#x5757;&#x94FE;</td><br><br><td>&#x7CBE;&#x901A;&#x6BD4;&#x7279;&#x5E01;-15%</td><br><br><td>zcash&#x4E86;&#x89E3;</td><br><br><td>&#x65E0;</td><br><br><td>&#x7CBE;&#x901A;&#x6BD4;&#x7279;&#x5E01;&#xFF08;36%&#xFF09;</td><br><br></tr><br><br><tr><br><br><td>DP</td><br><br><td>&#x5B66;&#x4E60;&#x8DEF;&#x5F84;&#x5B66;&#x4E60;</td><br><br><td>python&#xFF08;30%&#xFF09;</td><br><br><td>python&#xFF08;70%&#xFF09;</td><br><br><td>NumPy-50%</td><br><br><td>NumPy-70%</td><br><br><td>NumPy-95%</td><br><br><td>pandas(15%0</td><br><br></tr><br><br><tr><br><br><td>DP</td><br><br><td>python&#xFF08;10%&#xFF09;</td><br><br><td>python&#xFF08;40%&#xFF09;</td><br><br><td>python&#xFF08;90%&#xFF09;</td><br><br><td>&#x6DF1;&#x5EA6;&#x5B66;&#x4E60;&#x7B2C;&#x4E00;&#x4E2A;&#x6708;&#x6392;&#x671F;</td><br><br><td>NumPy-70%</td><br><br><td>Scipy-(20%)</td><br><br><td>pandas(15%)</td><br><br></tr><br><br><tr><br><br><td>DP</td><br><br><td>python&#xFF08;20%&#xFF09;</td><br><br><td>python&#xFF08;50%)</td><br><br><td>python(100%)</td><br><br><td>matplotlib(30%&#xFF09;+ 64 rules(80%)</td><br><br><td>PYTHON&#x6570;&#x636E;&#x5F00;&#x53D1;&#x73AF;&#x5883;&#x6784;&#x5EFA;</td><br><br></tr><br><br><tr><br><br><td>DP/&#x533A;&#x5757;&#x94FE;</td><br><br><td>pandas(10%)</td><br><br></tr><br><br><tr><br><br><td>&#x7F16;&#x7A0B;&#x5F3A;&#x5316;</td><br><br><td>&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;&#xFF08;50%&#xFF09;</td><br><br><td>&#x65E0;</td><br><br><td>&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;(60%)</td><br><br><td>&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;-70%</td><br><br><td>&#x65E0;</td><br><br><td>&#x65E0;</td><br><br><td>&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;-80%</td><br><br></tr><br><br><tr><br><br><td>&#x5199;&#x4F5C;+&#x601D;&#x8003;</td><br><br><td>&#x5F62;&#x5F0F;&#x903B;&#x8F91;&#x3001;&#x975E;&#x5F62;&#x5F0F;&#x903B;&#x8F91;&#x6982;&#x5FF5;&#x5B66;&#x4E60;</td><br><br><td>&#x5199;&#x4F5C;&#x8BFE;</td><br><br><td>&#x7814;&#x78E8;&#x8BCD;&#x6027;&#x7684;&#x9605;&#x8BFB;&#xFF08;1&#xFF09;&#xFF1A;&#x7F16;&#x7A0B;&#x5F3A;&#x5316;+&#x7814;&#x78E8;&#x8BCD;&#x6027;=&#x51FA;&#x5947;&#x597D;&#x7684;&#x7406;&#x89E3;&#x6548;&#x679C;</td><br><br><td>&#x9605;&#x8BFB;&#x7814;&#x78E8;&#xFF08;2&#xFF09;&#xFF1A;&#x6750;&#x6599;&#x9605;&#x8BFB;&#xFF1A;&#x7814;&#x78E8;&#x8BCD;&#x3001;&#x5B9A;&#x4E49;&#x3001;&#x53E5;&#x5B50;&#x5173;&#x7CFB;</td><br><br><td>&#x9605;&#x8BFB;&#x7814;&#x78E8;&#xFF08;3&#xFF09;&#xFF1A;</td><br><br><td>&#x6B7B;&#x78D5;&#x5B9A;&#x4E49;&#x7684;&#x9605;&#x8BFB;&#xFF08;1&#xFF09;</td><br><br><td>python&#x6570;&#x636E;&#x5F00;&#x53D1;&#x73AF;&#x5883;&#x7B14;&#x8BB0;+&#x6B7B;&#x78D5;&#x5B9A;&#x4E49;&#x9605;&#x8BFB;&#x2014;&#x2014;&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;&#x9605;&#x8BFB;&#x8FC7;&#x7A0B;&#x56DE;&#x987E;</td><br><br></tr><br><br><tr><br><br><td>&#x81EA;&#x7531;&#x5B66;&#x4E60;</td><br><br><td>&#x6DF1;&#x5EA6;&#x5B66;&#x4E60;&#x8DEF;&#x5F84;</td><br><br><td>&#x51B7;&#x94B1;&#x5305;&#x90E8;&#x7F72;</td><br><br><td>&#x963F;&#x7985;&#x5C0F;&#x7A0B;&#x5E8F;&#x5E94;&#x7528;&#x5206;&#x4EAB;live</td><br><br><td>zcash&#x5E01;</td><br><br><td>&#x7CBE;&#x901A;&#x6BD4;&#x7279;&#x5E01;</td><br><br></tr><br><br><tr><br><br><td>&#x77ED;&#x7BC7;&#x9605;&#x8BFB;</td><br><br><td>&#x300A;&#x5982;&#x4F55;&#x6D88;&#x5316;&#x4E00;&#x672C;&#x4E66;&#x300B;+&#x300A;&#x5982;&#x4F55;&#x9605;&#x8BFB;&#x4E00;&#x672C;&#x4E66;&#x300B;&#x8BC4;&#x8BBA;+&#x7845;&#x8C37;&#x6765;&#x4FE1;</td><br><br><td>&#x7845;&#x8C37;&#x6765;&#x4FE1;&#xFF08;10min&#xFF09;</td><br><br><td>&#x4EBA;&#x4EBA;&#x90FD;&#x80FD;&#x7528;&#x82F1;&#x8BED;&#xFF08;&#x2014;&#x2014;&#x7CBE;&#x5EA6;&#x7AE0;&#x8282;&#xFF09;</td><br><br><td>&#x7845;&#x8C37;&#x6765;&#x4FE1;+&#x533A;&#x5757;&#x94FE;&#x6587;&#x7AE0;</td><br><br><td>&#x7845;&#x8C37;&#x6765;&#x4FE1;</td><br><br><td>&#x7845;&#x8C37;&#x6765;&#x4FE1;</td><br><br><td>&#x7845;&#x8C37;&#x6765;&#x4FE1;</td><br><br></tr><br><br><tr><br><br><td>&#x6668;&#x8D77;+&#x5750;&#x4EAB;</td><br><br><td>20min(Day 2)</td><br><br><td>30min</td><br><br><td>40min(day4)</td><br><br><td>1hour(day5)</td><br><br><td>40hour</td><br><br><td>&#x65E0;&#xFF08;&#x5904;&#x7406;&#x5BB6;&#x91CC;&#x4E8B;&#x6545;&#xFF09;</td><br><br><td>20min</td><br><br></tr><br><br><tr><br><br><td>&#x957F;&#x7BC7;&#x9605;&#x8BFB;</td><br><br><td>&#x66FE;&#x56FD;&#x85E9;&#x5BB6;&#x4E66;&#xFF08;60%&#xFF09;</td><br><br><td>&#x66FE;&#x56FD;&#x85E9;&#x5BB6;&#x4E66;</td><br><br><td>&#x66FE;&#x56FD;&#x85E9;&#x5BB6;&#x4E66;&#xFF08;65%&#xFF09;</td><br><br><td>&#x65E0;</td><br><br><td>&#x65E0;</td><br><br></tr><br><br><tr><br><br><td>&#x82F1;&#x8BED;</td><br><br><td>harryPoter chapter14&#xFF08;50%&#xFF09;</td><br><br><td>harryPoter chapter14&#xFF08;55%&#xFF09;</td><br><br><td>harryPoter chapter14(60%)</td><br><br><td>harryPoter 14&#xFF08;70%&#xFF09;</td><br><br><td>&#x65E0;</td><br><br><td>harryPoter 14&#xFF08;75%&#xFF09;</td><br><br><td>&#x65E0;</td><br><br></tr><br><br></tbody><br><br></table>
 
           
         
@@ -1276,8 +1038,8 @@
 
       
         
-          <h2 id="Hexo介绍"><a href="#Hexo介绍" class="headerlink" title="Hexo介绍"></a>Hexo介绍</h2><p><a href="http://xiaolai.li/2016/06/22/makecs-build-a-blog-with-hexo-on-github/" title="使用 Hexo 为自己在 Github 上建一个静态 Blog 站点">使用 Hexo 为自己在 Github 上建一个静态 Blog 站点</a></p>
-<p><a href="http://www.jianshu.com/p/6bd12ab160fa" title="用 Hexo 搭建个人博客-01：6 步初体验">用 Hexo 搭建个人博客-01：6 步初体验</a></p>
+          <h2 id="Hexo&#x4ECB;&#x7ECD;"><a href="#Hexo&#x4ECB;&#x7ECD;" class="headerlink" title="Hexo&#x4ECB;&#x7ECD;"></a>Hexo&#x4ECB;&#x7ECD;</h2><p><a href="http://xiaolai.li/2016/06/22/makecs-build-a-blog-with-hexo-on-github/" title="&#x4F7F;&#x7528; Hexo &#x4E3A;&#x81EA;&#x5DF1;&#x5728; Github &#x4E0A;&#x5EFA;&#x4E00;&#x4E2A;&#x9759;&#x6001; Blog &#x7AD9;&#x70B9;">&#x4F7F;&#x7528; Hexo &#x4E3A;&#x81EA;&#x5DF1;&#x5728; Github &#x4E0A;&#x5EFA;&#x4E00;&#x4E2A;&#x9759;&#x6001; Blog &#x7AD9;&#x70B9;</a></p>
+<p><a href="http://www.jianshu.com/p/6bd12ab160fa" title="&#x7528; Hexo &#x642D;&#x5EFA;&#x4E2A;&#x4EBA;&#x535A;&#x5BA2;-01&#xFF1A;6 &#x6B65;&#x521D;&#x4F53;&#x9A8C;">&#x7528; Hexo &#x642D;&#x5EFA;&#x4E2A;&#x4EBA;&#x535A;&#x5BA2;-01&#xFF1A;6 &#x6B65;&#x521D;&#x4F53;&#x9A8C;</a></p>
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/11/06/tools/2016-11-06-hexo1/#more" rel="contents">
               阅读全文 &raquo;
@@ -1393,7 +1155,7 @@
       
         
           <h2 id="Enable-code-highlight"><a href="#Enable-code-highlight" class="headerlink" title="Enable code highlight"></a>Enable code highlight</h2><p>this is c language</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> **argv)</span> </span>&#123;</div><div class="line">  <span class="keyword">int</span> a;</div><div class="line">  <span class="keyword">int</span> b;</div><div class="line">  <span class="built_in">printf</span>(<span class="string">"a+b = %d"</span>, a+b);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> **argv)</span> </span>{</div><div class="line">  <span class="keyword">int</span> a;</div><div class="line">  <span class="keyword">int</span> b;</div><div class="line">  <span class="built_in">printf</span>(<span class="string">&quot;a+b = %d&quot;</span>, a+b);</div><div class="line">}</div></pre></td></tr></table></figure>
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/11/06/tools/markdown_syntax_help/#more" rel="contents">
               阅读全文 &raquo;
@@ -1520,7 +1282,7 @@
 
       
         
-          <h3 id="关于英语"><a href="#关于英语" class="headerlink" title="关于英语"></a>关于英语</h3><p>  今天发现一个英语学习网站，它提倡Create Connection的方式学英文，而不是我所熟知的那种依赖规则（语法）的方式。这恰好解答了自己在英语学习上的迷思——如何把脑子里面零零散散的单次组织起来，变成正确、有意义的句子乃至段落。也正因如此，我一口气将相关的几篇文章读下，并对Phrase进行归类。</p>
+          <h3 id="&#x5173;&#x4E8E;&#x82F1;&#x8BED;"><a href="#&#x5173;&#x4E8E;&#x82F1;&#x8BED;" class="headerlink" title="&#x5173;&#x4E8E;&#x82F1;&#x8BED;"></a>&#x5173;&#x4E8E;&#x82F1;&#x8BED;</h3><p>  &#x4ECA;&#x5929;&#x53D1;&#x73B0;&#x4E00;&#x4E2A;&#x82F1;&#x8BED;&#x5B66;&#x4E60;&#x7F51;&#x7AD9;&#xFF0C;&#x5B83;&#x63D0;&#x5021;Create Connection&#x7684;&#x65B9;&#x5F0F;&#x5B66;&#x82F1;&#x6587;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x6211;&#x6240;&#x719F;&#x77E5;&#x7684;&#x90A3;&#x79CD;&#x4F9D;&#x8D56;&#x89C4;&#x5219;&#xFF08;&#x8BED;&#x6CD5;&#xFF09;&#x7684;&#x65B9;&#x5F0F;&#x3002;&#x8FD9;&#x6070;&#x597D;&#x89E3;&#x7B54;&#x4E86;&#x81EA;&#x5DF1;&#x5728;&#x82F1;&#x8BED;&#x5B66;&#x4E60;&#x4E0A;&#x7684;&#x8FF7;&#x601D;&#x2014;&#x2014;&#x5982;&#x4F55;&#x628A;&#x8111;&#x5B50;&#x91CC;&#x9762;&#x96F6;&#x96F6;&#x6563;&#x6563;&#x7684;&#x5355;&#x6B21;&#x7EC4;&#x7EC7;&#x8D77;&#x6765;&#xFF0C;&#x53D8;&#x6210;&#x6B63;&#x786E;&#x3001;&#x6709;&#x610F;&#x4E49;&#x7684;&#x53E5;&#x5B50;&#x4E43;&#x81F3;&#x6BB5;&#x843D;&#x3002;&#x4E5F;&#x6B63;&#x56E0;&#x5982;&#x6B64;&#xFF0C;&#x6211;&#x4E00;&#x53E3;&#x6C14;&#x5C06;&#x76F8;&#x5173;&#x7684;&#x51E0;&#x7BC7;&#x6587;&#x7AE0;&#x8BFB;&#x4E0B;&#xFF0C;&#x5E76;&#x5BF9;Phrase&#x8FDB;&#x884C;&#x5F52;&#x7C7B;&#x3002;</p>
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/11/06/Diary/20161105/#more" rel="contents">
               阅读全文 &raquo;
@@ -1601,7 +1363,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
