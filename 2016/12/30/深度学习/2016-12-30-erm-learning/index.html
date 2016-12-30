@@ -1,0 +1,789 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="深度学习,EMS,Bias,variance," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="Stanford Machine Learning Note - Learning Theory
+&amp;#x7406;&amp;#x89E3;&amp;#x4E86;&amp;#x5B66;&amp;#x4E60;&amp;#x7406;&amp;#x8BBA;&amp;#x662F;&amp;#x5BF9;&amp;#x673A;&amp;#x5668;&amp;#x5B66;&amp;#x4E60;&amp;#x53EA;&amp;#x61C2;&amp;#x76AE;&amp;#x6BDB;&amp;#x7684;&amp;#x4EBA">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ERM_learning">
+<meta property="og:url" content="http://jingchen2222.github.io./2016/12/30/深度学习/2016-12-30-erm-learning/index.html">
+<meta property="og:site_name" content="Chen22'S BLOG">
+<meta property="og:description" content="Stanford Machine Learning Note - Learning Theory
+&amp;#x7406;&amp;#x89E3;&amp;#x4E86;&amp;#x5B66;&amp;#x4E60;&amp;#x7406;&amp;#x8BBA;&amp;#x662F;&amp;#x5BF9;&amp;#x673A;&amp;#x5668;&amp;#x5B66;&amp;#x4E60;&amp;#x53EA;&amp;#x61C2;&amp;#x76AE;&amp;#x6BDB;&amp;#x7684;&amp;#x4EBA">
+<meta property="og:image" content="http://ogqir9ige.bkt.clouddn.com/0c8019e8f3b944d9955f645fa7e3a9bb.png">
+<meta property="og:image" content="http://ogqir9ige.bkt.clouddn.com/caf73674fdb745c7fc67b0cf30e99157.png">
+<meta property="og:image" content="http://ogqir9ige.bkt.clouddn.com/d72dc30e92cfa2a0086bf7b0876fd03e.png">
+<meta property="og:image" content="http://ogqir9ige.bkt.clouddn.com/c7a305e6dbe360cdf84a7abe6427c783.png">
+<meta property="og:image" content="http://ogqir9ige.bkt.clouddn.com/8d3154360facd49b06fe6c2601dae25e.png">
+<meta property="og:image" content="http://ogqir9ige.bkt.clouddn.com/e6255ad366e95512fdfb48099d2d1dad.png">
+<meta property="og:image" content="http://ogqir9ige.bkt.clouddn.com/9be870ee62d4e675a2d7ce81cbc381a3.png">
+<meta property="og:image" content="http://ogqir9ige.bkt.clouddn.com/6e7870516572e9422f442fc402e831d1.png">
+<meta property="og:image" content="http://ogqir9ige.bkt.clouddn.com/f69f8ae01d90b8b50de86b6e49f68902.png">
+<meta property="og:image" content="http://ogqir9ige.bkt.clouddn.com/686fa25626ddac1a11d3a0d5825e1683.png">
+<meta property="og:image" content="http://ogqir9ige.bkt.clouddn.com/2c1a879acec2c9aada95a3711d8c1e69.png">
+<meta property="og:image" content="http://ogqir9ige.bkt.clouddn.com/028b189a2c631d74a437ffd6a6e39861.png">
+<meta property="og:image" content="http://ogqir9ige.bkt.clouddn.com/9d20755e89b4c4f02ebb7b2d0f7747d0.png">
+<meta property="og:image" content="http://ogqir9ige.bkt.clouddn.com/1da2f12b66049a1be467631aff7c6a46.png">
+<meta property="og:image" content="http://ogqir9ige.bkt.clouddn.com/7576321020a3901dcdf5f9d576897942.png">
+<meta property="og:image" content="http://ogqir9ige.bkt.clouddn.com/01731538826a6bc45c609e9d387aa339.png">
+<meta property="og:image" content="http://ogqir9ige.bkt.clouddn.com/f0f62162a46f0538c32b126ab3246612.png">
+<meta property="og:image" content="http://ogqir9ige.bkt.clouddn.com/ed21f842d89f310da998bf4208e626e3.png">
+<meta property="og:image" content="http://ogqir9ige.bkt.clouddn.com/45aa40716e3822e50202568875a85c0d.png">
+<meta property="og:image" content="http://ogqir9ige.bkt.clouddn.com/5b52eae8fa6f9fe2a23d6b650f6e7cd9.png">
+<meta property="og:updated_time" content="2016-12-30T13:33:40.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ERM_learning">
+<meta name="twitter:description" content="Stanford Machine Learning Note - Learning Theory
+&amp;#x7406;&amp;#x89E3;&amp;#x4E86;&amp;#x5B66;&amp;#x4E60;&amp;#x7406;&amp;#x8BBA;&amp;#x662F;&amp;#x5BF9;&amp;#x673A;&amp;#x5668;&amp;#x5B66;&amp;#x4E60;&amp;#x53EA;&amp;#x61C2;&amp;#x76AE;&amp;#x6BDB;&amp;#x7684;&amp;#x4EBA">
+<meta name="twitter:image" content="http://ogqir9ige.bkt.clouddn.com/0c8019e8f3b944d9955f645fa7e3a9bb.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://jingchen2222.github.io./2016/12/30/深度学习/2016-12-30-erm-learning/"/>
+
+
+  <title> ERM_learning | Chen22'S BLOG </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Chen22'S BLOG</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br />
+            
+            日程
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                ERM_learning
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-12-30T13:14:00+08:00" content="2016-12-30">
+              2016-12-30
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/study/" itemprop="url" rel="index">
+                    <span itemprop="name">study</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/study/深度学习/" itemprop="url" rel="index">
+                    <span itemprop="name">深度学习</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/study/深度学习/learning-theory/" itemprop="url" rel="index">
+                    <span itemprop="name">learning theory</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Stanford-Machine-Learning-Note-Learning-Theory"><a href="#Stanford-Machine-Learning-Note-Learning-Theory" class="headerlink" title="Stanford Machine Learning Note - Learning Theory"></a>Stanford Machine Learning Note - Learning Theory</h1><blockquote>
+<p>&#x7406;&#x89E3;&#x4E86;&#x5B66;&#x4E60;&#x7406;&#x8BBA;&#x662F;&#x5BF9;&#x673A;&#x5668;&#x5B66;&#x4E60;&#x53EA;&#x61C2;&#x76AE;&#x6BDB;&#x7684;&#x4EBA;&#x548C;&#x771F;&#x6B63;&#x7406;&#x89E3;&#x673A;&#x5668;&#x5B66;&#x4E60;&#x7684;&#x4EBA;&#x7684;&#x533A;&#x522B;&#x3002;&#x5B66;&#x4E60;&#x7406;&#x8BBA;&#x7684;&#x91CD;&#x8981;&#x6027;&#x5728;&#x4E8E;&#x901A;&#x8FC7;&#x5B83;&#x80FD;&#x591F;&#x9488;&#x5BF9;&#x5B9E;&#x9645;&#x95EE;&#x9898;&#x66F4;&#x597D;&#x7684;&#x9009;&#x62E9;&#x6A21;&#x578B;&#xFF0C;&#x4FEE;&#x6539;&#x6A21;&#x578B;&#x3002;<br>by Andrew Ng</p>
+</blockquote>
+<p>&#x672C;&#x6587;&#x662F;Andrew NG&#x7B2C;&#x4E5D;&#x8BFE;&#x548C;&#x7B2C;&#x5341;&#x8BFE;&#x7684;&#x5185;&#x5BB9;&#x7B14;&#x8BB0;&#x3002;<br><a href="http://open.163.com/movie/2008/1/F/H/M6SGF6VB4_M6SGJV3FH.html" title="Lecture9" target="_blank" rel="external">Lecture9</a>,<a href="http://open.163.com/movie/2008/1/U/O/M6SGF6VB4_M6SGJURUO.html" title="Lecture10" target="_blank" rel="external">Lecture10</a></p>
+<p>&#x8FD9;&#x4E24;&#x8BFE;&#x4ECB;&#x7ECD;Learning Theory&#xFF08;&#x5B66;&#x4E60;&#x7406;&#x8BBA;&#xFF09;&#x3002;&#x7531;&#x4E8E;&#x6570;&#x636E;&#x516C;&#x5F0F;&#x63A8;&#x5BFC;&#x8F83;&#x591A;&#xFF0C;&#x7406;&#x8BBA;&#x6027;&#x6BD4;&#x8F83;&#x5F3A;&#xFF0C;&#x770B;&#x4E86;&#x4E24;&#x904D;&#x4ECD;&#x638C;&#x63E1;&#x4E0D;&#x5230;&#x4F4D;&#x3002;&#x9042;&#x53C2;&#x8003;&#x548C;&#x5B66;&#x4E60;&#x7F51;&#x53CB;&#x76F8;&#x5173;&#x7B14;&#x8BB0;&#xFF0C;&#x505A;&#x4E00;&#x4E0B;Review&#x3002;</p>
+<p>&#x672C;&#x6587;&#x6240;&#x53C2;&#x8003;&#x6587;&#x732E;&#x6750;&#x6599;&#x5305;&#x62EC;&#xFF1A;</p>
+<ul>
+<li><a href="https://www.gitbook.com/book/bj6221/-/details" title="&#x7EDF;&#x8BA1;&#x5B66;&#x4E60;&#x65B9;&#x6CD5;&#xFF0C;&#x674E;&#x822A;" target="_blank" rel="external">&#x300A;&#x7EDF;&#x8BA1;&#x5B66;&#x4E60;&#x65B9;&#x6CD5;&#x300B;,&#x674E;&#x822A;</a></li>
+<li><a href="http://blog.csdn.net/stdcoutzyx/article/details/12110337" title="&#x53C2;&#x8003;&#x7B14;&#x8BB0;1&#xFF1A;" target="_blank" rel="external">&#x65AF;&#x5766;&#x798F;ML&#x516C;&#x5F00;&#x8BFE;&#x7B14;&#x8BB0;9&#x2014;&#x504F;&#x5DEE;/&#x65B9;&#x5DEE;&#x3001;&#x7ECF;&#x9A8C;&#x98CE;&#x9669;&#x6700;&#x5C0F;&#x5316;&#x3001;&#x8054;&#x5408;&#x754C;&#x3001;&#x4E00;&#x81F4;&#x6536;&#x655B;</a></li>
+<li><a href="https://www.zybuluo.com/a335031/note/35923" title="&#x7ECF;&#x9A8C;&#x98CE;&#x9669;&#x6700;&#x5C0F;&#x5316;" target="_blank" rel="external">&#x7ECF;&#x9A8C;&#x98CE;&#x9669;&#x6700;&#x5C0F;&#x5316;</a></li>
+<li><a href="http://blog.csdn.net/keith0812/article/details/8901113" title="svm&#x3001;&#x7ECF;&#x9A8C;&#x98CE;&#x9669;&#x6700;&#x5C0F;&#x5316;&#x3001;vc&#x7EF4;" target="_blank" rel="external">svm&#x3001;&#x7ECF;&#x9A8C;&#x98CE;&#x9669;&#x6700;&#x5C0F;&#x5316;&#x3001;vc&#x7EF4;</a></li>
+</ul>
+<p>&#x5B66;&#x4E60;&#x7406;&#x8BBA;&#x4E3B;&#x8981;&#x5305;&#x62EC;:</p>
+<ul>
+<li>&#x504F;&#x5DEE;/&#x65B9;&#x5DEE;&#xFF08;Bias/variance&#xFF09;</li>
+<li>&#x7ECF;&#x9A8C;&#x98CE;&#x9669;&#x6700;&#x5C0F;&#x5316;&#xFF08;Empirical Risk Minization&#xFF0C;ERM&#xFF09;</li>
+<li>&#x8054;&#x5408;&#x754C;&#xFF08;Union bound&#xFF09;</li>
+<li>&#x4E00;&#x81F4;&#x6536;&#x655B;&#xFF08;Uniform Convergence&#xFF09;&#x3002;</li>
+</ul>
+<a id="more"></a>
+<h2 id="Bias-amp-Variance-&#x504F;&#x5DEE;&#x548C;&#x65B9;&#x5DEE;"><a href="#Bias-amp-Variance-&#x504F;&#x5DEE;&#x548C;&#x65B9;&#x5DEE;" class="headerlink" title="Bias &amp; Variance (&#x504F;&#x5DEE;&#x548C;&#x65B9;&#x5DEE;)"></a>Bias &amp; Variance (&#x504F;&#x5DEE;&#x548C;&#x65B9;&#x5DEE;)</h2><h3 id="&#x57FA;&#x672C;&#x6982;&#x5FF5;"><a href="#&#x57FA;&#x672C;&#x6982;&#x5FF5;" class="headerlink" title="&#x57FA;&#x672C;&#x6982;&#x5FF5;"></a>&#x57FA;&#x672C;&#x6982;&#x5FF5;</h3><ul>
+<li>&#x6CDB;&#x5316;&#x80FD;&#x529B;&#xFF08;Generalization ability&#xFF09;<blockquote>
+<p>&#x5B66;&#x4E60;&#x65B9;&#x6CD5;&#x7684;&#x6CDB;&#x5316;&#x80FD;&#x529B;&#x662F;&#x6307;&#x7531;&#x8BE5;&#x65B9;&#x6CD5;&#x5B66;&#x4E60;&#x5230;&#x7684;&#x6A21;&#x578B;&#x5BF9;&#x672A;&#x77E5;&#x6570;&#x636E;&#x7684;&#x9884;&#x6D4B;&#x80FD;&#x529B;&#xFF0C;&#x662F;&#x5B66;&#x4E60;&#x65B9;&#x6CD5;&#x672C;&#x8D28;&#x4E0A;&#x6700;&#x91CD;&#x8981;&#x7684;&#x6027;&#x8D28;&#x3002;</p>
+<p>&#x901A;&#x8FC7;&#x6D4B;&#x8BD5;&#x8BEF;&#x5DEE;&#x6765;&#x8BC4;&#x4EF7;&#x5B66;&#x4E60;&#x65B9;&#x6CD5;&#x7684;&#x6CDB;&#x5316;&#x80FD;&#x529B;&#xFF0C;&#x5177;&#x6709;&#x5C40;&#x9650;&#x6027;&#x3002;&#x8BC4;&#x4EF7;&#x7ED3;&#x679C;&#x53EF;&#x80FD;&#x4E0D;&#x53EF;&#x9760;</p>
+<p>&#x7EDF;&#x8BA1;&#x5B66;&#x4E60;&#x7406;&#x8BBA;&#x8BD5;&#x56FE;&#x4ECE;&#x7406;&#x8BBA;&#x4E0A;&#x5BF9;&#x5B66;&#x4E60;&#x65B9;&#x6CD5;&#x7684;&#x6CDB;&#x5316;&#x80FD;&#x529B;&#x8FDB;&#x884C;&#x5206;&#x6790;&#x3002;</p>
+<p>&#x6CDB;&#x5316;&#x80FD;&#x529B;&#x5206;&#x6790;&#x5F80;&#x5F80;&#x662F;&#x901A;&#x8FC7;&#x7814;&#x7A76;&#x6CDB;&#x5316;&#x8BEF;&#x5DEE;&#x7684;&#x6982;&#x7387;&#x4E0A;&#x754C;&#x8FDB;&#x884C;&#x7684;&#x3002;&#x7B80;&#x79F0;&#x4E3A;&#x6CDB;&#x5316;&#x8BEF;&#x5DEE;&#x4E0A;&#x754C;&#x3002;&#x5177;&#x4F53;&#x6765;&#x8BF4;&#xFF0C;&#x901A;&#x8FC7;&#x6BD4;&#x8F83;&#x4E24;&#x79CD;&#x6A21;&#x578B;&#x7684;&#x6CDB;&#x5316;&#x8BEF;&#x5DEE;&#x4E0A;&#x754C;&#x7684;&#x5927;&#x5C0F;&#x6765;&#x6BD4;&#x8F83;&#x4ED6;&#x4EEC;&#x7684;&#x4F18;&#x52A3;&#x3002;</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li><p>&#x6CDB;&#x5316;&#x8BEF;&#x5DEE; Generalization error:<br><a href="https://en.wikipedia.org/wiki/Generalization_error" title="wiki_Generalization error" target="_blank" rel="external">wiki_Generalization error</a></p>
+<p><img src="http://ogqir9ige.bkt.clouddn.com/0c8019e8f3b944d9955f645fa7e3a9bb.png" alt="generalization_error_definition"></p>
+<blockquote>
+<p>&#x4E8B;&#x5B9E;&#x4E0A;&#xFF0C;&#x6CDB;&#x5316;&#x8BEF;&#x5DEE;&#x5C31;&#x662F;&#x6240;&#x5B66;&#x4E60;&#x5230;&#x7684;&#x6A21;&#x578B;&#x7684;&#x671F;&#x671B;&#x98CE;&#x9669;</p>
+</blockquote>
+</li>
+<li>&#x6B20;&#x62DF;&#x5408;&#xFF08;Underfit&#xFF09;&#x548C;&#x8FC7;&#x62DF;&#x5408;&#xFF08;Overfit&#xFF09;</li>
+</ul>
+<ul>
+<li>&#x504F;&#x5DEE;&#xFF08;bias&#xFF09;&#x548C;&#x65B9;&#x5DEE;&#xFF08;Variance&#xFF09;</li>
+</ul>
+<ul>
+<li>&#x6CDB;&#x5316;&#x8BEF;&#x5DEE;&#x4E0A;&#x754C;</li>
+</ul>
+<blockquote>
+<p>&#x5B83;&#x662F;&#x6837;&#x672C;&#x5BB9;&#x91CF;&#x7684;&#x51FD;&#x6570;&#xFF0C;&#x5F53;&#x6837;&#x672C;&#x5BB9;&#x91CF;&#x589E;&#x52A0;&#x65F6;&#xFF0C;&#x6CDB;&#x5316;&#x4E0A;&#x754C;&#x5C31;&#x8D8B;&#x4E8E;0&#xFF1B;</p>
+<p>&#x5B83;&#x662F;&#x5047;&#x8BBE;&#x7A7A;&#x95F4;&#x5BB9;&#x91CF;&#xFF08;|H|=k&#xFF09;&#x7684;&#x51FD;&#x6570;,&#x5047;&#x8BBE;&#x7A7A;&#x95F4;&#x5BB9;&#x91CF;k&#x8D8A;&#x5927;&#xFF0C;&#x6A21;&#x578B;&#x8D8A;&#x590D;&#x6742;&#xFF0C;&#x6CDB;&#x5316;&#x8BEF;&#x5DEE;&#x4E0A;&#x754C;&#x5C31;&#x8D8A;&#x5927;&#x3002;</p>
+</blockquote>
+<h3 id="&#x6982;&#x5FF5;&#x89E3;&#x91CA;"><a href="#&#x6982;&#x5FF5;&#x89E3;&#x91CA;" class="headerlink" title="&#x6982;&#x5FF5;&#x89E3;&#x91CA;"></a>&#x6982;&#x5FF5;&#x89E3;&#x91CA;</h3><p>&#x4E3A;&#x4E86;&#x76F4;&#x89C2;&#xFF0C;&#x6211;&#x4EEC;&#x7528;&#x4E09;&#x5E45;&#x56FE;&#x6765;&#x89E3;&#x91CA;&#x504F;&#x5DEE;&#x548C;&#x65B9;&#x5DEE;&#x3002;<br><img src="http://ogqir9ige.bkt.clouddn.com/caf73674fdb745c7fc67b0cf30e99157.png" alt="GeneralizationError"><br>&#x56FE;&#x5DE6;, &#x4F7F;&#x7528;&#x4E8C;&#x5143;&#x7EBF;&#x6027;&#x6A21;&#x578B;&#x62DF;&#x5408;&#x6570;&#x636E;&#xFF0C;&#x5373;&#x4F7F;&#x7ED9;&#x518D;&#x5927;&#x7684;train data&#xFF0C;&#x4ECD;&#x907F;&#x514D;&#x4E0D;&#x4E86;&#x8F83;&#x5927;&#x7684;&#x6CDB;&#x5316;&#x8BEF;&#x5DEE;&#x3002;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#x79F0;&#x4E3A;&#x6B20;&#x62DF;&#x5408;&#xFF0C;&#x5BF9;&#x5E94;&#x9AD8;&#x504F;&#x5DEE;&#xFF08;high bias&#xFF09;</p>
+<blockquote>
+<p>we define the bias of a model to be the expected generalization error even if we were to fit it to a very (say, infinitely) large training set.</p>
+</blockquote>
+<p>&#x56FE;&#x53F3;,&#x4F7F;&#x7528;&#x9AD8;&#x9636;&#x51FD;&#x6570;&#x62DF;&#x5408;&#x6570;&#x636E;&#xFF0C;&#x5BF9;&#x5F53;&#x524D;&#x8BAD;&#x7EC3;&#x6570;&#x636E;&#x62DF;&#x5408;&#x5F88;&#x597D;&#xFF0C;&#x4F46;&#x4E5F;&#x56E0;&#x6B64;&#x62DF;&#x5408;&#x51FA;&#x5F88;&#x591A;&#x8BAD;&#x7EC3;&#x96C6;&#x7279;&#x6709;&#x7ED3;&#x6784;&#x7279;&#x6027;&#x3002;&#x5F53;&#x5728;&#x5176;&#x4ED6;&#x6D4B;&#x8BD5;&#x96C6;&#x4E0A;&#xFF0C;&#x53C8;&#x51FA;&#x73B0;&#x8F83;&#x5927;&#x6CDB;&#x5316;&#x8BEF;&#x5DEE;&#x3002;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#x6210;&#x4E3A;&#x8FC7;&#x62DF;&#x5408;&#xFF08;Overfit&#xFF09;&#xFF0C;&#x5BF9;&#x5E94;&#x9AD8;&#x65B9;&#x5DEE;&#x3002;</p>
+<h2 id="&#x7ECF;&#x9A8C;&#x98CE;&#x9669;&#x6700;&#x5C0F;&#x5316;&#xFF08;empirical-risk-minimization-ERM&#xFF09;"><a href="#&#x7ECF;&#x9A8C;&#x98CE;&#x9669;&#x6700;&#x5C0F;&#x5316;&#xFF08;empirical-risk-minimization-ERM&#xFF09;" class="headerlink" title="&#x7ECF;&#x9A8C;&#x98CE;&#x9669;&#x6700;&#x5C0F;&#x5316;&#xFF08;empirical risk minimization, ERM&#xFF09;"></a>&#x7ECF;&#x9A8C;&#x98CE;&#x9669;&#x6700;&#x5C0F;&#x5316;&#xFF08;empirical risk minimization, ERM&#xFF09;</h2><h3 id="&#x7ECF;&#x9A8C;&#x98CE;&#x9669;&#x6700;&#x5C0F;&#x5316;&#x8868;&#x793A;&#x65B9;&#x5F0F;"><a href="#&#x7ECF;&#x9A8C;&#x98CE;&#x9669;&#x6700;&#x5C0F;&#x5316;&#x8868;&#x793A;&#x65B9;&#x5F0F;" class="headerlink" title="&#x7ECF;&#x9A8C;&#x98CE;&#x9669;&#x6700;&#x5C0F;&#x5316;&#x8868;&#x793A;&#x65B9;&#x5F0F;:"></a>&#x7ECF;&#x9A8C;&#x98CE;&#x9669;&#x6700;&#x5C0F;&#x5316;&#x8868;&#x793A;&#x65B9;&#x5F0F;:</h3><p><img src="http://ogqir9ige.bkt.clouddn.com/d72dc30e92cfa2a0086bf7b0876fd03e.png" alt="ERM1"><br>&#x5373;&#xFF0C;&#x9009;&#x62E9;&#x8BAD;&#x7EC3;&#x8BEF;&#x5DEE;&#x6700;&#x5C0F;&#x7684;&#x53C2;&#x6570;</p>
+<p>&#x53E6;&#x4E00;&#x79CD;&#x7B49;&#x4EF7;&#x7684;&#x8868;&#x793A;&#x65B9;&#x5F0F;&#xFF1A;<br><img src="http://ogqir9ige.bkt.clouddn.com/c7a305e6dbe360cdf84a7abe6427c783.png" alt="ERM2"></p>
+<p>&#x6CDB;&#x5316;&#x80FD;&#x529B;&#x53EF;&#x4EE5;&#x8868;&#x793A;&#x4E3A;&#xFF1A;<br><img src="http://ogqir9ige.bkt.clouddn.com/8d3154360facd49b06fe6c2601dae25e.png" alt="generalizationAbility"></p>
+<h3 id="&#x8054;&#x5408;&#x754C;&#xFF08;Union-bound&#xFF09;&#x3001;&#x4E00;&#x81F4;&#x6536;&#x655B;&#xFF08;Uniform-Convergence&#xFF09;"><a href="#&#x8054;&#x5408;&#x754C;&#xFF08;Union-bound&#xFF09;&#x3001;&#x4E00;&#x81F4;&#x6536;&#x655B;&#xFF08;Uniform-Convergence&#xFF09;" class="headerlink" title="&#x8054;&#x5408;&#x754C;&#xFF08;Union bound&#xFF09;&#x3001;&#x4E00;&#x81F4;&#x6536;&#x655B;&#xFF08;Uniform Convergence&#xFF09;"></a>&#x8054;&#x5408;&#x754C;&#xFF08;Union bound&#xFF09;&#x3001;&#x4E00;&#x81F4;&#x6536;&#x655B;&#xFF08;Uniform Convergence&#xFF09;</h3><p>Union bound<br><img src="http://ogqir9ige.bkt.clouddn.com/e6255ad366e95512fdfb48099d2d1dad.png" alt="UnionBound"></p>
+<p>Hoeffding inequality<br><img src="http://ogqir9ige.bkt.clouddn.com/9be870ee62d4e675a2d7ce81cbc381a3.png" alt="HoeffdingInequality"></p>
+<blockquote>
+<p>This lemma (which in learning theory is also called the Chernoff bound) says that if we take &#x3C6;&#x2C6;&#x2014;the average of m Bernoulli(&#x3C6;) random variables&#x2014;to be our estimate of &#x3C6;, then the probability of our being far from the true value is small, so long as m is large</p>
+</blockquote>
+<p>Hoeffiding ineuality &#x5B9A;&#x7406;&#x7684;&#x610F;&#x4E49;&#x5728;&#x4E8E;&#xFF0C;&#x5F53;m&#x4E0D;&#x65AD;&#x589E;&#x5927;&#xFF0C;&#x5BF9;&#x53C2;&#x6570;&#x7684;&#x7ECF;&#x9A8C;&#x4F30;&#x8BA1;&#x5C06;&#x903C;&#x6025;&#x771F;&#x5B9E;&#x503C;&#x3002;</p>
+<h3 id="&#x4E00;&#x81F4;&#x6536;&#x655B;&#xFF08;Union-Convergence&#xFF09;"><a href="#&#x4E00;&#x81F4;&#x6536;&#x655B;&#xFF08;Union-Convergence&#xFF09;" class="headerlink" title="&#x4E00;&#x81F4;&#x6536;&#x655B;&#xFF08;Union Convergence&#xFF09;"></a>&#x4E00;&#x81F4;&#x6536;&#x655B;&#xFF08;Union Convergence&#xFF09;</h3><p>&#x6211;&#x4EEC;&#x4F7F;&#x7528;ERM&#x7684;&#x7B2C;&#x4E8C;&#x79CD;&#x5B9A;&#x4E49;&#x6765;&#x8BC1;&#x660E;&#x8BE5;&#x5B9A;&#x7406;&#x3002;<br>&#x9996;&#x5148;&#xFF0C;&#x63A8;&#x5BFC;&#x5F53;&#x6A21;&#x578B;&#x96C6;&#x5408;H&#x662F;&#x6709;&#x9650;&#x96C6;&#x5408;&#x65F6;&#xFF0C;&#x5B9A;&#x7406;&#x6210;&#x7ACB;&#x3002;The case of finite H&#xFF1A;</p>
+<p><img src="http://ogqir9ige.bkt.clouddn.com/6e7870516572e9422f442fc402e831d1.png" alt="Finite_Convergence"></p>
+<p>&#x53C8;&#x6839;&#x636E;Union bound&#x5B9A;&#x7406;&#xFF0C;&#x53EF;&#x4EE5;&#x63A8;&#x51FA;<br><img src="http://ogqir9ige.bkt.clouddn.com/f69f8ae01d90b8b50de86b6e49f68902.png" alt="Finite_Convergence_2"></p>
+<p>&#x5176;&#x4E2D;&#xFF0C;Ai&#x8868;&#x793A;&#xFF1A;<img src="http://ogqir9ige.bkt.clouddn.com/686fa25626ddac1a11d3a0d5825e1683.png" alt="Ai"></p>
+<p>&#x6C42;&#x53CD;&#xFF1A;<br><img src="http://ogqir9ige.bkt.clouddn.com/2c1a879acec2c9aada95a3711d8c1e69.png" alt="Finite_Convergence_3"><br><img src="http://ogqir9ige.bkt.clouddn.com/028b189a2c631d74a437ffd6a6e39861.png" alt="Finite_Convergence_result"></p>
+<p>&#x4EE5;&#x4E0A;&#x5373;&#x662F;<strong>&#x4E00;&#x81F4;&#x6536;&#x655B;&#x5B9A;&#x7406;</strong>&#xFF0C;&#x5B83;&#x7684;&#x610F;&#x4E49;&#x5728;&#x4E8E;&#xFF1A;</p>
+<blockquote>
+<p>&#x81F3;&#x5C11;&#x6709;&#x4E00;&#x5B9A;&#x7684;&#x6982;&#x7387;<code>(1&#x2212;2kexp(&#x2212;2&#x3B3;^2m))</code>&#xFF0C;&#x4F7F;&#x5F97;&#x6A21;&#x578B;&#x96C6;&#x5408;H&#x4E2D;&#x7684;&#x6240;&#x6709;&#x5047;&#x8BBE;&#xFF0C;&#x5176;&#x6CDB;&#x5316;&#x8BEF;&#x5DEE;&#x90FD;&#x5728;&#x8BAD;&#x7EC3;&#x8BEF;&#x5DEE;&#x7684;&#x3B3;&#x8303;&#x56F4;&#x5185;&#x3002;</p>
+</blockquote>
+<h4 id="&#x4E00;&#x81F4;&#x6536;&#x655B;&#x63A8;&#x8BBA;"><a href="#&#x4E00;&#x81F4;&#x6536;&#x655B;&#x63A8;&#x8BBA;" class="headerlink" title="&#x4E00;&#x81F4;&#x6536;&#x655B;&#x63A8;&#x8BBA;"></a>&#x4E00;&#x81F4;&#x6536;&#x655B;&#x63A8;&#x8BBA;</h4><p>&#x5728;&#x4E00;&#x81F4;&#x6536;&#x655B;&#x5B9A;&#x7406;&#x4E2D;&#xFF0C;&#x6709;&#x53C2;&#x6570;&#x3B3;&#xFF0C;m&#xFF0C;P&#x3002;&#x6839;&#x636E;&#x4E00;&#x81F4;&#x6536;&#x655B;&#x5B9A;&#x7406;&#x4E0D;&#x7B49;&#x5F0F;&#xFF0C;&#x901A;&#x8FC7;&#x56FA;&#x5B9A;&#x5176;&#x4E2D;&#x4E24;&#x4E2A;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x63A8;&#x5BFC;&#x51FA;&#x5176;&#x4ED6;&#x7B2C;&#x4E09;&#x4E2A;&#x7684;&#x8FB9;&#x754C;&#x3002;</p>
+<h5 id="&#x63A8;&#x8BBA;1"><a href="#&#x63A8;&#x8BBA;1" class="headerlink" title="&#x63A8;&#x8BBA;1:"></a>&#x63A8;&#x8BBA;1:</h5><p> &#x95EE;&#x9898;&#xFF1A;&#x7ED9;&#x5B9A;&#x3B3;&#x548C;&#x3B4;&#xFF0C;&#x9700;&#x8981;&#x591A;&#x5C11;&#x6837;&#x672C;&#x91CF;&#xFF08;m&#xFF09;&#x53EF;&#x4EE5;&#x4FDD;&#x8BC1;&#x81F3;&#x5C11;&#x6709;1-&#x3B4;&#x7684;&#x6982;&#x7387;&#xFF0C;&#x4F7F;&#x5F97;&#x6CDB;&#x5316;&#x9519;&#x8BEF;&#xFF08;Generalization error&#xFF09;&#x5728;&#x8BAD;&#x7EC3;&#x9519;&#x8BEF;&#x7684;&#x3B3;&#x8303;&#x56F4;&#x5185;&#x3002;</p>
+<p><img src="http://ogqir9ige.bkt.clouddn.com/9d20755e89b4c4f02ebb7b2d0f7747d0.png" alt="sample_complexity"></p>
+<h5 id="&#x63A8;&#x8BBA;2"><a href="#&#x63A8;&#x8BBA;2" class="headerlink" title="&#x63A8;&#x8BBA;2:"></a>&#x63A8;&#x8BBA;2:</h5><p>&#x95EE;&#x9898;&#xFF1A;&#x7ED9;&#x5B9A;m&#x548C;&#x3B4;&#xFF0C;&#x6CDB;&#x5316;&#x9519;&#x8BEF;&#x843D;&#x5728;&#x8BAD;&#x7EC3;&#x9519;&#x8BEF;&#x7684;&#x591A;&#x5C11;&#x8303;&#x56F4;&#x4E3A;&#xFF1A;</p>
+<p><img src="http://ogqir9ige.bkt.clouddn.com/1da2f12b66049a1be467631aff7c6a46.png" alt="uniform_convergence_3"></p>
+<h4 id="&#x6CDB;&#x5316;&#x80FD;&#x529B;&#x7684;&#x4F30;&#x8BA1;"><a href="#&#x6CDB;&#x5316;&#x80FD;&#x529B;&#x7684;&#x4F30;&#x8BA1;" class="headerlink" title="&#x6CDB;&#x5316;&#x80FD;&#x529B;&#x7684;&#x4F30;&#x8BA1;"></a>&#x6CDB;&#x5316;&#x80FD;&#x529B;&#x7684;&#x4F30;&#x8BA1;</h4><p>&#x5728;&#x4E00;&#x81F4;&#x6536;&#x655B;&#x5B9A;&#x7406;&#x6210;&#x7ACB;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x901A;&#x8FC7;ERM&#x7B97;&#x6CD5;&#x5F97;&#x5230;&#x7684;&#x5047;&#x8BBE;h^&#x7684;&#x6CDB;&#x5316;&#x80FD;&#x529B;&#x5982;&#x4F55;&#x8BC4;&#x4F30;&#xFF1F;</p>
+<h5 id="Notation"><a href="#Notation" class="headerlink" title="Notation"></a>Notation</h5><ul>
+<li><p>&#x6CDB;&#x5316;&#x8BEF;&#x5DEE;&#x6700;&#x5C0F;&#x7684;&#x5047;&#x8BBE;&#xFF08;&#x6700;&#x4F18;&#x5047;&#x8BBE;&#xFF09;h&#x2217;</p>
+<blockquote>
+<p>h&#x2217; = arg minh&#x2208;H &#x3B5;(h) to be the best possible hypothesis in H</p>
+</blockquote>
+</li>
+<li><p>&#x8BAD;&#x7EC3;&#x8BEF;&#x5DEE;&#x6700;&#x5C0F;&#x7684;&#x5047;&#x8BBE;&#xFF08;&#x7ECF;&#x9A8C;&#x6700;&#x4F18;&#x5047;&#x8BBE;&#xFF09;h&#x2C6;</p>
+<blockquote>
+<p>h&#x2C6; = arg min &#x3B5;&#x2C6;(h)</p>
+</blockquote>
+</li>
+<li><p>&#x63A8;&#x5BFC;&#x8FC7;&#x7A0B;:</p>
+<ul>
+<li>step1: &#x6839;&#x636E;Union convegence,&#x6CDB;&#x5316;&#x8BEF;&#x5DEE;&lt;&#x7ECF;&#x9A8C;&#x8BEF;&#x5DEE;+&#x3B3;</li>
+<li>step2: &#x56E0;&#x4E3A;h&#x2C6;&#x662F;&#x7ECF;&#x9A8C;&#x6700;&#x4F18;&#x5047;&#x8BBE;&#xFF0C;&#x7ECF;&#x9A8C;&#x6700;&#x4F18;&#x8BEF;&#x5DEE;&lt;=h&#x2217;&#x7684;&#x7ECF;&#x9A8C;&#x8BEF;&#x5DEE;</li>
+<li>step3: &#x6839;&#x636E;Union convegence, h&#x2217;&#x7684;&#x7ECF;&#x9A8C;&#x8BEF;&#x5DEE;&lt;= h&#x2217;&#x7684;&#x6CDB;&#x5316;&#x8BEF;&#x5DEE;+&#x3B3;&#xFF0C;&#x6700;&#x7EC8;&#xFF1A;</li>
+</ul>
+<p><img src="http://ogqir9ige.bkt.clouddn.com/7576321020a3901dcdf5f9d576897942.png" alt="generalization_ability_cal1"></p>
+</li>
+</ul>
+<p>&#x6700;&#x7EC8;&#x7ED3;&#x8BBA;&#xFF1A;</p>
+<p><img src="http://ogqir9ige.bkt.clouddn.com/01731538826a6bc45c609e9d387aa339.png" alt="generalizaiton_ability_value_final"></p>
+<p>&#x8FD9;&#x4E2A;&#x5B9A;&#x7406;&#x53CD;&#x5E94;&#x4E86;&#x504F;&#x5DEE;&#x548C;&#x8BEF;&#x5DEE;&#x7684;&#x6743;&#x8861;&#x3002;&#x4E00;&#x822C;&#x800C;&#x8A00;&#xFF1A;</p>
+<ul>
+<li>&#x5F53;&#x9009;&#x62E9;&#x590D;&#x6742;&#x6A21;&#x578B;&#x65F6;&#xFF1A;k&#x5C06;&#x53D8;&#x5F97;&#x5F88;&#x5927;&#x3002;&#x4E0D;&#x7B49;&#x5F0F;&#x7684;&#x7B2C;&#x4E8C;&#x9879;&#x53D8;&#x5927;&#x3002;&#x540C;&#x65F6;&#xFF0C;&#x7531;&#x4E8E;k&#x53D8;&#x5927;&#xFF0C;H&#x96C6;&#x5408;&#x53D8;&#x5927;&#xFF0C;&#x6709;&#x53EF;&#x80FD;&#x627E;&#x5230;&#x66F4;&#x5C0F;&#x7684;h&#x3002;</li>
+</ul>
+<p>&#x8FD9;&#x4E2A;&#x63A8;&#x8BBA;&#x8FD8;&#x6709;&#x53E6;&#x5916;&#x4E00;&#x79CD;&#x5F62;&#x5F0F;&#xFF1A;</p>
+<p><img src="http://ogqir9ige.bkt.clouddn.com/f0f62162a46f0538c32b126ab3246612.png" alt="generalization_ability_value_final_2"></p>
+<h2 id="&#x65E0;&#x9650;&#x96C6;&#x5408;&#x8BC1;&#x660E;"><a href="#&#x65E0;&#x9650;&#x96C6;&#x5408;&#x8BC1;&#x660E;" class="headerlink" title="&#x65E0;&#x9650;&#x96C6;&#x5408;&#x8BC1;&#x660E;"></a>&#x65E0;&#x9650;&#x96C6;&#x5408;&#x8BC1;&#x660E;</h2><p>&#x7136;&#x540E;&#xFF0C;&#x63A8;&#x5BFC;&#x5F53;&#x6A21;&#x578B;&#x96C6;&#x5408;H&#x662F;&#x65E0;&#x9650;&#x96C6;&#x5408;&#x65F6;&#xFF0C;&#x5B9A;&#x7406;&#x6210;&#x7ACB;&#x3002;</p>
+<h3 id="&#x51E0;&#x4E2A;&#x6982;&#x5FF5;"><a href="#&#x51E0;&#x4E2A;&#x6982;&#x5FF5;" class="headerlink" title="&#x51E0;&#x4E2A;&#x6982;&#x5FF5;"></a>&#x51E0;&#x4E2A;&#x6982;&#x5FF5;</h3><h4 id="VC&#x7EF4;&#xFF08;Vapnik-Chervonenkis-dimension&#xFF09;"><a href="#VC&#x7EF4;&#xFF08;Vapnik-Chervonenkis-dimension&#xFF09;" class="headerlink" title="VC&#x7EF4;&#xFF08;Vapnik-Chervonenkis dimension&#xFF09;"></a>VC&#x7EF4;&#xFF08;Vapnik-Chervonenkis dimension&#xFF09;</h4><p><img src="http://ogqir9ige.bkt.clouddn.com/ed21f842d89f310da998bf4208e626e3.png" alt="VC_demension"></p>
+<h3 id="&#x65E0;&#x9650;&#x96C6;&#x5408;&#x4E0B;&#x7684;&#xFF0C;&#x4E00;&#x81F4;&#x6536;&#x655B;&#x5B9A;&#x7406;"><a href="#&#x65E0;&#x9650;&#x96C6;&#x5408;&#x4E0B;&#x7684;&#xFF0C;&#x4E00;&#x81F4;&#x6536;&#x655B;&#x5B9A;&#x7406;" class="headerlink" title="&#x65E0;&#x9650;&#x96C6;&#x5408;&#x4E0B;&#x7684;&#xFF0C;&#x4E00;&#x81F4;&#x6536;&#x655B;&#x5B9A;&#x7406;"></a>&#x65E0;&#x9650;&#x96C6;&#x5408;&#x4E0B;&#x7684;&#xFF0C;&#x4E00;&#x81F4;&#x6536;&#x655B;&#x5B9A;&#x7406;</h3><p><img src="http://ogqir9ige.bkt.clouddn.com/45aa40716e3822e50202568875a85c0d.png" alt="infinite_union_convengen"></p>
+<p><img src="http://ogqir9ige.bkt.clouddn.com/5b52eae8fa6f9fe2a23d6b650f6e7cd9.png" alt="Corollary_inifite_convergence"></p>
+<h4 id="SVM"><a href="#SVM" class="headerlink" title="SVM"></a>SVM</h4><p>SVM&#x5C31;&#x662F;&#x4E00;&#x79CD;&#x964D;&#x4F4E;VC demension&#x7684;&#x65B9;&#x6CD5;&#x6765;&#x63D0;&#x9AD8;&#x6CDB;&#x5316;&#x80FD;&#x529B;&#x3002;</p>
+<hr>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/深度学习/" rel="tag">#深度学习</a>
+          
+            <a href="/tags/EMS/" rel="tag">#EMS</a>
+          
+            <a href="/tags/Bias/" rel="tag">#Bias</a>
+          
+            <a href="/tags/variance/" rel="tag">#variance</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/11/25/readingNote-1/" rel="next" title="readingNote_1">
+                <i class="fa fa-chevron-left"></i> readingNote_1
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/12/30/深度学习/SVD-learning-1/" rel="prev" title="SVD 推荐算法学习（1）">
+                SVD 推荐算法学习（1） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="陈22" />
+          <p class="site-author-name" itemprop="name">陈22</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">14</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">26</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Stanford-Machine-Learning-Note-Learning-Theory"><span class="nav-number">1.</span> <span class="nav-text">Stanford Machine Learning Note - Learning Theory</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Bias-amp-Variance-偏差和方差"><span class="nav-number">1.1.</span> <span class="nav-text">Bias & Variance (偏差和方差)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本概念"><span class="nav-number">1.1.1.</span> <span class="nav-text">基本概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#概念解释"><span class="nav-number">1.1.2.</span> <span class="nav-text">概念解释</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#经验风险最小化（empirical-risk-minimization-ERM）"><span class="nav-number">1.2.</span> <span class="nav-text">经验风险最小化（empirical risk minimization, ERM）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#经验风险最小化表示方式"><span class="nav-number">1.2.1.</span> <span class="nav-text">经验风险最小化表示方式:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#联合界（Union-bound）、一致收敛（Uniform-Convergence）"><span class="nav-number">1.2.2.</span> <span class="nav-text">联合界（Union bound）、一致收敛（Uniform Convergence）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一致收敛（Union-Convergence）"><span class="nav-number">1.2.3.</span> <span class="nav-text">一致收敛（Union Convergence）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#一致收敛推论"><span class="nav-number">1.2.3.1.</span> <span class="nav-text">一致收敛推论</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#推论1"><span class="nav-number">1.2.3.1.1.</span> <span class="nav-text">推论1:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#推论2"><span class="nav-number">1.2.3.1.2.</span> <span class="nav-text">推论2:</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#泛化能力的估计"><span class="nav-number">1.2.3.2.</span> <span class="nav-text">泛化能力的估计</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Notation"><span class="nav-number">1.2.3.2.1.</span> <span class="nav-text">Notation</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#无限集合证明"><span class="nav-number">1.3.</span> <span class="nav-text">无限集合证明</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#几个概念"><span class="nav-number">1.3.1.</span> <span class="nav-text">几个概念</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#VC维（Vapnik-Chervonenkis-dimension）"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">VC维（Vapnik-Chervonenkis dimension）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#无限集合下的，一致收敛定理"><span class="nav-number">1.3.2.</span> <span class="nav-text">无限集合下的，一致收敛定理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#SVM"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">SVM</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">陈22</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+</span>
+<span id="busuanzi_container_site_uv">
+  本站访客数<span id="busuanzi_value_site_uv"></span>人次
+</span>
+<script>
+  var birthDay = new Date("11/20/2014");
+  var now = new Date();
+  var duration = now.getTime() - birthDay.getTime();
+  var total= Math.floor(duration / (1000 * 60 * 60 * 24));
+  document.getElementById("showDays").innerHTML = "本站已运行 "+total+" 天";
+</script>
+<span id="showDays"></span>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
