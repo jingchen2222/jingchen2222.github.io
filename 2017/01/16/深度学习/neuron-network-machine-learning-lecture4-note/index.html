@@ -1,0 +1,958 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="深度学习,Neuron network," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="&amp;#x8865;&amp;#x5145;&amp;#x77E5;&amp;#x8BC6;&amp;#x70B9;Cross-Entropy&amp;#x4FE1;&amp;#x606F;&amp;#x91CF;&amp;#x53EF;&amp;#x4EE5;&amp;#x7406;&amp;#x89E3;&amp;#x4E3A;&amp;#xFF0C;&amp;#x4E00;&amp;#x4E2A;&amp;#x4E8B;&amp;#x4EF6;&amp;#x53D1;&amp;#x751F;&amp;#x7684;&amp;#x6982;&amp;#x7387;&amp;#">
+<meta property="og:type" content="article">
+<meta property="og:title" content="neuron_network_machine_learning_lecture4_note">
+<meta property="og:url" content="http://jingchen2222.github.io./2017/01/16/深度学习/neuron-network-machine-learning-lecture4-note/index.html">
+<meta property="og:site_name" content="Chen22'S BLOG">
+<meta property="og:description" content="&amp;#x8865;&amp;#x5145;&amp;#x77E5;&amp;#x8BC6;&amp;#x70B9;Cross-Entropy&amp;#x4FE1;&amp;#x606F;&amp;#x91CF;&amp;#x53EF;&amp;#x4EE5;&amp;#x7406;&amp;#x89E3;&amp;#x4E3A;&amp;#xFF0C;&amp;#x4E00;&amp;#x4E2A;&amp;#x4E8B;&amp;#x4EF6;&amp;#x53D1;&amp;#x751F;&amp;#x7684;&amp;#x6982;&amp;#x7387;&amp;#">
+<meta property="og:image" content="http://ogqir9ige.bkt.clouddn.com/4f3544693456382cb8c2ee5d066e33b1.png">
+<meta property="og:image" content="http://ogqir9ige.bkt.clouddn.com/c0371df3d09f3bba0829850932d0016c.png">
+<meta property="og:image" content="http://ogqir9ige.bkt.clouddn.com/598bb8720388e105d248f1a61a61c482.png">
+<meta property="og:image" content="http://ogqir9ige.bkt.clouddn.com/98fff360a8c63be13fa51c708ef24cc4.png">
+<meta property="og:image" content="http://ogqir9ige.bkt.clouddn.com/a830c0e317646f76edd2909704ec8199.png">
+<meta property="og:image" content="http://ogqir9ige.bkt.clouddn.com/b12c2e869cb15fbd5e8a3c26696a6654.png">
+<meta property="og:image" content="http://ogqir9ige.bkt.clouddn.com/7d51d81daf6ec5262686fea143028569.png">
+<meta property="og:updated_time" content="2017-01-23T03:19:27.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="neuron_network_machine_learning_lecture4_note">
+<meta name="twitter:description" content="&amp;#x8865;&amp;#x5145;&amp;#x77E5;&amp;#x8BC6;&amp;#x70B9;Cross-Entropy&amp;#x4FE1;&amp;#x606F;&amp;#x91CF;&amp;#x53EF;&amp;#x4EE5;&amp;#x7406;&amp;#x89E3;&amp;#x4E3A;&amp;#xFF0C;&amp;#x4E00;&amp;#x4E2A;&amp;#x4E8B;&amp;#x4EF6;&amp;#x53D1;&amp;#x751F;&amp;#x7684;&amp;#x6982;&amp;#x7387;&amp;#">
+<meta name="twitter:image" content="http://ogqir9ige.bkt.clouddn.com/4f3544693456382cb8c2ee5d066e33b1.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://jingchen2222.github.io./2017/01/16/深度学习/neuron-network-machine-learning-lecture4-note/"/>
+
+
+  <title> neuron_network_machine_learning_lecture4_note | Chen22'S BLOG </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Chen22'S BLOG</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br />
+            
+            日程
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                neuron_network_machine_learning_lecture4_note
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-01-16T12:24:00+08:00" content="2017-01-16">
+              2017-01-16
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/study/" itemprop="url" rel="index">
+                    <span itemprop="name">study</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/study/Deep-learning/" itemprop="url" rel="index">
+                    <span itemprop="name">Deep learning</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/study/Deep-learning/Neuron-network/" itemprop="url" rel="index">
+                    <span itemprop="name">Neuron network</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <hr>
+<h2 id="&#x8865;&#x5145;&#x77E5;&#x8BC6;&#x70B9;"><a href="#&#x8865;&#x5145;&#x77E5;&#x8BC6;&#x70B9;" class="headerlink" title="&#x8865;&#x5145;&#x77E5;&#x8BC6;&#x70B9;"></a>&#x8865;&#x5145;&#x77E5;&#x8BC6;&#x70B9;</h2><h3 id="Cross-Entropy"><a href="#Cross-Entropy" class="headerlink" title="Cross-Entropy"></a>Cross-Entropy</h3><h4 id="&#x4FE1;&#x606F;&#x91CF;"><a href="#&#x4FE1;&#x606F;&#x91CF;" class="headerlink" title="&#x4FE1;&#x606F;&#x91CF;"></a>&#x4FE1;&#x606F;&#x91CF;</h4><p>&#x53EF;&#x4EE5;&#x7406;&#x89E3;&#x4E3A;&#xFF0C;&#x4E00;&#x4E2A;&#x4E8B;&#x4EF6;&#x53D1;&#x751F;&#x7684;&#x6982;&#x7387;&#x8D8A;&#x5927;&#xFF0C;&#x5219;&#x5B83;&#x6240;&#x643A;&#x5E26;&#x7684;&#x4FE1;&#x606F;&#x91CF;&#x5C31;&#x8D8A;&#x5C0F;</p>
+<p>$$I(x0)=&#x2212;log(p(x0))$$</p>
+<h4 id="&#x4EC0;&#x4E48;&#x662F;&#x71B5;-entropy"><a href="#&#x4EC0;&#x4E48;&#x662F;&#x71B5;-entropy" class="headerlink" title="&#x4EC0;&#x4E48;&#x662F;&#x71B5; - entropy"></a>&#x4EC0;&#x4E48;&#x662F;&#x71B5; - entropy</h4><p>&#x71B5;&#x5176;&#x5B9E;&#x662F;&#x4FE1;&#x606F;&#x91CF;&#x7684;&#x671F;&#x671B;&#x503C;&#xFF0C;&#x5B83;&#x662F;&#x4E00;&#x4E2A;&#x968F;&#x673A;&#x53D8;&#x91CF;&#x7684;&#x786E;&#x5B9A;&#x6027;&#x7684;&#x5EA6;&#x91CF;&#x3002;&#x71B5;&#x8D8A;&#x5927;&#xFF0C;&#x53D8;&#x91CF;&#x7684;&#x53D6;&#x503C;&#x8D8A;&#x4E0D;&#x786E;&#x5B9A;&#xFF0C;&#x53CD;&#x4E4B;&#x5C31;&#x8D8A;&#x786E;&#x5B9A;&#x3002;</p>
+<p>&#x71B5;&#x7684;&#x5B9A;&#x4E49;:</p>
+<p>$$<br>H(X) = E_p log{\frac{1}{p(x)}}<br>$$</p>
+<h4 id="&#x76F8;&#x5BF9;&#x71B5;-relative-entropy"><a href="#&#x76F8;&#x5BF9;&#x71B5;-relative-entropy" class="headerlink" title="&#x76F8;&#x5BF9;&#x71B5; - relative entropy"></a>&#x76F8;&#x5BF9;&#x71B5; - relative entropy</h4><p>&#x76F8;&#x5BF9;&#x71B5;(relative entropy)&#x53C8;&#x79F0;&#x4E3A;KL&#x6563;&#x5EA6;&#xFF08;Kullback-Leibler divergence&#xFF09;&#xFF0C;KL&#x8DDD;&#x79BB;&#xFF0C;&#x662F;&#x4E24;&#x4E2A;&#x968F;&#x673A;&#x5206;&#x5E03;&#x95F4;&#x8DDD;&#x79BB;&#x7684;&#x5EA6;&#x91CF;&#x3002;&#x8BB0;&#x4E3A;DKL(p||q)&#x3002;&#x5B83;&#x5EA6;&#x91CF;&#x5F53;&#x771F;&#x5B9E;&#x5206;&#x5E03;&#x4E3A;p&#x65F6;&#xFF0C;&#x5047;&#x8BBE;&#x5206;&#x5E03;q&#x7684;&#x65E0;&#x6548;&#x6027;&#x3002;</p>
+<p>$$<br>D_{KL}(p||q) = H_p(q)&#x2212;H(p)<br>$$</p>
+<h4 id="&#x4EC0;&#x4E48;&#x662F;&#x4EA4;&#x53C9;&#x71B5;&#xFF1F;"><a href="#&#x4EC0;&#x4E48;&#x662F;&#x4EA4;&#x53C9;&#x71B5;&#xFF1F;" class="headerlink" title="&#x4EC0;&#x4E48;&#x662F;&#x4EA4;&#x53C9;&#x71B5;&#xFF1F;"></a>&#x4EC0;&#x4E48;&#x662F;&#x4EA4;&#x53C9;&#x71B5;&#xFF1F;</h4><p>CHH(p,q)&#x662F;p,q&#x5206;&#x5E03;&#x7684;&#x4EA4;&#x53C9;&#x71B5;&#xFF0C;&#x53CD;&#x6620;&#x4E86;&#x5206;&#x5E03;p&#xFF0C;q&#x7684;&#x76F8;&#x4F3C;&#x7A0B;&#x5EA6;&#x3002;<br>$$<br>CEH(p,q) = &#x2212;[y log h<em>&#x3B8;(x)+(1&#x2212;y)log(1&#x2212;h</em>&#x3B8;(x))]<br>$$</p>
+<blockquote>
+<p>&#x4EA4;&#x53C9;&#x71B5;&#x4E0E;KL&#x8DDD;&#x79BB;&#x5728;&#x884C;&#x4E3A;&#x4E0A;&#x662F;&#x7B49;&#x4EF7;&#x7684;&#xFF0C;&#x90FD;&#x53CD;&#x6620;&#x4E86;&#x5206;&#x5E03;p&#xFF0C;q&#x7684;&#x76F8;&#x4F3C;&#x7A0B;&#x5EA6;&#x3002;&#x6700;&#x5C0F;&#x5316;&#x4EA4;&#x53C9;&#x71B5;&#x7B49;&#x4E8E;&#x6700;&#x5C0F;&#x5316;KL&#x8DDD;&#x79BB;&#x3002;&#x5B83;&#x4EEC;&#x90FD;&#x5C06;&#x5728;p=q&#x65F6;&#x53D6;&#x5F97;&#x6700;&#x5C0F;&#x503C;H(p)&#xFF08;p=q&#x65F6;KL&#x8DDD;&#x79BB;&#x4E3A;0&#xFF09;&#xFF0C;&#x56E0;&#x6B64;&#x6709;&#x7684;&#x5DE5;&#x6587;&#x732E;&#x4E2D;&#x5C06;&#x6700;&#x5C0F;&#x5316;KL&#x8DDD;&#x79BB;&#x7684;&#x65B9;&#x6CD5;&#x79F0;&#x4E3A;Principle of Minimum Cross-Entropy (MCE)&#x6216;Minxent&#x65B9;&#x6CD5;&#x3002;</p>
+</blockquote>
+<p><a href="http://blog.csdn.net/rtygbwwwerr/article/details/50778098" title="&#x4EA4;&#x53C9;&#x71B5;&#xFF08;Cross-Entropy&#xFF09;from rtygbwwwerr&#x7684;&#x4E13;&#x680F;" target="_blank" rel="external">&#x4EA4;&#x53C9;&#x71B5;&#xFF08;Cross-Entropy&#xFF09;from rtygbwwwerr&#x7684;&#x4E13;&#x680F;</a></p>
+<p><a href="https://rdipietro.github.io/friendly-intro-to-cross-entropy-loss/" title="A Friendly Introduction to Cross-Entropy Loss" target="_blank" rel="external">A Friendly Introduction to Cross-Entropy Loss</a></p>
+<h3 id="N-Grams"><a href="#N-Grams" class="headerlink" title="N-Grams"></a>N-Grams</h3><h4 id="What-is-N-Grams"><a href="#What-is-N-Grams" class="headerlink" title="What is N-Grams"></a>What is N-Grams</h4><p>An n-gram is a contiguous sequence of n words, for example, in the sentence &#x201C;dog that barks does not bite&#x201D;, the n-grams are:</p>
+<ul>
+<li><p>unigrams (n=1): dog, that, barks, does, not, bite</p>
+</li>
+<li><p>bigrams (n=2): dog that, that barks, barks does, does not, not bite</p>
+</li>
+<li><p>trigrams (n=3): dog that barks, that barks does, barks does not, does not bite<br>etc.</p>
+</li>
+</ul>
+<h4 id="What-are-N-grams-used-for"><a href="#What-are-N-grams-used-for" class="headerlink" title="What are N-grams used for?"></a>What are N-grams used for?</h4><p><strong>N-Grams of texts</strong> &#x4E3B;&#x8981;&#x7528;&#x4E8E;&#x6570;&#x636E;&#x6316;&#x6398;&#x548C;&#x81EA;&#x7136;&#x8BED;&#x8A00;&#x5904;&#x7406;&#x3002;</p>
+<blockquote>
+<p>when developing a language model, n-grams are used to develop not just unigram models but also bigram and trigram models.</p>
+</blockquote>
+<ul>
+<li>a publicly available web scale n-gram model by Microsoft: <a href="http://research.microsoft.com/en-us/collaboration/focus/cs/web-ngram.aspx" target="_blank" rel="external">http://research.microsoft.com/en-us/collaboration/focus/cs/web-ngram.aspx</a>.</li>
+</ul>
+<blockquote>
+<p>a paper that uses Web N-gram models for text summarization:Micropinion Generation: An Unsupervised Approach to Generating Ultra-Concise Summaries of Opinions</p>
+</blockquote>
+<ul>
+<li>Another use of n-grams is for developing features for supervised Machine Learning models such as SVMs, MaxEnt models, Naive Bayes, etc.</li>
+</ul>
+<blockquote>
+<p>The idea is to use tokens such as bigrams in the feature space instead of just unigrams. But please be warned that from my personal experience and various research papers that I have reviewed, the use of bigrams and trigrams in your feature space may not necessarily yield any significant improvement. The only way to know this is to try it!</p>
+</blockquote>
+<p><a href="http://text-analytics101.rxnlp.com/2014/11/what-are-n-grams.html" title="What are N-Grams?" target="_blank" rel="external">What are N-Grams?</a></p>
+<p><a href="http://blog.sciencenet.cn/blog-713101-797384.html" title="N-gram&#x7684;&#x539F;&#x7406;&#x3001;&#x7528;&#x9014;&#x548C;&#x7814;&#x7A76;" target="_blank" rel="external">N-gram&#x7684;&#x539F;&#x7406;&#x3001;&#x7528;&#x9014;&#x548C;&#x7814;&#x7A76;</a></p>
+<h2 id="Language-Model"><a href="#Language-Model" class="headerlink" title="Language Model"></a>Language Model</h2><p><a href="http://blog.pluskid.org/?p=352" title="&#x6F2B;&#x8C08; Language Model (1): &#x539F;&#x7406;&#x7BC7;" target="_blank" rel="external">&#x6F2B;&#x8C08; Language Model (1): &#x539F;&#x7406;&#x7BC7;</a></p>
+<h3 id="Language-Model&#x7684;&#x662F;&#x4EC0;&#x4E48;"><a href="#Language-Model&#x7684;&#x662F;&#x4EC0;&#x4E48;" class="headerlink" title="Language Model&#x7684;&#x662F;&#x4EC0;&#x4E48;?"></a>Language Model&#x7684;&#x662F;&#x4EC0;&#x4E48;?</h3><blockquote>
+<p>Language Model &#x4E2D;&#x6587;&#x5C31;&#x53EB;&#x505A;&#x201C;&#x8BED;&#x8A00;&#x6A21;&#x578B;&#x201D;&#x5427;&#xFF0C;&#x8FD9;&#x5B9E;&#x9645;&#x4E0A;&#x662F;&#x4E00;&#x4E2A;&#x6982;&#x7387;&#x5206;&#x5E03;&#x6A21;&#x578B; P &#xFF0C;&#x5BF9;&#x4E8E;&#x8BED;&#x8A00;&#x91CC;&#x7684;&#x6BCF;&#x4E00;&#x4E2A;&#x5B57;&#x7B26;&#x4E32; S &#x7ED9;&#x51FA;&#x4E00;&#x4E2A;&#x6982;&#x7387; P(S) &#x3002;</p>
+<p>&#x6211;&#x4F7F;&#x7528;&#x4E86;&#x201C;&#x5355;&#x8BCD;&#x201D;&#x3001;&#x201C;&#x5B57;&#x7B26;&#x4E32;&#x201D;&#x8FD9;&#x6837;&#x7684;&#x5B57;&#x773C;&#xFF0C;&#x7136;&#x800C; Language Model &#x5B9E;&#x9645;&#x4E0A;&#x975E;&#x5E38;&#x901A;&#x7528;&#xFF0C;&#x4EFB;&#x4F55;&#x7531;&#x4E00;&#x4E9B;&#x57FA;&#x7840;&#x5355;&#x5143;&#x7EC4;&#x6210;&#x7684;&#x5E8F;&#x5217;&#x90FD;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; Language Model &#x7684;&#x65B9;&#x6CD5;&#x6765;&#x5206;&#x6790;&#xFF0C;&#x4F8B;&#x5982; Speech Recognition &#x91CC;&#x7684;&#x97F3;&#x9891;&#x4FE1;&#x53F7;&#xFF0C;Bioinformatics &#x91CC;&#x7684;&#x57FA;&#x56E0;&#x5E8F;&#x5217;&#x7B49;&#x3002;</p>
+</blockquote>
+<h3 id="Language-Model-&#x6709;&#x4EC0;&#x4E48;&#x7528;"><a href="#Language-Model-&#x6709;&#x4EC0;&#x4E48;&#x7528;" class="headerlink" title="Language Model &#x6709;&#x4EC0;&#x4E48;&#x7528;?"></a>Language Model &#x6709;&#x4EC0;&#x4E48;&#x7528;?</h3><blockquote>
+<p>&#x6587;&#x6863;&#x5B57;&#x8BCD;&#x7F3A;&#x5931;<br>&#x4E13;&#x95E8;&#x5EFA;&#x7ACB;&#x7279;&#x5B9A;&#x7684; Language Model&#xFF0C;&#x7136;&#x540E;&#x4F5C;&#x6A21;&#x578B;&#x5224;&#x65AD;&#xFF1B;&#x5982;&#xFF1A;&#x5224;&#x65AD;&#x6B63;&#x5E38;&#x7A0B;&#x5E8F;&#x548C;&#x75C5;&#x6BD2;<br>&#x641C;&#x7D22;&#x5F15;&#x64CE;&#xFF0C;&#x5185;&#x5BB9;&#x5339;&#x914D;</p>
+</blockquote>
+<h3 id="Pros-and-cons"><a href="#Pros-and-cons" class="headerlink" title="Pros and cons"></a>Pros and cons</h3><ul>
+<li>Language Model &#x7B97;&#x662F;&#x4E00;&#x79CD; Generative Model</li>
+<li>Generative Model &#x5219;&#x8BD5;&#x56FE;&#x5BFB;&#x6C42;&#x6570;&#x636E;&#x7684;&#x672C;&#x8D28;&#xFF0C;&#x4E00;&#x4F46;&#x6210;&#x529F;&#x6784;&#x9020;&#x51FA;&#x6570;&#x636E;&#x7684;&#x5B9E;&#x9645;&#x6A21;&#x578B;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x7528;&#x5B83;&#x6765;&#x505A;&#xFF08;&#x51E0;&#x4E4E;&#xFF09;&#x4EFB;&#x4F55;&#x4E8B;&#x60C5;</li>
+<li>&#x4E0D;&#x8FC7;&#xFF0C;&#x4E00;&#x5207;&#x90FD;&#x5EFA;&#x7ACB;&#x5728;&#x80FD;&#x591F;&#x6B63;&#x786E;&#x591F;&#x627E;&#x51FA; the true model &#x7684;&#x524D;&#x63D0;&#x4E0B;</li>
+</ul>
+<h3 id="Language-Model-&#x6784;&#x5EFA;"><a href="#Language-Model-&#x6784;&#x5EFA;" class="headerlink" title="Language Model &#x6784;&#x5EFA;"></a>Language Model &#x6784;&#x5EFA;</h3><p>$$<br>P(S) = P(w_1w_2&#x2026; w_n)<br>= P(w<em>1)\Pi</em>{i=2}^{n}P(w_i|w<em>1&#x2026;w</em>{i-1})<br>$$</p>
+<h4 id="&#x5F15;&#x51FA;&#x95EE;&#x9898;"><a href="#&#x5F15;&#x51FA;&#x95EE;&#x9898;" class="headerlink" title="&#x5F15;&#x51FA;&#x95EE;&#x9898;"></a>&#x5F15;&#x51FA;&#x95EE;&#x9898;</h4><p><strong><font color="red">context&#x957F;&#x5EA6;&#x589E;&#x957F;&#xFF0C;&#x6A21;&#x578B;&#x8BA1;&#x7B97;&#x91CF;&#x7206;&#x70B8;&#x6027;&#x589E;&#x957F;</font></strong></p>
+<blockquote>
+<p>&#x5728;&#x6784;&#x9020;&#x6A21;&#x578B;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x7EDF;&#x8BA1;&#x8BAD;&#x7EC3;&#x6570;&#x636E;&#x91CC;&#x5404;&#x4E2A;&#x5355;&#x8BCD;&#xFF08;&#x5728;&#x5404;&#x4E2A; context &#x4E4B;&#x4E0B;&#xFF09;&#x51FA;&#x73B0;&#x7684;&#x9891;&#x7387;&#x6765;&#x8FD1;&#x4F3C;&#x903C;&#x8FD1;&#x5B83;&#x7684;&#x6982;&#x7387;&#xFF0C;&#x95EE;&#x9898;&#x5728;&#x8FD9;&#x91CC;&#x5C31;&#x4F1A;&#x51FA;&#x73B0;&#x4E86;&#xFF0C;&#x672C;&#x8EAB;&#x968F;&#x7740; context &#x957F;&#x5EA6;&#x7684;&#x589E;&#x957F;&#xFF0C;&#x53EF;&#x80FD;&#x7684;&#x60C5;&#x51B5;&#x4F1A;&#x7206;&#x70B8;&#x6027;&#x5730;&#x589E;&#x957F;&#xFF0C;&#x8BAD;&#x7EC3;&#x6570;&#x636E;&#x4E0D;&#x53EF;&#x80FD;&#x8986;&#x76D6;&#x6240;&#x6709;&#x53EF;&#x80FD;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x66F4;&#x4E25;&#x91CD;&#x7684;&#x662F;&#xFF0C;&#x8981;&#x5B58;&#x50A8;&#x8FD9;&#x4E9B;&#x9891;&#x7387;&#x503C;&#x6240;&#x9700;&#x7684;&#x7A7A;&#x95F4;&#x4E5F;&#x662F;&#x6307;&#x6570;&#x589E;&#x957F;&#x7684;&#x3002;</p>
+</blockquote>
+<h4 id="&#x6734;&#x7D20;&#x8D1D;&#x53F6;&#x65AF;"><a href="#&#x6734;&#x7D20;&#x8D1D;&#x53F6;&#x65AF;" class="headerlink" title="&#x6734;&#x7D20;&#x8D1D;&#x53F6;&#x65AF;"></a>&#x6734;&#x7D20;&#x8D1D;&#x53F6;&#x65AF;</h4><blockquote>
+<p>&#x4E3A;&#x4E86;&#x907F;&#x514D;&#x8FD9;&#x79CD;&#x7206;&#x70B8;&#x6027;&#x7684;&#x590D;&#x6742;&#x5EA6;&#x589E;&#x957F;&#xFF0C;&#x6709;&#x4EBA;&#x505A;&#x4E86;&#x4E00;&#x4E2A;&#x5F88;&#x5927;&#x80C6;&#x7684;&#x8FD1;&#x4F3C;&#x65B9;&#x6CD5;&#xFF1A;&#x629B;&#x5F03;&#x6240;&#x6709;&#x7684;&#x4E0A;&#x4E0B;&#x6587;&#x4FE1;&#x606F;&#x3002;&#x73B0;&#x5728;&#x4E00;&#x4E2A;&#x5355;&#x8BCD;&#x5728;&#x4E0D;&#x540C;&#x7684;&#x5730;&#x65B9;&#x51FA;&#x73B0;&#xFF0C;&#x5BF9;&#x4E8E;&#x8FD9;&#x4E2A;&#x6A21;&#x578B;&#x6765;&#x8BF4;&#x90FD;&#x662F;&#x540C;&#x7B49;&#x5BF9;&#x5F85;&#x4E86;</p>
+</blockquote>
+<p>$$<br>P(S) = P(w_1w_2&#x2026; w<em>n)<br>= \Pi</em>{i=1}^{n}P(w_i)<br>$$</p>
+<p>&#x6734;&#x7D20;&#x8D1D;&#x53F6;&#x65AF;&#x65B9;&#x6CD5;&#xFF0C;&#x5728;&#x5F88;&#x591A;&#x573A;&#x666F;&#x5E94;&#x7528;&#x4E0A;&#xFF0C;&#x56E0;&#x4E3A;&#x6A21;&#x578B;&#x8FD8;&#x662F;&#x592A;&#x7B80;&#x5355;&#xFF0C;&#x9020;&#x6210;&#x4E86;&#x6BD4;&#x8F83;&#x5927;&#x7684; bias &#xFF0C;&#x6548;&#x679C;&#x5E76;&#x4E0D;&#x597D;&#x3002;</p>
+<p>&#x6298;&#x8877;&#x7684;&#x65B9;&#x6CD5;&#x5C31;&#x662F;&#x8003;&#x8651;&#x4E00;&#x5B9A;&#x957F;&#x5EA6;&#x4EE5;&#x5185;&#x7684;&#x4E0A;&#x4E0B;&#x6587;&#x3002;<br>unigram&#x3001;bigram&#x3001;trigram &#x4EE5;&#x53CA;&#x901A;&#x7528;&#x7684; n-gram&#x3002;</p>
+<h3 id="Language-Model-&#x6784;&#x5EFA;&#x9047;&#x5230;&#x7684;&#x95EE;&#x9898;"><a href="#Language-Model-&#x6784;&#x5EFA;&#x9047;&#x5230;&#x7684;&#x95EE;&#x9898;" class="headerlink" title="Language Model &#x6784;&#x5EFA;&#x9047;&#x5230;&#x7684;&#x95EE;&#x9898;"></a>Language Model &#x6784;&#x5EFA;&#x9047;&#x5230;&#x7684;&#x95EE;&#x9898;</h3><p>&#x8BE6;&#x60C5;&#x89C1;pluskid&#x535A;&#x5BA2;&#xFF1A;<a href="http://blog.pluskid.org/?p=361" title="&#x6F2B;&#x8C08; Language Model (2): &#x5B9E;&#x8DF5;&#x7BC7;" target="_blank" rel="external">&#x6F2B;&#x8C08; Language Model (2): &#x5B9E;&#x8DF5;&#x7BC7;</a></p>
+<h4 id="&#x6D6E;&#x70B9;&#x7CBE;&#x5EA6;&#x95EE;&#x9898;"><a href="#&#x6D6E;&#x70B9;&#x7CBE;&#x5EA6;&#x95EE;&#x9898;" class="headerlink" title="&#x6D6E;&#x70B9;&#x7CBE;&#x5EA6;&#x95EE;&#x9898;"></a>&#x6D6E;&#x70B9;&#x7CBE;&#x5EA6;&#x95EE;&#x9898;</h4><p>Language Model &#x8BA1;&#x7B97;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x7684;&#x6982;&#x7387;&#xFF0C;&#x91C7;&#x7528;&#x8FDE;&#x4E58;&#xFF1A;<br>$$<br>P(S) = P(w_1w_2&#x2026; w<em>n)<br>= \Pi</em>{i=1}^{n}P(w_i)<br>$$</p>
+<p>&#x867D;&#x7136;&#xFF0C;&#x7528;&#x6D6E;&#x70B9;&#x8868;&#x793A;&#x6BCF;&#x4E00;&#x4E2A; $P(w_i)$ &#x90FD;&#x6CA1;&#x6709;&#x95EE;&#x9898;&#xFF0C;&#x4F46;&#x662F;&#x8FD9;&#x4E48;&#x591A;&#x6781;&#x5C0F;&#x7684;&#x6570;&#x5B57;&#x4E58;&#x8D77;&#x6765;&#xFF0C;&#x4E00;&#x4E0D;&#x5C0F;&#x5FC3;&#x5C31;&#x4F1A;&#x8D85;&#x51FA;&#x6D6E;&#x70B9;&#x6570;&#x7684;&#x7CBE;&#x5EA6;&#x8303;&#x56F4;&#xFF0C;&#x8FD9;&#x4E2A;&#x65F6;&#x5019;&#x8BA1;&#x7B97;&#x673A;&#x5C31;&#x4F1A;&#x628A;&#x5B83;&#x5F53;&#x4F5C; 0 &#x4E86;&#x3002;</p>
+<blockquote>
+<p>&#x89E3;&#x51B3;&#x7684;&#x529E;&#x6CD5;&#x5176;&#x5B9E;&#x5F88;&#x7B80;&#x5355;&#xFF0C;&#x65E2;&#x7136;&#x95EE;&#x9898;&#x51FA;&#x5728;&#x8FDE;&#x4E58;&#x4E0A;&#xFF0C;&#x90A3;&#x4E48;&#x5C31;&#x62FF;&#x8FDE;&#x4E58;&#x5F00;&#x5200;&#x2014;&#x2014;&#x5728;&#x524D;&#x9762;&#x52A0;&#x4E00;&#x4E2A; $\log$ &#xFF0C;&#x8BA9;&#x5B83;&#x53D8;&#x6210;&#x8FDE;&#x52A0;&#xFF1A;</p>
+</blockquote>
+<p>$$<br>log(P(S)) = \sum_{i=1}^{n}logP(w_i)<br>$$</p>
+<p>$\log$ &#x51FD;&#x6570;&#x662F;&#x5355;&#x8C03;&#x9012;&#x589E;&#x7684;&#xFF0C;&#x56E0;&#x6B64;&#xFF0C;&#x5BF9;$log(P(S))$&#x548C;P(S)&#x7684;&#x6C42;&#x6781;&#x5927;&#x503C;&#xFF08;&#x6781;&#x5C0F;&#x503C;&#xFF09;&#x6548;&#x679C;&#x662F;&#x4E00;&#x6837;&#x7684;&#x3002;</p>
+<blockquote>
+<p>$\log$ &#x51FD;&#x6570;&#x662F;&#x4E00;&#x4E2A;&#x5355;&#x8C03;&#x9012;&#x589E;&#x7684;&#x51FD;&#x6570;&#xFF0C;&#x539F;&#x6765;&#x7684;&#x5927;&#x5C0F;&#x6BD4;&#x8F83;&#x73B0;&#x5728;&#x8FD8;&#x662F;&#x7167;&#x6837;&#x6BD4;&#x8F83;&#x5373;&#x53EF;&#x3002;&#x4E0D;&#x8FC7;&#x6709;&#x4E00;&#x70B9;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x5730;&#x65B9;&#x5C31;&#x662F;&#xFF1A;$\log$ &#x51FD;&#x6570;&#x5728; 0 &#x5904;&#x662F;&#x6CA1;&#x6709;&#x5B9A;&#x4E49;&#x7684;&#xFF08;&#x6216;&#x8005;&#x8BF4; -\infty&#xFF09;&#xFF0C;&#x56E0;&#x6B64;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x907F;&#x514D;&#x6982;&#x7387;&#x503C;&#x4E3A; 0 &#x7684;&#x60C5;&#x51B5;&#x51FA;&#x73B0;&#xFF0C;&#x8FD9;&#x4E5F;&#x5C31;&#x662F;&#x6211;&#x4EEC;&#x8981;&#x8BF4;&#x7684;&#x4E0B;&#x4E00;&#x4E2A;&#x95EE;&#x9898;&#x3002;</p>
+</blockquote>
+<h4 id="0&#x6982;&#x7387;&#x95EE;&#x9898;"><a href="#0&#x6982;&#x7387;&#x95EE;&#x9898;" class="headerlink" title="0&#x6982;&#x7387;&#x95EE;&#x9898;"></a>0&#x6982;&#x7387;&#x95EE;&#x9898;</h4><ul>
+<li>log&#x51FD;&#x6570;&#x4E0B;&#xFF0C;&#x8981;&#x907F;&#x514D;&#x51FA;&#x73B0;0&#x6982;&#x7387;</li>
+<li>&#x5728;&#x5F15;&#x5165;&#x65B0;&#x8BCD;&#x7684;context&#x4E0B;&#xFF0C;&#x7ED3;&#x6784;&#x8F83;&#x597D;&#xFF08;&#x7B26;&#x5408;&#x8BED;&#x6CD5;&#x89C4;&#x5219;&#xFF09;&#x7684;&#x53E5;&#x5B50;&#x548C;&#x7ED3;&#x6784;&#x8F83;&#x5DEE;&#xFF08;&#x5B8C;&#x5168;&#x6CA1;&#x6709;&#x8BED;&#x6CD5;&#xFF09;&#x7684;&#x53E5;&#x5B50;P(S)&#x90FD;&#x662F;0&#x3002;</li>
+</ul>
+<h5 id="&#x89E3;&#x51B3;&#x65B9;&#x6848;-&#x2014;&#x2014;-smoothing"><a href="#&#x89E3;&#x51B3;&#x65B9;&#x6848;-&#x2014;&#x2014;-smoothing" class="headerlink" title="&#x89E3;&#x51B3;&#x65B9;&#x6848; &#x2014;&#x2014; smoothing"></a>&#x89E3;&#x51B3;&#x65B9;&#x6848; &#x2014;&#x2014; smoothing</h5><p>$$<br>P(w<em>i) = \frac{N</em>{w_i} + 1}{N+ |W|}<br>$$<br>&#x5176;&#x4E2D;&#xFF0C;$|W|$ &#x662F;&#x603B;&#x7684;&#x5355;&#x8BCD;&#x7684;&#x4E2A;&#x6570;&#x3002;</p>
+<p>smoothing&#x65B9;&#x6CD5;&#x4E0D;&#x9002;&#x7528;N-gram&#x6A21;&#x578B;&#x3002;</p>
+<h5 id="&#x89E3;&#x51B3;&#x65B9;&#x6848;-&#x2014;&#x2014;-back-off"><a href="#&#x89E3;&#x51B3;&#x65B9;&#x6848;-&#x2014;&#x2014;-back-off" class="headerlink" title="&#x89E3;&#x51B3;&#x65B9;&#x6848; &#x2014;&#x2014; back-off"></a>&#x89E3;&#x51B3;&#x65B9;&#x6848; &#x2014;&#x2014; back-off</h5><blockquote>
+<p>&#x56DE;&#x9000;&#xFF08;back-off&#xFF09;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x53EB;&#x505A; Katz Smoothing&#xFF0C;&#x4E3B;&#x8981;&#x7528;&#x5728; n-gram &#x7684;&#x6A21;&#x578B;&#x4E2D;</p>
+</blockquote>
+<p>&#x4EE5;&#x4E00;&#x4E2A; trigram &#x6A21;&#x578B;&#x4E3A;&#x4F8B;&#xFF0C;&#x6211;&#x4EEC;&#x901A;&#x8FC7;&#x5982;&#x4E0B;&#x7684;&#x529E;&#x6CD5;&#x8BA1;&#x7B97;&#x6761;&#x4EF6;&#x6982;&#x7387;</p>
+<p><img src="http://ogqir9ige.bkt.clouddn.com/4f3544693456382cb8c2ee5d066e33b1.png" alt=""></p>
+<blockquote>
+<p>&#x4E0B;&#x6807; $\text{ML}$ &#x8868;&#x793A;&#x8FD9;&#x662F;&#x901A;&#x8FC7;&#x6700;&#x5927;&#x4F3C;&#x7136;&#x7684;&#x65B9;&#x6CD5;&#x4F30;&#x8BA1;&#x51FA;&#x6765;&#x7684;&#x6982;&#x7387;&#xFF0C;&#x5982;&#x524D;&#x9762;&#x6240;&#x8BF4;&#xFF0C;&#x5982;&#x679C;&#x6CA1;&#x6709; $w_1w_2w_3$ &#x51FA;&#x73B0;&#x5728;&#x8BAD;&#x7EC3;&#x6570;&#x636E;&#x4E2D;&#x7684;&#x8BDD;&#xFF0C;&#x8FD9;&#x4E2A;&#x5F0F;&#x5B50;&#x4F1A;&#x5F97;&#x96F6;&#xFF0C;&#x8FD9;&#x4E0D;&#x662F;&#x6211;&#x4EEC;&#x60F3;&#x770B;&#x5230;&#x7684;&#xFF0C;&#x6211;&#x4EEC;&#x7528;&#x56DE;&#x9000;&#x7684;&#x529E;&#x6CD5;&#x6765;&#x8BA1;&#x7B97;&#x5B83;&#x7684;&#x6982;&#x7387;&#xFF0C;&#x51CF;&#x5C0F;&#x4E0A;&#x4E0B;&#x6587;&#x7684;&#x957F;&#x5EA6;&#xFF0C;&#x56E0;&#x6B64;&#x91CD;&#x65B0;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x6982;&#x7387;&#x8BA1;&#x7B97;&#x516C;&#x5F0F;&#x5982;&#x4E0B;:<br>&#x56E0;&#x6B64;&#x91CD;&#x65B0;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x6982;&#x7387;&#x8BA1;&#x7B97;&#x516C;&#x5F0F;&#x5982;&#x4E0B;&#xFF1A;</p>
+</blockquote>
+<p><img src="http://ogqir9ige.bkt.clouddn.com/c0371df3d09f3bba0829850932d0016c.png" alt="Katz"></p>
+<p>$&#x5176;&#x4E2D; \alpha(w_1w_2) &#x662F;&#x56DE;&#x9000;&#x7CFB;&#x6570;&#xFF0C;d_r &#x662F;&#x6253;&#x6298;&#x7684;&#x6298;&#x6263;&#x7CFB;&#x6570;&#xFF0C;&#x4E0B;&#x6807; r = C(w_1w_2w_3)$</p>
+<p>&#x8FD9;&#x90E8;&#x5206;&#x63A8;&#x5BFC;&#x5E76;&#x6CA1;&#x6709;&#x7406;&#x89E3;&#x5F88;&#x6E05;&#x695A;&#x3002;&#x5927;&#x4F53;&#x4E0A;&#x7406;&#x89E3;&#x4E0B;&#x6765;&#xFF1A;</p>
+<ul>
+<li>&#x9047;&#x5230;&#x4E0D;&#x5B58;&#x5728;&#x7684;&#x8BCD;&#xFF0C;&#x5C31;&#x5220;&#x51CF;&#x8BCD;&#x2014;&#x2014;&#x56DE;&#x9000;&#xFF0C;&#x53BB;&#x8BA1;&#x7B97;&#x66F4;&#x5C0F;&#x957F;&#x5EA6;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x6982;&#x7387;&#xFF0C;&#x5982;Trigram&#x56DE;&#x9000;&#x5230;Bigram,&#x5982;&#x679C;&#x4ECD;&#x5B58;&#x5728;0&#x6982;&#x7387;&#xFF0C;&#x7EE7;&#x7EED;&#x56DE;&#x9000;&#x5230; unigram</li>
+</ul>
+<h2 id="A-Neural-Probabilistic-Language-Model"><a href="#A-Neural-Probabilistic-Language-Model" class="headerlink" title="A Neural Probabilistic Language Model"></a>A Neural Probabilistic Language Model</h2><p><a href="http://www.jmlr.org/papers/volume3/bengio03a/bengio03a.pdf" target="_blank" rel="external">A Neural Probabilistic Language Model, Journal of Machine Learning Research 3 (2003) 1137&#x2013;1155, by Yoshua Bengio &#x2026; </a></p>
+<p><a href="http://blog.csdn.net/tuqinag/article/details/43798033" title="Deep Learning &#x8BFB;&#x4E66;&#x7B14;&#x8BB0;&#xFF08;&#x5341;&#x4E8C;&#xFF09;&#xFF1A;A Neural Probabilistic Language Model" target="_blank" rel="external"> Deep Learning &#x8BFB;&#x4E66;&#x7B14;&#x8BB0;&#xFF08;&#x5341;&#x4E8C;&#xFF09;&#xFF1A;A Neural Probabilistic Language Model</a></p>
+<p><a href="http://cpmarkchang.logdown.com/posts/255785-neural-network-neural-probabilistic-language-model" title="&#x985E;&#x795E;&#x7D93;&#x7DB2;&#x8DEF; -- Neural Probabilistic Language Model" target="_blank" rel="external">&#x985E;&#x795E;&#x7D93;&#x7DB2;&#x8DEF; &#x2013; Neural Probabilistic Language Model</a><br> &#x8FD9;&#x7BC7;&#x4E2D;&#x6587;&#x535A;&#x5BA2;&#x7B80;&#x660E;&#x627C;&#x8981;&#x3002;&#x611F;&#x8C22;&#x535A;&#x4E3B;&#x65E0;&#x79C1;&#x5206;&#x4EAB;&#x65B0;&#x7684;&#xFF0C;&#x5E76;&#x4E14;&#x7528;&#x8FD9;&#x4E48;&#x5E72;&#x7EC3;&#x7684;&#x8BED;&#x8A00;&#x8868;&#x8FBE;&#x51C6;&#x786E;&#xFF0C;</p>
+<h3 id="1-1-Fighting-the-Curse-of-Dimensionality-with-Distributed-Representations"><a href="#1-1-Fighting-the-Curse-of-Dimensionality-with-Distributed-Representations" class="headerlink" title="1.1 Fighting the Curse of Dimensionality with Distributed Representations"></a>1.1 Fighting the Curse of Dimensionality with Distributed Representations</h3><h4 id="&#x65B9;&#x6CD5;&#x603B;&#x7ED3;&#x5982;&#x4E0B;&#xFF1A;"><a href="#&#x65B9;&#x6CD5;&#x603B;&#x7ED3;&#x5982;&#x4E0B;&#xFF1A;" class="headerlink" title="&#x65B9;&#x6CD5;&#x603B;&#x7ED3;&#x5982;&#x4E0B;&#xFF1A;"></a>&#x65B9;&#x6CD5;&#x603B;&#x7ED3;&#x5982;&#x4E0B;&#xFF1A;</h4><ol>
+<li><p>&#x6BCF;&#x4E00;&#x4E2A;word&#x5173;&#x8054;&#x4E00;&#x4E2A;feature vector</p>
+</li>
+<li><p>express the joint probability function</p>
+</li>
+<li><p>learn feature vector and probability function</p>
+</li>
+</ol>
+<p>&gt;</p>
+<ol>
+<li>associate with each word in the vocabulary a distributed word feature vector (a real- valued vector in $R^m$),<br>&gt;</li>
+<li>express the joint probability function of word sequences in terms of the feature vectors of these words in the sequence, and<br>&gt;</li>
+<li>learn simultaneously the word feature vectors and the parameters of that probability function.</li>
+</ol>
+<h4 id="feature-vector"><a href="#feature-vector" class="headerlink" title="feature vector"></a>feature vector</h4><ul>
+<li>represent different aspects of the word</li>
+<li>number of features is much smaller than the size of the vocabulary.</li>
+<li>the feature vector are learned</li>
+<li>the feature vector could be initialized using prior knowledge of semantic feature</li>
+</ul>
+<h4 id="probability-function"><a href="#probability-function" class="headerlink" title="probability function"></a>probability function</h4><ul>
+<li>probability function expressed as: a product of conditional probabilities of the next word given the previous ones.</li>
+<li>This function has parameters can be tuned to maximize the log-likelihood of the training data.</li>
+</ul>
+<h3 id="A-Neural-Model"><a href="#A-Neural-Model" class="headerlink" title="A Neural Model"></a>A Neural Model</h3><h4 id="Neural-architecture"><a href="#Neural-architecture" class="headerlink" title="Neural architecture"></a>Neural architecture</h4><p><img src="http://ogqir9ige.bkt.clouddn.com/598bb8720388e105d248f1a61a61c482.png" alt="Neural architecture"></p>
+<p>$$<br>L = 1/T &#x2211;log f(w<em>t,w</em>{t&#x2212;1},&#xB7;&#xB7;&#xB7; ,w_{t&#x2212;n+1};&#x3B8;)+R(&#x3B8;),<br>$$</p>
+<h4 id="parameters"><a href="#parameters" class="headerlink" title="parameters"></a>parameters</h4><ul>
+<li>&#x81EA;&#x7531;&#x53C2;&#x4E2A;&#x6570;&#x6B63;&#x6BD4;&#x4E8E; vocabulary&#x89C4;&#x6A21;&#xFF0C;V</li>
+<li>&#x57FA;&#x4E8E;sharing structure&#xFF0C;&#x81EA;&#x7531;&#x53C2;&#x4E2A;&#x6570;&#x5C06;sub-linear with V</li>
+</ul>
+<blockquote>
+<p>In the above model, the number of free parameters only scales linearly with V , the number of words in the vocabulary. It also only scales linearly with the order n : the scaling factor could be reduced to sub-linear if more sharing structure were introduced, e.g. using a time-delay neural network or a recurrent neural network (or a combination of both).</p>
+</blockquote>
+<h2 id="Hierarchical-probabilistic-neural-network-language-model"><a href="#Hierarchical-probabilistic-neural-network-language-model" class="headerlink" title="Hierarchical probabilistic neural network language model"></a>Hierarchical probabilistic neural network language model</h2><p><a href="http://cpmarkchang.logdown.com/posts/276263--hierarchical-probabilistic-neural-networks-neural-network-language-model" title="&#x985E;&#x795E;&#x7D93;&#x7DB2;&#x8DEF; -- Hierarchical Probabilistic Neural Network Language Model (Hierarchical Softmax" target="_blank" rel="external">&#x985E;&#x795E;&#x7D93;&#x7DB2;&#x8DEF; &#x2013; Hierarchical Probabilistic Neural Network Language Model (Hierarchical Softmax)
+</a></p>
+<h2 id="Three-New-Graphical-Models-for-Statistical-Language-Modellin"><a href="#Three-New-Graphical-Models-for-Statistical-Language-Modellin" class="headerlink" title="Three New Graphical Models for Statistical Language Modellin"></a>Three New Graphical Models for Statistical Language Modellin</h2><p><a href="https://www.cs.toronto.edu/~amnih/papers/threenew.pdf" title="Three New Graphical Models for Statistical Language Modellin" target="_blank" rel="external">Three New Graphical Models for Statistical Language Modellin</a><br><a href="https://www.cs.toronto.edu/~amnih/papers/threenew.pdf" target="_blank" rel="external">https://www.cs.toronto.edu/~amnih/papers/threenew.pdf</a></p>
+<h3 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h3><blockquote>
+<p>We propose three new probabilistic language models that define the distribution of the next word in a sequence given several preceding words by using distributed representations of those words.</p>
+<p>how real-valued distributed representations for words can be learned at the same time as learning a large set of stochastic binary hidden features that are used to predict the distributed representation of the next word from previous distributed representations.</p>
+<p>Adding connections from the previous states of the binary hidden features improves performance as does adding direct connections between the real-valued distributed representations.</p>
+</blockquote>
+<h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><h4 id="density-estimation-for-discrete-distributions-difficult-in-smoothing"><a href="#density-estimation-for-discrete-distributions-difficult-in-smoothing" class="headerlink" title="density estimation for discrete distributions difficult in smoothing"></a>density estimation for discrete distributions difficult in smoothing</h4><blockquote>
+<p>Density estimation for discrete distributions is inherently difficult because there is no simple way to do smoothing based on input similarity.</p>
+<p>Since all discrete values are equally similar (or dissimilar) assigning similar probabilities to similar inputs, which is typically done for continuous inputs, does not work in the discrete case.<br>&#x79BB;&#x6563;&#x6570;&#x636E;&#xFF0C;&#x8981;&#x4E48;&#x76F8;&#x4F3C;&#xFF0C;&#x8981;&#x4E48;&#x4E0D;&#x76F8;&#x4F3C;&#x3002;&#x65E0;&#x6CD5;&#x6839;&#x636E;&#x76F8;&#x4F3C;&#x5EA6;&#x7684;&#x4E0D;&#x540C;&#x6765;&#x5206;&#x914D;&#x6982;&#x7387;&#x3002;</p>
+<p>Representing discrete structures such as words using continuous-valued distributed representations and then assigning probability to these structures based on their representations automatically introduces smoothing into the density estimation problem making the data sparsity problem less severe.</p>
+</blockquote>
+<h4 id="continuous-valued-distribution-representation-was-introdeced"><a href="#continuous-valued-distribution-representation-was-introdeced" class="headerlink" title="continuous-valued distribution representation was introdeced"></a>continuous-valued distribution representation was introdeced</h4><font color="blue">&#x4E8E;&#x662F;&#xFF0C;&#x5F15;&#x5165;Representing discrete structures&#xFF0C;&#xFF08;&#x5982;&#xFF1A;word&#x2019;s distributed feature vectors&#xFF09;&#x6765;&#x8868;&#x5F81;word&#x3002;&#x7528;feature vector&#x4EE3;&#x8868;&#x8BCD;&#xFF0C;words&#x8FD9;&#x79CD;&#x79BB;&#x6563;&#x7ED3;&#x6784;&#x88AB;&#x4E00;&#x4E2A;continuous-valued distribution representations&#x4EE3;&#x66FF;&#x4E86;&#xFF0C;&#x56E0;&#x6B64;automatically introduces smoothing into the density estimation problem&#xFF0C;&#x4ECE;&#x800C;&#x7F13;&#x89E3;&#x4E86;data sparsity problem&#x3002;</font>
+
+
+<h4 id="drawback-long-training-times"><a href="#drawback-long-training-times" class="headerlink" title="drawback: long training times"></a>drawback: long training times</h4><blockquote>
+<p>A number of techniques have been proposed to address the main drawback of these models &#x2013; their long training times</p>
+</blockquote>
+<h4 id="Recently-Approach"><a href="#Recently-Approach" class="headerlink" title="Recently Approach"></a>Recently Approach</h4><ul>
+<li>Hierarchical alternatives to feed-forward networks which are faster to train and use, do not perform quite as well.</li>
+</ul>
+<p>(Morin &amp; Bengio&#xFF1A; Hierarchical prob- abilistic neural network language model, 2005; Blitzer et al., 2005b Hierarchical distributed representations for statistical language modeling.)</p>
+<ul>
+<li>Recently, a stochastic model with hidden variables has been proposed for language modelling . It uses distributed representations that consist of stochastic binary variables as opposed to real numbers.</li>
+</ul>
+<p>(Blitzer et al., 2005a)&#xFF1A;Distributed latent variable models of lexical co- occurrences.</p>
+<blockquote>
+<p>&#x4F46;&#x662F;&#x7531;&#x4E8E;&#x6A21;&#x578B;&#x8BAD;&#x7EC3;&#x96BE;&#x5EA6;&#xFF0C;&#x8FD9;&#x79CD;&#x6A21;&#x578B;&#x4E0D;&#x80FD;scale well to large vocabulary sizes&#x3002;&#x56E0;&#x4E3A; inference to model&#x592A;&#x96BE;&#x4E86;&#x2014;&#x2014;&#x4F60;&#x60F3;&#x4E5F;&#x77E5;&#x9053;&#xFF0C;&#x8FD9;&#x79CD;&#x5E26;&#x5927;&#x91CF;binary variables&#x7684;model&#x8BAD;&#x7EC3;&#x96BE;&#x5EA6;&#x4E00;&#x822C;&#x6765;&#x8BF4;&#x548C;2&#x7684;&#x6307;&#x6570;&#x6B21;&#x90FD;&#x6709;&#x70B9;&#x5565;&#x5173;&#x7CFB;&#xFF0C;&#x8FD9;&#x91CC;&#x7684;m&#x4E0D;&#x4E00;&#x5B9A;&#x662F;&#x4EC0;&#x4E48;&#x3002;&#x5728;&#x8FD9;&#x7BC7;&#x6587;&#x7AE0;&#x91CC;&#x4E5F;&#x662F;&#x4E00;&#x6837;&#xFF0C;&#x521A;&#x5F00;&#x59CB;Hinton&#x63D0;&#x51FA;&#x7684;&#x6A21;&#x578B;&#x539F;&#x578B;RBM&#x673A;&#x8BAD;&#x7EC3;&#x65F6;&#x95F4;&#x4E5F;&#x662F;&#x7EA7;&#x522B;&#x7684;&#x3002;</p>
+<p>&#x4E3A;&#x4E86;&#x65B9;&#x4FBF;&#x8D77;&#x89C1;&#xFF0C;&#x8FD9;&#x7BC7;&#x8BBA;&#x6587;&#x91CC;&#x9762;&#x6D89;&#x53CA;&#x5230;&#x7684;RBM&#x539F;&#x578B;&#x548C;&#x4E09;&#x4E2A;&#x57FA;&#x4E8E;Restricted Boltzmann Machine&#x7684;Models&#x5C06;&#x88AB;&#x547D;&#x540D;&#x4E3A;&#xFF1A;</p>
+<ul>
+<li>&#x96F6;&#x53F7;&#x673A;&#x2014;&#x2014;RBM Model</li>
+<li>&#x521D;&#x53F7;&#x673A;&#x2014;&#x2014;Factored RBM</li>
+<li>&#x4E8C;&#x53F7;&#x673A;&#x2014;&#x2014;The Temporal Factored RBM</li>
+<li>&#x4E09;&#x53F7;&#x673A;&#x2014;&#x2014;Log-Bilinear Language Model</li>
+</ul>
+<p>from <a href="https://zhuanlan.zhihu.com/p/20434661" title="&#x3010;Paper&#x3011;ICML 2007 - Three New Graphical Models for Statistical Language Modeling" target="_blank" rel="external">&#x8BB8;&#x4E5D;&#x7940;-&#x77E5;&#x4E4E;</a></p>
+</blockquote>
+<h4 id="Out-Approach"><a href="#Out-Approach" class="headerlink" title="Out Approach"></a>Out Approach</h4><p>We start with an undirected graphical model that uses a large number of hidden binary variables to capture the desired conditional distribution.</p>
+<p>Then we augment it with temporal connections between hidden units to increase the number of preceding words taken into account without significantly increasing the number of model parameters.</p>
+<p>Finally, we investigate a model that predicts the distributed representation for the next word using a linear function of the distributed representations of the preceding words, without using any additional latent variables.</p>
+<h3 id="The-Factored-Restricted-Boltzmann-Machine-Language-Model-&#x96F6;&#x53F7;&#x673A;&#x548C;&#x521D;&#x53F7;&#x673A;"><a href="#The-Factored-Restricted-Boltzmann-Machine-Language-Model-&#x96F6;&#x53F7;&#x673A;&#x548C;&#x521D;&#x53F7;&#x673A;" class="headerlink" title="The Factored Restricted Boltzmann Machine Language Model : &#x96F6;&#x53F7;&#x673A;&#x548C;&#x521D;&#x53F7;&#x673A;"></a>The Factored Restricted Boltzmann Machine Language Model : &#x96F6;&#x53F7;&#x673A;&#x548C;&#x521D;&#x53F7;&#x673A;</h3><h4 id="Goal"><a href="#Goal" class="headerlink" title="Goal"></a>Goal</h4><blockquote>
+<p>Our goal is to design a probabilistic model for word sequences that uses distributed representations for words and captures the dependencies between words in a se- quence using stochastic hidden variables.</p>
+</blockquote>
+<ul>
+<li>use distributed representations for words</li>
+<li>captures the dependencies between words using stochastic hidden variables.</li>
+</ul>
+<h4 id="&#x96F6;&#x53F7;&#x673A;"><a href="#&#x96F6;&#x53F7;&#x673A;" class="headerlink" title="&#x96F6;&#x53F7;&#x673A;"></a>&#x96F6;&#x53F7;&#x673A;</h4><p>Energy function:</p>
+<p><img src="http://ogqir9ige.bkt.clouddn.com/98fff360a8c63be13fa51c708ef24cc4.png" alt=""></p>
+<p>Drawback:</p>
+<ul>
+<li>parameters : N * N (N is vocabulary length)</li>
+<li>parameters depend on position</li>
+</ul>
+<p>Problems Addressed by :</p>
+<h4 id="1&#x53F7;&#x673A;-2-RBM-with-distributed-representations-for-words"><a href="#1&#x53F7;&#x673A;-2-RBM-with-distributed-representations-for-words" class="headerlink" title="1&#x53F7;&#x673A;:  2. RBM with distributed representations for words"></a>1&#x53F7;&#x673A;:  2. RBM with distributed representations for words</h4><ul>
+<li>introducing distributed representations</li>
+<li>sharing word feature vectors</li>
+<li>related work:<ul>
+<li><blockquote>
+<p>This type of parameterization has been used in feed-forward neural networks for mod- elling symbolic relations (Hinton, 1986) and for statis- tical language modelling (Bengio et al., 2003).</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="Feature-vectors"><a href="#Feature-vectors" class="headerlink" title="Feature vectors"></a>Feature vectors</h5><p>a real-valued feature vector of length Nf</p>
+<h5 id="Energy-function"><a href="#Energy-function" class="headerlink" title="Energy function"></a>Energy function</h5><p><img src="http://ogqir9ige.bkt.clouddn.com/a830c0e317646f76edd2909704ec8199.png" alt="energy_function_no1_machine"></p>
+<h5 id="Advantage-reduced-parameters-dimension"><a href="#Advantage-reduced-parameters-dimension" class="headerlink" title="Advantage : reduced parameters (dimension)"></a>Advantage : reduced parameters (dimension)</h5><ul>
+<li>$N_f &lt;&lt; N_m$</li>
+<li>sharing feature vectors force to capture <strong>position- invariant</strong> information</li>
+</ul>
+<blockquote>
+<p>As can be seen from Eqs. 1 and 2, the feature-based parameteriza- tion constrains each of the visible-hidden interaction matrices Gi to be a product of two low-rank matrices R and Wi, while the original parameterization does not constrain Gi in any way.</p>
+</blockquote>
+<h5 id="The-joint-conditional-distribution-of-the-next-word"><a href="#The-joint-conditional-distribution-of-the-next-word" class="headerlink" title="The joint conditional distribution of the next word"></a>The joint conditional distribution of the next word</h5><p><img src="http://ogqir9ige.bkt.clouddn.com/b12c2e869cb15fbd5e8a3c26696a6654.png" alt=""></p>
+<h5 id="conditional-distribution-of-the-next-word"><a href="#conditional-distribution-of-the-next-word" class="headerlink" title="conditional distribution of the next word"></a>conditional distribution of the next word</h5><p>&#x56E0;&#x6B64;&#xFF0C;w<em>n&#x5728;&#x7ED9;&#x5B9A;w</em>{1:n-1}&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x7684;&#x6761;&#x4EF6;&#x6982;&#x7387;&#x5C31;&#x662F;&#x516C;&#x5F0F;&#xFF08;3&#xFF09;&#x7684;&#x8FB9;&#x7F18;&#x6982;&#x7387;&#xFF0C;&#x53EF;&#x4EE5;&#x8BA1;&#x7B97;&#x4E3A;</p>
+<p><img src="http://ogqir9ige.bkt.clouddn.com/7d51d81daf6ec5262686fea143028569.png" alt=""></p>
+<blockquote>
+<p>&#x5C3D;&#x7BA1;&#x540C;&#x4E00;&#x4E2A;&#x8BCD;&#x5BF9;&#x5E94;&#x7684;&#x8FD8;&#x662F;&#x5728;&#x53D8;&#xFF08;&#x6BD4;&#x5982;&#x8BF4;&#x7B2C;&#x4E09;&#x4E2A;&#x8BCD;&#x662F;dog&#x548C;&#x7B2C;&#x4E00;&#x4E2A;&#x8BCD;&#x662F;dog&#x65F6;&#x5BF9;&#x5E94;&#x7684;&#x8FB9;&#x6743;&#x503C;&#x77E9;&#x9635;&#x5206;&#x522B;&#x4E3A;&#x548C;&#xFF09;&#x2014;&#x2014;&#x6839;&#x636E;&#x524D;&#x6587;&#xFF08;&#x7279;&#x522B;&#x662F;&#x90A3;&#x53E5; Using the same feature matrix  &#x2026; capture position-invariant information about words&#xFF09;&#x6697;&#x793A;&#x4E86;&#x8FD9;&#x4E2A;&#x77E9;&#x9635;&#x662F;&#x4E3A;&#x4E86;&#x6293;position-variant information about words&#x3002;</p>
+<font color="red">&#x4F46;&#x662F;&#x7531;&#x4E8E;&#x8F93;&#x5165;&#x53D8;&#x91CF;&#xFF08;&#x8F93;&#x5165;&#x53D8;&#x91CF;&#x5BF9;&#x5E94;&#x7684;&#x662F;0&#x53F7;&#x673A;&#x7684;&#x548C;&#x521D;&#x53F7;&#x673A;&#x4E2D;&#x7684;&#xFF09;&#xFF0C;&#x5728;&#x8FD9;&#x91CC;&#x662F;&#xFF0C;&#x8FD9;&#x4E2A;&#x8F93;&#x5165;&#x53D8;&#x91CF;&#x56FA;&#x5B9A;&#x4E86;&#xFF0C;&#x56E0;&#x6B64;&#x8FD8;&#x80FD;&#x6293;position-invariant information&#x3002;</font>
+
+</blockquote>
+<h5 id="2-1-Making-Predictions"><a href="#2-1-Making-Predictions" class="headerlink" title="2.1 Making Predictions"></a>2.1 Making Predictions</h5><font color="red">&#x4ECE;&#x8FD9;&#x4E4B;&#x540E;&#xFF0C;&#x770B;&#x4E0D;&#x61C2;&#x4E86; &#x2014;&#x2014;&#x2014; 2017-01-21&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x672A;&#x5B8C;&#x5F85;&#x7EED;</font>
+
+
+
+<h3 id="&#x76F8;&#x5173;&#x77E5;&#x8BC6;&#x70B9;&#xFF1A;"><a href="#&#x76F8;&#x5173;&#x77E5;&#x8BC6;&#x70B9;&#xFF1A;" class="headerlink" title="&#x76F8;&#x5173;&#x77E5;&#x8BC6;&#x70B9;&#xFF1A;"></a>&#x76F8;&#x5173;&#x77E5;&#x8BC6;&#x70B9;&#xFF1A;</h3><ul>
+<li>Restricted Boltzmann Machines (RBM)</li>
+</ul>
+<h3 id="&#x96BE;&#x70B9;&#x7406;&#x89E3;&#xFF1A;"><a href="#&#x96BE;&#x70B9;&#x7406;&#x89E3;&#xFF1A;" class="headerlink" title="&#x96BE;&#x70B9;&#x7406;&#x89E3;&#xFF1A;"></a>&#x96BE;&#x70B9;&#x7406;&#x89E3;&#xFF1A;</h3><ul>
+<li><p>Density estimation for discrete distributions is inherently difficult because there is no simple way to do smoothing based on input similarity.</p>
+<ul>
+<li><font color="red"> <strong>why smoothing is necessary?</strong></font></li>
+<li>conception: density estimation</li>
+</ul>
+</li>
+</ul>
+<h4 id="Data-sparsity"><a href="#Data-sparsity" class="headerlink" title="Data sparsity"></a>Data sparsity</h4><blockquote>
+<p>One of the biggest problems is that mostly the cube is very sparsely populated.<br>Many of the cell combinations might not make sense or the data for them might be missing. In the relational world storage of such data is not a problem: we only keep whatever there is. If we want to keep closer to our multidimensional view of the world, we face a dilemma: either store empty space or create an index to keep track of the nonempty cells. Or - search for an alternative solution.</p>
+</blockquote>
+<p><a href="https://www.quora.com/What-is-a-clear-explanation-of-data-sparsity" title="What is a clear explanation of data sparsity?" target="_blank" rel="external">What is a clear explanation of data sparsity?</a></p>
+<h2 id="Restricted-Boltzmann-Machines-RBM"><a href="#Restricted-Boltzmann-Machines-RBM" class="headerlink" title="Restricted Boltzmann Machines (RBM)"></a>Restricted Boltzmann Machines (RBM)</h2><p><a href="http://image.diku.dk/igel/paper/AItRBM-proof.pdf" title="An Introduction to Restricted Boltzmann Machines" target="_blank" rel="external">An Introduction to Restricted Boltzmann Machines</a></p>
+<p><a href="http://deeplearning.net/tutorial/rbm.html" title="Restricted Boltzmann Machines (RBM)" target="_blank" rel="external">Restricted Boltzmann Machines (RBM)</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/20396389?columnSlug=system" title="&#x3010;Paper&#x77E5;&#x8BC6;&#x70B9;&#x3011;Restricted Boltzmann Machines(RBM)" target="_blank" rel="external">&#x3010;Paper&#x77E5;&#x8BC6;&#x70B9;&#x3011;Restricted Boltzmann Machines(RBM)</a></p>
+<h3 id="Energy-Based-Models-EBM"><a href="#Energy-Based-Models-EBM" class="headerlink" title="Energy-Based Models (EBM)"></a>Energy-Based Models (EBM)</h3><p>EBM&#x7528;energy function&#x6765;&#x8868;&#x5F81;&#x6982;&#x7387;&#x5BC6;&#x5EA6;&#x51FD;&#x6570;&#xFF1A;</p>
+<blockquote>
+<p>Energy-based probabilistic models define a probability distribution through an energy function, as follows:</p>
+</blockquote>
+<p>$$p(x) = \frac {e^{-E(x)}} {Z}.$$</p>
+<p>Z&#x7528;&#x4E8E;&#x5F52;&#x4E00;&#x5316;&#xFF0C;&#x79F0;&#x4F5C;partition function&#xFF1A;</p>
+<blockquote>
+<p>The normalizing factor Z is called the partition function by analogy with physical systems.</p>
+</blockquote>
+<p>$$Z = \sum_x e^{-E(x)}$$</p>
+<p>log-likelihood function:<br>$$<br>\mathcal{L}(\theta, \mathcal{D}) = \frac{1}{N} \sum_{x^{(i)} \in<br>\mathcal{D}} \log\ p(x^{(i)})\<br>$$</p>
+<p>loss function:</p>
+<p>$$<br>\ell (\theta, \mathcal{D}) = - \mathcal{L} (\theta, \mathcal{D})<br>$$</p>
+<p>&#x5229;&#x7528;SGD&#xFF08;&#x968F;&#x673A;&#x68AF;&#x5EA6;&#x4E0B;&#x964D;&#xFF09;&#x6C42;&#x89E3;&#xFF1A;</p>
+<blockquote>
+<p>using the stochastic gradient $-\frac{\partial  \log p(x^{(i)})}{\partial<br>\theta}$, where $\theta$ are the parameters of the model.</p>
+</blockquote>
+<h4 id="EBMs-with-Hidden-Units"><a href="#EBMs-with-Hidden-Units" class="headerlink" title="EBMs with Hidden Units"></a>EBMs with Hidden Units</h4><p>hidden Units&#x5F15;&#x5165;&#x539F;&#x56E0;&#xFF1A;</p>
+<ul>
+<li>&#x65E0;&#x6CD5;&#x89C2;&#x6D4B;&#x5168;&#x6837;&#x672C;</li>
+<li>&#x60F3;&#x5F15;&#x5165;&#x4E00;&#x4E9B;&#x672A;&#x89C2;&#x6D4B;&#x7684;&#x91CF;&#x6765;&#x63D0;&#x5347;&#x6A21;&#x578B;&#x8868;&#x73B0;&#x529B;</li>
+</ul>
+<blockquote>
+<p>In many cases of interest, we do not observe the example x fully, or we want to introduce some non-observed variables to increase the expressive power of the model. So we consider an observed part (still denoted x here) and a hidden part h. We can then write:</p>
+</blockquote>
+<p>$$P(x) = \sum_h P(x,h) = \sum_h \frac{e^{-E(x,h)}}{Z}.$$</p>
+<p>&#x6211;&#x4EEC;&#x5F15;&#x5165;&#x4E00;&#x4E2A;free energy&#x7684;&#x6982;&#x5FF5;</p>
+<blockquote>
+<p>In such cases, to map this formulation to one similar to Eq. (1), we introduce the notation (inspired from physics) of free energy, defined as follows:</p>
+</blockquote>
+<p>$$<br>\mathcal{F}(x) = - \log \sum_h e^{-E(x,h)}<br>$$</p>
+<p>which allows us to write,</p>
+<p>$$<br>P(x) = \frac{e^{-\mathcal{F}(x)}}{Z} \text{ with } Z=\sum_x e^{-\mathcal{F}(x)}.<br>$$</p>
+<p>The data negative log-likelihood gradient then has a particularly interesting form.</p>
+<p>$$<br>-\frac{\partial  \log p(x)}{\partial \theta} = \frac{\partial \mathcal{F}(x)}{\partial \theta} -<br>       \sum_{\tilde{x}} p(\tilde{x}) \<br>           \frac{\partial \mathcal{F}(\tilde{x})}{\partial\theta}<br>$$</p>
+<p>&#x5361;&#x5728;&#x516C;&#x5F0F;&#x63A8;&#x5BFC;&#x4E0A;&#xFF0C;&#x5E78;&#x5F97;&#x4E00;&#x7BC7;&#x7B14;&#x8BB0;&#xFF0C;&#x4F5C;&#x8005;&#x8BE6;&#x7EC6;&#x7ED9;&#x51FA;&#x4E86;&#x63A8;&#x5BFC;&#x8FC7;&#x7A0B;&#x3002;&#x73B0;&#x76F4;&#x63A5;&#x4ECE;<a href="https://zhuanlan.zhihu.com/p/20396389?columnSlug=system" title="&#x3010;Paper&#x77E5;&#x8BC6;&#x70B9;&#x3011;Restricted Boltzmann Machines(RBM)" target="_blank" rel="external">&#x3010;Paper&#x77E5;&#x8BC6;&#x70B9;&#x3011;Restricted Boltzmann Machines(RBM)</a>&#x6252;&#x8FC7;&#x6765;&#xFF1A;</p>
+<p>$$<br>log(P(x))=-F(x)-log(Z) \<br>\frac{\partial{log(P(x))}}{\partial\theta}=\frac{-F(x)}{\partial\;\theta}-\frac{log(Z)}{\partial \;\theta} \<br>\frac{\partial log(P(x))}{\partial \theta} = \frac{-F(x)}{\partial\;\theta}-\frac{1}{Z}\frac{\partial Z}{\partial \theta}\<br>\frac{\partial Z}{\partial \theta}=\sum_x \frac{e^{-F(x)}}{\partial \theta} = \sum_x e^{-F(x) } \cdot \frac{-F(x)}{\partial \theta}&#xFF08;&#x6CE8;&#x610F;\frac{\partial e^{y(x)}}{\partial x}=e^{y(x)}\cdot \frac{\partial y(x)}{\partial x}&#xFF09;\<br>\frac{\partial log(P(x))}{\partial \theta} = \frac{-F(x)}{\partial\;\theta}-\frac{1}{Z} \sum<em>x e^{-F(x) } \cdot \frac{-F(x)}{\partial \theta}\<br>\frac{\partial log(P(x))}{\partial \theta} = \frac{-F(x)}{\partial\;\theta}-\sum</em>{\tilde{x}} P(\tilde{x}) \cdot \frac{-F(\tilde{x})}{\partial \theta}\<br>-\frac{\partial log\;p(x)}{\partial\theta}=\frac{\partial \mathcal{F}(x)}{\partial \theta} - \sum_{\tilde{x}}P(\tilde{x})\frac{\partial \mathcal{F}(\tilde{x})}{\partial \theta}<br>$$</p>
+<p>&#x8FD9;&#x4E2A;&#x5F0F;&#x5B50;&#x524D;&#x9762;&#x90E8;&#x5206;&#x53EB;positive phase&#xFF0C;&#x540E;&#x9762;&#x7684;&#x53EB;negative phase&#x3002;</p>
+<blockquote>
+<p>positive phase: increases the probability of training data, by reducing the corresponding free energy.</p>
+<p>negative phase: decreases the probability of samples generated by the model.</p>
+</blockquote>
+<p>Negative&#x90E8;&#x5206;&#x5B9E;&#x9645;&#x4E0A;&#x662F;$\frac{\partial \mathcal{F}(\tilde{x})}{\partial\theta}$&#x5728;P&#x5206;&#x5E03;&#x4E0B;&#x7684;&#x671F;&#x671B;&#xFF1A;</p>
+<p>$$ E<em>P [ \frac{\partial \mathcal{F}(x)} {\partial \theta} ] = \sum</em>{\tilde{x}} p(\tilde{x}) \<br>     \frac{\partial \mathcal{F}(\tilde{x})}{\partial\theta}$$</p>
+<blockquote>
+<p>It is usually difficult to determine this gradient analytically, as it involves the computation of E_P [ \frac{\partial \mathcal{F}(x)} {\partial \theta} ]. This is nothing less than an expectation over all possible configurations of the input x (under the distribution P formed by the model) !</p>
+</blockquote>
+<p>&#x4E8E;&#x662F;&#xFF0C;&#x76EE;&#x6807;&#x95EE;&#x9898;&#x53EF;&#x4EE5;&#x8FD1;&#x4F3C;&#x8F6C;&#x5316;&#x4E3A;:<strong><br>&#x7528;fixed number of model samples&#x6765;estimate the expectation&#x4E86;</strong>&#x3002;</p>
+<p>$$</p>
+<ul>
+<li>\frac{\partial \log p(x)}{\partial \theta}<br>\approx<br>\frac{\partial \mathcal{F}(x)}{\partial \theta} -<br> \frac{1}{|\mathcal{N}|}\sum_{\tilde{x} \in \mathcal{N}} \<br> \frac{\partial \mathcal{F}(\tilde{x})}{\partial \theta}.<br>$$<blockquote>
+<p>where we would ideally like elements $\tilde{x}$ of $\mathcal{N}$ to be sampled according to P (i.e. we are doing Monte-Carlo). With the above formula, we almost have a pratical, stochastic algorithm for learning an EBM. The only missing ingredient is how to extract these negative particles $\mathcal{N}$.</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="Boltzmann-Machines-BM"><a href="#Boltzmann-Machines-BM" class="headerlink" title="Boltzmann Machines(BM)"></a>Boltzmann Machines(BM)</h3><p><a href="http://image.diku.dk/igel/paper/AItRBM-proof.pdf" title="An Introduction to Restricted Boltzmann Machines" target="_blank" rel="external">An Introduction to Restricted Boltzmann Machines</a></p>
+<h3 id="Restricted-Boltzmann-Machines-RBM-1"><a href="#Restricted-Boltzmann-Machines-RBM-1" class="headerlink" title="Restricted Boltzmann Machines (RBM)"></a>Restricted Boltzmann Machines (RBM)</h3><blockquote>
+<p>RBM&#x901A;&#x8FC7;&#x5F15;&#x5165;hidden variables&#x8BA9;&#x6A21;&#x578B;&#x7684;&#x6548;&#x679C;&#x589E;&#x5F3A;&#xFF0C;RBM&#x6240;&#x5BF9;&#x7684;&#x56FE;&#x5FC5;&#x987B;&#x662F;&#x4E8C;&#x5206;&#x56FE;&#xFF08;&#x4E0D;&#x80FD;&#x6709;visible-visible &#x6216;&#x8005; hidden-hidden&#x8FD9;&#x6837;&#x7684;&#x8FDE;&#x63A5;&#xFF09;&#x3002; from <a href="http://deeplearning.net/tutorial/rbm.html" title="Restricted Boltzmann Machines (RBM)" target="_blank" rel="external">&#x77E5;&#x4E4E;&#x7B14;&#x8BB0;</a></p>
+</blockquote>
+<h4 id="Boltzmann-Machines"><a href="#Boltzmann-Machines" class="headerlink" title="Boltzmann Machines"></a>Boltzmann Machines</h4><h4 id="MRF"><a href="#MRF" class="headerlink" title="MRF"></a>MRF</h4><p><a href="http://blog.csdn.net/polly_yang/article/details/9716591" title="PGM&#x5B66;&#x4E60;&#x4E4B;&#x4E03; MRF&#xFF0C;&#x9A6C;&#x5C14;&#x79D1;&#x592B;&#x968F;&#x673A;&#x573A;" target="_blank" rel="external">PGM&#x5B66;&#x4E60;&#x4E4B;&#x4E03; MRF&#xFF0C;&#x9A6C;&#x5C14;&#x79D1;&#x592B;&#x968F;&#x673A;&#x573A;</a></p>
+<h3 id="Sampling-in-an-RBM"><a href="#Sampling-in-an-RBM" class="headerlink" title="Sampling in an RBM"></a>Sampling in an RBM</h3><hr>
+<p>&#x201C;</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/深度学习/" rel="tag">#深度学习</a>
+          
+            <a href="/tags/Neuron-network/" rel="tag">#Neuron network</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/01/02/深度学习/prml-note-ch01/" rel="next" title="PRML_note_Ch01">
+                <i class="fa fa-chevron-left"></i> PRML_note_Ch01
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/03/15/ProgramStudy/scala-for-impatients-ch2/" rel="prev" title="Scala_for_impatients_Ch2">
+                Scala_for_impatients_Ch2 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="陈22" />
+          <p class="site-author-name" itemprop="name">陈22</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">18</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">32</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#补充知识点"><span class="nav-number">1.</span> <span class="nav-text">补充知识点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Cross-Entropy"><span class="nav-number">1.1.</span> <span class="nav-text">Cross-Entropy</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#信息量"><span class="nav-number">1.1.1.</span> <span class="nav-text">信息量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#什么是熵-entropy"><span class="nav-number">1.1.2.</span> <span class="nav-text">什么是熵 - entropy</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#相对熵-relative-entropy"><span class="nav-number">1.1.3.</span> <span class="nav-text">相对熵 - relative entropy</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#什么是交叉熵？"><span class="nav-number">1.1.4.</span> <span class="nav-text">什么是交叉熵？</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#N-Grams"><span class="nav-number">1.2.</span> <span class="nav-text">N-Grams</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#What-is-N-Grams"><span class="nav-number">1.2.1.</span> <span class="nav-text">What is N-Grams</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#What-are-N-grams-used-for"><span class="nav-number">1.2.2.</span> <span class="nav-text">What are N-grams used for?</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Language-Model"><span class="nav-number">2.</span> <span class="nav-text">Language Model</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Language-Model的是什么"><span class="nav-number">2.1.</span> <span class="nav-text">Language Model的是什么?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Language-Model-有什么用"><span class="nav-number">2.2.</span> <span class="nav-text">Language Model 有什么用?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Pros-and-cons"><span class="nav-number">2.3.</span> <span class="nav-text">Pros and cons</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Language-Model-构建"><span class="nav-number">2.4.</span> <span class="nav-text">Language Model 构建</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#引出问题"><span class="nav-number">2.4.1.</span> <span class="nav-text">引出问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#朴素贝叶斯"><span class="nav-number">2.4.2.</span> <span class="nav-text">朴素贝叶斯</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Language-Model-构建遇到的问题"><span class="nav-number">2.5.</span> <span class="nav-text">Language Model 构建遇到的问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#浮点精度问题"><span class="nav-number">2.5.1.</span> <span class="nav-text">浮点精度问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#0概率问题"><span class="nav-number">2.5.2.</span> <span class="nav-text">0概率问题</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#解决方案-——-smoothing"><span class="nav-number">2.5.2.1.</span> <span class="nav-text">解决方案 —— smoothing</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#解决方案-——-back-off"><span class="nav-number">2.5.2.2.</span> <span class="nav-text">解决方案 —— back-off</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#A-Neural-Probabilistic-Language-Model"><span class="nav-number">3.</span> <span class="nav-text">A Neural Probabilistic Language Model</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-Fighting-the-Curse-of-Dimensionality-with-Distributed-Representations"><span class="nav-number">3.1.</span> <span class="nav-text">1.1 Fighting the Curse of Dimensionality with Distributed Representations</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#方法总结如下："><span class="nav-number">3.1.1.</span> <span class="nav-text">方法总结如下：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#feature-vector"><span class="nav-number">3.1.2.</span> <span class="nav-text">feature vector</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#probability-function"><span class="nav-number">3.1.3.</span> <span class="nav-text">probability function</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#A-Neural-Model"><span class="nav-number">3.2.</span> <span class="nav-text">A Neural Model</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Neural-architecture"><span class="nav-number">3.2.1.</span> <span class="nav-text">Neural architecture</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#parameters"><span class="nav-number">3.2.2.</span> <span class="nav-text">parameters</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hierarchical-probabilistic-neural-network-language-model"><span class="nav-number">4.</span> <span class="nav-text">Hierarchical probabilistic neural network language model</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Three-New-Graphical-Models-for-Statistical-Language-Modellin"><span class="nav-number">5.</span> <span class="nav-text">Three New Graphical Models for Statistical Language Modellin</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Abstract"><span class="nav-number">5.1.</span> <span class="nav-text">Abstract</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Introduction"><span class="nav-number">5.2.</span> <span class="nav-text">Introduction</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#density-estimation-for-discrete-distributions-difficult-in-smoothing"><span class="nav-number">5.2.1.</span> <span class="nav-text">density estimation for discrete distributions difficult in smoothing</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#continuous-valued-distribution-representation-was-introdeced"><span class="nav-number">5.2.2.</span> <span class="nav-text">continuous-valued distribution representation was introdeced</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#drawback-long-training-times"><span class="nav-number">5.2.3.</span> <span class="nav-text">drawback: long training times</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Recently-Approach"><span class="nav-number">5.2.4.</span> <span class="nav-text">Recently Approach</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Out-Approach"><span class="nav-number">5.2.5.</span> <span class="nav-text">Out Approach</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#The-Factored-Restricted-Boltzmann-Machine-Language-Model-零号机和初号机"><span class="nav-number">5.3.</span> <span class="nav-text">The Factored Restricted Boltzmann Machine Language Model : 零号机和初号机</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Goal"><span class="nav-number">5.3.1.</span> <span class="nav-text">Goal</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#零号机"><span class="nav-number">5.3.2.</span> <span class="nav-text">零号机</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1号机-2-RBM-with-distributed-representations-for-words"><span class="nav-number">5.3.3.</span> <span class="nav-text">1号机:  2. RBM with distributed representations for words</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Feature-vectors"><span class="nav-number">5.3.3.1.</span> <span class="nav-text">Feature vectors</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Energy-function"><span class="nav-number">5.3.3.2.</span> <span class="nav-text">Energy function</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Advantage-reduced-parameters-dimension"><span class="nav-number">5.3.3.3.</span> <span class="nav-text">Advantage : reduced parameters (dimension)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#The-joint-conditional-distribution-of-the-next-word"><span class="nav-number">5.3.3.4.</span> <span class="nav-text">The joint conditional distribution of the next word</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#conditional-distribution-of-the-next-word"><span class="nav-number">5.3.3.5.</span> <span class="nav-text">conditional distribution of the next word</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1-Making-Predictions"><span class="nav-number">5.3.3.6.</span> <span class="nav-text">2.1 Making Predictions</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相关知识点："><span class="nav-number">5.4.</span> <span class="nav-text">相关知识点：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#难点理解："><span class="nav-number">5.5.</span> <span class="nav-text">难点理解：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Data-sparsity"><span class="nav-number">5.5.1.</span> <span class="nav-text">Data sparsity</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Restricted-Boltzmann-Machines-RBM"><span class="nav-number">6.</span> <span class="nav-text">Restricted Boltzmann Machines (RBM)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Energy-Based-Models-EBM"><span class="nav-number">6.1.</span> <span class="nav-text">Energy-Based Models (EBM)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#EBMs-with-Hidden-Units"><span class="nav-number">6.1.1.</span> <span class="nav-text">EBMs with Hidden Units</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Boltzmann-Machines-BM"><span class="nav-number">6.2.</span> <span class="nav-text">Boltzmann Machines(BM)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Restricted-Boltzmann-Machines-RBM-1"><span class="nav-number">6.3.</span> <span class="nav-text">Restricted Boltzmann Machines (RBM)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Boltzmann-Machines"><span class="nav-number">6.3.1.</span> <span class="nav-text">Boltzmann Machines</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MRF"><span class="nav-number">6.3.2.</span> <span class="nav-text">MRF</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sampling-in-an-RBM"><span class="nav-number">6.4.</span> <span class="nav-text">Sampling in an RBM</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">陈22</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+</span>
+<span id="busuanzi_container_site_uv">
+  本站访客数<span id="busuanzi_value_site_uv"></span>人次
+</span>
+<script>
+  var birthDay = new Date("11/20/2014");
+  var now = new Date();
+  var duration = now.getTime() - birthDay.getTime();
+  var total= Math.floor(duration / (1000 * 60 * 60 * 24));
+  document.getElementById("showDays").innerHTML = "本站已运行 "+total+" 天";
+</script>
+<span id="showDays"></span>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

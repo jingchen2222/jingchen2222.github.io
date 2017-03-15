@@ -1,0 +1,738 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="深度学习,读书笔记,Patten recognition," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="&amp;#x4ECA;&amp;#x5929;&amp;#x5F00;&amp;#x59CB;&amp;#x5B66;&amp;#x4E60;&amp;#x8BFB;&amp;#x673A;&amp;#x5668;&amp;#x5B66;&amp;#x4E60;&amp;#x7684;&amp;#x7ECF;&amp;#x5178;&amp;#x5927;&amp;#x4F5C;&amp;#x300A;Pattern recognition and machine learning&amp;#x300B;&amp;#x3002;&amp;#x8BA1;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PRML_note_Ch01">
+<meta property="og:url" content="http://jingchen2222.github.io./2017/01/02/深度学习/prml-note-ch01/index.html">
+<meta property="og:site_name" content="Chen22'S BLOG">
+<meta property="og:description" content="&amp;#x4ECA;&amp;#x5929;&amp;#x5F00;&amp;#x59CB;&amp;#x5B66;&amp;#x4E60;&amp;#x8BFB;&amp;#x673A;&amp;#x5668;&amp;#x5B66;&amp;#x4E60;&amp;#x7684;&amp;#x7ECF;&amp;#x5178;&amp;#x5927;&amp;#x4F5C;&amp;#x300A;Pattern recognition and machine learning&amp;#x300B;&amp;#x3002;&amp;#x8BA1;">
+<meta property="og:updated_time" content="2017-01-06T06:45:29.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="PRML_note_Ch01">
+<meta name="twitter:description" content="&amp;#x4ECA;&amp;#x5929;&amp;#x5F00;&amp;#x59CB;&amp;#x5B66;&amp;#x4E60;&amp;#x8BFB;&amp;#x673A;&amp;#x5668;&amp;#x5B66;&amp;#x4E60;&amp;#x7684;&amp;#x7ECF;&amp;#x5178;&amp;#x5927;&amp;#x4F5C;&amp;#x300A;Pattern recognition and machine learning&amp;#x300B;&amp;#x3002;&amp;#x8BA1;">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://jingchen2222.github.io./2017/01/02/深度学习/prml-note-ch01/"/>
+
+
+  <title> PRML_note_Ch01 | Chen22'S BLOG </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Chen22'S BLOG</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br />
+            
+            日程
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                PRML_note_Ch01
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-01-02T19:46:00+08:00" content="2017-01-02">
+              2017-01-02
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/study/" itemprop="url" rel="index">
+                    <span itemprop="name">study</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/study/读书笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">读书笔记</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>&#x4ECA;&#x5929;&#x5F00;&#x59CB;&#x5B66;&#x4E60;&#x8BFB;&#x673A;&#x5668;&#x5B66;&#x4E60;&#x7684;&#x7ECF;&#x5178;&#x5927;&#x4F5C;&#x300A;Pattern recognition and machine learning&#x300B;&#x3002;&#x8BA1;&#x5212;1&#x4E2A;&#x6708;&#xFF0C;&#x8BFB;&#x5B8C;&#x524D;&#x56DB;&#x7AE0;&#x3002;</p>
+<h2 id="1-2-Probalility-theory"><a href="#1-2-Probalility-theory" class="headerlink" title="1.2 Probalility theory"></a>1.2 Probalility theory</h2><h4 id="A-key-Concept-&#x2018;uncertainty&#x2019;"><a href="#A-key-Concept-&#x2018;uncertainty&#x2019;" class="headerlink" title="A key Concept: &#x2018;uncertainty&#x2019;:"></a>A key Concept: &#x2018;uncertainty&#x2019;:</h4><ul>
+<li>it arised through noise on measurements</li>
+<li>it arised through the finite size of data sets</li>
+</ul>
+<h4 id="Example"><a href="#Example" class="headerlink" title="Example:"></a>Example:</h4><p>$B$: the identify of the box that will be chosen, can taken from $r$ (corresponding to the red box) or $b$ (coresponding to the blue);</p>
+<p>define the probability of an event to be the fraction of times that events occurs out of the total number of trials</p>
+<p>$p(B==r) = 4/10$</p>
+<p>$p(B==b) = 6/10$</p>
+<h4 id="rules"><a href="#rules" class="headerlink" title="rules:"></a>rules:</h4><blockquote>
+<p>the two el- ementary rules of probability, known as the sum rule and the product rule</p>
+</blockquote>
+<p>joint probability<br>marginal probability<br>conditional probability</p>
+<ul>
+<li>sum rule</li>
+</ul>
+<p>$$<br>p(X=x<em>i) = \sum</em>{j=1}^L{p(X=x_i, Y=y_j)}<br>$$</p>
+<p>$$<br>p(X) = \sum_Y{p(X,Y)}<br>$$</p>
+<blockquote>
+<p>&#x2018;marginal probability&#x2019; = sum of joint probability</p>
+</blockquote>
+<ul>
+<li>product rule</li>
+</ul>
+<p>$$<br>p(X=x_i,Y=y<em>j) = \frac{n</em>{ij}}{N}=\frac {n_{ij} }{c_i} <em> \frac{c_i}{N}<br>$$<br>$$<br>= p(Y = y_j|X = x_i) </em> p(X = x_i)<br>$$</p>
+<p>$$<br>p(X,Y) = p(X|Y)p(Y)<br>$$</p>
+<blockquote>
+<p>&#x2018;joint probability&#x2019; = &#x2018;conditional probability&#x2019; * &#x2018;marginal probability&#x2019;</p>
+<p>$p(X, Y )$ is a joint probability and is verbalized as &#x201C;the probability of X and Y &#x201D;.</p>
+<p>the quantity $p(Y |X)$ is a conditional probability and is verbalized as &#x201C;the probability of Y given X</p>
+<p>$p(X)$ is a marginal probability  and is simply &#x201C;the probability of X&#x201D;.</p>
+</blockquote>
+<h4 id="Bayes&#x2019;-theorem"><a href="#Bayes&#x2019;-theorem" class="headerlink" title="Bayes&#x2019; theorem"></a>Bayes&#x2019; theorem</h4><p>$$p(Y|X) = \frac{p(X|Y){p(Y)}}{p(X)}$$</p>
+<blockquote>
+<p>play a central role in patten regnition and machine learning</p>
+</blockquote>
+<p>Give &#x2018;sum rule&#x2019;, the we have:</p>
+<p>$$<br>p(X) = \sum<em>{Y}^{}{p(X,Y)} = \sum</em>{Y}^{}{p(X|Y)*p(Y)}<br>$$</p>
+<h5 id="prior-probability"><a href="#prior-probability" class="headerlink" title="prior probability"></a>prior probability</h5><blockquote>
+<p>&#x2026; it is the probability available before we observe some conditional event</p>
+</blockquote>
+<h5 id="posterior-probability"><a href="#posterior-probability" class="headerlink" title="posterior probability"></a>posterior probability</h5><blockquote>
+<p>it is the probability obtained after we have observed the conditional event( the identify of the fruit)</p>
+</blockquote>
+<h3 id="Probability-densities"><a href="#Probability-densities" class="headerlink" title="Probability densities"></a>Probability densities</h3><h5 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h5><p>If the probability of a real-valued variable x falling in the interval $(x, x + \delta{x})$ is given by $p(x)\delta{x}$ for $\delta{x} &#x2192; 0$, then $p(x)$ is called the probability density over $x$.</p>
+<h5 id="Rules"><a href="#Rules" class="headerlink" title="Rules"></a>Rules</h5><blockquote>
+<p>For instance, if x and y are two real variables, then the sum and product rules take the form<br>$$<br>p(x) = \int p(x, y)dy \<br>p(x, y) =  p(y|x)p(x)<br>$$</p>
+</blockquote>
+<h3 id="Expectations-and-covariances"><a href="#Expectations-and-covariances" class="headerlink" title="Expectations and covariances"></a>Expectations and covariances</h3><p>$$<br>E[f] = \int_x p(x)f(x)dx<br>$$<br>We can also consider a conditional expectation with respect to a conditional<br>distribution, so that<br><br>$$<br>Ex[f|y] =\sum_x p(x|y)f(x)<br>$$</p>
+<ul>
+<li>The variance of f(x) is defined by</li>
+</ul>
+<p>$$<br>var[f] = E[( f(x) - E[f(x)] )^2] \<br>var[f] = E[( f(x)^2] - E[f(x)] ^2<br>$$</p>
+<h2 id="Bayesian-probabilities"><a href="#Bayesian-probabilities" class="headerlink" title="Bayesian probabilities"></a>Bayesian probabilities</h2><blockquote>
+<p>Now we turn to the more general Bayesian view, in which probabilities provide a quantification of uncertainty</p>
+</blockquote>
+<ul>
+<li>quantify our expression of uncertainty</li>
+<li>make precise revisions of uncertainty in the light of new evidence</li>
+<li>take optimal actions or decisions as a consequence.</li>
+</ul>
+<h3 id="Bayes&#x2019;-theorem-example-polynomial-curve-fitting"><a href="#Bayes&#x2019;-theorem-example-polynomial-curve-fitting" class="headerlink" title="Bayes&#x2019; theorem example: polynomial curve fitting"></a>Bayes&#x2019; theorem example: polynomial curve fitting</h3><ul>
+<li>a prior probability distribution</li>
+</ul>
+<blockquote>
+<p>capture our assumptions about $w$, before observing the data, in the form of a prior probability distribution $p(w)$.</p>
+</blockquote>
+<ul>
+<li>the conditional probability</li>
+</ul>
+<blockquote>
+<p>The effect of the observed data $D = {t_1, . . . , t_N }$ is expressed through the conditional probability $p(D|w)$</p>
+</blockquote>
+<ul>
+<li>likelihood function</li>
+</ul>
+<blockquote>
+<p>The quantity $p(D|w)$ on the right-hand side of Bayes&#x2019; theorem is evaluated for the observed data set $D$ and can be viewed as a function of the parameter vector $w$,</p>
+</blockquote>
+<ul>
+<li>Bayes&#x2019; theorem:  </li>
+</ul>
+<blockquote>
+<p>evaluate the uncertainty in $w$ after we have observed D in the form of the posterior probability $p(w|D)$.</p>
+</blockquote>
+<p>$$<br>p(w|D) = \frac {p(D|w)p(w)}{p(D)}<br>$$</p>
+<p>$$<br>posterior &#x221D; likelihood &#xD7; prior<br>$$</p>
+<p>&#xFFFC;$$<br>p(D) = \int p(D|w)p(w) dw<br>$$</p>
+<h3 id="Use"><a href="#Use" class="headerlink" title="Use"></a>Use</h3><ul>
+<li>small-scale applications<br>-</li>
+<li>large-scale applications<br>-</li>
+</ul>
+<h3 id="Stuck-points"><a href="#Stuck-points" class="headerlink" title="Stuck points:"></a>Stuck points:</h3><blockquote>
+<p>When combined with decision theory, discussed in Section 1.5, it allows us to make optimal predictions given all the information available to us, even though that infor- mation may be incomplete or ambiguous.</p>
+<p> Let us suppose that in so doing we pick the red box 40% of the time and we pick the blue box 60% of the time, and that when we remove an item of fruit from a box we are equally likely to select any of the pieces of fruit in the box.</p>
+<p>Under a nonlinear change of variable, a probability density transforms differently from a simple function, due to the Jacobian factor.</p>
+<p>For instance, Cox (1946) showed that if numerical values are used to represent degrees of belief, then a simple set of axioms encoding common sense properties of such beliefs leads uniquely to a set of rules for manipulating degrees of belief that are equivalent to the sum and product rules of probability.</p>
+</blockquote>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/深度学习/" rel="tag">#深度学习</a>
+          
+            <a href="/tags/读书笔记/" rel="tag">#读书笔记</a>
+          
+            <a href="/tags/Patten-recognition/" rel="tag">#Patten recognition</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/01/02/深度学习/2017-01-02-multiplelinearregression/" rel="next" title="MultipleLinearRegression">
+                <i class="fa fa-chevron-left"></i> MultipleLinearRegression
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/01/16/深度学习/neuron-network-machine-learning-lecture4-note/" rel="prev" title="neuron_network_machine_learning_lecture4_note">
+                neuron_network_machine_learning_lecture4_note <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="陈22" />
+          <p class="site-author-name" itemprop="name">陈22</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">18</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">32</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-Probalility-theory"><span class="nav-number">1.</span> <span class="nav-text">1.2 Probalility theory</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#A-key-Concept-‘uncertainty’"><span class="nav-number">1.0.1.</span> <span class="nav-text">A key Concept: ‘uncertainty’:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Example"><span class="nav-number">1.0.2.</span> <span class="nav-text">Example:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#rules"><span class="nav-number">1.0.3.</span> <span class="nav-text">rules:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Bayes’-theorem"><span class="nav-number">1.0.4.</span> <span class="nav-text">Bayes’ theorem</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#prior-probability"><span class="nav-number">1.0.4.1.</span> <span class="nav-text">prior probability</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#posterior-probability"><span class="nav-number">1.0.4.2.</span> <span class="nav-text">posterior probability</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Probability-densities"><span class="nav-number">1.1.</span> <span class="nav-text">Probability densities</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Definition"><span class="nav-number">1.1.0.1.</span> <span class="nav-text">Definition</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Rules"><span class="nav-number">1.1.0.2.</span> <span class="nav-text">Rules</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Expectations-and-covariances"><span class="nav-number">1.2.</span> <span class="nav-text">Expectations and covariances</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bayesian-probabilities"><span class="nav-number">2.</span> <span class="nav-text">Bayesian probabilities</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Bayes’-theorem-example-polynomial-curve-fitting"><span class="nav-number">2.1.</span> <span class="nav-text">Bayes’ theorem example: polynomial curve fitting</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Use"><span class="nav-number">2.2.</span> <span class="nav-text">Use</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Stuck-points"><span class="nav-number">2.3.</span> <span class="nav-text">Stuck points:</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">陈22</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+</span>
+<span id="busuanzi_container_site_uv">
+  本站访客数<span id="busuanzi_value_site_uv"></span>人次
+</span>
+<script>
+  var birthDay = new Date("11/20/2014");
+  var now = new Date();
+  var duration = now.getTime() - birthDay.getTime();
+  var total= Math.floor(duration / (1000 * 60 * 60 * 24));
+  document.getElementById("showDays").innerHTML = "本站已运行 "+total+" 天";
+</script>
+<span id="showDays"></span>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

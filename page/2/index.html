@@ -256,6 +256,573 @@
             
               
                 
+                <a class="post-title-link" href="/2016/11/07/深度学习/2016-11-07-merge-join-and-concatenate/" itemprop="url">
+                  Merge, join, and concatenate
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-11-07T19:58:00+08:00" content="2016-11-07">
+              2016-11-07
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/study/" itemprop="url" rel="index">
+                    <span itemprop="name">study</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/study/深度学习/" itemprop="url" rel="index">
+                    <span itemprop="name">深度学习</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/study/深度学习/pandas/" itemprop="url" rel="index">
+                    <span itemprop="name">pandas</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="Concatenating-objects"><a href="#Concatenating-objects" class="headerlink" title="Concatenating objects"></a>Concatenating objects</h2><blockquote>
+<p>The concat function (in the main pandas namespace) does all of the heavy lifting of performing concatenation operations along an axis while performing optional set logic (union or intersection) of the indexes (if any) on the other axes. Note that I say &#x201C;if any&#x201D; because there is only a single possible axis of concatenation for Series.</p>
+</blockquote>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/11/07/深度学习/2016-11-07-merge-join-and-concatenate/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/11/07/深度学习/2016-11-07-groupbynote/" itemprop="url">
+                  Group By: split-apply-combine
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-11-07T17:07:00+08:00" content="2016-11-07">
+              2016-11-07
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/study/" itemprop="url" rel="index">
+                    <span itemprop="name">study</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/study/深度学习/" itemprop="url" rel="index">
+                    <span itemprop="name">深度学习</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/study/深度学习/pandas/" itemprop="url" rel="index">
+                    <span itemprop="name">pandas</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="Filtration&#xFF1A;"><a href="#Filtration&#xFF1A;" class="headerlink" title="Filtration&#xFF1A;"></a>Filtration&#xFF1A;</h3><p><strong>doc</strong>: <a href="http://pandas.pydata.org/pandas-docs/version/0.18.1/generated/pandas.DataFrame.filter.html" title="filter">filter</a></p>
+<blockquote>
+<p>The filter method returns a subset of the original object. Suppose we want to take only elements that belong to groups with a group sum greater than 2.</p>
+<p>The argument of filter must be a function that, applied to the group as a whole, returns True or False.</p>
+</blockquote>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/11/07/深度学习/2016-11-07-groupbynote/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/11/07/周报/20161031-20161106-一周践行反馈/" itemprop="url">
+                  20161031-20161106_一周践行反馈
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-11-07T10:15:00+08:00" content="2016-11-07">
+              2016-11-07
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/周报/" itemprop="url" rel="index">
+                    <span itemprop="name">周报</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="&#x8FD9;&#x5468;&#x4E3B;&#x8981;&#x505A;&#x51E0;&#x4EF6;&#x4E8B;&#xFF1A;"><a href="#&#x8FD9;&#x5468;&#x4E3B;&#x8981;&#x505A;&#x51E0;&#x4EF6;&#x4E8B;&#xFF1A;" class="headerlink" title="&#x8FD9;&#x5468;&#x4E3B;&#x8981;&#x505A;&#x51E0;&#x4EF6;&#x4E8B;&#xFF1A;"></a>&#x8FD9;&#x5468;&#x4E3B;&#x8981;&#x505A;&#x51E0;&#x4EF6;&#x4E8B;&#xFF1A;</h3><ul>
+<li><p><strong>&#x5750;&#x4EAB;&#x6E05;&#x6668;</strong>&#xFF1A;3&#x5C0F;&#x65F6;&#xFF0C;&#x5B8C;&#x6210;&#x5EA6;6/7&#xFF0C;11.6 MISS</p>
+</li>
+<li><p><strong>&#x6DF1;&#x5EA6;&#x5B66;&#x4E60;</strong>: 15.5&#x5C0F;&#x65F6;</p>
+<ul>
+<li>pandas&#x57FA;&#x7840;</li>
+<li>&#x54C8;&#x4F5B;&#x4F5C;&#x4E1A;</li>
+<li>PANDAS&#x7684;&#x77E5;&#x8BC6;&#x7BA1;&#x7406;</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p><strong>&#x533A;&#x5757;&#x94FE;</strong>&#xFF1A;2&#x5C0F;&#x65F6;; &#x7CBE;&#x901A;&#x6BD4;&#x7279;&#x5E01;&#x7CBE;&#x9605;&#x8BFB;&#xFF0C;&#x5B8C;&#x6210;&#x5EA6;&#xFF08;46%)</p>
+</li>
+<li><p><strong>&#x5199;&#x4F5C;</strong>&#xFF1A; 4.5&#x5C0F;&#x65F6;</p>
+</li>
+<li><p><strong>&#x82F1;&#x8BED;</strong>&#xFF1A;5&#x5C0F;&#x65F6;&#xFF0C;&#x542C;harry poter 14&#x7AE0; 75%.</p>
+</li>
+<li><p><strong>&#x7F16;&#x7A0B;&#x529F;&#x5F3A;&#x5316;</strong> 1&#x5C0F;&#x65F6;</p>
+</li>
+<li><p><strong>&#x957F;&#x7BC7;&#x9605;&#x8BFB;</strong> 19.5&#x5C0F;&#x65F6;</p>
+<ul>
+<li>&#x66FE;&#x56FD;&#x85E9;&#x5BB6;&#x4E66;:2.5&#x5C0F;&#x65F6;&#xFF0C;&#x5B8C;&#x6210;&#x5EA6;&#xFF1A;71%</li>
+<li>&#x300A;The 4 hour workweek: 12&#x5C0F;&#x65F6;&#xFF0C;&#x5B8C;&#x6210;&#x5EA6;8.4%</li>
+<li>&#x5176;&#x4ED6;&#x6587;&#x7AE0;&#xFF0C;&#x65B9;&#x6CD5;&#x8BBA;&#x3001;&#x65B0;&#x6982;&#x5FF5;&#x76F8;&#x5173;: 5&#x5C0F;&#x65F6;&#xFF1B;&#x9605;&#x8BFB;&#x611F;&#x60F3;2&#x7BC7;</li>
+</ul>
+</li>
+<li><strong>MAC TOOLS&#x8FDB;&#x9636;</strong> 4&#x5C0F;&#x65F6;<ul>
+<li>GitHubs + Hexo &#x6784;&#x5EFA;&#x535A;&#x5BA2;</li>
+<li>ATOM</li>
+<li>proxychain&#x5B9E;&#x73B0;Item2&#x7684;&#x4EE3;&#x7406;</li>
+</ul>
+</li>
+</ul>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/11/07/周报/20161031-20161106-一周践行反馈/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/11/07/周报/当下不能杂——一周践行反馈（20161025-20161030）/" itemprop="url">
+                  当下不能杂——一周践行反馈（20161025-20161030）
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-11-07T10:05:00+08:00" content="2016-11-07">
+              2016-11-07
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/周报/" itemprop="url" rel="index">
+                    <span itemprop="name">周报</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="&#x4E00;&#x5468;&#x603B;&#x7ED3;"><a href="#&#x4E00;&#x5468;&#x603B;&#x7ED3;" class="headerlink" title="&#x4E00;&#x5468;&#x603B;&#x7ED3;"></a>&#x4E00;&#x5468;&#x603B;&#x7ED3;</h3><h4 id="&#x8FD9;&#x5468;&#x4E3B;&#x8981;&#x505A;&#x51E0;&#x4EF6;&#x4E8B;&#xFF1A;"><a href="#&#x8FD9;&#x5468;&#x4E3B;&#x8981;&#x505A;&#x51E0;&#x4EF6;&#x4E8B;&#xFF1A;" class="headerlink" title="&#x8FD9;&#x5468;&#x4E3B;&#x8981;&#x505A;&#x51E0;&#x4EF6;&#x4E8B;&#xFF1A;"></a>&#x8FD9;&#x5468;&#x4E3B;&#x8981;&#x505A;&#x51E0;&#x4EF6;&#x4E8B;&#xFF1A;</h4><p><strong>&#x5750;&#x4EAB;&#x6E05;&#x6668;</strong>&#xFF1A;4-5&#x5C0F;&#x65F6;&#xFF0C;&#x5B8C;&#x6210;&#x5EA6;6/7&#xFF0C;10.29&#x65E5;MISS&#x3002;</p>
+<p><strong>&#x6DF1;&#x5EA6;&#x5B66;&#x4E60;</strong>&#xFF1A;21&#x5C0F;&#x65F6;&#xFF0C;&#x5B8C;&#x6210;&#x60C5;&#x51B5;&#xFF1A;<br>&#x5B66;&#x4E60;&#x8DEF;&#x5F84;&#x89C4;&#x5212;+python&#x57FA;&#x7840;+Numpy&#x57FA;&#x7840;+matplotlib&#x7684;64&#x4E2A;rules+scipy&#xFF08;10%&#xFF09;+pandas&#xFF08;15%&#xFF09;</p>
+<p><strong>&#x533A;&#x5757;&#x94FE;</strong>&#xFF1A;12&#x5C0F;&#x65F6;&#xFF0C;&#x7CBE;&#x901A;&#x6BD4;&#x7279;&#x5E01;&#x7CBE;&#x9605;&#x8BFB;&#xFF0C;&#x5B8C;&#x6210;&#x5EA6;&#xFF08;36%&#xFF09;+ &#x6BD4;&#x7279;&#x5E01;&#x51B7;&#x94B1;&#x5305; + &#x5176;&#x4ED6;&#x76F8;&#x5173;&#x6587;&#x7AE0;&#x9605;&#x8BFB;</p>
+<p><strong>&#x5199;&#x4F5C;</strong>&#xFF1A; 7&#x5C0F;&#x65F6;&#xFF0C;&#x903B;&#x8F91;&#x7684;&#x5B9A;&#x4E49;&#x5B66;&#x4E60;+&#x5199;&#x4F5C;&#xFF1B;&#x5199;&#x4F5C;&#x2014;&#x2014;&#x8F93;&#x5165;&#x7EC3;&#x4E60;&#xFF1A;&#x7814;&#x78E8;&#x9605;&#x8BFB;&#x7EC3;&#x4E60;&#x3002;&#x7814;&#x78E8;&#x9605;&#x8BFB;&#x4F53;&#x4F1A;&#xFF08;&#x6784;&#x601D;&#x4E2D;&#xFF09;</p>
+<p><strong>&#x82F1;&#x8BED;</strong>&#xFF1A;5&#x5C0F;&#x65F6;&#xFF0C;&#x542C;harry poter 14&#x7AE0; 75%.</p>
+<p><strong>&#x7F16;&#x7A0B;&#x529F;&#x5F3A;&#x5316;</strong> 4-5&#x5C0F;&#x65F6;&#xFF0C;&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;&#xFF0C;&#x5B8C;&#x6210;&#x5EA6;80%</p>
+<p><strong>&#x957F;&#x7BC7;&#x9605;&#x8BFB;</strong> 3-4&#x5C0F;&#x65F6;&#xFF0C;&#x66FE;&#x56FD;&#x85E9;&#x5BB6;&#x4E66;&#xFF0C;&#x5B8C;&#x6210;&#x5EA6;&#xFF1A;66%</p>
+<h4 id="&#x8BC4;&#x4EF7;"><a href="#&#x8BC4;&#x4EF7;" class="headerlink" title="&#x8BC4;&#x4EF7;"></a>&#x8BC4;&#x4EF7;</h4><p><em>&#x5750;&#x4EAB;&#x6E05;&#x6668;</em>&#xFF1A;&#x7EE7;&#x7EED;&#x5EF6;&#x7EED;&#x4EE5;&#x524D;&#x7684;&#x7AD9;&#x6869;&#x3001;&#x6253;&#x5750;&#x4E60;&#x60EF;&#x3002;29&#x65E5;&#x6709;&#x610F;&#x5916;&#x4E8B;&#x6545;&#x6253;&#x4E71;&#x8282;&#x594F;&#xFF0C;&#x66F4;&#x4E3B;&#x8981;&#x7684;&#x53EF;&#x80FD;&#x662F;&#x524D;&#x4E00;&#x665A;&#x6CA1;&#x7761;&#x597D;&#x3002;&#x4FDD;&#x8BC1;&#x5145;&#x8DB3;&#x7761;&#x7720;&#x3002;</p>
+<p><strong>&#x6DF1;&#x5EA6;&#x5B66;&#x4E60;+&#x533A;&#x5757;&#x94FE;&#x6280;&#x672F;</strong>&#xFF1A;&#x6BCF;&#x5929;&#x6D88;&#x8017;4-6&#x4E2A;&#x5C0F;&#x65F6;&#x4E0D;&#x7B49;&#x3002;&#x57FA;&#x672C;&#x5728;&#x8FDB;&#x5EA6;&#x4E0A;</p>
+<p><strong>&#x5199;&#x4F5C;</strong>&#xFF1A;<font color="brown">&#x7814;&#x78E8;&#x9605;&#x8BFB;</font>&#x6478;&#x7D22;&#x70B9;&#x81EA;&#x5DF1;&#x7684;&#x5957;&#x8DEF;&#x4E86;&#xFF0C;&#x9700;&#x8981;<font color="brown">&#x56FA;&#x5316;&#x9605;&#x8BFB;&#x65B9;&#x6CD5;</font>&#xFF0C;&#x7B2C;&#x4E8C;&#x5468;&#x7EE7;&#x7EED;&#x65F6;&#x95F4;&#xFF0C;&#x7EE7;&#x7EED;&#x63D0;&#x9AD8;&#x4E86;&#x6280;&#x672F;&#x578B;&#x6587;&#x7AE0;&#x9605;&#x8BFB;&#x7406;&#x89E3;&#x901F;&#x5EA6;&#x3002;</p>
+<p><strong>&#x82F1;&#x8BED;</strong>&#xFF1A;&#x8FDB;&#x5EA6;&#x4E0D;&#x5C3D;&#x4EBA;&#x610F;&#x3002;&#x4EE5;&#x524D;&#x4E00;&#x5468;&#x4E00;&#x7AE0;&#x8282;&#x7684;&#x8046;&#x542C;&#x3001;&#x7406;&#x89E3;&#xFF08;90%&#xFF09;&#x3002;&#x751F;&#x8BCD;&#x719F;&#x8BB0;&#x8FD8;&#x6CA1;&#x52A0;&#x4E0A;&#x3002;  </p>
+<font color="brown">&#x82F1;&#x8BED;&#x9700;&#x8981;&#x91CD;&#x65B0;&#x6307;&#x5B9A;&#x8BA1;&#x5212;</font>
+
+<p><em>&#x957F;&#x671F;&#x9605;&#x8BFB;</em>&#xFF1A;&#x8FDB;&#x5EA6;&#x4E0D;&#x5C3D;&#x4EBA;&#x610F;</p>
+<p><em>&#x65F6;&#x95F4;&#x5B89;&#x6392;</em>&#xFF1A; &#x4EFB;&#x52A1;&#x592A;&#x6563;&#x3002;&#x539F;&#x6765;&#x8BA1;&#x5212;&#x6BCF;&#x5929;&#x90FD;&#x8DDF;&#x8FDB;&#x4EE5;&#x4E0A;&#x6240;&#x6709;&#x4E8B;&#x60C5;&#xFF0C;&#x53D1;&#x73B0;&#x4E00;&#x5929;&#x4EFB;&#x52A1;&#x592A;&#x591A;&#xFF0C;&#x5FC3;&#x601D;&#x5BB9;&#x6613;&#x82B1;&#x3002;</p>
+<h4 id="&#x5EFA;&#x8BAE;"><a href="#&#x5EFA;&#x8BAE;" class="headerlink" title="&#x5EFA;&#x8BAE;"></a>&#x5EFA;&#x8BAE;</h4><ol>
+<li>&#x5728;&#x8FDB;&#x5EA6;&#x4E0A;&#x7684;&#xFF0C;&#x4FDD;&#x6301;&#x8282;&#x594F;</li>
+<li>&#x82F1;&#x8BED;&#x8FD8;&#x6709;&#x66F4;&#x660E;&#x786E;&#x7684;&#x8BA1;&#x5212;&#xFF0C;&#x77ED;&#x671F;&#x76EE;&#x6807;&#xFF0C;&#x4EFB;&#x52A1;&#x5206;&#x89E3;</li>
+<li>&#x957F;&#x671F;&#x9605;&#x8BFB;&#xFF1A;&#x4E0D;&#x8981;&#x5C06;&#x9605;&#x8BFB;&#x4F5C;&#x4E3A;&#x4E00;&#x5929;&#x7684;&#x6700;&#x540E;&#x4E00;&#x4EF6;&#x4E8B;&#xFF0C;&#x4EBA;&#x6BD4;&#x8F83;&#x75B2;&#x60EB;&#x3002;</li>
+<li>&#x6574;&#x4F53;&#x65F6;&#x95F4;&#x5B89;&#x6392;&#x9700;&#x8981;&#x66F4;&#x7075;&#x6D3B;&#xFF1A;&#x4E0B;&#x5468;&#x9700;&#x8981;&#x8C03;&#x6574;&#x65B9;&#x6848;&#x3002;&#x6709;&#x4E9B;&#x9879;&#x76EE;&#xFF08;&#x82F1;&#x8BED;&#x3001;&#x9605;&#x8BFB;&#x53EF;&#x4EE5;&#x9694;&#x5929;&#xFF09;</li>
+<li>&#x5199;&#x4F5C;&#x7EC3;&#x4E60;&#xFF0C;&#x9700;&#x8981;&#x4EA7;&#x51FA;&#x91CF;&#x5316;&#x65B9;&#x5F0F;</li>
+</ol>
+<table><br><br><tbody><br><br><tr><br><br><td>&#x65E5;&#x671F;</td><br><br><td>10&#x6708;25&#x65E5;</td><br><br><td>10&#x6708;26&#x65E5;</td><br><br><td>10&#x6708;27&#x65E5;</td><br><br><td>10&#x6708;28&#x65E5;</td><br><br><td>10&#x6708;29&#x65E5;</td><br><br><td>10&#x6708;30&#x65E5;</td><br><br><td>10&#x6708;31&#x65E5;</td><br><br></tr><br><br><tr><br><br><td>&#x9879;&#x76EE;</td><br><br><td>&#x5468;&#x4E00;</td><br><br><td>&#x5468;&#x4E8C;</td><br><br><td>&#x5468;&#x4E09;</td><br><br><td>&#x5468;&#x56DB;</td><br><br><td>&#x5468;&#x4E94;</td><br><br><td>&#x5468;&#x516D;</td><br><br><td>&#x5468;&#x65E5;</td><br><br></tr><br><br><tr><br><br><td>&#x533A;&#x5757;&#x94FE;</td><br><br><td>&#x7CBE;&#x901A;&#x6BD4;&#x7279;&#x6BD4;&#x9605;&#x8BFB;&#xFF08;5%&#xFF09;</td><br><br><td>&#x6BD4;&#x7279;&#x5E01;&#x51B7;&#x70ED;&#x94B1;&#x5305;&#x6280;&#x672F;</td><br><br><td>&#x7CBE;&#x901A;&#x6BD4;&#x7279;&#x5E01;&#xFF08;10%&#xFF09;</td><br><br><td>&#x7CBE;&#x901A;&#x6BD4;&#x7279;&#x5E01;-12%</td><br><br><td>&#x7CBE;&#x901A;&#x6BD4;&#x7279;&#x5E01;-27%</td><br><br><td>&#x65E0;</td><br><br><td>&#x7CBE;&#x901A;&#x6BD4;&#x7279;&#x5E01;</td><br><br></tr><br><br><tr><br><br><td>&#x533A;&#x5757;&#x94FE;</td><br><br><td>&#x7CBE;&#x901A;&#x6BD4;&#x7279;&#x5E01;-15%</td><br><br><td>zcash&#x4E86;&#x89E3;</td><br><br><td>&#x65E0;</td><br><br><td>&#x7CBE;&#x901A;&#x6BD4;&#x7279;&#x5E01;&#xFF08;36%&#xFF09;</td><br><br></tr><br><br><tr><br><br><td>DP</td><br><br><td>&#x5B66;&#x4E60;&#x8DEF;&#x5F84;&#x5B66;&#x4E60;</td><br><br><td>python&#xFF08;30%&#xFF09;</td><br><br><td>python&#xFF08;70%&#xFF09;</td><br><br><td>NumPy-50%</td><br><br><td>NumPy-70%</td><br><br><td>NumPy-95%</td><br><br><td>pandas(15%0</td><br><br></tr><br><br><tr><br><br><td>DP</td><br><br><td>python&#xFF08;10%&#xFF09;</td><br><br><td>python&#xFF08;40%&#xFF09;</td><br><br><td>python&#xFF08;90%&#xFF09;</td><br><br><td>&#x6DF1;&#x5EA6;&#x5B66;&#x4E60;&#x7B2C;&#x4E00;&#x4E2A;&#x6708;&#x6392;&#x671F;</td><br><br><td>NumPy-70%</td><br><br><td>Scipy-(20%)</td><br><br><td>pandas(15%)</td><br><br></tr><br><br><tr><br><br><td>DP</td><br><br><td>python&#xFF08;20%&#xFF09;</td><br><br><td>python&#xFF08;50%)</td><br><br><td>python(100%)</td><br><br><td>matplotlib(30%&#xFF09;+ 64 rules(80%)</td><br><br><td>PYTHON&#x6570;&#x636E;&#x5F00;&#x53D1;&#x73AF;&#x5883;&#x6784;&#x5EFA;</td><br><br></tr><br><br><tr><br><br><td>DP/&#x533A;&#x5757;&#x94FE;</td><br><br><td>pandas(10%)</td><br><br></tr><br><br><tr><br><br><td>&#x7F16;&#x7A0B;&#x5F3A;&#x5316;</td><br><br><td>&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;&#xFF08;50%&#xFF09;</td><br><br><td>&#x65E0;</td><br><br><td>&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;(60%)</td><br><br><td>&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;-70%</td><br><br><td>&#x65E0;</td><br><br><td>&#x65E0;</td><br><br><td>&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;-80%</td><br><br></tr><br><br><tr><br><br><td>&#x5199;&#x4F5C;+&#x601D;&#x8003;</td><br><br><td>&#x5F62;&#x5F0F;&#x903B;&#x8F91;&#x3001;&#x975E;&#x5F62;&#x5F0F;&#x903B;&#x8F91;&#x6982;&#x5FF5;&#x5B66;&#x4E60;</td><br><br><td>&#x5199;&#x4F5C;&#x8BFE;</td><br><br><td>&#x7814;&#x78E8;&#x8BCD;&#x6027;&#x7684;&#x9605;&#x8BFB;&#xFF08;1&#xFF09;&#xFF1A;&#x7F16;&#x7A0B;&#x5F3A;&#x5316;+&#x7814;&#x78E8;&#x8BCD;&#x6027;=&#x51FA;&#x5947;&#x597D;&#x7684;&#x7406;&#x89E3;&#x6548;&#x679C;</td><br><br><td>&#x9605;&#x8BFB;&#x7814;&#x78E8;&#xFF08;2&#xFF09;&#xFF1A;&#x6750;&#x6599;&#x9605;&#x8BFB;&#xFF1A;&#x7814;&#x78E8;&#x8BCD;&#x3001;&#x5B9A;&#x4E49;&#x3001;&#x53E5;&#x5B50;&#x5173;&#x7CFB;</td><br><br><td>&#x9605;&#x8BFB;&#x7814;&#x78E8;&#xFF08;3&#xFF09;&#xFF1A;</td><br><br><td>&#x6B7B;&#x78D5;&#x5B9A;&#x4E49;&#x7684;&#x9605;&#x8BFB;&#xFF08;1&#xFF09;</td><br><br><td>python&#x6570;&#x636E;&#x5F00;&#x53D1;&#x73AF;&#x5883;&#x7B14;&#x8BB0;+&#x6B7B;&#x78D5;&#x5B9A;&#x4E49;&#x9605;&#x8BFB;&#x2014;&#x2014;&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;&#x9605;&#x8BFB;&#x8FC7;&#x7A0B;&#x56DE;&#x987E;</td><br><br></tr><br><br><tr><br><br><td>&#x81EA;&#x7531;&#x5B66;&#x4E60;</td><br><br><td>&#x6DF1;&#x5EA6;&#x5B66;&#x4E60;&#x8DEF;&#x5F84;</td><br><br><td>&#x51B7;&#x94B1;&#x5305;&#x90E8;&#x7F72;</td><br><br><td>&#x963F;&#x7985;&#x5C0F;&#x7A0B;&#x5E8F;&#x5E94;&#x7528;&#x5206;&#x4EAB;live</td><br><br><td>zcash&#x5E01;</td><br><br><td>&#x7CBE;&#x901A;&#x6BD4;&#x7279;&#x5E01;</td><br><br></tr><br><br><tr><br><br><td>&#x77ED;&#x7BC7;&#x9605;&#x8BFB;</td><br><br><td>&#x300A;&#x5982;&#x4F55;&#x6D88;&#x5316;&#x4E00;&#x672C;&#x4E66;&#x300B;+&#x300A;&#x5982;&#x4F55;&#x9605;&#x8BFB;&#x4E00;&#x672C;&#x4E66;&#x300B;&#x8BC4;&#x8BBA;+&#x7845;&#x8C37;&#x6765;&#x4FE1;</td><br><br><td>&#x7845;&#x8C37;&#x6765;&#x4FE1;&#xFF08;10min&#xFF09;</td><br><br><td>&#x4EBA;&#x4EBA;&#x90FD;&#x80FD;&#x7528;&#x82F1;&#x8BED;&#xFF08;&#x2014;&#x2014;&#x7CBE;&#x5EA6;&#x7AE0;&#x8282;&#xFF09;</td><br><br><td>&#x7845;&#x8C37;&#x6765;&#x4FE1;+&#x533A;&#x5757;&#x94FE;&#x6587;&#x7AE0;</td><br><br><td>&#x7845;&#x8C37;&#x6765;&#x4FE1;</td><br><br><td>&#x7845;&#x8C37;&#x6765;&#x4FE1;</td><br><br><td>&#x7845;&#x8C37;&#x6765;&#x4FE1;</td><br><br></tr><br><br><tr><br><br><td>&#x6668;&#x8D77;+&#x5750;&#x4EAB;</td><br><br><td>20min(Day 2)</td><br><br><td>30min</td><br><br><td>40min(day4)</td><br><br><td>1hour(day5)</td><br><br><td>40hour</td><br><br><td>&#x65E0;&#xFF08;&#x5904;&#x7406;&#x5BB6;&#x91CC;&#x4E8B;&#x6545;&#xFF09;</td><br><br><td>20min</td><br><br></tr><br><br><tr><br><br><td>&#x957F;&#x7BC7;&#x9605;&#x8BFB;</td><br><br><td>&#x66FE;&#x56FD;&#x85E9;&#x5BB6;&#x4E66;&#xFF08;60%&#xFF09;</td><br><br><td>&#x66FE;&#x56FD;&#x85E9;&#x5BB6;&#x4E66;</td><br><br><td>&#x66FE;&#x56FD;&#x85E9;&#x5BB6;&#x4E66;&#xFF08;65%&#xFF09;</td><br><br><td>&#x65E0;</td><br><br><td>&#x65E0;</td><br><br></tr><br><br><tr><br><br><td>&#x82F1;&#x8BED;</td><br><br><td>harryPoter chapter14&#xFF08;50%&#xFF09;</td><br><br><td>harryPoter chapter14&#xFF08;55%&#xFF09;</td><br><br><td>harryPoter chapter14(60%)</td><br><br><td>harryPoter 14&#xFF08;70%&#xFF09;</td><br><br><td>&#x65E0;</td><br><br><td>harryPoter 14&#xFF08;75%&#xFF09;</td><br><br><td>&#x65E0;</td><br><br></tr><br><br></tbody><br><br></table>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/11/06/tools/2016-11-06-hexo1/" itemprop="url">
                   Hexo搭建个人BLOG
                 </a>
@@ -488,133 +1055,6 @@
             
               
                 
-                <a class="post-title-link" href="/2016/11/06/Diary/20161105/" itemprop="url">
-                  20161105日课
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-06T16:47:00+08:00" content="2016-11-06">
-              2016-11-06
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Diary/" itemprop="url" rel="index">
-                    <span itemprop="name">Diary</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Diary/学习方法论/" itemprop="url" rel="index">
-                    <span itemprop="name">学习方法论</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="&#x5173;&#x4E8E;&#x82F1;&#x8BED;"><a href="#&#x5173;&#x4E8E;&#x82F1;&#x8BED;" class="headerlink" title="&#x5173;&#x4E8E;&#x82F1;&#x8BED;"></a>&#x5173;&#x4E8E;&#x82F1;&#x8BED;</h3><p>  &#x4ECA;&#x5929;&#x53D1;&#x73B0;&#x4E00;&#x4E2A;&#x82F1;&#x8BED;&#x5B66;&#x4E60;&#x7F51;&#x7AD9;&#xFF0C;&#x5B83;&#x63D0;&#x5021;Create Connection&#x7684;&#x65B9;&#x5F0F;&#x5B66;&#x82F1;&#x6587;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x6211;&#x6240;&#x719F;&#x77E5;&#x7684;&#x90A3;&#x79CD;&#x4F9D;&#x8D56;&#x89C4;&#x5219;&#xFF08;&#x8BED;&#x6CD5;&#xFF09;&#x7684;&#x65B9;&#x5F0F;&#x3002;&#x8FD9;&#x6070;&#x597D;&#x89E3;&#x7B54;&#x4E86;&#x81EA;&#x5DF1;&#x5728;&#x82F1;&#x8BED;&#x5B66;&#x4E60;&#x4E0A;&#x7684;&#x8FF7;&#x601D;&#x2014;&#x2014;&#x5982;&#x4F55;&#x628A;&#x8111;&#x5B50;&#x91CC;&#x9762;&#x96F6;&#x96F6;&#x6563;&#x6563;&#x7684;&#x5355;&#x6B21;&#x7EC4;&#x7EC7;&#x8D77;&#x6765;&#xFF0C;&#x53D8;&#x6210;&#x6B63;&#x786E;&#x3001;&#x6709;&#x610F;&#x4E49;&#x7684;&#x53E5;&#x5B50;&#x4E43;&#x81F3;&#x6BB5;&#x843D;&#x3002;&#x4E5F;&#x6B63;&#x56E0;&#x5982;&#x6B64;&#xFF0C;&#x6211;&#x4E00;&#x53E3;&#x6C14;&#x5C06;&#x76F8;&#x5173;&#x7684;&#x51E0;&#x7BC7;&#x6587;&#x7AE0;&#x8BFB;&#x4E0B;&#xFF0C;&#x5E76;&#x5BF9;Phrase&#x8FDB;&#x884C;&#x5F52;&#x7C7B;&#x3002;</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/11/06/Diary/20161105/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
                 <a class="post-title-link" href="/2016/11/06/Diary/aboutReading_1115/" itemprop="url">
                   关于阅读的思考（一）
                 </a>
@@ -753,6 +1193,133 @@
 
 
     
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/11/06/Diary/20161105/" itemprop="url">
+                  20161105日课
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-11-06T16:47:00+08:00" content="2016-11-06">
+              2016-11-06
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Diary/" itemprop="url" rel="index">
+                    <span itemprop="name">Diary</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Diary/学习方法论/" itemprop="url" rel="index">
+                    <span itemprop="name">学习方法论</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="&#x5173;&#x4E8E;&#x82F1;&#x8BED;"><a href="#&#x5173;&#x4E8E;&#x82F1;&#x8BED;" class="headerlink" title="&#x5173;&#x4E8E;&#x82F1;&#x8BED;"></a>&#x5173;&#x4E8E;&#x82F1;&#x8BED;</h3><p>  &#x4ECA;&#x5929;&#x53D1;&#x73B0;&#x4E00;&#x4E2A;&#x82F1;&#x8BED;&#x5B66;&#x4E60;&#x7F51;&#x7AD9;&#xFF0C;&#x5B83;&#x63D0;&#x5021;Create Connection&#x7684;&#x65B9;&#x5F0F;&#x5B66;&#x82F1;&#x6587;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x6211;&#x6240;&#x719F;&#x77E5;&#x7684;&#x90A3;&#x79CD;&#x4F9D;&#x8D56;&#x89C4;&#x5219;&#xFF08;&#x8BED;&#x6CD5;&#xFF09;&#x7684;&#x65B9;&#x5F0F;&#x3002;&#x8FD9;&#x6070;&#x597D;&#x89E3;&#x7B54;&#x4E86;&#x81EA;&#x5DF1;&#x5728;&#x82F1;&#x8BED;&#x5B66;&#x4E60;&#x4E0A;&#x7684;&#x8FF7;&#x601D;&#x2014;&#x2014;&#x5982;&#x4F55;&#x628A;&#x8111;&#x5B50;&#x91CC;&#x9762;&#x96F6;&#x96F6;&#x6563;&#x6563;&#x7684;&#x5355;&#x6B21;&#x7EC4;&#x7EC7;&#x8D77;&#x6765;&#xFF0C;&#x53D8;&#x6210;&#x6B63;&#x786E;&#x3001;&#x6709;&#x610F;&#x4E49;&#x7684;&#x53E5;&#x5B50;&#x4E43;&#x81F3;&#x6BB5;&#x843D;&#x3002;&#x4E5F;&#x6B63;&#x56E0;&#x5982;&#x6B64;&#xFF0C;&#x6211;&#x4E00;&#x53E3;&#x6C14;&#x5C06;&#x76F8;&#x5173;&#x7684;&#x51E0;&#x7BC7;&#x6587;&#x7AE0;&#x8BFB;&#x4E0B;&#xFF0C;&#x5E76;&#x5BF9;Phrase&#x8FDB;&#x884C;&#x5F52;&#x7C7B;&#x3002;</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/11/06/Diary/20161105/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
   </section>
 
   
@@ -798,7 +1365,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">14</span>
+              <span class="site-state-item-count">18</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -806,7 +1373,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-count">17</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -815,7 +1382,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">26</span>
+                <span class="site-state-item-count">32</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -852,7 +1419,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2016</span>
+  <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
