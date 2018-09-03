@@ -256,6 +256,695 @@
             
               
                 
+                <a class="post-title-link" href="/2018/09/01/ProgramStudy/JAVA/list/" itemprop="url">
+                  List study
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-09-01T17:01:00+08:00" content="2018-09-01">
+              2018-09-01
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>[TOC]</p>
+<h2 id="List"><a href="#List" class="headerlink" title="List"></a>List</h2><h3 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h3><h5 id="List&#x65CF;&#x6700;&#x91CD;&#x8981;&#x7684;&#x51E0;&#x4E2A;&#x7279;&#x70B9;&#xFF1A;"><a href="#List&#x65CF;&#x6700;&#x91CD;&#x8981;&#x7684;&#x51E0;&#x4E2A;&#x7279;&#x70B9;&#xFF1A;" class="headerlink" title="List&#x65CF;&#x6700;&#x91CD;&#x8981;&#x7684;&#x51E0;&#x4E2A;&#x7279;&#x70B9;&#xFF1A;"></a>List&#x65CF;&#x6700;&#x91CD;&#x8981;&#x7684;&#x51E0;&#x4E2A;&#x7279;&#x70B9;&#xFF1A;</h5><ul>
+<li>&#x6709;&#x5E8F;</li>
+<li>&#x5141;&#x8BB8;&#x91CD;&#x590D;&#x5143;&#x7D20;</li>
+<li>&#x652F;&#x6301;add, remove, set, get</li>
+<li>&#x53EF;&#x4EE5;&#x968F;&#x673A;&#x8BBF;&#x95EE;&#x5143;&#x7D20;</li>
+</ul>
+<h5 id="Lis&#x65CF;&#x96C6;&#x5408;&#x7C7B;&#xFF1A;"><a href="#Lis&#x65CF;&#x96C6;&#x5408;&#x7C7B;&#xFF1A;" class="headerlink" title="Lis&#x65CF;&#x96C6;&#x5408;&#x7C7B;&#xFF1A;"></a>Lis&#x65CF;&#x96C6;&#x5408;&#x7C7B;&#xFF1A;</h5><p><img src="https://www.programcreek.com/wp-content/uploads/2009/02/java-collection-hierarchy.jpeg" alt="java-collection-hierarchy.jpeg"></p>
+<ul>
+<li>List&#x65CF;&#x4E2D;&#xFF0C;&#x6700;&#x4E3B;&#x8981;&#x7684;&#x4E09;&#x79CD;&#x96C6;&#x5408;&#x662F;<code>ArrayList</code>,<code>Vector</code>&#x548C;<code>LinkedList</code>&#xFF0C;&#x540E;&#x9762;&#x5C06;&#x5BF9;&#x8FD9;&#x4E09;&#x79CD;&#x7C7B;&#x8FDB;&#x884C;&#x5206;&#x6790;&#x548C;&#x6BD4;&#x8F83;&#x3002;</li>
+<li>&#x53EF;&#x4EE5;&#x7B80;&#x5355;&#x5BF9;&#x6BD4;&#x4E00;&#x4E0B;List&#x548C;Set</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>List</th>
+<th>Set</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&#x6709;&#x5E8F;</td>
+<td>Y</td>
+<td>N</td>
+</tr>
+<tr>
+<td>&#x91CD;&#x590D;&#x5143;&#x7D20;</td>
+<td>Y</td>
+<td>N</td>
+</tr>
+<tr>
+<td>&#x968F;&#x673A;&#x8BBF;&#x95EE;</td>
+<td>Y</td>
+<td>N</td>
+</tr>
+</tbody>
+</table>
+<h3 id="ArrayList"><a href="#ArrayList" class="headerlink" title="ArrayList"></a>ArrayList</h3><p>Java Platform SE 8&#x7684;&#x63CF;&#x8FF0;&#xFF1A;</p>
+<blockquote>
+<p>Resizable-array implementation of the List interface. Implements all optional list operations, and permits all elements, including null. In addition to implementing the List interface, this class provides methods to manipulate the size of the array that is used internally to store the list. (This class is roughly equivalent to Vector, except that it is unsynchronized.)</p>
+</blockquote>
+<ul>
+<li>&#x53EF;&#x53D8;&#x957F;&#x6570;&#x7EC4;</li>
+<li>&#x5B9E;&#x73B0;&#x6240;&#x6709;list&#x7684;&#x64CD;&#x4F5C;</li>
+<li>&#x5141;&#x8BB8;null</li>
+<li>&#x548C;Vector&#x76F8;&#x4F3C;&#xFF0C;&#x4F46;&#x662F;unsynchronized</li>
+</ul>
+<h5 id="ArrayList&#x662F;&#x4E00;&#x79CD;&#x80FD;&#x591F;&#x81EA;&#x52A8;&#x6269;&#x5145;&#x957F;&#x5EA6;&#x7684;&#x6570;&#x7EC4;&#x3002;"><a href="#ArrayList&#x662F;&#x4E00;&#x79CD;&#x80FD;&#x591F;&#x81EA;&#x52A8;&#x6269;&#x5145;&#x957F;&#x5EA6;&#x7684;&#x6570;&#x7EC4;&#x3002;" class="headerlink" title="ArrayList&#x662F;&#x4E00;&#x79CD;&#x80FD;&#x591F;&#x81EA;&#x52A8;&#x6269;&#x5145;&#x957F;&#x5EA6;&#x7684;&#x6570;&#x7EC4;&#x3002;"></a><span style="color:#ab4642">ArrayList&#x662F;&#x4E00;&#x79CD;&#x80FD;&#x591F;&#x81EA;&#x52A8;&#x6269;&#x5145;&#x957F;&#x5EA6;&#x7684;&#x6570;&#x7EC4;&#x3002;</span></h5><h4 id="&#x6027;&#x80FD;"><a href="#&#x6027;&#x80FD;" class="headerlink" title="&#x6027;&#x80FD;"></a>&#x6027;&#x80FD;</h4><blockquote>
+<p>The size, isEmpty, get, set, iterator, and listIterator operations run in constant time.<br>The add operation runs in amortized constant time, that is, adding n elements requires O(n) time. </p>
+</blockquote>
+<ul>
+<li><strong>ArrayList</strong>&#x7684;&#x6027;&#x80FD;&#x53EF;&#x4EE5;&#x7C7B;&#x6BD4;<span style="color:#ab4642">&#x6570;&#x7EC4;</span>&#x7684;&#x6027;&#x80FD;&#xFF0C;&#x5728;&#x968F;&#x673A;&#x8BBF;&#x95EE;&#x6027;&#x80FD;&#x597D;&#x3002;&#x589E;&#x3001;&#x5220;&#x64CD;&#x4F5C;&#x6027;&#x80FD;&#x5DEE;&#x3002;</li>
+</ul>
+<h4 id="&#x7EBF;&#x7A0B;&#x5B89;&#x5168;"><a href="#&#x7EBF;&#x7A0B;&#x5B89;&#x5168;" class="headerlink" title="&#x7EBF;&#x7A0B;&#x5B89;&#x5168;"></a>&#x7EBF;&#x7A0B;&#x5B89;&#x5168;</h4><blockquote>
+<p><span style="color:#ab4642">Note that this implementation is not synchronized&#x2026;</span></p>
+</blockquote>
+<p><code>Collections.synchronizedList</code>: </p>
+<blockquote>
+<p>Returns a synchronized (thread-safe) list backed by the specified list. In order to guarantee serial access, it is critical that all access to the backing list is accomplished through the returned list.*</p>
+<ul>
+<li>&#x4E0D;&#x80FD;&#x4F9D;&#x8D56;fail-fast&#x8FDB;&#x884C;&#x7A0B;&#x5E8F;&#x540C;&#x6B65;&#x63A7;&#x5236;&#xFF0C;&#x5E94;&#x8BE5;&#x5BF9;ArrayList&#x8FDB;&#x884C;&#x5305;&#x88C5;&#xFF08;<code>Collections.synchronizedList</code>&#xFF09;&#xFF0C;&#x5408;&#x6CD5;&#x7684;ArrayList&#x540C;&#x6B65;&#x64CD;&#x4F5C;demo&#xFF1A;<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">List list = Collections.synchronizedList(<span class="keyword">new</span> ArrayList());</div><div class="line">     ...</div><div class="line"> <span class="keyword">synchronized</span> (list) {</div><div class="line">     Iterator i = list.iterator(); <span class="comment">// Must be in synchronized block</span></div><div class="line">     <span class="keyword">while</span> (i.hasNext())</div><div class="line">         foo(i.next());</div><div class="line"> }</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</blockquote>
+<h3 id="Vector"><a href="#Vector" class="headerlink" title="Vector"></a>Vector</h3><blockquote>
+<p>The Vector class implements a growable array of objects. Like an array, it contains components that can be accessed using an integer index.</p>
+<p>The iterators returned by this class&#x2019;s iterator and listIterator methods are fail-fast:&#x2026;</p>
+<p>&#x2026;, If a thread-safe implementation is not needed, it is recommended to use ArrayList in place of Vector.</p>
+</blockquote>
+<ul>
+<li>Vector&#x548C;ArrayList&#x7684;&#x6027;&#x80FD;&#x76F8;&#x4F3C;&#xFF0C;&#x6700;&#x91CD;&#x8981;&#x7684;<span style="color:#ab4642">&#x533A;&#x522B;:</span>&#x662F;:<ul>
+<li><code>Vector</code>&#x662F;<span style="color:#ab4642">&#x7EBF;&#x7A0B;&#x5B89;&#x5168;</span>&#x7684;&#x3002;</li>
+<li>&#x6269;&#x5BB9;&#x673A;&#x5236;&#x4E0D;&#x4E00;&#x6837;&#xFF0C;&#x5177;&#x4F53;&#x53EF;&#x4EE5;&#x770B;&#x540E;&#x9762;&#x7684;<strong>&#x6269;&#x5BB9;&#x4EE3;&#x7801;&#x89E3;&#x8BFB;&#xFF1A;</strong></li>
+</ul>
+</li>
+</ul>
+<h3 id="LinkedList"><a href="#LinkedList" class="headerlink" title="LinkedList"></a>LinkedList</h3><blockquote>
+<p>Doubly-linked list implementation of the List and Deque interfaces. Implements all optional list operations, and permits all elements (including null).<br>All of the operations perform as could be expected for a doubly-linked list. Operations that index into the list will traverse the list from the beginning or the end, whichever is closer to the specified index.</p>
+</blockquote>
+<h4 id="&#x6027;&#x80FD;&#xFF1A;"><a href="#&#x6027;&#x80FD;&#xFF1A;" class="headerlink" title="&#x6027;&#x80FD;&#xFF1A;"></a>&#x6027;&#x80FD;&#xFF1A;</h4><ul>
+<li>&#x5177;&#x6709;&#x94FE;&#x8868;&#x7684;&#x7279;&#x70B9;&#xFF0C;&#x5BF9;&#x589E;&#x52A0;&#x548C;&#x5220;&#x9664;&#x8282;&#x70B9;&#x7684;&#x64CD;&#x4F5C;&#x6548;&#x7387;&#x9AD8;&#xFF08;&#x7279;&#x522B;&#x662F;&#x8868;&#x5934;&#x6216;&#x8005;&#x8868;&#x5C3E;&#x7684;&#x64CD;&#x4F5C;&#xFF09;&#x3002;&#x4F46;&#x662F;&#xFF0C;&#x968F;&#x673A;&#x8BBF;&#x95EE;&#x6548;&#x7387;&#x4F4E;&#x3002;</li>
+<li><h4 id="&#x540C;&#x6B65;&#xFF1A;"><a href="#&#x540C;&#x6B65;&#xFF1A;" class="headerlink" title="&#x540C;&#x6B65;&#xFF1A;"></a>&#x540C;&#x6B65;&#xFF1A;</h4><blockquote>
+<p>The iterators returned by this class&#x2019;s iterator and listIterator methods are fail-fast</p>
+</blockquote>
+</li>
+<li>LinkedList&#x662F;&#x7EBF;&#x7A0B;&#x4E0D;&#x5B89;&#x5168;&#x7684;&#xFF0C;&#x9700;&#x8981;&#x5305;&#x88C5;&#xFF1A;<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">List list = Collections.synchronizedList(<span class="keyword">new</span> LinkedList(...));</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="ArrayList-vs-Vector-vs-LinkedList"><a href="#ArrayList-vs-Vector-vs-LinkedList" class="headerlink" title="ArrayList vs Vector vs LinkedList"></a>ArrayList vs Vector vs LinkedList</h3><table>
+<thead>
+<tr>
+<th></th>
+<th>ArrayList</th>
+<th>Vector</th>
+<th>LinkedList</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>list&#x63A5;&#x53E3;</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr>
+<td>deque&#x63A5;&#x53E3;</td>
+<td>N</td>
+<td>N</td>
+<td>Y</td>
+</tr>
+<tr>
+<td>elements &#x5141;&#x8BB8;null</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr>
+<td>growable</td>
+<td>Y</td>
+<td>Y</td>
+<td>N</td>
+</tr>
+<tr>
+<td>get</td>
+<td>O(1)</td>
+<td>O(1)</td>
+<td>O(n)</td>
+</tr>
+<tr>
+<td>set</td>
+<td>O(1)</td>
+<td>O(1)</td>
+<td>O(n)</td>
+</tr>
+<tr>
+<td>remove</td>
+<td>O(n)</td>
+<td>O(n)</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td>add</td>
+<td>O(n)</td>
+<td>O(n)</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td>synchronized</td>
+<td>N</td>
+<td>Y</td>
+<td>N</td>
+</tr>
+<tr>
+<td>synchronized</td>
+<td>N</td>
+<td>Y</td>
+<td>N</td>
+</tr>
+<tr>
+<td>fail-fast</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+</tbody>
+</table>
+<h2 id="&#x51E0;&#x4E2A;&#x503C;&#x5F97;&#x6DF1;&#x5165;&#x601D;&#x8003;&#x7684;&#x95EE;&#x9898;"><a href="#&#x51E0;&#x4E2A;&#x503C;&#x5F97;&#x6DF1;&#x5165;&#x601D;&#x8003;&#x7684;&#x95EE;&#x9898;" class="headerlink" title="&#x51E0;&#x4E2A;&#x503C;&#x5F97;&#x6DF1;&#x5165;&#x601D;&#x8003;&#x7684;&#x95EE;&#x9898;"></a>&#x51E0;&#x4E2A;&#x503C;&#x5F97;&#x6DF1;&#x5165;&#x601D;&#x8003;&#x7684;&#x95EE;&#x9898;</h2><h3 id="fail-fast"><a href="#fail-fast" class="headerlink" title="fail-fast"></a>fail-fast</h3><p> fail-fast &#x673A;&#x5236;&#x662F;java&#x96C6;&#x5408;(Collection)&#x4E2D;&#x7684;&#x4E00;&#x79CD;&#x9519;&#x8BEF;&#x673A;&#x5236;&#x3002;<code>ArrayList</code>,<code>Vector</code>, <code>LinkedList</code> &#x90FD;&#x6EE1;&#x8DB3;fail-fast&#x673A;&#x5236;&#x3002;&#x5B98;&#x65B9;&#x6587;&#x6863;&#x4E2D;&#x5BF9;fail-fast&#x7684;&#x89E3;&#x91CA;&#x5982;&#x4E0B;&#xFF1A;</p>
+<blockquote>
+<p>fail-fast: if the list is structurally modified at any time after the iterator is created, in any way except through the iterator&#x2019;s own remove or add methods, the iterator will throw a <code>ConcurrentModificationException</code>. Thus, in the face of concurrent modification, the iterator fails quickly and cleanly, rather than risking arbitrary, non-deterministic behavior at an undetermined time in the future.</p>
+</blockquote>
+<ul>
+<li>fail-fast&#x4EA7;&#x751F;&#x7684;&#x539F;&#x56E0;&#x5C31;&#x5728;&#x4E8E;&#x7A0B;&#x5E8F;&#x5728;&#x5BF9;collection&#xFF08;&#x5982;: ArrayList&#xFF09;&#x8FDB;&#x884C;&#x8FED;&#x4EE3;&#x65F6;&#xFF0C;&#x67D0;&#x4E2A;&#x7EBF;&#x7A0B;&#x5BF9;&#x8BE5; collection <strong>&#x5728;&#x7ED3;&#x6784;&#x4E0A;&#x5BF9;&#x5176;&#x505A;&#x4E86;&#x4FEE;&#x6539;</strong>&#xFF0C;&#x8FD9;&#x65F6;&#x8FED;&#x4EE3;&#x5668;&#x5C31;&#x4F1A;&#x629B;&#x51FA; <code>ConcurrentModificationException</code> &#x5F02;&#x5E38;&#x4FE1;&#x606F;&#xFF0C;&#x4ECE;&#x800C;&#x4EA7;&#x751F; <strong>fail-fast</strong><blockquote>
+<p>&#x8981;&#x4E86;&#x89E3;fail-fast&#x673A;&#x5236;&#xFF0C;&#x6211;&#x4EEC;&#x9996;&#x5148;&#x8981;&#x5BF9;ConcurrentModificationException &#x5F02;&#x5E38;&#x6709;&#x6240;&#x4E86;&#x89E3;&#x3002;&#x5F53;&#x65B9;&#x6CD5;&#x68C0;&#x6D4B;&#x5230;&#x5BF9;&#x8C61;&#x7684;&#x5E76;&#x53D1;&#x4FEE;&#x6539;&#xFF0C;&#x4F46;&#x4E0D;&#x5141;&#x8BB8;&#x8FD9;&#x79CD;&#x4FEE;&#x6539;&#x65F6;&#x5C31;&#x629B;&#x51FA;&#x8BE5;&#x5F02;&#x5E38;&#x3002;&#x540C;&#x65F6;&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#xFF0C;&#x8BE5;&#x5F02;&#x5E38;&#x4E0D;&#x4F1A;&#x59CB;&#x7EC8;&#x6307;&#x51FA;&#x5BF9;&#x8C61;&#x5DF2;&#x7ECF;&#x7531;&#x4E0D;&#x540C;&#x7EBF;&#x7A0B;&#x5E76;&#x53D1;&#x4FEE;&#x6539;&#xFF0C;&#x5982;&#x679C;&#x5355;&#x7EBF;&#x7A0B;&#x8FDD;&#x53CD;&#x4E86;&#x89C4;&#x5219;&#xFF0C;&#x540C;&#x6837;&#x4E5F;&#x6709;&#x53EF;&#x80FD;&#x4F1A;&#x629B;&#x51FA;&#x6539;&#x5F02;&#x5E38;&#x3002;</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="ConcurrentModificationException"><a href="#ConcurrentModificationException" class="headerlink" title="ConcurrentModificationException"></a>ConcurrentModificationException</h4><ul>
+<li>&#x5BB9;&#x5668;&#x4F7F;&#x7528;&#x8FED;&#x4EE3;&#x5668;&#x6765;&#x8FDB;&#x884C;&#x7EDF;&#x4E00;&#x4E2A;&#x5BB9;&#x5668;&#x8BBF;&#x95EE;&#x64CD;&#x4F5C;&#x3002;&#x8FED;&#x4EE3;&#x5668;&#x672C;&#x8D28;&#x4E0A;&#x53EA;&#x662F;&#x5BB9;&#x5668;&#x7684;&#x4E00;&#x4E2A;&#x89C6;&#x56FE;&#xFF0C;&#x8FED;&#x4EE3;&#x5668;&#x91CC;&#x5B58;&#x653E;&#x5BB9;&#x5668;&#x8BBF;&#x95EE;&#x7684;&#x6E38;&#x6807;&#xFF0C;&#x4EE5;&#x53CA;expectedModCount</li>
+<li><code>expectedModCount</code>&#x662F;&#x8FED;&#x4EE3;&#x5668;fail-fast&#x673A;&#x5236;&#x7684;&#x5173;&#x952E;&#xFF0C;</li>
+<li>&#x8FED;&#x4EE3;&#x5668;&#x5728;&#x64CD;&#x4F5C;&#x5BB9;&#x5668;&#x5143;&#x7D20;&#x524D;&#xFF0C;&#x4F1A;<code>checkForComodification</code>&#xFF0C;&#x5176;&#x5B9E;&#x5C31;&#x662F;&#x68C0;&#x67E5;<code>expectedModCount==modCount</code></li>
+<li>&#x8FED;&#x4EE3;&#x5668;&#x5728;&#x5BF9;&#x5BB9;&#x5668;&#x4F5C;&#x7ED3;&#x6784;&#x6027;&#x540E;&#xFF0C;&#x4F1A;&#x5237;&#x65B0;<code>expectedModCount = modCount</code>&#x3002;</li>
+<li>&#x6362;&#x8A00;&#x4E4B;&#xFF0C;&#x5982;&#x679C;&#x5728;&#x8FED;&#x4EE3;&#x5668;&#x540C;&#x6B65;&#x5230;&#x6700;&#x65B0;&#x7684;modCount&#x540E;&#xFF0C;&#x6709;&#x5176;&#x4ED6;&#x64CD;&#x4F5C;&#x4FEE;&#x6539;&#x4E86;&#x5BB9;&#x5668;&#x7684;modCount&#xFF0C;&#x90A3;&#x4E48;<code>checkForComodification</code>&#x5C31;&#x4F1A;&#x6821;&#x9A8C;&#x5931;&#x8D25;&#xFF0C;&#x4E8E;&#x662F;&#x5C31;&#x629B;&#x51FA;<code>ConcurrentModificationException</code></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">Itr</span> <span class="keyword">implements</span> <span class="title">Iterator</span>&lt;<span class="title">E</span>&gt; </span>{</div><div class="line">       <span class="comment">/**</span></div><div class="line">        * Index of element to be returned by subsequent call to next.</div><div class="line">        */</div><div class="line">       <span class="keyword">int</span> cursor = <span class="number">0</span>;</div><div class="line"></div><div class="line">       <span class="comment">/**</span></div><div class="line">        * Index of element returned by most recent call to next or</div><div class="line">        * previous.  Reset to -1 if this element is deleted by a call</div><div class="line">        * to remove.</div><div class="line">        */</div><div class="line">       <span class="keyword">int</span> lastRet = -<span class="number">1</span>;</div><div class="line"></div><div class="line">       <span class="comment">/**</span></div><div class="line">        * The modCount value that the iterator believes that the backing</div><div class="line">        * List should have.  If this expectation is violated, the iterator</div><div class="line">        * has detected concurrent modification.</div><div class="line">        */</div><div class="line">       <span class="keyword">int</span> expectedModCount = modCount;</div><div class="line"></div><div class="line">       <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">hasNext</span><span class="params">()</span> </span>{</div><div class="line">           <span class="keyword">return</span> cursor != size();</div><div class="line">       }</div><div class="line"></div><div class="line">       <span class="function"><span class="keyword">public</span> E <span class="title">next</span><span class="params">()</span> </span>{</div><div class="line">           checkForComodification();</div><div class="line">           <span class="keyword">try</span> {</div><div class="line">               <span class="keyword">int</span> i = cursor;</div><div class="line">               E next = get(i);</div><div class="line">               lastRet = i;</div><div class="line">               cursor = i + <span class="number">1</span>;</div><div class="line">               <span class="keyword">return</span> next;</div><div class="line">           } <span class="keyword">catch</span> (IndexOutOfBoundsException e) {</div><div class="line">               checkForComodification();</div><div class="line">               <span class="keyword">throw</span> <span class="keyword">new</span> NoSuchElementException();</div><div class="line">           }</div><div class="line">       }</div><div class="line"></div><div class="line">       <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">remove</span><span class="params">()</span> </span>{</div><div class="line">           <span class="keyword">if</span> (lastRet &lt; <span class="number">0</span>)</div><div class="line">               <span class="keyword">throw</span> <span class="keyword">new</span> IllegalStateException();</div><div class="line">           checkForComodification();</div><div class="line"></div><div class="line">           <span class="keyword">try</span> {</div><div class="line">               AbstractList.<span class="keyword">this</span>.remove(lastRet);</div><div class="line">               <span class="keyword">if</span> (lastRet &lt; cursor)</div><div class="line">                   cursor--;</div><div class="line">               lastRet = -<span class="number">1</span>;</div><div class="line">               expectedModCount = modCount;</div><div class="line">           } <span class="keyword">catch</span> (IndexOutOfBoundsException e) {</div><div class="line">               <span class="keyword">throw</span> <span class="keyword">new</span> ConcurrentModificationException();</div><div class="line">           }</div><div class="line">       }</div><div class="line"></div><div class="line">       <span class="function"><span class="keyword">final</span> <span class="keyword">void</span> <span class="title">checkForComodification</span><span class="params">()</span> </span>{</div><div class="line">           <span class="keyword">if</span> (modCount != expectedModCount)</div><div class="line">               <span class="keyword">throw</span> <span class="keyword">new</span> ConcurrentModificationException();</div><div class="line">       }</div><div class="line">   }</div><div class="line">   </div><div class="line">       <span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">ListItr</span> <span class="keyword">extends</span> <span class="title">Itr</span> <span class="keyword">implements</span> <span class="title">ListIterator</span>&lt;<span class="title">E</span>&gt; </span>{</div><div class="line">       ListItr(<span class="keyword">int</span> index) {</div><div class="line">           cursor = index;</div><div class="line">       }</div><div class="line"></div><div class="line">       <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">hasPrevious</span><span class="params">()</span> </span>{</div><div class="line">           <span class="keyword">return</span> cursor != <span class="number">0</span>;</div><div class="line">       }</div><div class="line"></div><div class="line">       <span class="function"><span class="keyword">public</span> E <span class="title">previous</span><span class="params">()</span> </span>{</div><div class="line">           checkForComodification();</div><div class="line">           <span class="keyword">try</span> {</div><div class="line">               <span class="keyword">int</span> i = cursor - <span class="number">1</span>;</div><div class="line">               E previous = get(i);</div><div class="line">               lastRet = cursor = i;</div><div class="line">               <span class="keyword">return</span> previous;</div><div class="line">           } <span class="keyword">catch</span> (IndexOutOfBoundsException e) {</div><div class="line">               checkForComodification();</div><div class="line">               <span class="keyword">throw</span> <span class="keyword">new</span> NoSuchElementException();</div><div class="line">           }</div><div class="line">       }</div><div class="line"></div><div class="line">       <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">nextIndex</span><span class="params">()</span> </span>{</div><div class="line">           <span class="keyword">return</span> cursor;</div><div class="line">       }</div><div class="line"></div><div class="line">       <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">previousIndex</span><span class="params">()</span> </span>{</div><div class="line">           <span class="keyword">return</span> cursor-<span class="number">1</span>;</div><div class="line">       }</div><div class="line"></div><div class="line">       <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">set</span><span class="params">(E e)</span> </span>{</div><div class="line">           <span class="keyword">if</span> (lastRet &lt; <span class="number">0</span>)</div><div class="line">               <span class="keyword">throw</span> <span class="keyword">new</span> IllegalStateException();</div><div class="line">           checkForComodification();</div><div class="line"></div><div class="line">           <span class="keyword">try</span> {</div><div class="line">               AbstractList.<span class="keyword">this</span>.set(lastRet, e);</div><div class="line">               expectedModCount = modCount;</div><div class="line">           } <span class="keyword">catch</span> (IndexOutOfBoundsException ex) {</div><div class="line">               <span class="keyword">throw</span> <span class="keyword">new</span> ConcurrentModificationException();</div><div class="line">           }</div><div class="line">       }</div><div class="line"></div><div class="line">       <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(E e)</span> </span>{</div><div class="line">           checkForComodification();</div><div class="line"></div><div class="line">           <span class="keyword">try</span> {</div><div class="line">               <span class="keyword">int</span> i = cursor;</div><div class="line">               AbstractList.<span class="keyword">this</span>.add(i, e);</div><div class="line">               lastRet = -<span class="number">1</span>;</div><div class="line">               cursor = i + <span class="number">1</span>;</div><div class="line">               expectedModCount = modCount;</div><div class="line">           } <span class="keyword">catch</span> (IndexOutOfBoundsException ex) {</div><div class="line">               <span class="keyword">throw</span> <span class="keyword">new</span> ConcurrentModificationException();</div><div class="line">           }</div><div class="line">       }</div><div class="line">   }</div></pre></td></tr></table></figure>
+<p>&#x503C;&#x5F97;&#x4E00;&#x63D0;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5F53;&#x4E0D;&#x9002;&#x7528;&#x8FED;&#x4EE3;&#x5668;&#x8BBF;&#x95EE;&#x548C;&#x64CD;&#x4F5C;&#x5BB9;&#x5668;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4E0D;&#x4F1A;&#x629B;&#x51FA;<code>ConcurrentModificationException</code>&#xFF0C;&#x4F46;&#x662F;&#x5E76;&#x4E0D;&#x610F;&#x5473;&#x7740;&#x7A0B;&#x5E8F;&#x6B63;&#x786E;&#x3002;&#x5373;&#x4F7F;&#xFF0C;&#x662F;&#x8FED;&#x4EE3;&#x5668;&#x8BBF;&#x95EE;&#x7684;&#x7A0B;&#x5E8F;&#xFF0C;&#x4E5F;&#x6709;&#x6070;&#x597D;&#x672A;&#x53D1;&#x751F;<code>ConcurrentModificationException</code>&#x7684;&#x60C5;&#x51B5;&#x3002;</p>
+<blockquote>
+<p>Note that the fail-fast behavior of an iterator cannot be guaranteed as it is, generally speaking, impossible to make any hard guarantees in the presence of unsynchronized concurrent modification. Fail-fast iterators throw ConcurrentModificationException on a best-effort basis. Therefore, it would be wrong to write a program that depended on this exception for its correctness: the fail-fast behavior of iterators should be used only to detect bugs.<br>&#x6CE8;&#x610F;&#xFF0C;&#x8FED;&#x4EE3;&#x5668;&#x7684;&#x5FEB;&#x901F;&#x5931;&#x8D25;&#x884C;&#x4E3A;&#x65E0;&#x6CD5;&#x5F97;&#x5230;&#x4FDD;&#x8BC1;&#xFF0C;&#x56E0;&#x4E3A;&#x4E00;&#x822C;&#x6765;&#x8BF4;&#xFF0C;&#x4E0D;&#x53EF;&#x80FD;&#x5BF9;&#x662F;&#x5426;&#x51FA;&#x73B0;&#x4E0D;&#x540C;&#x6B65;&#x5E76;&#x53D1;&#x4FEE;&#x6539;&#x505A;&#x51FA;&#x4EFB;&#x4F55;&#x786C;&#x6027;&#x4FDD;&#x8BC1;&#x3002;&#x5FEB;&#x901F;&#x5931;&#x8D25;&#x8FED;&#x4EE3;&#x5668;&#x4F1A;&#x5C3D;&#x6700;&#x5927;&#x52AA;&#x529B;&#x629B;&#x51FA; ConcurrentModificationException&#x3002;&#x56E0;&#x6B64;&#xFF0C;&#x4E3A;&#x63D0;&#x9AD8;&#x8FD9;&#x7C7B;&#x8FED;&#x4EE3;&#x5668;&#x7684;&#x6B63;&#x786E;&#x6027;&#x800C;&#x7F16;&#x5199;&#x4E00;&#x4E2A;&#x4F9D;&#x8D56;&#x4E8E;&#x6B64;&#x5F02;&#x5E38;&#x7684;&#x7A0B;&#x5E8F;&#x662F;&#x9519;&#x8BEF;&#x7684;&#x505A;&#x6CD5;&#xFF1A;&#x8FED;&#x4EE3;&#x5668;&#x7684;&#x5FEB;&#x901F;&#x5931;&#x8D25;&#x884C;&#x4E3A;&#x5E94;&#x8BE5;&#x4EC5;&#x7528;&#x4E8E;&#x68C0;&#x6D4B; bug&#x3002;</p>
+</blockquote>
+<ul>
+<li>&#x4E0D;&#x80FD;&#x4F9D;&#x8D56;fail-fast&#x673A;&#x5236;&#x6765;&#x4FDD;&#x8BC1;&#x7A0B;&#x5E8F;&#x7684;&#x6B63;&#x786E;&#x6027;&#x3002;<code>ConcurrentModificationException</code>&#x53EA;&#x9002;&#x5408;&#x7528;&#x6765;&#x67E5;bug&#x3002;</li>
+</ul>
+<h5 id="fast-fail&#x7684;&#x6D4B;&#x8BD5;&#x4EE3;&#x7801;"><a href="#fast-fail&#x7684;&#x6D4B;&#x8BD5;&#x4EE3;&#x7801;" class="headerlink" title="fast-fail&#x7684;&#x6D4B;&#x8BD5;&#x4EE3;&#x7801;"></a>fast-fail&#x7684;&#x6D4B;&#x8BD5;&#x4EE3;&#x7801;</h5><ul>
+<li><code>failFastWorkTest</code>&#x7684;Thread t1&#x4F7F;&#x7528;&#x8FED;&#x4EE3;&#x5668;&#x6765;&#x8BBF;&#x95EE;&#x5BB9;&#x5668;&#xFF0C;&#x5728;&#x8BBF;&#x95EE;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;Thread t2&#x5BF9;&#x5BB9;&#x5668;&#x8C03;&#x7528;&#x4E86;<code>ArrayList.remove(element)</code>&#x64CD;&#x4F5C;&#xFF0C;&#x6B64;&#x540E;&#xFF0C;&#x5F53;t1&#x8FED;&#x4EE3;&#x5230;&#x4E0B;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#x65F6;&#x5019;&#xFF0C;&#xFF08;<code>next()</code>&#x4F1A;&#x68C0;&#x67E5;modCount, &#x5373;<code>checkForComodification</code>&#xFF09;&#x8FD9;&#x5C06;&#x5F15;&#x53D1;fast-fail.</li>
+<li><p>&#x6839;&#x636E;&#x4E0A;&#x9762;&#x63CF;&#x8FF0;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5199;&#x4E2A;demo&#x6765;&#x6D4B;&#x8BD5;ArrayList&#x7684;fast-fail&#xFF1A;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line">    <span class="meta">@Test</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">failFastWorkTest</span><span class="params">()</span> <span class="keyword">throws</span> InterruptedException, ConcurrentModificationException     </span>{</div><div class="line">        Thread t1 = <span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable() {</div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>{</div><div class="line">                Iterator&lt;Integer&gt; iterator = arrayList.iterator();</div><div class="line">                <span class="keyword">while</span>(iterator.hasNext()) {</div><div class="line">                    <span class="keyword">int</span> i = iterator.next();</div><div class="line">                    logger.info(<span class="string">&quot;thread t1 get item : {}&quot;</span>, i);</div><div class="line">                    <span class="keyword">try</span> {</div><div class="line">                        Thread.sleep(<span class="number">10</span>);</div><div class="line">                    } <span class="keyword">catch</span> (InterruptedException e) {</div><div class="line">                        e.printStackTrace();</div><div class="line">                    }</div><div class="line"></div><div class="line">                }</div><div class="line">            }</div><div class="line">        });</div><div class="line"></div><div class="line">        Thread t2 = <span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable() {</div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>{</div><div class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) {</div><div class="line">                    <span class="keyword">if</span> (i == <span class="number">3</span>) {</div><div class="line"><span class="comment">//                        arrayList.remove(i);</span></div><div class="line">                        arrayList.add(i);</div><div class="line">                    }</div><div class="line"></div><div class="line">                }</div><div class="line">            }</div><div class="line">        });</div><div class="line"></div><div class="line">        runThreads(t1, t2);</div><div class="line">    }</div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">runThreads</span><span class="params">(Thread t1, Thread t2)</span> <span class="keyword">throws</span> InterruptedException </span>{</div><div class="line">        logger.info(<span class="string">&quot;start thread 1 &quot;</span>);</div><div class="line">        t1.start();</div><div class="line">        logger.info(<span class="string">&quot;start thread 2 &quot;</span>);</div><div class="line">        t2.start();</div><div class="line">        t1.join();</div><div class="line">        logger.info(<span class="string">&quot;end thread1 &quot;</span>);</div><div class="line">        t2.join();</div><div class="line">        logger.info(<span class="string">&quot;end thread2 &quot;</span>);</div><div class="line">        logger.info(<span class="string">&quot;fail fast test done&quot;</span>);</div><div class="line"></div><div class="line">        logger.info(<span class="string">&quot;finnal array List&quot;</span>, arrayList);</div><div class="line">    }</div></pre></td></tr></table></figure>
+</li>
+<li><p><code>failFastNoWorkTest</code>&#x7684;Thread t1&#x4F7F;&#x7528;&#x76F4;&#x63A5;&#x901A;&#x8FC7;ArrayList.get()&#x6765;&#x8BBF;&#x95EE;&#x5BB9;&#x5668;&#xFF0C;&#x5728;&#x8BBF;&#x95EE;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;Thread t2&#x5BF9;&#x5BB9;&#x5668;&#x8C03;&#x7528;&#x4E86;<code>ArrayList.remove(element)</code>&#x64CD;&#x4F5C;&#x3002;&#x672A;&#x4F7F;&#x7528;&#x8FED;&#x4EE3;&#x5668;&#xFF0C;&#x6240;&#x4EE5;&#x6CA1;&#x6709;modCount&#x6821;&#x9A8C;&#xFF0C;&#x6240;&#x4EE5;&#x4E0D;&#x4F1A;&#x53D1;&#x751F;fast-fail&#x3002;&#x5F53;&#x5B9E;&#x9645;&#x4E0A;&#xFF0C;&#x8FD9;&#x6837;&#x7684;&#x7A0B;&#x5E8F;&#x662F;&#x7EBF;&#x7A0B;&#x4E0D;&#x5B89;&#x5168;&#x7684;&#x3002;</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line"> </div><div class="line"><span class="meta">@Test</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">failFastNoWorkTest</span><span class="params">()</span> <span class="keyword">throws</span> InterruptedException </span>{</div><div class="line">    Thread t1 = <span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable() {</div><div class="line">        <span class="meta">@Override</span></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>{</div><div class="line">            <span class="keyword">int</span> size = arrayList.size();</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; size; i++) {</div><div class="line">                <span class="keyword">int</span> value = arrayList.get(i);</div><div class="line">                logger.info(<span class="string">&quot;thread 1 run : {}&quot;</span>, value);</div><div class="line">                printPrivateField(AbstractList.class, <span class="string">&quot;modCount&quot;</span>, arrayList);</div><div class="line"></div><div class="line">                <span class="keyword">try</span> {</div><div class="line">                    Thread.sleep(<span class="number">10</span>);</div><div class="line">                } <span class="keyword">catch</span> (InterruptedException e) {</div><div class="line">                    e.printStackTrace();</div><div class="line">                }</div><div class="line">            }</div><div class="line">        }</div><div class="line">    });</div><div class="line"></div><div class="line">    Thread t2 = <span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable() {</div><div class="line">        <span class="meta">@Override</span></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>{</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; RUN_TIMES; i++) {</div><div class="line"></div><div class="line">                <span class="keyword">if</span> (i == <span class="number">3</span>) {</div><div class="line">                    arrayList.remove(<span class="number">3</span>);</div><div class="line">                }</div><div class="line">                printPrivateField(AbstractList.class, <span class="string">&quot;modCount&quot;</span>, arrayList);</div><div class="line">                addElementByList(arrayList, <span class="number">100</span>);</div><div class="line">            }</div><div class="line">        }</div><div class="line">    });</div><div class="line"></div><div class="line">    logger.info(<span class="string">&quot;before start thread ... &quot;</span>);</div><div class="line">    printPrivateField(AbstractList.class, <span class="string">&quot;modCount&quot;</span>, arrayList);</div><div class="line">    <span class="keyword">new</span> ListTest().runThreads(t1, t2);</div><div class="line"></div><div class="line">}</div></pre></td></tr></table></figure>
+<h3 id="capacity"><a href="#capacity" class="headerlink" title="capacity"></a>capacity</h3><p>&#x53E6;&#x4E00;&#x4E2A;&#x503C;&#x5F97;&#x7814;&#x7A76;&#x7684;&#x77E5;&#x8BC6;&#x70B9;&#x662F;List&#x7684;&#x81EA;&#x52A8;&#x6269;&#x5BB9;&#xFF0C;&#x4E3B;&#x8981;&#x662F;ArrayList&#x548C;Vector&#x3002;</p>
+<blockquote>
+<p>ArrayList&#x548C;Vector&#x90FD;&#x662F;&#x4F7F;&#x7528;&#x6570;&#x7EC4;(Array)&#x6765;&#x63A7;&#x5236;&#x96C6;&#x5408;&#x4E2D;&#x7684;&#x5BF9;&#x8C61;&#x3002;&#x5F53;&#x4F60;&#x5411;&#x8FD9;&#x4E24;&#x79CD;&#x7C7B;&#x578B;&#x4E2D;&#x589E;&#x52A0;&#x5143;&#x7D20;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5982;&#x679C;&#x5143;&#x7D20;&#x7684;&#x6570;&#x76EE;&#x8D85;&#x51FA;&#x4E86;&#x5185;&#x90E8;&#x6570;&#x7EC4;&#x76EE;&#x524D;&#x7684;&#x957F;&#x5EA6;&#x5B83;&#x4EEC;&#x90FD;&#x9700;&#x8981;&#x6269;&#x5C55;&#x5185;&#x90E8;&#x6570;&#x7EC4;&#x7684;&#x957F;&#x5EA6;&#xFF0C;Vector&#x7F3A;&#x7701;&#x60C5;&#x51B5;&#x4E0B;&#x81EA;&#x52A8;&#x589E;&#x957F;&#x539F;&#x6765;&#x4E00;&#x500D;&#x7684;&#x6570;&#x7EC4;&#x957F;&#x5EA6;&#xFF0C;ArrayList&#x662F;&#x539F;&#x6765;&#x7684;50%,&#x6240;&#x4EE5;&#x6700;&#x540E;&#x4F60;&#x83B7;&#x5F97;&#x7684;&#x8FD9;&#x4E2A;&#x96C6;&#x5408;&#x6240;&#x5360;&#x7684;&#x7A7A;&#x95F4;&#x603B;&#x662F;&#x6BD4;&#x4F60;&#x5B9E;&#x9645;&#x9700;&#x8981;&#x7684;&#x8981;&#x5927;&#x3002;&#x6240;&#x4EE5;&#x5982;&#x679C;&#x4F60;&#x8981;&#x5728;&#x96C6;&#x5408;&#x4E2D;&#x4FDD;&#x5B58;&#x5927;&#x91CF;&#x7684;&#x6570;&#x636E;&#x90A3;&#x4E48;&#x4F7F;&#x7528;Vector&#x6709;&#x4E00;&#x4E9B;&#x4F18;&#x52BF;&#xFF0C;&#x56E0;&#x4E3A;&#x4F60;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x8BBE;&#x7F6E;&#x96C6;&#x5408;&#x7684;&#x521D;&#x59CB;&#x5316;&#x5927;&#x5C0F;&#x6765;&#x907F;&#x514D;&#x4E0D;&#x5FC5;&#x8981;&#x7684;&#x8D44;&#x6E90;&#x5F00;&#x9500;&#x3002;</p>
+</blockquote>
+<p>Vector<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line">  * This implements the unsynchronized semantics of ensureCapacity.</div><div class="line">  * Synchronized methods in this class can internally call this</div><div class="line">  * method for ensuring capacity without incurring the cost of an</div><div class="line">  * extra synchronization.</div><div class="line">  *</div><div class="line">  * <span class="doctag">@see</span> #ensureCapacity(int)</div><div class="line">  */</div><div class="line"> <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">ensureCapacityHelper</span><span class="params">(<span class="keyword">int</span> minCapacity)</span> </span>{</div><div class="line">     <span class="comment">// overflow-conscious code</span></div><div class="line">     <span class="keyword">if</span> (minCapacity - elementData.length &gt; <span class="number">0</span>)</div><div class="line">         grow(minCapacity);</div><div class="line"> }</div><div class="line"> <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">grow</span><span class="params">(<span class="keyword">int</span> minCapacity)</span> </span>{</div><div class="line">     <span class="comment">// overflow-conscious code</span></div><div class="line">     <span class="keyword">int</span> oldCapacity = elementData.length;</div><div class="line">     <span class="keyword">int</span> newCapacity = oldCapacity + ((capacityIncrement &gt; <span class="number">0</span>) ?</div><div class="line">                                      capacityIncrement : oldCapacity);</div><div class="line">     <span class="keyword">if</span> (newCapacity - minCapacity &lt; <span class="number">0</span>)</div><div class="line">         newCapacity = minCapacity;</div><div class="line">     <span class="keyword">if</span> (newCapacity - MAX_ARRAY_SIZE &gt; <span class="number">0</span>)</div><div class="line">         newCapacity = hugeCapacity(minCapacity);</div><div class="line">     elementData = Arrays.copyOf(elementData, newCapacity);</div><div class="line"> }</div></pre></td></tr></table></figure></p>
+<p>ArrayList:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * Increases the capacity to ensure that it can hold at least the</div><div class="line"> * number of elements specified by the minimum capacity argument.</div><div class="line"> *</div><div class="line"> * <span class="doctag">@param</span> minCapacity the desired minimum capacity</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">grow</span><span class="params">(<span class="keyword">int</span> minCapacity)</span> </span>{</div><div class="line">    <span class="comment">// overflow-conscious code</span></div><div class="line">    <span class="keyword">int</span> oldCapacity = elementData.length;</div><div class="line">    <span class="keyword">int</span> newCapacity = oldCapacity + (oldCapacity &gt;&gt; <span class="number">1</span>);</div><div class="line">    <span class="keyword">if</span> (newCapacity - minCapacity &lt; <span class="number">0</span>)</div><div class="line">        newCapacity = minCapacity;</div><div class="line">    <span class="keyword">if</span> (newCapacity - MAX_ARRAY_SIZE &gt; <span class="number">0</span>)</div><div class="line">        newCapacity = hugeCapacity(minCapacity);</div><div class="line">    <span class="comment">// minCapacity is usually close to size, so this is a win:</span></div><div class="line">    elementData = Arrays.copyOf(elementData, newCapacity);</div><div class="line">}</div></pre></td></tr></table></figure></p>
+<p>&#x6240;&#x4EE5;&#xFF0C;&#x5982;&#x679C;&#x9700;&#x8981;&#x5B58;&#x50A8;&#x7684;&#x6570;&#x636E;&#x91CF;&#x6BD4;&#x8F83;&#x5927;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;<code>Vector</code>&#xFF0C;&#x4EE5;&#x51CF;&#x5C11;&#x6269;&#x5BB9;&#x6B21;&#x6570;&#x3002;&#x53E6;&#x5916;&#xFF0C;<code>Vector</code>&#x53EF;&#x4EE5;&#x8BBE;&#x7F6E;<code>capacityIncrement</code>&#xFF0C;&#x6765;&#x914D;&#x7F6E;&#x6BCF;&#x6B21;&#x6269;&#x5BB9;&#x7684;&#x589E;&#x957F;&#x91CF;&#xFF0C;&#x6BD4;&#x8F83;&#x7075;&#x6D3B;&#x3002;</p>
+<h2 id="&#x53C2;&#x8003;&#x94FE;&#x63A5;"><a href="#&#x53C2;&#x8003;&#x94FE;&#x63A5;" class="headerlink" title="&#x53C2;&#x8003;&#x94FE;&#x63A5;"></a>&#x53C2;&#x8003;&#x94FE;&#x63A5;</h2><p><a href="https://docs.oracle.com/javase/8/docs/api/?java/util/Collection.html" target="_blank" rel="external">ArrayList</a><br><a href="https://www.programcreek.com/simple-java/" target="_blank" rel="external">simpleJava</a><br><a href="https://blog.csdn.net/chenssy/article/details/38151189" target="_blank" rel="external">fail-fast</a><br><a href="http://www.hollischuang.com/archives/498" target="_blank" rel="external">SynchronizedList&#x548C;Vector&#x7684;&#x533A;&#x522B;, by Hollis</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/03/17/ProgramStudy/scala-for-impatients-ch4/" itemprop="url">
+                  Scala_for_impatients_Ch4
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-03-17T22:22:00+08:00" content="2017-03-17">
+              2017-03-17
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/scala/" itemprop="url" rel="index">
+                    <span itemprop="name">scala</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Chapter-4-maps-and-tuples"><a href="#Chapter-4-maps-and-tuples" class="headerlink" title="Chapter 4: maps and tuples"></a>Chapter 4: maps and tuples</h1><h2 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h2><ul>
+<li>Scala has a pleasant syntax for creating, querying, and traversing maps.<ul>
+<li>the call map.get(key) returns an Option object that is either Some(value for key) or None.</li>
+<li>for ((k, v) &lt;- map) process k and v</li>
+<li>for (v &lt;- scores.values) println(v)</li>
+</ul>
+</li>
+<li>You need to choose between mutable and immutable maps.<ul>
+<li>updating map values only when it is mutable</li>
+<li>You can&#x2019;t update an immutable map, but you can do something that&#x2019;s just as useful&#x2014;obtain a new map that has the desired update:</li>
+</ul>
+</li>
+<li>By default, you get a hash map, but you can also get a tree map.<ul>
+<li>You might want a tree map if you need to visit the keys in sorted order.</li>
+</ul>
+</li>
+<li>You can easily convert between Scala and Java maps.<ul>
+<li>First: import related class<ul>
+<li>e.g: <code>import scala.collection.JavaConversions.mapAsScalaMap</code><br>-</li>
+</ul>
+</li>
+<li>Second: use java class<ul>
+<li>e.g: <code>val scores: scala.collection.mutable.Map[String, Int] = new java.util.TreeMap[String, Int]</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Tuples are useful for aggregating values.<ul>
+<li>Zipping is used to bundle together values so that they can be pro- cessed together<ul>
+<li>If you have a collection of keys and a parallel collection of values, then zip them up and turn them into a map like<code>this:keys.zip(values).toMap</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="Exercises"><a href="#Exercises" class="headerlink" title="Exercises"></a>Exercises</h2><ol>
+<li>Set up a map of prices for a number of gizmos that you covet. Then produce a second map with the same keys and the prices at a 10 percent discount.</li>
+</ol>
+<pre><code><figure class="highlight ocaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">val</span> prices = <span class="type">Map</span>(<span class="string">&quot;A&quot;</span> -&gt; <span class="number">10</span>, <span class="string">&quot;B&quot;</span> -&gt; <span class="number">20</span>, <span class="string">&quot;C&quot;</span> -&gt; <span class="number">8</span>)</div><div class="line"><span class="keyword">val</span> secondPrices = <span class="keyword">for</span>((k,v) &lt;- prices) yield (k,<span class="number">0.9</span>*v)</div></pre></td></tr></table></figure>
+</code></pre><ol>
+<li>Write a program that reads words from a file. Use a mutable map to count how often each word appears. To read the words, simply use a java.util.Scanner:<br>val in = new java.util.Scanner(java.io.File(&#x201C;myfile.txt&#x201D;)) while (in.hasNext()) process in.next()<br>Or look at Chapter 9 for a Scalaesque way.<br>At the end, print out all words and their counts.</li>
+</ol>
+<pre><code><figure class="highlight pony"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 1. reads words from a File</span></div><div class="line"><span class="meta">val</span> source = <span class="type">Source</span>.fromFile(<span class="string">&quot;../README.md&quot;</span>).mkString</div><div class="line"><span class="meta">val</span> words = source.split(<span class="string">&quot;\\s+&quot;</span>)</div><div class="line"></div><div class="line"><span class="comment">// 2. Use a mutable map to count how often each word appears.</span></div><div class="line"><span class="meta">val</span> wordsCount = <span class="function"><span class="keyword">new</span> <span class="title">HashMap</span>[<span class="title">String</span>, <span class="title">Int</span>]()</span></div><div class="line"><span class="title">for</span>(k &lt;- words) {</div><div class="line">  <span class="title">wordsCount</span>(k) = <span class="title">wordsCount</span>.<span class="title">getOrElse</span>(k,<span class="number">0</span>) + 1</div><div class="line">}</div><div class="line"><span class="title">println</span>(wordsCount.mkString(&quot;\n&quot;))</div><div class="line"><span class="comment">//</span></div></pre></td></tr></table></figure>
+</code></pre><ol>
+<li><p>Repeat the preceding exercise with an immutable map.</p>
+ <figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">var</span> wordMap2 = Map[String,Int]()</div><div class="line">val <span class="keyword">in</span> = new java<span class="selector-class">.util</span><span class="selector-class">.Scanner</span>(new java<span class="selector-class">.io</span><span class="selector-class">.File</span>(<span class="string">&quot;../README.MD&quot;</span>))</div><div class="line"></div><div class="line"><span class="function"><span class="title">while</span><span class="params">(in.hasNext()</span></span>) {</div><div class="line">  val key = <span class="keyword">in</span>.next()</div><div class="line">  wordMap2 += (key -&gt; (wordMap2.getOrElse(key,<span class="number">0</span>)+<span class="number">1</span>))</div><div class="line">}</div><div class="line"><span class="function"><span class="title">println</span><span class="params">(wordMap2)</span></span></div></pre></td></tr></table></figure>
+</li>
+<li><p>Repeat the preceding exercise with a sorted map, so that the words are printed in sorted order.</p>
+</li>
+</ol>
+<pre><code><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">var</span> wordMap3 = scala<span class="selector-class">.collection</span><span class="selector-class">.immutable</span><span class="selector-class">.SortedMap</span>[String,Int]()</div><div class="line">val <span class="keyword">in</span> = new java<span class="selector-class">.util</span><span class="selector-class">.Scanner</span>(new java<span class="selector-class">.io</span><span class="selector-class">.File</span>(<span class="string">&quot;../README.MD&quot;</span>))</div><div class="line"></div><div class="line"><span class="function"><span class="title">while</span><span class="params">(in.hasNext()</span></span>) {</div><div class="line">  val key = <span class="keyword">in</span>.next()</div><div class="line">  wordMap3 += (key -&gt; (wordMap3.getOrElse(key,<span class="number">0</span>)+<span class="number">1</span>))</div><div class="line">}</div><div class="line"><span class="function"><span class="title">println</span><span class="params">(wordMap3)</span></span></div></pre></td></tr></table></figure>
+</code></pre><ol>
+<li>Repeat the preceding exercise with a java.util.TreeMap that you adapt to the Scala API.</li>
+</ol>
+<pre><code><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">val wordMap4:scala<span class="selector-class">.collection</span><span class="selector-class">.mutable</span><span class="selector-class">.Map</span>[String,Int] = new java<span class="selector-class">.util</span><span class="selector-class">.TreeMap</span>[String,Int]</div><div class="line">val <span class="keyword">in</span> = new java<span class="selector-class">.util</span><span class="selector-class">.Scanner</span>(new java<span class="selector-class">.io</span><span class="selector-class">.File</span>(<span class="string">&quot;../README.MD&quot;</span>))</div><div class="line"></div><div class="line"><span class="function"><span class="title">while</span><span class="params">(in.hasNext()</span></span>) {</div><div class="line">  val key = <span class="keyword">in</span>.next()</div><div class="line">  wordMap4 += (key -&gt; (wordMap4.getOrElse(key,<span class="number">0</span>)+<span class="number">1</span>))</div><div class="line">}</div><div class="line"><span class="function"><span class="title">println</span><span class="params">(wordMap4)</span></span></div></pre></td></tr></table></figure>
+</code></pre><ol>
+<li>Define a linked hash map that maps &#x201C;Monday&#x201D; to java.util.Calendar.MONDAY, and similarly for the other weekdays. Demonstrate that the elements are visited in insertion order.</li>
+</ol>
+<pre><code><figure class="highlight arduino"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> java.util.Calendar</div><div class="line"><span class="keyword">import</span> scala.collection.<span class="keyword">mutable</span>.LinkedHashMap</div><div class="line"></div><div class="line"></div><div class="line">val <span class="built_in">map</span> = <span class="keyword">new</span> LinkedHashMap[<span class="keyword">String</span>,Int]  </div><div class="line"></div><div class="line"><span class="built_in">map</span> += (<span class="string">&quot;Monday&quot;</span>-&gt;Calendar.MONDAY)  </div><div class="line"><span class="built_in">map</span> += (<span class="string">&quot;Tuesday&quot;</span>-&gt;Calendar.TUESDAY)  </div><div class="line"><span class="built_in">map</span> += (<span class="string">&quot;Wednesday&quot;</span>-&gt;Calendar.WEDNESDAY)  </div><div class="line"><span class="built_in">map</span> += (<span class="string">&quot;Thursday&quot;</span>-&gt;Calendar.THURSDAY)  </div><div class="line"><span class="built_in">map</span> += (<span class="string">&quot;Friday&quot;</span>-&gt;Calendar.FRIDAY)  </div><div class="line"><span class="built_in">map</span> += (<span class="string">&quot;Saturday&quot;</span>-&gt;Calendar.SATURDAY)  </div><div class="line"><span class="built_in">map</span> += (<span class="string">&quot;Sunday&quot;</span>-&gt;Calendar.SUNDAY)  </div><div class="line"></div><div class="line"></div><div class="line"><span class="built_in">println</span>(<span class="built_in">map</span>.mkString(<span class="string">&quot;,&quot;</span>))</div></pre></td></tr></table></figure>
+</code></pre><ol>
+<li><p>Print a table of all Java properties, like this:<br>49</p>
+ <figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">java.<span class="keyword">runtime</span>.name <span class="keyword">sun</span>.boot.library.path java.<span class="keyword">vm</span>.<span class="keyword">version</span> java.<span class="keyword">vm</span>.vendor java.vendor.url path.separator java.<span class="keyword">vm</span>.name</div><div class="line">| Java(TM) SE Runtime Environment</div><div class="line">| /home/apps/jdk1.<span class="number">6.0</span>_21/jre/lib/i386 | <span class="number">17.0</span>-b16</div><div class="line">| Sun Microsystems Inc.</div><div class="line">| http://java.<span class="keyword">sun</span>.<span class="keyword">com</span>/</div><div class="line">| :</div><div class="line">| Java HotSpot(TM) Server VM</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>You need to find the length of the longest key before you can print the table.</p>
+<pre><code><figure class="highlight processing"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> scala.collection.JavaConversions.propertiesAsScalaMap</div><div class="line">val pros:scala.collection.Map[<span class="keyword">String</span>,<span class="keyword">String</span>] = System.getProperties()</div><div class="line">val keys = pros.keySet()</div><div class="line">val keys = pros.keySet</div><div class="line">val keyLens = <span class="keyword">for</span>(<span class="built_in">key</span> &lt;- keys) yield <span class="built_in">key</span>.length</div><div class="line">val maxLen = keyLens.<span class="built_in">max</span></div><div class="line"><span class="keyword">for</span> (<span class="built_in">key</span> &lt;- keys) {</div><div class="line">  <span class="built_in">print</span>(<span class="built_in">key</span>)</div><div class="line">  <span class="built_in">print</span>(<span class="string">&quot; &quot;</span> * (maxLen - <span class="built_in">key</span>.length))</div><div class="line">  <span class="built_in">print</span>(<span class="string">&quot; | &quot;</span>)</div><div class="line">  <span class="built_in">println</span>(pros(<span class="built_in">key</span>))</div><div class="line">}</div></pre></td></tr></table></figure>
+</code></pre><ol>
+<li><p>Write a function minmax(values: Array[Int]) that returns a pair containing the smallest and largest values in the array.</p>
+ <figure class="highlight maxima"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">val <span class="built_in">values</span> = Array(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,-<span class="number">7</span>,-<span class="number">5</span>,<span class="number">3</span>,-<span class="number">1</span>,<span class="number">6</span>,<span class="number">0</span>)</div><div class="line"></div><div class="line">def minmax(<span class="built_in">values</span>: Array[Int]) = {</div><div class="line">  val minV = <span class="built_in">values</span>.<span class="built_in">min</span></div><div class="line">  val maxV = <span class="built_in">values</span>.<span class="built_in">max</span></div><div class="line">  (minV, maxV)</div><div class="line">}</div><div class="line"></div><div class="line">minmax(<span class="built_in">values</span>)</div></pre></td></tr></table></figure>
+</li>
+<li><p>Write a function lteqgt(values: Array[Int], v: Int) that returns a triple containing the counts of values less than v, equal to v, and greater than v.</p>
+</li>
+</ol>
+<pre><code><figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">def iteqgt(value<span class="variable">s:Array</span>[Int],<span class="variable">v:Int</span>)={</div><div class="line">  (<span class="built_in">values</span>.<span class="built_in">count</span>(_&lt;v),<span class="built_in">values</span>.<span class="built_in">count</span>(_==v),<span class="built_in">values</span>.<span class="built_in">count</span>(_&gt;v))</div><div class="line">}</div></pre></td></tr></table></figure>
+</code></pre><ol>
+<li>What happens when you zip together two strings, such as &#x201C;Hello&#x201D;.zip(&#x201C;World&#x201D;)? Come up with a plausible use case.</li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/03/16/ProgramStudy/scala-for-impatients-ch3/" itemprop="url">
+                  Scala_for_impatients_Ch3
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-03-16T17:23:00+08:00" content="2017-03-16">
+              2017-03-16
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/scala/" itemprop="url" rel="index">
+                    <span itemprop="name">scala</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h2><ul>
+<li>Use an Array if the length is fixed, and an ArrayBuffer if the length can vary.</li>
+<li>Don&#x2019;t use new when supplying initial values.</li>
+<li>Use () to access elements.</li>
+<li>Use for (elem &lt;- arr) to traverse the elements.<ul>
+<li>elem &lt;- 0 until s.length</li>
+<li>elem &lt;- 0 until s. length reverse</li>
+<li>elem &lt;- 0 untial (s.length, 2) reverse // visit every second element</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>Use for (elem &lt;- arr if . . . ) . . . yield . . . to transform into a new array.<ul>
+<li>The for (&#x2026;) yield loop creates a new collection of the same type as the original collection.</li>
+<li>The result contains the expressions after the yield, one for each iteration of the loop.</li>
+<li>Keep in mind that the result is a new collection&#x2014;the original collection is not affected.</li>
+</ul>
+</li>
+<li>Scala and Java arrays are interoperable; with ArrayBuffer, use scala.collection. JavaConversions.<ul>
+<li>The Scala buffer is wrapped into an object of a Java class that implements the java.util.List interface.</li>
+</ul>
+</li>
+</ul>
+<h2 id="Exercises"><a href="#Exercises" class="headerlink" title="Exercises"></a>Exercises</h2><ol>
+<li>Write a code snippet that sets a to an array of n random integers between 0 (inclusive) and n (exclusive).</li>
+</ol>
+<pre><code><figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">def randNum(n:Int):Array[Int] = {</div><div class="line">  val a = scala.util.Random</div><div class="line">  val b = new Array[<span class="string">Int</span>](<span class="link">n</span>)</div><div class="line">  for(i <span class="xml"><span class="tag">&lt;<span class="name">-</span> <span class="attr">0</span> <span class="attr">until</span> <span class="attr">b.length</span>) {</span></span></div><div class="line">    <span class="attr">b</span>(<span class="attr">i</span>) = <span class="string">a.nextInt(n)</span></div><div class="line">  }</div><div class="line">  <span class="attr">b</span></div><div class="line">}</div><div class="line"></div><div class="line"><span class="attr">val</span> <span class="attr">n</span> = <span class="string">10</span></div><div class="line"><span class="attr">println</span>(<span class="attr">randNum</span>(<span class="attr">n</span>)<span class="attr">.mkString</span>(&quot; &quot;))</div></pre></td></tr></table></figure>
+</code></pre><ol>
+<li>Write a loop that swaps adjacent elements of an array of integers. For example, Array(1, 2, 3, 4, 5) becomes Array(2, 1, 4, 3, 5).</li>
+</ol>
+<pre><code><figure class="highlight http"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div><div class="line"><span class="markdown">def swapsArray(a:Array[Int]) = {</span></div><div class="line"></div><div class="line">  val b = new ArrayBuffer[<span class="string">Int</span>](<span class="link"></span>)</div><div class="line"></div><div class="line">  for (i <span class="xml"><span class="tag">&lt;<span class="name">-</span> <span class="attr">0</span> <span class="attr">until</span> <span class="attr">a.length</span> <span class="attr">if</span> <span class="attr">i</span>%<span class="attr">2</span> == <span class="string">0)</span> {</span></span></div><div class="line"></div><div class="line">    <span class="attr">if</span> (<span class="attr">i</span>+<span class="attr">1</span> &lt; <span class="attr">a.length</span>) {</div><div class="line">      <span class="attr">b</span> += <span class="string">a(i+1)</span></div><div class="line">    }</div><div class="line">    <span class="attr">b</span> += <span class="string">a(i)</span></div><div class="line">  }</div><div class="line">  <span class="attr">b</span></div><div class="line"></div><div class="line">}</div><div class="line"><span class="attr">val</span> <span class="attr">a</span> = <span class="string">Array(1,2,3,4,5,6,7,8,9,10)</span></div><div class="line"><span class="attr">val</span> <span class="attr">b</span> = <span class="string">swapsArray(a)</span></div><div class="line"><span class="attr">println</span>(<span class="attr">b.mkString</span>(&quot;,&quot;))</div></pre></td></tr></table></figure>
+</code></pre><ol>
+<li><p>Repeat the preceding assignment, but produce a new array with the swapped values. Use for/yield.</p>
+ <figure class="highlight scala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">swapsArray2</span></span>(a:<span class="type">Array</span>[<span class="type">Int</span>]) = {</div><div class="line">    <span class="keyword">val</span> temp = <span class="keyword">for</span>(i &lt;- <span class="number">0</span> until (a.length, <span class="number">2</span>)) <span class="keyword">yield</span> {</div><div class="line">      <span class="keyword">if</span> (i &lt; a.length<span class="number">-1</span>) <span class="type">Array</span>(a(i+<span class="number">1</span>), a(i))</div><div class="line">      <span class="keyword">else</span> <span class="type">Array</span>(a(i))</div><div class="line">    }</div><div class="line">    <span class="keyword">val</span> b = temp.flatten.toArray</div><div class="line">    println(b.mkString(<span class="string">&quot;,&quot;</span>))</div><div class="line">    b</div><div class="line">}</div><div class="line"></div><div class="line"><span class="keyword">val</span> a = <span class="type">Array</span>(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">10</span>)</div><div class="line"><span class="keyword">val</span> b = swapsArray(a)</div><div class="line">println(b.mkString(<span class="string">&quot;,&quot;</span>))</div></pre></td></tr></table></figure>
+</li>
+<li><p>Given an array of integers, produce a new array that contains all positive values of the original array, in their original order, followed by all values that are zero or negative, in their original order.</p>
+</li>
+</ol>
+<pre><code><figure class="highlight verilog"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">def <span class="keyword">generate</span>(a:Array[Int]) = {</div><div class="line">    val pos = <span class="keyword">for</span>(i &lt;- <span class="number">0</span> <span class="keyword">until</span> a<span class="variable">.length</span> <span class="keyword">if</span> a(i)&gt;<span class="number">0</span>) yield {</div><div class="line">      a(i)</div><div class="line">    }</div><div class="line">    val neg = <span class="keyword">for</span>(i &lt;- <span class="number">0</span> <span class="keyword">until</span> a<span class="variable">.length</span> <span class="keyword">if</span> a(i)&lt;=<span class="number">0</span>) yield {</div><div class="line">      a(i)</div><div class="line">    }</div><div class="line">    val b = Array(pos, neg)<span class="variable">.flatten</span><span class="variable">.toArray</span></div><div class="line">    b</div><div class="line">}</div><div class="line"></div><div class="line">val a = Array(<span class="number">1</span>,<span class="number">2</span>,-<span class="number">4</span>,-<span class="number">1</span>,<span class="number">0</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,-<span class="number">8</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">10</span>,-<span class="number">4</span>,-<span class="number">5</span>,-<span class="number">6</span>)</div><div class="line">val b = <span class="keyword">generate</span>(a)</div><div class="line">println(b<span class="variable">.mkString</span>(<span class="string">&quot;,&quot;</span>))</div></pre></td></tr></table></figure>
+</code></pre><ol>
+<li>How do you compute the average of an Array[Double]?</li>
+</ol>
+<pre><code><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">avg</span><span class="params">(<span class="symbol">d:</span> Array[Double])</span></span> = {</div><div class="line">  <span class="keyword">if</span> (d.length &lt;=<span class="number">0</span>) <span class="number">0</span></div><div class="line">  <span class="keyword">else</span> {</div><div class="line">    d.sum/d.length</div><div class="line">  }</div><div class="line">}</div></pre></td></tr></table></figure>
+</code></pre><ol>
+<li>How do you rearrange the elements of an Array[Int] so that they appear in</li>
+</ol>
+<pre><code><figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span>(i &lt;- <span class="number">0</span> <span class="keyword">until</span> h.<span class="built_in">length</span>/<span class="number">2</span>) {</div><div class="line"> val tmp = h(i)</div><div class="line"></div><div class="line"> h(i) = h(h.<span class="built_in">length</span>-i<span class="number">-1</span>)</div><div class="line"> h(h.<span class="built_in">length</span>-i<span class="number">-1</span>) = tmp</div><div class="line"> }</div></pre></td></tr></table></figure>
+</code></pre><p>reverse sorted order? How do you do the same with an ArrayBuffer[Int]?</p>
+<ol>
+<li><p>Write a code snippet that produces all values from an array with duplicates<br>removed. (Hint: Look at Scaladoc.)</p>
+ <figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">val h = Array(<span class="number">1</span>, <span class="number">2</span>, <span class="number">2.3</span>, <span class="number">4.4</span>,<span class="number">5.6</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">9</span>,<span class="number">3</span>,<span class="number">2</span>)</div><div class="line">println(h.distinct.mkString(<span class="string">&quot;,&quot;</span>))</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<blockquote>
+<p>def distinct: Array[T]</p>
+<p>Builds a new mutable indexed sequence from this mutable indexed sequence without any duplicate elements.</p>
+</blockquote>
+<ol>
+<li>Rewrite the example at the end of Section 3.4, &#x201C;Transforming Arrays,&#x201D; on page 34 using the drop method for dropping the index of the first match. Look the method up in Scaladoc.</li>
+</ol>
+<ol>
+<li>Make a collection of all time zones returned by java.util.TimeZone.getAvailableIDs that are in America. Strip off the &#x201C;America/&#x201C; prefix and sort the result.</li>
+</ol>
+<pre><code><figure class="highlight nix"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">val <span class="attr">zonetime=</span> java.util.TimeZone.getAvailableIDs</div><div class="line">val <span class="attr">timeList</span> = zonetime.filter(_.take(<span class="number">8</span>)==<span class="string">&quot;America/&quot;</span>)</div><div class="line">val <span class="attr">sortedAmericaTime</span> = timeList.<span class="built_in">map</span>(_.drop(<span class="number">8</span>)).sorted</div></pre></td></tr></table></figure>
+</code></pre><ol>
+<li>Import java.awt.datatransfer._ and make an object of type SystemFlavorMap with the call<br>val flavors = SystemFlavorMap.getDefaultFlavorMap().asInstanceOf[SystemFlavorMap]<br>Then call the getNativesForFlavor method with parameter DataFlavor.imageFlavor and get the return value as a Scala buffer. (Why this obscure class? It&#x2019;s hard to find uses of java.util.List in the standard Java library.)</li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/03/15/ProgramStudy/scala-for-impatients-ch2/" itemprop="url">
                   Scala_for_impatients_Ch2
                 </a>
@@ -1244,154 +1933,6 @@
             
               
                 
-                <a class="post-title-link" href="/2016/12/30/深度学习/SVD-learning-1/" itemprop="url">
-                  SVD 推荐算法学习（1）
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-12-30T21:36:24+08:00" content="2016-12-30">
-              2016-12-30
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/study/" itemprop="url" rel="index">
-                    <span itemprop="name">study</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/study/深度学习/" itemprop="url" rel="index">
-                    <span itemprop="name">深度学习</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/study/深度学习/SVD/" itemprop="url" rel="index">
-                    <span itemprop="name">SVD</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Preface"><a href="#Preface" class="headerlink" title="Preface"></a>Preface</h2><p>Recently, I do some research on SVD algotirhm, with which  Recommand Systems can prefrom better. Yesterday when i came across with linger&#x2019;s blog, a article about Recommand Systems captured my attention. It list some useful papers and shared the related experiment code. Both of them seemed to be usefull. It is very likely that I can do the same experiment and check the result with blogger&#x2019;s code.</p>
-<h2 id="Preparation"><a href="#Preparation" class="headerlink" title="Preparation"></a>Preparation</h2><p>Before the work, I should read related work:</p>
-<ul>
-<li>blog article: <a href="http://blog.csdn.net/lingerlanlan/article/details/45250831" target="_blank" rel="external">http://blog.csdn.net/lingerlanlan/article/details/45250831</a></li>
-<li>Paper:<ul>
-<li>A Guide to Singular Value Decomposition forCollaborative Filtering:  <a href="http://www.csie.ntu.edu.tw/~r95007/thesis/svdnetflix/report/report.pdf" target="_blank" rel="external">http://www.csie.ntu.edu.tw/~r95007/thesis/svdnetflix/report/report.pdf</a></li>
-<li>Collaborative Filtering for Netflix:<a href="https://classes.soe.ucsc.edu/cmps242/Fall09/proj/mpercy_svd_paper.pdf" target="_blank" rel="external">https://classes.soe.ucsc.edu/cmps242/Fall09/proj/mpercy_svd_paper.pdf</a></li>
-<li>&#x5728;MovieLens&#x6570;&#x636E;&#x96C6;&#x4E0A;&#x7528;SVD&#x8FDB;&#x884C;&#x8BC4;&#x5206;&#x9884;&#x6D4B;: <a href="http://blog.csdn.net/daer520/article/details/19929523" target="_blank" rel="external">http://blog.csdn.net/daer520/article/details/19929523</a></li>
-<li>&#x57FA;&#x4E8E;&#x77E9;&#x9635;&#x5206;&#x89E3;&#x7684;&#x63A8;&#x8350;&#x7B97;&#x6CD5;&#xFF0C;&#x7B80;&#x5355;&#x5165;&#x95E8; - kobeshow:<br><a href="http://itindex.net/detail/48960-%E7%9F%A9%E9%98%B5%E5%88%86%E8%A7%A3-%E6%8E%A8%E8%8D%90%E7%AE%97%E6%B3%95-kobeshow" target="_blank" rel="external">http://itindex.net/detail/48960-%E7%9F%A9%E9%98%B5%E5%88%86%E8%A7%A3-%E6%8E%A8%E8%8D%90%E7%AE%97%E6%B3%95-kobeshow</a></li>
-</ul>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
                 <a class="post-title-link" href="/2016/12/30/深度学习/2016-12-30-erm-learning/" itemprop="url">
                   ERM_learning
                 </a>
@@ -1642,8 +2183,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/11/16/ProgramStudy/typingsinstall/" itemprop="url">
-                  Angular2项目demo——安装
+                <a class="post-title-link" href="/2016/11/25/深度学习/SVD-learning-1/" itemprop="url">
+                  SVD 推荐算法学习（1）
                 </a>
               
             
@@ -1656,287 +2197,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-16T11:11:00+08:00" content="2016-11-16">
-              2016-11-16
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/study/" itemprop="url" rel="index">
-                    <span itemprop="name">study</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/study/fe/" itemprop="url" rel="index">
-                    <span itemprop="name">fe</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>&#x597D;&#x53CB;&#x6700;&#x8FD1;&#x5728;&#x5B66;Angular2&#xFF0C;&#x521A;&#x5B8C;&#x6210;&#x4E00;&#x4E2A;feature&#xFF0C;&#x8FD8;&#x63D0;&#x4EA4;&#x5230;GIT&#x4E0A;&#x3002;&#x6211;&#x5FC3;&#x4E0B;&#x597D;&#x5947;&#xFF0C;&#x5C31;&#x51C6;&#x5907;&#x73A9;&#x4E00;&#x4E0B;&#x4ED6;&#x7684;&#x8FD9;&#x4E2A;&#x5C0F;&#x529F;&#x80FD;&#x3002;&#x8C01;&#x77E5;&#xFF0C;&#x5361;&#x5728;&#x5DE5;&#x7A0B;&#x90E8;&#x7F72;&#x4E0A;&#x3002;</p>
-<p><a href="https://github.com/Frey-Fu/ng2-echarts" title="Frey-Fu&apos;s ng2-echars" target="_blank" rel="external">Frey-Fu</a></p>
-<h2 id="&#x90E8;&#x7F72;&#x8FC7;&#x7A0B;"><a href="#&#x90E8;&#x7F72;&#x8FC7;&#x7A0B;" class="headerlink" title="&#x90E8;&#x7F72;&#x8FC7;&#x7A0B;"></a>&#x90E8;&#x7F72;&#x8FC7;&#x7A0B;</h2><h3 id="clone&#x9879;&#x76EE;&#x5230;&#x672C;&#x5730;"><a href="#clone&#x9879;&#x76EE;&#x5230;&#x672C;&#x5730;" class="headerlink" title="clone&#x9879;&#x76EE;&#x5230;&#x672C;&#x5730;"></a>clone&#x9879;&#x76EE;&#x5230;&#x672C;&#x5730;</h3>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git <span class="built_in">clone</span> https://github.com/Frey-Fu/ng2-echarts.git</div></pre></td></tr></table></figure>
-<h3 id="&#x9605;&#x8BFB;README-md"><a href="#&#x9605;&#x8BFB;README-md" class="headerlink" title="&#x9605;&#x8BFB;README.md"></a>&#x9605;&#x8BFB;README.md</h3><blockquote>
-<p>This is ECharts for Angular2, code is in src/, there&#x2019;s an example project in example/, feel free to use it. The example is based on angular2-webpack-starter.</p>
-</blockquote>
-<h4 id="How-to-use"><a href="#How-to-use" class="headerlink" title="How to use:"></a>How to use:</h4><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">cd example</div><div class="line">npm install</div><div class="line">typings install</div><div class="line">npm <span class="keyword">run</span><span class="bash"> build:prod</span></div><div class="line">npm <span class="keyword">run</span><span class="bash"> server:prod</span></div></pre></td></tr></table></figure>
-<h3 id="&#x5B89;&#x88C5;typings"><a href="#&#x5B89;&#x88C5;typings" class="headerlink" title="&#x5B89;&#x88C5;typings"></a>&#x5B89;&#x88C5;typings</h3><p>&#x67E5;&#x770B;&#x5B98;&#x65B9;&#x624B;&#x518C;&#xFF1A;<br><a href="https://www.npmjs.com/package/typings" target="_blank" rel="external">https://www.npmjs.com/package/typings</a></p>
-<h4 id="Install-Typings-CLI-utility"><a href="#Install-Typings-CLI-utility" class="headerlink" title="Install Typings CLI utility."></a>Install Typings CLI utility.</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install typings --global</div></pre></td></tr></table></figure>
-<p>&#x7ED3;&#x679C;&#x597D;&#x50CF;&#x6210;&#x529F;&#x4E86;&#xFF1A;<br><figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">typings@<span class="number">2.0</span><span class="number">.0</span> node_modules/typings</div><div class="line">&#x251C;&#x2500;&#x2500; elegant-spinner@<span class="number">1.0</span><span class="number">.1</span></div><div class="line">&#x251C;&#x2500;&#x2500; has-unicode@<span class="number">2.0</span><span class="number">.1</span></div><div class="line">&#x251C;&#x2500;&#x2500; listify@<span class="number">1.0</span><span class="number">.0</span></div><div class="line">...</div><div class="line">...</div></pre></td></tr></table></figure></p>
-<h3 id="&#x6D4B;&#x8BD5;Typings-&#x62A5;&#x9519;"><a href="#&#x6D4B;&#x8BD5;Typings-&#x62A5;&#x9519;" class="headerlink" title="&#x6D4B;&#x8BD5;Typings,&#x62A5;&#x9519;"></a>&#x6D4B;&#x8BD5;Typings,&#x62A5;&#x9519;</h3><figure class="highlight stata"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># <span class="keyword">Search</span> <span class="keyword">for</span> definitions.</div><div class="line">typings <span class="keyword">search</span> tape</div></pre></td></tr></table></figure>
-<p>&#x7ED3;&#x679C;&#xFF1A;</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">/usr/local/lib/node_modules/typings/node_modules/typings-core/node_modules/strip-bom/index<span class="selector-class">.js</span>:<span class="number">2</span></div><div class="line"></div><div class="line">module<span class="selector-class">.exports</span> = x =&gt; {</div><div class="line">                    ^</div><div class="line">SyntaxError: Unexpected token &gt;</div><div class="line">    at Module._compile (module<span class="selector-class">.js</span>:<span class="number">439</span>:<span class="number">25</span>)</div><div class="line">    at Object<span class="selector-class">.Module</span>._extensions.<span class="selector-class">.j</span></div><div class="line">...</div><div class="line">...</div></pre></td></tr></table></figure>
-<h3 id="Review-typings&#x7684;&#x5B89;&#x88C5;&#x65E5;&#x5FD7;&#xFF0C;&#x53D1;&#x73B0;&#x4E00;&#x4E9B;&#x8B66;&#x544A;"><a href="#Review-typings&#x7684;&#x5B89;&#x88C5;&#x65E5;&#x5FD7;&#xFF0C;&#x53D1;&#x73B0;&#x4E00;&#x4E9B;&#x8B66;&#x544A;" class="headerlink" title="Review typings&#x7684;&#x5B89;&#x88C5;&#x65E5;&#x5FD7;&#xFF0C;&#x53D1;&#x73B0;&#x4E00;&#x4E9B;&#x8B66;&#x544A;"></a>Review typings&#x7684;&#x5B89;&#x88C5;&#x65E5;&#x5FD7;&#xFF0C;&#x53D1;&#x73B0;&#x4E00;&#x4E9B;&#x8B66;&#x544A;</h3><p>&#x6211;&#x7684;node&#x7248;&#x672C;&#x4F4E;&#x4E8E;&#x8981;&#x6C42;<br><figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">...</div><div class="line"><span class="built_in">npm</span> http <span class="number">304</span> https:<span class="regexp">//</span>registry.<span class="built_in">npm</span>.taobao.org/<span class="keyword">is</span>-utf8</div><div class="line"><span class="built_in">npm</span> WARN engine deep-extend@<span class="number">0.4</span><span class="number">.1</span>: wanted: {<span class="string">&quot;node&quot;</span>:<span class="string">&quot;&gt;=0.12.0&quot;</span>,<span class="string">&quot;iojs&quot;</span>:<span class="string">&quot;&gt;=1.0.0&quot;</span>} (current: {<span class="string">&quot;node&quot;</span>:<span class="string">&quot;v0.10.24&quot;</span>,<span class="string">&quot;npm&quot;</span>:<span class="string">&quot;1.3.21&quot;</span>})</div><div class="line"><span class="built_in">npm</span> http GET https:<span class="regexp">//</span>registry.<span class="built_in">npm</span>.taobao.org/wrappy</div><div class="line"><span class="built_in">npm</span> http GET</div><div class="line">...</div></pre></td></tr></table></figure></p>
-<h2 id="&#x5347;&#x7EA7;node"><a href="#&#x5347;&#x7EA7;node" class="headerlink" title="&#x5347;&#x7EA7;node"></a>&#x5347;&#x7EA7;node</h2><p><a href="http://theholmesoffice.com/node-js-fundamentals-how-to-upgrade-the-node-js-version/" target="_blank" rel="external">http://theholmesoffice.com/node-js-fundamentals-how-to-upgrade-the-node-js-version/</a></p>
-<p>1: Check your current version of Node.</p>
-<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$<span class="keyword">node</span> <span class="title">-v</span></div></pre></td></tr></table></figure>
-<p>2: Clear your npm cache<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo npm cache clean <span class="_">-f</span></div></pre></td></tr></table></figure></p>
-<p>3: Install &#x2018;n&#x2019;<br><figure class="highlight cmake"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo npm <span class="keyword">install</span> -g n</div></pre></td></tr></table></figure></p>
-<p>4: Upgrade to a stable version<br><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">sudo n stable</span></div></pre></td></tr></table></figure></p>
-<p>5: Check the running version of Node to verify that it has worked:<br><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$<span class="keyword">node</span> <span class="title">-v</span> v0.<span class="number">8.11</span></div></pre></td></tr></table></figure></p>
-<h2 id="&#x91CD;&#x88C5;node"><a href="#&#x91CD;&#x88C5;node" class="headerlink" title="&#x91CD;&#x88C5;node"></a>&#x91CD;&#x88C5;node</h2><p>&#x53C2;&#x8003;1&#xFF1A; <a href="http://linyehui.me/2016/03/03/reinstall-nodejs-on-osx.html" target="_blank" rel="external">http://linyehui.me/2016/03/03/reinstall-nodejs-on-osx.html</a></p>
-<p>&#x53C2;&#x8003;2&#xFF1A; <a href="http://icarus4.logdown.com/posts/175092-nodejs-installation-guide" target="_blank" rel="external">http://icarus4.logdown.com/posts/175092-nodejs-installation-guide</a></p>
-<h3 id="&#x518D;&#x5B89;&#x88C5;"><a href="#&#x518D;&#x5B89;&#x88C5;" class="headerlink" title="&#x518D;&#x5B89;&#x88C5;"></a>&#x518D;&#x5B89;&#x88C5;</h3><figure class="highlight http"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div><div class="line"><span class="sql">$ typings <span class="keyword">install</span></span></div><div class="line"></div><div class="line"></div><div class="line">...</div><div class="line">npm WARN webpack-dev-<span class="keyword">server</span>@<span class="number">2.1</span><span class="number">.0</span>-beta<span class="number">.11</span> requires a peer <span class="keyword">of</span> webpack@^<span class="number">2.1</span><span class="number">.0</span>-beta<span class="number">.26</span> but <span class="keyword">none</span> was installed.</div><div class="line">jingchen@chentekiair ~/<span class="keyword">work</span>/gitlab/fuwei/ng2-echarts/example $ typings <span class="keyword">install</span></div><div class="line"></div><div class="line">&#x2514;&#x2500;&#x2500; echarts (<span class="keyword">global</span>)</div></pre></td></tr></table></figure>
-<h3 id="&#x7F16;&#x8BD1;&#x8FD0;&#x884C;"><a href="#&#x7F16;&#x8BD1;&#x8FD0;&#x884C;" class="headerlink" title="&#x7F16;&#x8BD1;&#x8FD0;&#x884C;"></a>&#x7F16;&#x8BD1;&#x8FD0;&#x884C;</h3><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">npm <span class="keyword">run</span><span class="bash"> build:prod</span></div><div class="line">npm <span class="keyword">run</span><span class="bash"> server:prod</span></div></pre></td></tr></table></figure>
-<p>&#x670D;&#x52A1;&#x542F;&#x52A8;&#x6210;&#x529F;&#xFF0C;&#x7ED3;&#x679C;&#x5982;&#x4E0B;&#xFF1A;</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">&gt; angular2-webpack-starter@<span class="number">5.0</span><span class="number">.5</span> <span class="string">server:</span>prod <span class="regexp">/Users/</span>jingchen<span class="regexp">/work/</span>gitlab<span class="regexp">/fuwei/</span>ng2-echarts/example</div><div class="line">&gt; http-server dist --cors</div><div class="line"></div><div class="line">Starting up http-server, serving dist</div><div class="line">Available <span class="string">on:</span></div><div class="line"><span class="symbol">  http:</span><span class="comment">//127.0.0.1:8080</span></div></pre></td></tr></table></figure>
-<h3 id="&#x6253;&#x5F00;&#x9875;&#x9762;"><a href="#&#x6253;&#x5F00;&#x9875;&#x9762;" class="headerlink" title="&#x6253;&#x5F00;&#x9875;&#x9762;"></a>&#x6253;&#x5F00;&#x9875;&#x9762;</h3><p><img src="http://ogqir9ige.bkt.clouddn.com/826660e135fa7da8393a25133803a9da.png" alt="fuwei_ng_echarts_demo"></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/11/15/周报/20161107_20161113_report/" itemprop="url">
-                  20161107-20161113_WeeklyReport
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-15T15:07:00+08:00" content="2016-11-15">
-              2016-11-15
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/周报/" itemprop="url" rel="index">
-                    <span itemprop="name">周报</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <hr>
-<h3 id="&#x672C;&#x5468;&#x5DE5;&#x4F5C;&#x603B;&#x89C8;&#xFF1A;"><a href="#&#x672C;&#x5468;&#x5DE5;&#x4F5C;&#x603B;&#x89C8;&#xFF1A;" class="headerlink" title="&#x672C;&#x5468;&#x5DE5;&#x4F5C;&#x603B;&#x89C8;&#xFF1A;"></a>&#x672C;&#x5468;&#x5DE5;&#x4F5C;&#x603B;&#x89C8;&#xFF1A;</h3><ul>
-<li>&#x672C;&#x5468;&#x5DE5;&#x4F5C;&#x5B66;&#x4E60;&#x603B;&#x6D88;&#x8017;&#xFF1A;58.5&#x5C0F;&#x65F6;</li>
-<li>&#x6DF1;&#x5EA6;&#x5B66;&#x4E60;&#x548C;&#x9605;&#x8BFB;&#x5360;&#x636E;&#x5B66;&#x4E60;&#x65F6;&#x95F4;&#x7684;60%+</li>
-<li>&#x8FD9;&#x4E00;&#x5468;&#xFF0C;&#x57FA;&#x672C;&#x5728;&#x6D88;&#x5316;&#xFF08;&#x8DF5;&#x884C;&#xFF09;&#x4E0A;&#x4E00;&#x5468;&#x7684;&#x5B66;&#x5230;&#x77E5;&#x8BC6;&#xFF08;&#x65B9;&#x6CD5;&#x8BBA;&#xFF09;&#x3002;&#x5305;&#x62EC;&#x82F1;&#x8BED;&#x5B66;&#x4E60;&#x65B9;&#x6CD5;&#x8BBA;&#xFF0C;&#x7CBE;&#x8BFB;&#x7684;&#x65B9;&#x6CD5;&#x8BBA;&#x8DF5;&#x884C;&#x3002;</li>
-<li>&#x8865;&#x5145;&#x4E86;&#x4E00;&#x4E9B;&#x65B0;&#x77E5;&#x8BC6;&#xFF1A;&#x5199;&#x4F5C;&#x65B9;&#x6CD5;&#x8BBA;&#xFF0C;&#x77E5;&#x8BC6;&#x7BA1;&#x7406;&#x7B49;&#x3002;</li>
-</ul>
-<ul>
-<li><p>&#x4E00;&#x5468;&#x5DE5;&#x4F5C;&#x603B;&#x89C8;&#xFF1A;<br><img src="/2016/11/15/&#x5468;&#x62A5;/20161107_20161113_report/table1.jpg" alt="report_table"></p>
-</li>
-<li><p>&#x5404;&#x9879;&#x76EE;&#x5360;&#x6BD4;&#x60C5;&#x51B5;&#xFF1A;<br><img src="/2016/11/15/&#x5468;&#x62A5;/20161107_20161113_report/pie.jpg" alt="pie"></p>
-</li>
-</ul>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/11/15/周报/20161107_20161113_report/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/11/11/Assignment/NumpyExc/" itemprop="url">
-                  Numpy Assignment
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-11T19:51:00+08:00" content="2016-11-11">
-              2016-11-11
+            <time itemprop="dateCreated" datetime="2016-11-25T19:25:11+08:00" content="2016-11-25">
+              2016-11-25
             </time>
           </span>
 
@@ -1973,8 +2235,8 @@
 
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/study/深度学习/assignment/" itemprop="url" rel="index">
-                    <span itemprop="name">assignment</span>
+                  <a href="/categories/study/深度学习/SVD/" itemprop="url" rel="index">
+                    <span itemprop="name">SVD</span>
                   </a>
                 </span>
 
@@ -2007,26 +2269,21 @@
 
       
         
-          <h2 id="1-3-1-1-What-are-NumPy-and-NumPy-arrays"><a href="#1-3-1-1-What-are-NumPy-and-NumPy-arrays" class="headerlink" title="1.3.1.1. What are NumPy and NumPy arrays?"></a>1.3.1.1. What are NumPy and NumPy arrays?</h2><h3 id="1-3-1-1-1-NumPy-arrays"><a href="#1-3-1-1-1-NumPy-arrays" class="headerlink" title="1.3.1.1.1. NumPy arrays"></a>1.3.1.1.1. NumPy arrays</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">a = np.array([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>])</div><div class="line">a</div></pre></td></tr></table></figure>
-<pre><code>array([1, 2, 3, 4])
-</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">L = range(<span class="number">1000</span>)</div><div class="line">%timeit [i**<span class="number">2</span> <span class="keyword">for</span> i <span class="keyword">in</span> L]</div></pre></td></tr></table></figure>
-<pre><code>10000 loops, best of 3: 100 &#xB5;s per loop
-</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">l = np.arange(<span class="number">1000</span>)</div><div class="line">%timeit l**<span class="number">2</span></div></pre></td></tr></table></figure>
-<pre><code>The slowest run took 13.35 times longer than the fastest. This could mean that an intermediate result is being cached.
-100000 loops, best of 3: 1.95 &#xB5;s per loop
-</code></pre><h3 id="Q"><a href="#Q" class="headerlink" title="Q"></a>Q</h3><p>As given from the website:</p>
-<blockquote>
-<p>Why it is useful: Memory-efficient container that provides fast numerical operations.</p>
-</blockquote>
-<font color="brown"><strong>I cannot find the numpy run faster.</strong></font>
+          
+            <h2 id="Preface"><a href="#Preface" class="headerlink" title="Preface"></a>Preface</h2><p>Recently, I do some research on SVD algotirhm, with which  Recommand Systems can prefrom better. Yesterday when i came across with linger&#x2019;s blog, a article about Recommand Systems captured my attention. It list some useful papers and shared the related experiment code. Both of them seemed to be usefull. It is very likely that I can do the same experiment and check the result with blogger&#x2019;s code.</p>
+<h2 id="Preparation"><a href="#Preparation" class="headerlink" title="Preparation"></a>Preparation</h2><p>Before the work, I should read related work:</p>
+<ul>
+<li>blog article: <a href="http://blog.csdn.net/lingerlanlan/article/details/45250831" target="_blank" rel="external">http://blog.csdn.net/lingerlanlan/article/details/45250831</a></li>
+<li>Paper:<ul>
+<li>A Guide to Singular Value Decomposition forCollaborative Filtering:  <a href="http://www.csie.ntu.edu.tw/~r95007/thesis/svdnetflix/report/report.pdf" target="_blank" rel="external">http://www.csie.ntu.edu.tw/~r95007/thesis/svdnetflix/report/report.pdf</a></li>
+<li>Collaborative Filtering for Netflix:<a href="https://classes.soe.ucsc.edu/cmps242/Fall09/proj/mpercy_svd_paper.pdf" target="_blank" rel="external">https://classes.soe.ucsc.edu/cmps242/Fall09/proj/mpercy_svd_paper.pdf</a></li>
+<li>&#x5728;MovieLens&#x6570;&#x636E;&#x96C6;&#x4E0A;&#x7528;SVD&#x8FDB;&#x884C;&#x8BC4;&#x5206;&#x9884;&#x6D4B;: <a href="http://blog.csdn.net/daer520/article/details/19929523" target="_blank" rel="external">http://blog.csdn.net/daer520/article/details/19929523</a></li>
+<li>&#x57FA;&#x4E8E;&#x77E9;&#x9635;&#x5206;&#x89E3;&#x7684;&#x63A8;&#x8350;&#x7B97;&#x6CD5;&#xFF0C;&#x7B80;&#x5355;&#x5165;&#x95E8; - kobeshow:<br><a href="http://itindex.net/detail/48960-%E7%9F%A9%E9%98%B5%E5%88%86%E8%A7%A3-%E6%8E%A8%E8%8D%90%E7%AE%97%E6%B3%95-kobeshow" target="_blank" rel="external">http://itindex.net/detail/48960-%E7%9F%A9%E9%98%B5%E5%88%86%E8%A7%A3-%E6%8E%A8%E8%8D%90%E7%AE%97%E6%B3%95-kobeshow</a></li>
+</ul>
+</li>
+</ul>
 
-<p>Because, with 100000 loops and best of 3: 1.72 &#xB5;s per loop, the implemention would consume at most 172<em>1000 us. Besides, the normal loops only spent 93.9</em>1000us.<br></p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/11/11/Assignment/NumpyExc/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
         
       
     </div>
@@ -2057,7 +2314,7 @@
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2098,7 +2355,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">18</span>
+              <span class="site-state-item-count">21</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -2106,7 +2363,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-count">18</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -2115,7 +2372,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">32</span>
+                <span class="site-state-item-count">34</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -2152,7 +2409,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
