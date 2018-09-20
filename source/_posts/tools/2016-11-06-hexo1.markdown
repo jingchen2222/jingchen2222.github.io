@@ -1,0 +1,105 @@
+---
+layout: "post"
+title: "Hexo搭建个人BLOG"
+date: "2016-11-06 19:57"
+tag:
+- Tool
+- Hexo
+categories:
+- MAC进阶
+
+---
+
+## Hexo介绍
+
+[使用 Hexo 为自己在 Github 上建一个静态 Blog 站点][1]
+[1]: http://xiaolai.li/2016/06/22/makecs-build-a-blog-with-hexo-on-github/ "使用 Hexo 为自己在 Github 上建一个静态 Blog 站点"
+
+[用 Hexo 搭建个人博客-01：6 步初体验][3]
+[3]: http://www.jianshu.com/p/6bd12ab160fa "用 Hexo 搭建个人博客-01：6 步初体验"
+
+
+<!-- More -->
+## 环境和工具准备
+
+### 工具准备
+
+- git
+- npm
+- hexo
+
+### GIT
+
+#### GIT安装
+
+关于GIT的用法，可以参考[《Pro Git》][2]。
+
+[2]: http://iissnan.com/progit/ "《Pro Git》"
+
+```
+git -v
+```
+
+### NPM
+
+```
+npm -v
+```
+
+
+## 安装
+### REPO准备
+
+- 准备一个REPO
+    - 自己本来就有
+    - REPO的申请方法可以参考
+
+
+### 安装HEXO
+  - npm install hexo -g
+  - npm install hexo-cli -g
+      - 这一步出错，暂时不管
+
+
+### 准备本地目录
+  - clone到本地，这部似乎是非必须的
+  - Hexo初始化本地目录
+
+```
+hexo init xiaoerjingang.github.io
+cd xiaoerjingang.github.io
+npm install hexo-deployer-git --save
+hexo generate
+hexo server
+```
+
+- 在地址栏里输入： localhost:4000
+
+- 发布到github上
+    - 编辑_config.yml：
+
+```
+deploy
+  type: git
+  repo: https://github.com/yourname/yourname.github.io.git
+
+```
+
+## 配置
+
+### 标签页
+
+在终端窗口下，定位到 Hexo 站点目录下。使用 hexo new page 新建一个页面，命名为 tags ：
+```
+$ cd your-hexo-site
+$ hexo new page tags
+```
+
+
+### 分类页
+
+在终端窗口下，定位到 Hexo 站点目录下。使用 hexo new page 新建一个页面，命名为 categories ：
+```
+$ cd your-hexo-site
+$ hexo new page categories
+```
