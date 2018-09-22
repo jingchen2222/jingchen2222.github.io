@@ -1,0 +1,155 @@
+---
+layout: "post"
+title: "Hexo搭建个人BLOG"
+date: "2016-11-06 19:57"
+update: "2018-09-20 10:23"
+tag:
+- Tool
+- Hexo
+categories:
+- Tool
+
+---
+
+## Hexo介绍
+
+[使用 Hexo 为自己在 Github 上建一个静态 Blog 站点][1]
+[1]: http://xiaolai.li/2016/06/22/makecs-build-a-blog-with-hexo-on-github/ "使用 Hexo 为自己在 Github 上建一个静态 Blog 站点"
+
+[用 Hexo 搭建个人博客-01：6 步初体验][3]
+[3]: http://www.jianshu.com/p/6bd12ab160fa "用 Hexo 搭建个人博客-01：6 步初体验"
+
+本文介绍了`Hexo`搭建博客的主要步骤，以及迁移Hexo到新环境遇到的问题以及解决方案。
+
+
+<!-- More -->
+## 环境和工具准备
+
+### 工具准备
+
+- git
+- npm
+- hexo
+
+### GIT
+
+#### GIT安装
+
+关于GIT的用法，可以参考[《Pro Git》][2]。
+
+[2]: http://iissnan.com/progit/ "《Pro Git》"
+
+```
+git -v
+```
+
+### NPM
+
+```
+npm -v
+```
+
+
+## 安装
+### REPO准备
+
+- 准备一个REPO
+    - 自己本来就有
+    - REPO的申请方法可以参考
+
+
+### 安装HEXO
+  - npm install hexo -g
+  - npm install hexo-cli -g
+      - 这一步出错，暂时不管
+
+
+### 准备本地目录
+  - clone到本地，这部似乎是非必须的
+  - Hexo初始化本地目录
+
+```bash
+hexo init yourname.github. c  youname.github.io
+npm install hexo-deployer-git --save
+hexo generate
+hexo server
+```
+
+- 在地址栏里输入： localhost:4000
+
+- 发布到github上
+    - 编辑_config.yml：
+
+```
+deploy
+  type: git
+  repo: https://github.com/yourname/yourname.github.io.git
+
+```
+
+## 配置
+
+### 标签页
+
+在终端窗口下，定位到 Hexo 站点目录下。使用 hexo new page 新建一个页面，命名为 tags ：
+```
+$ cd your-hexo-site
+$ hexo new page tags
+```
+
+
+### 分类页
+
+在终端窗口下，定位到 Hexo 站点目录下。使用 hexo new page 新建一个页面，命名为 categories ：
+```
+$ cd your-hexo-site
+$ hexo new page categories
+```
+
+
+----
+## hexo迁移
+
+最近需要在另一台电脑部署hexo，将hexo的代码直接copy过去，遇到一些奇怪的问题。
+
+### 问题一：
+在hexo的目录里面执行hexo clean，提示：
+```
+ERROR Plugin load failed: hexo-renderer-sass
+```
+采用很多方法，重装saas，安装也显示成功，最后还是不行。考虑到自己换了一个系统，可能hexo目录下面的node-moduels下面的库和npm版本并不兼容。采用[PabloEzequiel commented on 3 Jan 2017](https://github.com/sass/node-sass/issues/1527)的方法，删除node-module，重新安装依赖包
+```
+rm -rf node_module 
+npm install
+```
+果然，成功了。
+
+### 问题二：
+
+hexo g成功，但hexo s（server）时候，报错
+```
+WARN No layout: index.html出现这个问题会删除index.html的内容
+```
+出现这个问题，我先删除public里面的index.html文件。同时，发现theme里面文件不对，于是更新theme，然后重新generate
+
+### 问题三：
+tags和categoreis不生效，导致BLOG的分类和标签页没有正确显示。
+具体做法：
+
+```
+> hexo new page "tags" 
+```
+
+edit tags/index.md
+
+```
+# tags/index.md
+type: "tags"
+layout: "tags"
+```
+
+edit categoreis/index.md
+```
+type: "categories"
+layout: "categories"
+```

@@ -1,0 +1,738 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="读书笔记,book:Scala for impatients,scala," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="Chapter 4: maps and tuplesNote Scala has a pleasant syntax for creating, querying, and traversing maps. the call map.get(key) returns an Option object that is either Some(value for key) or None. for (">
+<meta name="keywords" content="读书笔记,book:Scala for impatients,scala">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Scala_for_impatients_Ch4">
+<meta property="og:url" content="http://jingchen2222.github.io./2017/03/17/ProgramStudy/scala-for-impatients-ch4/index.html">
+<meta property="og:site_name" content="Chen22&#39;S BLOG">
+<meta property="og:description" content="Chapter 4: maps and tuplesNote Scala has a pleasant syntax for creating, querying, and traversing maps. the call map.get(key) returns an Option object that is either Some(value for key) or None. for (">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-09-22T04:16:27.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Scala_for_impatients_Ch4">
+<meta name="twitter:description" content="Chapter 4: maps and tuplesNote Scala has a pleasant syntax for creating, querying, and traversing maps. the call map.get(key) returns an Option object that is either Some(value for key) or None. for (">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://jingchen2222.github.io./2017/03/17/ProgramStudy/scala-for-impatients-ch4/"/>
+
+
+  <title> Scala_for_impatients_Ch4 | Chen22'S BLOG </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Chen22'S BLOG</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br />
+            
+            日程
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Scala_for_impatients_Ch4
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-03-17T22:22:00+08:00" content="2017-03-17">
+              2017-03-17
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Study/" itemprop="url" rel="index">
+                    <span itemprop="name">Study</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Study/Scala/" itemprop="url" rel="index">
+                    <span itemprop="name">Scala</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Chapter-4-maps-and-tuples"><a href="#Chapter-4-maps-and-tuples" class="headerlink" title="Chapter 4: maps and tuples"></a>Chapter 4: maps and tuples</h1><h2 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h2><ul>
+<li>Scala has a pleasant syntax for creating, querying, and traversing maps.<ul>
+<li>the call map.get(key) returns an Option object that is either Some(value for key) or None.</li>
+<li>for ((k, v) &lt;- map) process k and v</li>
+<li>for (v &lt;- scores.values) println(v)</li>
+</ul>
+</li>
+<li>You need to choose between mutable and immutable maps.<ul>
+<li>updating map values only when it is mutable</li>
+<li>You can&#x2019;t update an immutable map, but you can do something that&#x2019;s just as useful&#x2014;obtain a new map that has the desired update:</li>
+</ul>
+</li>
+<li>By default, you get a hash map, but you can also get a tree map.<ul>
+<li>You might want a tree map if you need to visit the keys in sorted order.</li>
+</ul>
+</li>
+<li>You can easily convert between Scala and Java maps.<ul>
+<li>First: import related class<ul>
+<li>e.g: <code>import scala.collection.JavaConversions.mapAsScalaMap</code><br>-</li>
+</ul>
+</li>
+<li>Second: use java class<ul>
+<li>e.g: <code>val scores: scala.collection.mutable.Map[String, Int] = new java.util.TreeMap[String, Int]</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Tuples are useful for aggregating values.<ul>
+<li>Zipping is used to bundle together values so that they can be pro- cessed together<ul>
+<li>If you have a collection of keys and a parallel collection of values, then zip them up and turn them into a map like<code>this:keys.zip(values).toMap</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<a id="more"></a>
+<h2 id="Exercises"><a href="#Exercises" class="headerlink" title="Exercises"></a>Exercises</h2><ol>
+<li>Set up a map of prices for a number of gizmos that you covet. Then produce a second map with the same keys and the prices at a 10 percent discount.</li>
+</ol>
+<pre><code><figure class="highlight ocaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> prices = <span class="type">Map</span>(<span class="string">&quot;A&quot;</span> -&gt; <span class="number">10</span>, <span class="string">&quot;B&quot;</span> -&gt; <span class="number">20</span>, <span class="string">&quot;C&quot;</span> -&gt; <span class="number">8</span>)</span><br><span class="line"><span class="keyword">val</span> secondPrices = <span class="keyword">for</span>((k,v) &lt;- prices) yield (k,<span class="number">0.9</span>*v)</span><br></pre></td></tr></table></figure>
+</code></pre><ol start="2">
+<li>Write a program that reads words from a file. Use a mutable map to count how often each word appears. To read the words, simply use a java.util.Scanner:<br>val in = new java.util.Scanner(java.io.File(&#x201C;myfile.txt&#x201D;)) while (in.hasNext()) process in.next()<br>Or look at Chapter 9 for a Scalaesque way.<br>At the end, print out all words and their counts.</li>
+</ol>
+<pre><code><figure class="highlight pony"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1. reads words from a File</span></span><br><span class="line"><span class="meta">val</span> source = <span class="type">Source</span>.fromFile(<span class="string">&quot;../README.md&quot;</span>).mkString</span><br><span class="line"><span class="meta">val</span> words = source.split(<span class="string">&quot;\\s+&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2. Use a mutable map to count how often each word appears.</span></span><br><span class="line"><span class="meta">val</span> wordsCount = <span class="function"><span class="keyword">new</span> <span class="title">HashMap</span>[<span class="title">String</span>, <span class="title">Int</span>]()</span></span><br><span class="line"><span class="function"><span class="title">for</span>(k &lt;- words) {</span></span><br><span class="line"><span class="function">  <span class="title">wordsCount</span>(k) = <span class="title">wordsCount</span>.<span class="title">getOrElse</span>(k,<span class="number">0</span>) + 1</span></span><br><span class="line"><span class="function">}</span></span><br><span class="line"><span class="function"><span class="title">println</span>(wordsCount.mkString(&quot;\n&quot;))</span></span><br><span class="line"><span class="function"><span class="comment">//</span></span></span><br></pre></td></tr></table></figure>
+</code></pre><ol start="3">
+<li><p>Repeat the preceding exercise with an immutable map.</p>
+ <figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">var</span> wordMap2 = Map[String,Int]()</span><br><span class="line">val <span class="keyword">in</span> = new java<span class="selector-class">.util</span><span class="selector-class">.Scanner</span>(new java<span class="selector-class">.io</span><span class="selector-class">.File</span>(<span class="string">&quot;../README.MD&quot;</span>))</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">while</span><span class="params">(in.hasNext()</span></span>) {</span><br><span class="line">  val key = <span class="keyword">in</span>.next()</span><br><span class="line">  wordMap2 += (key -&gt; (wordMap2.getOrElse(key,<span class="number">0</span>)+<span class="number">1</span>))</span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="title">println</span><span class="params">(wordMap2)</span></span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Repeat the preceding exercise with a sorted map, so that the words are printed in sorted order.</p>
+</li>
+</ol>
+<pre><code><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">var</span> wordMap3 = scala<span class="selector-class">.collection</span><span class="selector-class">.immutable</span><span class="selector-class">.SortedMap</span>[String,Int]()</span><br><span class="line">val <span class="keyword">in</span> = new java<span class="selector-class">.util</span><span class="selector-class">.Scanner</span>(new java<span class="selector-class">.io</span><span class="selector-class">.File</span>(<span class="string">&quot;../README.MD&quot;</span>))</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">while</span><span class="params">(in.hasNext()</span></span>) {</span><br><span class="line">  val key = <span class="keyword">in</span>.next()</span><br><span class="line">  wordMap3 += (key -&gt; (wordMap3.getOrElse(key,<span class="number">0</span>)+<span class="number">1</span>))</span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="title">println</span><span class="params">(wordMap3)</span></span></span><br></pre></td></tr></table></figure>
+</code></pre><ol start="5">
+<li>Repeat the preceding exercise with a java.util.TreeMap that you adapt to the Scala API.</li>
+</ol>
+<pre><code><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">val wordMap4:scala<span class="selector-class">.collection</span><span class="selector-class">.mutable</span><span class="selector-class">.Map</span>[String,Int] = new java<span class="selector-class">.util</span><span class="selector-class">.TreeMap</span>[String,Int]</span><br><span class="line">val <span class="keyword">in</span> = new java<span class="selector-class">.util</span><span class="selector-class">.Scanner</span>(new java<span class="selector-class">.io</span><span class="selector-class">.File</span>(<span class="string">&quot;../README.MD&quot;</span>))</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">while</span><span class="params">(in.hasNext()</span></span>) {</span><br><span class="line">  val key = <span class="keyword">in</span>.next()</span><br><span class="line">  wordMap4 += (key -&gt; (wordMap4.getOrElse(key,<span class="number">0</span>)+<span class="number">1</span>))</span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="title">println</span><span class="params">(wordMap4)</span></span></span><br></pre></td></tr></table></figure>
+</code></pre><ol start="6">
+<li>Define a linked hash map that maps &#x201C;Monday&#x201D; to java.util.Calendar.MONDAY, and similarly for the other weekdays. Demonstrate that the elements are visited in insertion order.</li>
+</ol>
+<pre><code><figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Calendar</span><br><span class="line"><span class="keyword">import</span> scala.collection.<span class="keyword">mutable</span>.LinkedHashMap</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">val <span class="built_in">map</span> = <span class="keyword">new</span> LinkedHashMap[<span class="keyword">String</span>,Int]  </span><br><span class="line"></span><br><span class="line"><span class="built_in">map</span> += (<span class="string">&quot;Monday&quot;</span>-&gt;Calendar.MONDAY)  </span><br><span class="line"><span class="built_in">map</span> += (<span class="string">&quot;Tuesday&quot;</span>-&gt;Calendar.TUESDAY)  </span><br><span class="line"><span class="built_in">map</span> += (<span class="string">&quot;Wednesday&quot;</span>-&gt;Calendar.WEDNESDAY)  </span><br><span class="line"><span class="built_in">map</span> += (<span class="string">&quot;Thursday&quot;</span>-&gt;Calendar.THURSDAY)  </span><br><span class="line"><span class="built_in">map</span> += (<span class="string">&quot;Friday&quot;</span>-&gt;Calendar.FRIDAY)  </span><br><span class="line"><span class="built_in">map</span> += (<span class="string">&quot;Saturday&quot;</span>-&gt;Calendar.SATURDAY)  </span><br><span class="line"><span class="built_in">map</span> += (<span class="string">&quot;Sunday&quot;</span>-&gt;Calendar.SUNDAY)  </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">println</span>(<span class="built_in">map</span>.mkString(<span class="string">&quot;,&quot;</span>))</span><br></pre></td></tr></table></figure>
+</code></pre><ol start="7">
+<li><p>Print a table of all Java properties, like this:<br>49</p>
+ <figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">java.<span class="keyword">runtime</span>.name <span class="keyword">sun</span>.boot.library.path java.<span class="keyword">vm</span>.<span class="keyword">version</span> java.<span class="keyword">vm</span>.vendor java.vendor.url path.separator java.<span class="keyword">vm</span>.name</span><br><span class="line">| Java(TM) SE Runtime Environment</span><br><span class="line">| /home/apps/jdk1.<span class="number">6.0</span>_21/jre/lib/i386 | <span class="number">17.0</span>-b16</span><br><span class="line">| Sun Microsystems Inc.</span><br><span class="line">| http://java.<span class="keyword">sun</span>.<span class="keyword">com</span>/</span><br><span class="line">| :</span><br><span class="line">| Java HotSpot(TM) Server VM</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>You need to find the length of the longest key before you can print the table.</p>
+<pre><code><figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> scala.collection.JavaConversions.propertiesAsScalaMap</span><br><span class="line">val pros:scala.collection.Map[<span class="keyword">String</span>,<span class="keyword">String</span>] = System.getProperties()</span><br><span class="line">val keys = pros.keySet()</span><br><span class="line">val keys = pros.keySet</span><br><span class="line">val keyLens = <span class="keyword">for</span>(<span class="built_in">key</span> &lt;- keys) yield <span class="built_in">key</span>.length</span><br><span class="line">val maxLen = keyLens.<span class="built_in">max</span></span><br><span class="line"><span class="keyword">for</span> (<span class="built_in">key</span> &lt;- keys) {</span><br><span class="line">  <span class="built_in">print</span>(<span class="built_in">key</span>)</span><br><span class="line">  <span class="built_in">print</span>(<span class="string">&quot; &quot;</span> * (maxLen - <span class="built_in">key</span>.length))</span><br><span class="line">  <span class="built_in">print</span>(<span class="string">&quot; | &quot;</span>)</span><br><span class="line">  <span class="built_in">println</span>(pros(<span class="built_in">key</span>))</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+</code></pre><ol start="8">
+<li><p>Write a function minmax(values: Array[Int]) that returns a pair containing the smallest and largest values in the array.</p>
+ <figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">val <span class="built_in">values</span> = Array(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,-<span class="number">7</span>,-<span class="number">5</span>,<span class="number">3</span>,-<span class="number">1</span>,<span class="number">6</span>,<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">def minmax(<span class="built_in">values</span>: Array[Int]) = {</span><br><span class="line">  val minV = <span class="built_in">values</span>.<span class="built_in">min</span></span><br><span class="line">  val maxV = <span class="built_in">values</span>.<span class="built_in">max</span></span><br><span class="line">  (minV, maxV)</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">minmax(<span class="built_in">values</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Write a function lteqgt(values: Array[Int], v: Int) that returns a triple containing the counts of values less than v, equal to v, and greater than v.</p>
+</li>
+</ol>
+<pre><code><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">def iteqgt(value<span class="variable">s:Array</span>[Int],<span class="variable">v:Int</span>)={</span><br><span class="line">  (<span class="built_in">values</span>.<span class="built_in">count</span>(_&lt;v),<span class="built_in">values</span>.<span class="built_in">count</span>(_==v),<span class="built_in">values</span>.<span class="built_in">count</span>(_&gt;v))</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+</code></pre><ol start="10">
+<li>What happens when you zip together two strings, such as &#x201C;Hello&#x201D;.zip(&#x201C;World&#x201D;)? Come up with a plausible use case.</li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/读书笔记/" rel="tag"><i class="fa fa-tag"></i>读书笔记</a>
+          
+            <a href="/tags/book-Scala-for-impatients/" rel="tag"><i class="fa fa-tag"></i>book:Scala for impatients</a>
+          
+            <a href="/tags/scala/" rel="tag"><i class="fa fa-tag"></i>scala</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/16/ProgramStudy/scala-for-impatients-ch3/" rel="next" title="Scala_for_impatients_Ch3">
+                <i class="fa fa-chevron-left"></i> Scala_for_impatients_Ch3
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/09/01/ProgramStudy/JAVA/list/" rel="prev" title="List study">
+                List study <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="陈22" />
+          <p class="site-author-name" itemprop="name">陈22</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/jingchen2222" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Chapter-4-maps-and-tuples"><span class="nav-number">1.</span> <span class="nav-text">Chapter 4: maps and tuples</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Note"><span class="nav-number">1.1.</span> <span class="nav-text">Note</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Exercises"><span class="nav-number">1.2.</span> <span class="nav-text">Exercises</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">陈22</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+</span>
+<span id="busuanzi_container_site_uv">
+  本站访客数<span id="busuanzi_value_site_uv"></span>人次
+</span>
+<script>
+  var birthDay = new Date("11/20/2014");
+  var now = new Date();
+  var duration = now.getTime() - birthDay.getTime();
+  var total= Math.floor(duration / (1000 * 60 * 60 * 24));
+  document.getElementById("showDays").innerHTML = "本站已运行 "+total+" 天";
+</script>
+<span id="showDays"></span>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

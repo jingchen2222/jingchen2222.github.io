@@ -1,0 +1,735 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="读书笔记,book:Scala for impatients,scala," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="Note An if expression has a value. A block has a value&amp;#x2014;the value of its last expression. The Scala for loop is like an &amp;#x201C;enhanced&amp;#x201D; Java for loop. for ( i -&amp;gt; 0 to n) for ( i -&amp;gt">
+<meta name="keywords" content="读书笔记,book:Scala for impatients,scala">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Scala_for_impatients_Ch2">
+<meta property="og:url" content="http://jingchen2222.github.io./2017/03/15/ProgramStudy/scala-for-impatients-ch2/index.html">
+<meta property="og:site_name" content="Chen22&#39;S BLOG">
+<meta property="og:description" content="Note An if expression has a value. A block has a value&amp;#x2014;the value of its last expression. The Scala for loop is like an &amp;#x201C;enhanced&amp;#x201D; Java for loop. for ( i -&amp;gt; 0 to n) for ( i -&amp;gt">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-09-22T04:16:33.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Scala_for_impatients_Ch2">
+<meta name="twitter:description" content="Note An if expression has a value. A block has a value&amp;#x2014;the value of its last expression. The Scala for loop is like an &amp;#x201C;enhanced&amp;#x201D; Java for loop. for ( i -&amp;gt; 0 to n) for ( i -&amp;gt">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://jingchen2222.github.io./2017/03/15/ProgramStudy/scala-for-impatients-ch2/"/>
+
+
+  <title> Scala_for_impatients_Ch2 | Chen22'S BLOG </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Chen22'S BLOG</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br />
+            
+            日程
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Scala_for_impatients_Ch2
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-03-15T18:01:00+08:00" content="2017-03-15">
+              2017-03-15
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Study/" itemprop="url" rel="index">
+                    <span itemprop="name">Study</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Study/Scala/" itemprop="url" rel="index">
+                    <span itemprop="name">Scala</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h2><ul>
+<li>An if expression has a value.</li>
+<li>A block has a value&#x2014;the value of its last expression.</li>
+<li>The Scala for loop is like an &#x201C;enhanced&#x201D; Java for loop.<ul>
+<li>for ( i -&gt; 0 to n)</li>
+<li>for ( i -&gt; 0 until n)</li>
+</ul>
+</li>
+<li>Semicolons are (mostly) optional.<ul>
+<li>Need when: more than one statements on a single line</li>
+</ul>
+</li>
+<li>The void type is Unit.</li>
+<li>Avoid using return in a function.<ul>
+<li>With a recursive function, you must specify the return type.</li>
+</ul>
+</li>
+<li>Beware of missing = in a function definition.<ul>
+<li>Because the procedure doesn&#x2019;t return any value, we omit the = symbol</li>
+<li>It is a common error to accidentally omit the = in a function definition.You then get an error message at the point where the function is called, and you are told that Unit is not acceptable at that location.</li>
+</ul>
+</li>
+<li>Exceptions work just like in Java or C++, but you use a &#x201C;pattern matching&#x201D; syntax for catch.</li>
+<li>Scala has no checked exceptions.</li>
+<li>Variable Arguments<ul>
+<li>The remedy is to tell the compiler that you want the parameter to be considered an argument sequence. Append : _*, like this:<ul>
+<li><code>val s = sum(1 to 5: _*) // Consider 1 to 5 as an argument sequence</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<a id="more"></a>
+<h2 id="Exercises"><a href="#Exercises" class="headerlink" title="Exercises"></a>Exercises</h2><ol>
+<li><p>The signum of a number is 1 if the number is positive, &#x2013;1 if it is negative, and 0 if it is zero. Write a function that computes this value.</p>
+<p> Answer:</p>
+ <figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">signum</span><span class="params">(<span class="symbol">i:</span>Int)</span></span>={</span><br><span class="line">  <span class="keyword">if</span> (i&gt;<span class="number">0</span>) <span class="number">1</span> <span class="keyword">else</span> {</span><br><span class="line">    <span class="keyword">if</span> (i&lt;<span class="number">0</span>) -<span class="number">1</span> <span class="keyword">else</span> <span class="number">0</span></span><br><span class="line">  }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>What is the value of an empty block expression {}? What is its type?<br>Answer: Unit</p>
+</li>
+<li><p>Come up with one situation where the assignment x = y = 1 is valid in Scala.<br>(Hint: Pick a suitable type for x.)</p>
+<p> Answer: x is type of Unit</p>
+ <figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var <span class="attr">y</span> = <span class="number">1</span></span><br><span class="line">var <span class="attr">x</span> = {}</span><br><span class="line"><span class="attr">x</span> = <span class="attr">y</span> = <span class="number">1</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Write a Scala equivalent for the Java loop<br>for (int i = 10; i &gt;= 0; i&#x2013;) System.out.println(i);</p>
+<p> Answer:</p>
+ <figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">for</span><span class="params">(i&lt;- <span class="number">0</span> to <span class="number">10</span>)</span></span> println(<span class="number">10</span>-i)</span><br><span class="line"></span><br><span class="line"><span class="comment">// another version of Answer</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">for</span><span class="params">(i &lt;- <span class="number">0</span> to <span class="number">10</span> reverse)</span><span class="title">print</span><span class="params">(i)</span></span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Write a procedure countdown(n: Int) that prints the numbers from n to 0.</p>
+<p> Answer:</p>
+ <figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> countdown(n:<span class="keyword">Int</span>) {</span><br><span class="line">  <span class="keyword">for</span>(i&lt;- <span class="number">0</span> to n <span class="keyword">reverse</span>) <span class="keyword">print</span>(i)</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment">// another version:  </span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> countdown(n:<span class="keyword">Int</span>) {</span><br><span class="line">  <span class="number">0</span> to n <span class="keyword">reverse</span> foreach <span class="keyword">print</span></span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Write a for loop for computing the product of the Unicode codes of all letters in a string. For example, the product of the characters in &#x201C;Hello&#x201D; is 825152896.</p>
+</li>
+</ol>
+<pre><code>Answer:
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">productUcode</span><span class="params">(<span class="symbol">str:</span> String)</span></span><span class="symbol">:Long</span> = {</span><br><span class="line">  var <span class="symbol">result:</span> Long = <span class="number">1</span></span><br><span class="line">  <span class="keyword">for</span>(c&lt;-str) result *= c.toLong</span><br><span class="line">  result</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+</code></pre><ol start="7">
+<li>Solve the preceding exercise without writing a loop. (Hint: Look at the StringOps Scaladoc.)</li>
+</ol>
+<pre><code>Answer:
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">productUcode</span><span class="params">(<span class="symbol">str:</span> String)</span></span><span class="symbol">:Long</span> = {</span><br><span class="line">  var <span class="symbol">result:</span> Long = <span class="number">1</span></span><br><span class="line">  str.foreach(result *= <span class="number">_</span>.toLong)</span><br><span class="line">  result</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+</code></pre><ol start="8">
+<li><p>Write a function product(s : String) that computes the product, as described in the preceding exercises.</p>
+<p> same with above</p>
+</li>
+<li><p>Make the function of the preceding exercise a recursive function</p>
+<p> Answer:</p>
+ <figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">def productUcode2(<span class="built_in">str</span>:<span class="keyword">String</span>):Long = {</span><br><span class="line">  <span class="keyword">if</span>(<span class="built_in">str</span>.length == <span class="number">1</span>) <span class="keyword">return</span> <span class="built_in">str</span>.head.toLong</span><br><span class="line">  <span class="keyword">else</span> <span class="built_in">str</span>.head.toLong * productUcode2(<span class="built_in">str</span>.tail)</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Write a function that computes xn, where n is an integer. Use the following recursive definition:<br>&#x2022; xn = y2 if n is even and positive, where y = xn / 2.<br>&#x2022; xn = x&#xB7; xn &#x2013; 1 if n is odd and positive.<br>&#x2022; x0 = 1.<br>&#x2022; xn = 1 / x&#x2013;n if n is negative.<br>Don&#x2019;t use a return statement.</p>
+</li>
+</ol>
+<pre><code>Answer:
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">def computesXn(x:Double, n:Int):Double = {</span><br><span class="line">  <span class="keyword">if</span> (<span class="attribute">n</span>==0) 1.toDouble <span class="keyword">else</span> {</span><br><span class="line">    <span class="keyword">if</span> (n &lt; 0) 1/computesXn(x, -n) <span class="keyword">else</span> {</span><br><span class="line">      <span class="keyword">if</span> (n%2 == 0) {</span><br><span class="line">        val y = computesXn(x, n/2); y*y</span><br><span class="line">        } <span class="keyword">else</span> {</span><br><span class="line">        x<span class="number">*c</span>omputesXn(x, n-1)</span><br><span class="line">      }</span><br><span class="line">    }</span><br><span class="line">  }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">//</span><br><span class="line"></span><br><span class="line">def computesXn(x:Double, n:Int):Double = {</span><br><span class="line">  <span class="keyword">if</span> (<span class="attribute">n</span>==0) 1.toDouble</span><br><span class="line">  <span class="keyword">else</span> <span class="keyword">if</span> (n&gt;0 &amp;&amp; n%<span class="attribute">2</span>==0) {</span><br><span class="line">    val y = computesXn(x, n/2); y*y</span><br><span class="line">  }</span><br><span class="line">  <span class="keyword">else</span> <span class="keyword">if</span> (n&gt;0 &amp;&amp; n%<span class="attribute">2</span>==1) {</span><br><span class="line">    x<span class="number">*c</span>omputesXn(x, n-1)</span><br><span class="line">  }</span><br><span class="line">  <span class="keyword">else</span> 1/computesXn(x, -n)</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+</code></pre>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/读书笔记/" rel="tag"><i class="fa fa-tag"></i>读书笔记</a>
+          
+            <a href="/tags/book-Scala-for-impatients/" rel="tag"><i class="fa fa-tag"></i>book:Scala for impatients</a>
+          
+            <a href="/tags/scala/" rel="tag"><i class="fa fa-tag"></i>scala</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/11/16/ProgramStudy/typingsinstall/" rel="next" title="Angular2项目demo——安装">
+                <i class="fa fa-chevron-left"></i> Angular2项目demo——安装
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/03/16/ProgramStudy/scala-for-impatients-ch3/" rel="prev" title="Scala_for_impatients_Ch3">
+                Scala_for_impatients_Ch3 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="陈22" />
+          <p class="site-author-name" itemprop="name">陈22</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/jingchen2222" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Note"><span class="nav-number">1.</span> <span class="nav-text">Note</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Exercises"><span class="nav-number">2.</span> <span class="nav-text">Exercises</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">陈22</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+</span>
+<span id="busuanzi_container_site_uv">
+  本站访客数<span id="busuanzi_value_site_uv"></span>人次
+</span>
+<script>
+  var birthDay = new Date("11/20/2014");
+  var now = new Date();
+  var duration = now.getTime() - birthDay.getTime();
+  var total= Math.floor(duration / (1000 * 60 * 60 * 24));
+  document.getElementById("showDays").innerHTML = "本站已运行 "+total+" 天";
+</script>
+<span id="showDays"></span>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

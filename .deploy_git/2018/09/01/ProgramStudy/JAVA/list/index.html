@@ -1,0 +1,873 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="java,collection," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="ListOverviewList&amp;#x65CF;&amp;#x6700;&amp;#x91CD;&amp;#x8981;&amp;#x7684;&amp;#x51E0;&amp;#x4E2A;&amp;#x7279;&amp;#x70B9;&amp;#xFF1A; &amp;#x6709;&amp;#x5E8F; &amp;#x5141;&amp;#x8BB8;&amp;#x91CD;&amp;#x590D;&amp;#x5143;&amp;#x7D20; &amp;#x652F;&amp;#x6301;add, remove, set, get">
+<meta name="keywords" content="java,collection">
+<meta property="og:type" content="article">
+<meta property="og:title" content="List study">
+<meta property="og:url" content="http://jingchen2222.github.io./2018/09/01/ProgramStudy/JAVA/list/index.html">
+<meta property="og:site_name" content="Chen22&#39;S BLOG">
+<meta property="og:description" content="ListOverviewList&amp;#x65CF;&amp;#x6700;&amp;#x91CD;&amp;#x8981;&amp;#x7684;&amp;#x51E0;&amp;#x4E2A;&amp;#x7279;&amp;#x70B9;&amp;#xFF1A; &amp;#x6709;&amp;#x5E8F; &amp;#x5141;&amp;#x8BB8;&amp;#x91CD;&amp;#x590D;&amp;#x5143;&amp;#x7D20; &amp;#x652F;&amp;#x6301;add, remove, set, get">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://www.programcreek.com/wp-content/uploads/2009/02/java-collection-hierarchy.jpeg">
+<meta property="og:updated_time" content="2018-09-22T04:13:53.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="List study">
+<meta name="twitter:description" content="ListOverviewList&amp;#x65CF;&amp;#x6700;&amp;#x91CD;&amp;#x8981;&amp;#x7684;&amp;#x51E0;&amp;#x4E2A;&amp;#x7279;&amp;#x70B9;&amp;#xFF1A; &amp;#x6709;&amp;#x5E8F; &amp;#x5141;&amp;#x8BB8;&amp;#x91CD;&amp;#x590D;&amp;#x5143;&amp;#x7D20; &amp;#x652F;&amp;#x6301;add, remove, set, get">
+<meta name="twitter:image" content="https://www.programcreek.com/wp-content/uploads/2009/02/java-collection-hierarchy.jpeg">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://jingchen2222.github.io./2018/09/01/ProgramStudy/JAVA/list/"/>
+
+
+  <title> List study | Chen22'S BLOG </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Chen22'S BLOG</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br />
+            
+            日程
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                List study
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-09-01T17:01:00+08:00" content="2018-09-01">
+              2018-09-01
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Study/" itemprop="url" rel="index">
+                    <span itemprop="name">Study</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Study/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="List"><a href="#List" class="headerlink" title="List"></a>List</h2><h3 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h3><h5 id="List&#x65CF;&#x6700;&#x91CD;&#x8981;&#x7684;&#x51E0;&#x4E2A;&#x7279;&#x70B9;&#xFF1A;"><a href="#List&#x65CF;&#x6700;&#x91CD;&#x8981;&#x7684;&#x51E0;&#x4E2A;&#x7279;&#x70B9;&#xFF1A;" class="headerlink" title="List&#x65CF;&#x6700;&#x91CD;&#x8981;&#x7684;&#x51E0;&#x4E2A;&#x7279;&#x70B9;&#xFF1A;"></a>List&#x65CF;&#x6700;&#x91CD;&#x8981;&#x7684;&#x51E0;&#x4E2A;&#x7279;&#x70B9;&#xFF1A;</h5><ul>
+<li>&#x6709;&#x5E8F;</li>
+<li>&#x5141;&#x8BB8;&#x91CD;&#x590D;&#x5143;&#x7D20;</li>
+<li>&#x652F;&#x6301;add, remove, set, get</li>
+<li>&#x53EF;&#x4EE5;&#x968F;&#x673A;&#x8BBF;&#x95EE;&#x5143;&#x7D20;</li>
+</ul>
+<h5 id="Lis&#x65CF;&#x96C6;&#x5408;&#x7C7B;&#xFF1A;"><a href="#Lis&#x65CF;&#x96C6;&#x5408;&#x7C7B;&#xFF1A;" class="headerlink" title="Lis&#x65CF;&#x96C6;&#x5408;&#x7C7B;&#xFF1A;"></a>Lis&#x65CF;&#x96C6;&#x5408;&#x7C7B;&#xFF1A;</h5><p><img src="https://www.programcreek.com/wp-content/uploads/2009/02/java-collection-hierarchy.jpeg" alt="java-collection-hierarchy.jpeg"></p>
+<ul>
+<li>List&#x65CF;&#x4E2D;&#xFF0C;&#x6700;&#x4E3B;&#x8981;&#x7684;&#x4E09;&#x79CD;&#x96C6;&#x5408;&#x662F;<code>ArrayList</code>,<code>Vector</code>&#x548C;<code>LinkedList</code>&#xFF0C;&#x540E;&#x9762;&#x5C06;&#x5BF9;&#x8FD9;&#x4E09;&#x79CD;&#x7C7B;&#x8FDB;&#x884C;&#x5206;&#x6790;&#x548C;&#x6BD4;&#x8F83;&#x3002;</li>
+<li>&#x53EF;&#x4EE5;&#x7B80;&#x5355;&#x5BF9;&#x6BD4;&#x4E00;&#x4E0B;List&#x548C;Set</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>List</th>
+<th>Set</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&#x6709;&#x5E8F;</td>
+<td>Y</td>
+<td>N</td>
+</tr>
+<tr>
+<td>&#x91CD;&#x590D;&#x5143;&#x7D20;</td>
+<td>Y</td>
+<td>N</td>
+</tr>
+<tr>
+<td>&#x968F;&#x673A;&#x8BBF;&#x95EE;</td>
+<td>Y</td>
+<td>N</td>
+</tr>
+</tbody>
+</table>
+<a id="more"></a>
+<h3 id="ArrayList"><a href="#ArrayList" class="headerlink" title="ArrayList"></a>ArrayList</h3><p>Java Platform SE 8&#x7684;&#x63CF;&#x8FF0;&#xFF1A;</p>
+<blockquote>
+<p>Resizable-array implementation of the List interface. Implements all optional list operations, and permits all elements, including null. In addition to implementing the List interface, this class provides methods to manipulate the size of the array that is used internally to store the list. (This class is roughly equivalent to Vector, except that it is unsynchronized.)</p>
+</blockquote>
+<ul>
+<li>&#x53EF;&#x53D8;&#x957F;&#x6570;&#x7EC4;</li>
+<li>&#x5B9E;&#x73B0;&#x6240;&#x6709;list&#x7684;&#x64CD;&#x4F5C;</li>
+<li>&#x5141;&#x8BB8;null</li>
+<li>&#x548C;Vector&#x76F8;&#x4F3C;&#xFF0C;&#x4F46;&#x662F;unsynchronized</li>
+</ul>
+<h5 id="ArrayList&#x662F;&#x4E00;&#x79CD;&#x80FD;&#x591F;&#x81EA;&#x52A8;&#x6269;&#x5145;&#x957F;&#x5EA6;&#x7684;&#x6570;&#x7EC4;&#x3002;"><a href="#ArrayList&#x662F;&#x4E00;&#x79CD;&#x80FD;&#x591F;&#x81EA;&#x52A8;&#x6269;&#x5145;&#x957F;&#x5EA6;&#x7684;&#x6570;&#x7EC4;&#x3002;" class="headerlink" title="ArrayList&#x662F;&#x4E00;&#x79CD;&#x80FD;&#x591F;&#x81EA;&#x52A8;&#x6269;&#x5145;&#x957F;&#x5EA6;&#x7684;&#x6570;&#x7EC4;&#x3002;"></a><span style="color:#ab4642">ArrayList&#x662F;&#x4E00;&#x79CD;&#x80FD;&#x591F;&#x81EA;&#x52A8;&#x6269;&#x5145;&#x957F;&#x5EA6;&#x7684;&#x6570;&#x7EC4;&#x3002;</span></h5><h4 id="&#x6027;&#x80FD;"><a href="#&#x6027;&#x80FD;" class="headerlink" title="&#x6027;&#x80FD;"></a>&#x6027;&#x80FD;</h4><blockquote>
+<p>The size, isEmpty, get, set, iterator, and listIterator operations run in constant time.<br>The add operation runs in amortized constant time, that is, adding n elements requires O(n) time. </p>
+</blockquote>
+<ul>
+<li><strong>ArrayList</strong>&#x7684;&#x6027;&#x80FD;&#x53EF;&#x4EE5;&#x7C7B;&#x6BD4;<span style="color:#ab4642">&#x6570;&#x7EC4;</span>&#x7684;&#x6027;&#x80FD;&#xFF0C;&#x5728;&#x968F;&#x673A;&#x8BBF;&#x95EE;&#x6027;&#x80FD;&#x597D;&#x3002;&#x589E;&#x3001;&#x5220;&#x64CD;&#x4F5C;&#x6027;&#x80FD;&#x5DEE;&#x3002;</li>
+</ul>
+<h4 id="&#x7EBF;&#x7A0B;&#x5B89;&#x5168;"><a href="#&#x7EBF;&#x7A0B;&#x5B89;&#x5168;" class="headerlink" title="&#x7EBF;&#x7A0B;&#x5B89;&#x5168;"></a>&#x7EBF;&#x7A0B;&#x5B89;&#x5168;</h4><blockquote>
+<p><span style="color:#ab4642">Note that this implementation is not synchronized&#x2026;</span></p>
+</blockquote>
+<p><code>Collections.synchronizedList</code>: </p>
+<blockquote>
+<p>Returns a synchronized (thread-safe) list backed by the specified list. In order to guarantee serial access, it is critical that all access to the backing list is accomplished through the returned list.*</p>
+<ul>
+<li>&#x4E0D;&#x80FD;&#x4F9D;&#x8D56;fail-fast&#x8FDB;&#x884C;&#x7A0B;&#x5E8F;&#x540C;&#x6B65;&#x63A7;&#x5236;&#xFF0C;&#x5E94;&#x8BE5;&#x5BF9;ArrayList&#x8FDB;&#x884C;&#x5305;&#x88C5;&#xFF08;<code>Collections.synchronizedList</code>&#xFF09;&#xFF0C;&#x5408;&#x6CD5;&#x7684;ArrayList&#x540C;&#x6B65;&#x64CD;&#x4F5C;demo&#xFF1A;<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">List list = Collections.synchronizedList(<span class="keyword">new</span> ArrayList());</span><br><span class="line">     ...</span><br><span class="line"> <span class="keyword">synchronized</span> (list) {</span><br><span class="line">     Iterator i = list.iterator(); <span class="comment">// Must be in synchronized block</span></span><br><span class="line">     <span class="keyword">while</span> (i.hasNext())</span><br><span class="line">         foo(i.next());</span><br><span class="line"> }</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</blockquote>
+<h3 id="Vector"><a href="#Vector" class="headerlink" title="Vector"></a>Vector</h3><blockquote>
+<p>The Vector class implements a growable array of objects. Like an array, it contains components that can be accessed using an integer index.</p>
+</blockquote>
+<blockquote>
+<p>The iterators returned by this class&#x2019;s iterator and listIterator methods are fail-fast:&#x2026;</p>
+</blockquote>
+<blockquote>
+<p>&#x2026;, If a thread-safe implementation is not needed, it is recommended to use ArrayList in place of Vector.</p>
+</blockquote>
+<ul>
+<li>Vector&#x548C;ArrayList&#x7684;&#x6027;&#x80FD;&#x76F8;&#x4F3C;&#xFF0C;&#x6700;&#x91CD;&#x8981;&#x7684;<span style="color:#ab4642">&#x533A;&#x522B;:</span>&#x662F;:<ul>
+<li><code>Vector</code>&#x662F;<span style="color:#ab4642">&#x7EBF;&#x7A0B;&#x5B89;&#x5168;</span>&#x7684;&#x3002;</li>
+<li>&#x6269;&#x5BB9;&#x673A;&#x5236;&#x4E0D;&#x4E00;&#x6837;&#xFF0C;&#x5177;&#x4F53;&#x53EF;&#x4EE5;&#x770B;&#x540E;&#x9762;&#x7684;<strong>&#x6269;&#x5BB9;&#x4EE3;&#x7801;&#x89E3;&#x8BFB;&#xFF1A;</strong></li>
+</ul>
+</li>
+</ul>
+<h3 id="LinkedList"><a href="#LinkedList" class="headerlink" title="LinkedList"></a>LinkedList</h3><blockquote>
+<p>Doubly-linked list implementation of the List and Deque interfaces. Implements all optional list operations, and permits all elements (including null).<br>All of the operations perform as could be expected for a doubly-linked list. Operations that index into the list will traverse the list from the beginning or the end, whichever is closer to the specified index.</p>
+</blockquote>
+<h4 id="&#x6027;&#x80FD;&#xFF1A;"><a href="#&#x6027;&#x80FD;&#xFF1A;" class="headerlink" title="&#x6027;&#x80FD;&#xFF1A;"></a>&#x6027;&#x80FD;&#xFF1A;</h4><ul>
+<li>&#x5177;&#x6709;&#x94FE;&#x8868;&#x7684;&#x7279;&#x70B9;&#xFF0C;&#x5BF9;&#x589E;&#x52A0;&#x548C;&#x5220;&#x9664;&#x8282;&#x70B9;&#x7684;&#x64CD;&#x4F5C;&#x6548;&#x7387;&#x9AD8;&#xFF08;&#x7279;&#x522B;&#x662F;&#x8868;&#x5934;&#x6216;&#x8005;&#x8868;&#x5C3E;&#x7684;&#x64CD;&#x4F5C;&#xFF09;&#x3002;&#x4F46;&#x662F;&#xFF0C;&#x968F;&#x673A;&#x8BBF;&#x95EE;&#x6548;&#x7387;&#x4F4E;&#x3002;</li>
+<li><h4 id="&#x540C;&#x6B65;&#xFF1A;"><a href="#&#x540C;&#x6B65;&#xFF1A;" class="headerlink" title="&#x540C;&#x6B65;&#xFF1A;"></a>&#x540C;&#x6B65;&#xFF1A;</h4><blockquote>
+<p>The iterators returned by this class&#x2019;s iterator and listIterator methods are fail-fast</p>
+</blockquote>
+</li>
+<li>LinkedList&#x662F;&#x7EBF;&#x7A0B;&#x4E0D;&#x5B89;&#x5168;&#x7684;&#xFF0C;&#x9700;&#x8981;&#x5305;&#x88C5;&#xFF1A;<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">List list = Collections.synchronizedList(<span class="keyword">new</span> LinkedList(...));</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="ArrayList-vs-Vector-vs-LinkedList"><a href="#ArrayList-vs-Vector-vs-LinkedList" class="headerlink" title="ArrayList vs Vector vs LinkedList"></a>ArrayList vs Vector vs LinkedList</h3><table>
+<thead>
+<tr>
+<th></th>
+<th>ArrayList</th>
+<th>Vector</th>
+<th>LinkedList</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>list&#x63A5;&#x53E3;</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr>
+<td>deque&#x63A5;&#x53E3;</td>
+<td>N</td>
+<td>N</td>
+<td>Y</td>
+</tr>
+<tr>
+<td>elements &#x5141;&#x8BB8;null</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr>
+<td>growable</td>
+<td>Y</td>
+<td>Y</td>
+<td>N</td>
+</tr>
+<tr>
+<td>get</td>
+<td>O(1)</td>
+<td>O(1)</td>
+<td>O(n)</td>
+</tr>
+<tr>
+<td>set</td>
+<td>O(1)</td>
+<td>O(1)</td>
+<td>O(n)</td>
+</tr>
+<tr>
+<td>remove</td>
+<td>O(n)</td>
+<td>O(n)</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td>add</td>
+<td>O(n)</td>
+<td>O(n)</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td>synchronized</td>
+<td>N</td>
+<td>Y</td>
+<td>N</td>
+</tr>
+<tr>
+<td>synchronized</td>
+<td>N</td>
+<td>Y</td>
+<td>N</td>
+</tr>
+<tr>
+<td>fail-fast</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+</tbody>
+</table>
+<h2 id="&#x51E0;&#x4E2A;&#x503C;&#x5F97;&#x6DF1;&#x5165;&#x601D;&#x8003;&#x7684;&#x95EE;&#x9898;"><a href="#&#x51E0;&#x4E2A;&#x503C;&#x5F97;&#x6DF1;&#x5165;&#x601D;&#x8003;&#x7684;&#x95EE;&#x9898;" class="headerlink" title="&#x51E0;&#x4E2A;&#x503C;&#x5F97;&#x6DF1;&#x5165;&#x601D;&#x8003;&#x7684;&#x95EE;&#x9898;"></a>&#x51E0;&#x4E2A;&#x503C;&#x5F97;&#x6DF1;&#x5165;&#x601D;&#x8003;&#x7684;&#x95EE;&#x9898;</h2><h3 id="fail-fast"><a href="#fail-fast" class="headerlink" title="fail-fast"></a>fail-fast</h3><p> fail-fast &#x673A;&#x5236;&#x662F;java&#x96C6;&#x5408;(Collection)&#x4E2D;&#x7684;&#x4E00;&#x79CD;&#x9519;&#x8BEF;&#x673A;&#x5236;&#x3002;<code>ArrayList</code>,<code>Vector</code>, <code>LinkedList</code> &#x90FD;&#x6EE1;&#x8DB3;fail-fast&#x673A;&#x5236;&#x3002;&#x5B98;&#x65B9;&#x6587;&#x6863;&#x4E2D;&#x5BF9;fail-fast&#x7684;&#x89E3;&#x91CA;&#x5982;&#x4E0B;&#xFF1A;</p>
+<blockquote>
+<p>fail-fast: if the list is structurally modified at any time after the iterator is created, in any way except through the iterator&#x2019;s own remove or add methods, the iterator will throw a <code>ConcurrentModificationException</code>. Thus, in the face of concurrent modification, the iterator fails quickly and cleanly, rather than risking arbitrary, non-deterministic behavior at an undetermined time in the future.</p>
+</blockquote>
+<ul>
+<li>fail-fast&#x4EA7;&#x751F;&#x7684;&#x539F;&#x56E0;&#x5C31;&#x5728;&#x4E8E;&#x7A0B;&#x5E8F;&#x5728;&#x5BF9;collection&#xFF08;&#x5982;: ArrayList&#xFF09;&#x8FDB;&#x884C;&#x8FED;&#x4EE3;&#x65F6;&#xFF0C;&#x67D0;&#x4E2A;&#x7EBF;&#x7A0B;&#x5BF9;&#x8BE5; collection <strong>&#x5728;&#x7ED3;&#x6784;&#x4E0A;&#x5BF9;&#x5176;&#x505A;&#x4E86;&#x4FEE;&#x6539;</strong>&#xFF0C;&#x8FD9;&#x65F6;&#x8FED;&#x4EE3;&#x5668;&#x5C31;&#x4F1A;&#x629B;&#x51FA; <code>ConcurrentModificationException</code> &#x5F02;&#x5E38;&#x4FE1;&#x606F;&#xFF0C;&#x4ECE;&#x800C;&#x4EA7;&#x751F; <strong>fail-fast</strong><blockquote>
+<p>&#x8981;&#x4E86;&#x89E3;fail-fast&#x673A;&#x5236;&#xFF0C;&#x6211;&#x4EEC;&#x9996;&#x5148;&#x8981;&#x5BF9;ConcurrentModificationException &#x5F02;&#x5E38;&#x6709;&#x6240;&#x4E86;&#x89E3;&#x3002;&#x5F53;&#x65B9;&#x6CD5;&#x68C0;&#x6D4B;&#x5230;&#x5BF9;&#x8C61;&#x7684;&#x5E76;&#x53D1;&#x4FEE;&#x6539;&#xFF0C;&#x4F46;&#x4E0D;&#x5141;&#x8BB8;&#x8FD9;&#x79CD;&#x4FEE;&#x6539;&#x65F6;&#x5C31;&#x629B;&#x51FA;&#x8BE5;&#x5F02;&#x5E38;&#x3002;&#x540C;&#x65F6;&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#xFF0C;&#x8BE5;&#x5F02;&#x5E38;&#x4E0D;&#x4F1A;&#x59CB;&#x7EC8;&#x6307;&#x51FA;&#x5BF9;&#x8C61;&#x5DF2;&#x7ECF;&#x7531;&#x4E0D;&#x540C;&#x7EBF;&#x7A0B;&#x5E76;&#x53D1;&#x4FEE;&#x6539;&#xFF0C;&#x5982;&#x679C;&#x5355;&#x7EBF;&#x7A0B;&#x8FDD;&#x53CD;&#x4E86;&#x89C4;&#x5219;&#xFF0C;&#x540C;&#x6837;&#x4E5F;&#x6709;&#x53EF;&#x80FD;&#x4F1A;&#x629B;&#x51FA;&#x6539;&#x5F02;&#x5E38;&#x3002;</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="ConcurrentModificationException"><a href="#ConcurrentModificationException" class="headerlink" title="ConcurrentModificationException"></a>ConcurrentModificationException</h4><ul>
+<li>&#x5BB9;&#x5668;&#x4F7F;&#x7528;&#x8FED;&#x4EE3;&#x5668;&#x6765;&#x8FDB;&#x884C;&#x7EDF;&#x4E00;&#x4E2A;&#x5BB9;&#x5668;&#x8BBF;&#x95EE;&#x64CD;&#x4F5C;&#x3002;&#x8FED;&#x4EE3;&#x5668;&#x672C;&#x8D28;&#x4E0A;&#x53EA;&#x662F;&#x5BB9;&#x5668;&#x7684;&#x4E00;&#x4E2A;&#x89C6;&#x56FE;&#xFF0C;&#x8FED;&#x4EE3;&#x5668;&#x91CC;&#x5B58;&#x653E;&#x5BB9;&#x5668;&#x8BBF;&#x95EE;&#x7684;&#x6E38;&#x6807;&#xFF0C;&#x4EE5;&#x53CA;expectedModCount</li>
+<li><code>expectedModCount</code>&#x662F;&#x8FED;&#x4EE3;&#x5668;fail-fast&#x673A;&#x5236;&#x7684;&#x5173;&#x952E;&#xFF0C;</li>
+<li>&#x8FED;&#x4EE3;&#x5668;&#x5728;&#x64CD;&#x4F5C;&#x5BB9;&#x5668;&#x5143;&#x7D20;&#x524D;&#xFF0C;&#x4F1A;<code>checkForComodification</code>&#xFF0C;&#x5176;&#x5B9E;&#x5C31;&#x662F;&#x68C0;&#x67E5;<code>expectedModCount==modCount</code></li>
+<li>&#x8FED;&#x4EE3;&#x5668;&#x5728;&#x5BF9;&#x5BB9;&#x5668;&#x4F5C;&#x7ED3;&#x6784;&#x6027;&#x540E;&#xFF0C;&#x4F1A;&#x5237;&#x65B0;<code>expectedModCount = modCount</code>&#x3002;</li>
+<li>&#x6362;&#x8A00;&#x4E4B;&#xFF0C;&#x5982;&#x679C;&#x5728;&#x8FED;&#x4EE3;&#x5668;&#x540C;&#x6B65;&#x5230;&#x6700;&#x65B0;&#x7684;modCount&#x540E;&#xFF0C;&#x6709;&#x5176;&#x4ED6;&#x64CD;&#x4F5C;&#x4FEE;&#x6539;&#x4E86;&#x5BB9;&#x5668;&#x7684;modCount&#xFF0C;&#x90A3;&#x4E48;<code>checkForComodification</code>&#x5C31;&#x4F1A;&#x6821;&#x9A8C;&#x5931;&#x8D25;&#xFF0C;&#x4E8E;&#x662F;&#x5C31;&#x629B;&#x51FA;<code>ConcurrentModificationException</code></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">Itr</span> <span class="keyword">implements</span> <span class="title">Iterator</span>&lt;<span class="title">E</span>&gt; </span>{</span><br><span class="line">       <span class="comment">/**</span></span><br><span class="line"><span class="comment">        * Index of element to be returned by subsequent call to next.</span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line">       <span class="keyword">int</span> cursor = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">       <span class="comment">/**</span></span><br><span class="line"><span class="comment">        * Index of element returned by most recent call to next or</span></span><br><span class="line"><span class="comment">        * previous.  Reset to -1 if this element is deleted by a call</span></span><br><span class="line"><span class="comment">        * to remove.</span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line">       <span class="keyword">int</span> lastRet = -<span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">       <span class="comment">/**</span></span><br><span class="line"><span class="comment">        * The modCount value that the iterator believes that the backing</span></span><br><span class="line"><span class="comment">        * List should have.  If this expectation is violated, the iterator</span></span><br><span class="line"><span class="comment">        * has detected concurrent modification.</span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line">       <span class="keyword">int</span> expectedModCount = modCount;</span><br><span class="line"></span><br><span class="line">       <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">hasNext</span><span class="params">()</span> </span>{</span><br><span class="line">           <span class="keyword">return</span> cursor != size();</span><br><span class="line">       }</span><br><span class="line"></span><br><span class="line">       <span class="function"><span class="keyword">public</span> E <span class="title">next</span><span class="params">()</span> </span>{</span><br><span class="line">           checkForComodification();</span><br><span class="line">           <span class="keyword">try</span> {</span><br><span class="line">               <span class="keyword">int</span> i = cursor;</span><br><span class="line">               E next = get(i);</span><br><span class="line">               lastRet = i;</span><br><span class="line">               cursor = i + <span class="number">1</span>;</span><br><span class="line">               <span class="keyword">return</span> next;</span><br><span class="line">           } <span class="keyword">catch</span> (IndexOutOfBoundsException e) {</span><br><span class="line">               checkForComodification();</span><br><span class="line">               <span class="keyword">throw</span> <span class="keyword">new</span> NoSuchElementException();</span><br><span class="line">           }</span><br><span class="line">       }</span><br><span class="line"></span><br><span class="line">       <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">remove</span><span class="params">()</span> </span>{</span><br><span class="line">           <span class="keyword">if</span> (lastRet &lt; <span class="number">0</span>)</span><br><span class="line">               <span class="keyword">throw</span> <span class="keyword">new</span> IllegalStateException();</span><br><span class="line">           checkForComodification();</span><br><span class="line"></span><br><span class="line">           <span class="keyword">try</span> {</span><br><span class="line">               AbstractList.<span class="keyword">this</span>.remove(lastRet);</span><br><span class="line">               <span class="keyword">if</span> (lastRet &lt; cursor)</span><br><span class="line">                   cursor--;</span><br><span class="line">               lastRet = -<span class="number">1</span>;</span><br><span class="line">               expectedModCount = modCount;</span><br><span class="line">           } <span class="keyword">catch</span> (IndexOutOfBoundsException e) {</span><br><span class="line">               <span class="keyword">throw</span> <span class="keyword">new</span> ConcurrentModificationException();</span><br><span class="line">           }</span><br><span class="line">       }</span><br><span class="line"></span><br><span class="line">       <span class="function"><span class="keyword">final</span> <span class="keyword">void</span> <span class="title">checkForComodification</span><span class="params">()</span> </span>{</span><br><span class="line">           <span class="keyword">if</span> (modCount != expectedModCount)</span><br><span class="line">               <span class="keyword">throw</span> <span class="keyword">new</span> ConcurrentModificationException();</span><br><span class="line">       }</span><br><span class="line">   }</span><br><span class="line">   </span><br><span class="line">       <span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">ListItr</span> <span class="keyword">extends</span> <span class="title">Itr</span> <span class="keyword">implements</span> <span class="title">ListIterator</span>&lt;<span class="title">E</span>&gt; </span>{</span><br><span class="line">       ListItr(<span class="keyword">int</span> index) {</span><br><span class="line">           cursor = index;</span><br><span class="line">       }</span><br><span class="line"></span><br><span class="line">       <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">hasPrevious</span><span class="params">()</span> </span>{</span><br><span class="line">           <span class="keyword">return</span> cursor != <span class="number">0</span>;</span><br><span class="line">       }</span><br><span class="line"></span><br><span class="line">       <span class="function"><span class="keyword">public</span> E <span class="title">previous</span><span class="params">()</span> </span>{</span><br><span class="line">           checkForComodification();</span><br><span class="line">           <span class="keyword">try</span> {</span><br><span class="line">               <span class="keyword">int</span> i = cursor - <span class="number">1</span>;</span><br><span class="line">               E previous = get(i);</span><br><span class="line">               lastRet = cursor = i;</span><br><span class="line">               <span class="keyword">return</span> previous;</span><br><span class="line">           } <span class="keyword">catch</span> (IndexOutOfBoundsException e) {</span><br><span class="line">               checkForComodification();</span><br><span class="line">               <span class="keyword">throw</span> <span class="keyword">new</span> NoSuchElementException();</span><br><span class="line">           }</span><br><span class="line">       }</span><br><span class="line"></span><br><span class="line">       <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">nextIndex</span><span class="params">()</span> </span>{</span><br><span class="line">           <span class="keyword">return</span> cursor;</span><br><span class="line">       }</span><br><span class="line"></span><br><span class="line">       <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">previousIndex</span><span class="params">()</span> </span>{</span><br><span class="line">           <span class="keyword">return</span> cursor-<span class="number">1</span>;</span><br><span class="line">       }</span><br><span class="line"></span><br><span class="line">       <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">set</span><span class="params">(E e)</span> </span>{</span><br><span class="line">           <span class="keyword">if</span> (lastRet &lt; <span class="number">0</span>)</span><br><span class="line">               <span class="keyword">throw</span> <span class="keyword">new</span> IllegalStateException();</span><br><span class="line">           checkForComodification();</span><br><span class="line"></span><br><span class="line">           <span class="keyword">try</span> {</span><br><span class="line">               AbstractList.<span class="keyword">this</span>.set(lastRet, e);</span><br><span class="line">               expectedModCount = modCount;</span><br><span class="line">           } <span class="keyword">catch</span> (IndexOutOfBoundsException ex) {</span><br><span class="line">               <span class="keyword">throw</span> <span class="keyword">new</span> ConcurrentModificationException();</span><br><span class="line">           }</span><br><span class="line">       }</span><br><span class="line"></span><br><span class="line">       <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(E e)</span> </span>{</span><br><span class="line">           checkForComodification();</span><br><span class="line"></span><br><span class="line">           <span class="keyword">try</span> {</span><br><span class="line">               <span class="keyword">int</span> i = cursor;</span><br><span class="line">               AbstractList.<span class="keyword">this</span>.add(i, e);</span><br><span class="line">               lastRet = -<span class="number">1</span>;</span><br><span class="line">               cursor = i + <span class="number">1</span>;</span><br><span class="line">               expectedModCount = modCount;</span><br><span class="line">           } <span class="keyword">catch</span> (IndexOutOfBoundsException ex) {</span><br><span class="line">               <span class="keyword">throw</span> <span class="keyword">new</span> ConcurrentModificationException();</span><br><span class="line">           }</span><br><span class="line">       }</span><br><span class="line">   }</span><br></pre></td></tr></table></figure>
+<p>&#x503C;&#x5F97;&#x4E00;&#x63D0;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5F53;&#x4E0D;&#x9002;&#x7528;&#x8FED;&#x4EE3;&#x5668;&#x8BBF;&#x95EE;&#x548C;&#x64CD;&#x4F5C;&#x5BB9;&#x5668;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4E0D;&#x4F1A;&#x629B;&#x51FA;<code>ConcurrentModificationException</code>&#xFF0C;&#x4F46;&#x662F;&#x5E76;&#x4E0D;&#x610F;&#x5473;&#x7740;&#x7A0B;&#x5E8F;&#x6B63;&#x786E;&#x3002;&#x5373;&#x4F7F;&#xFF0C;&#x662F;&#x8FED;&#x4EE3;&#x5668;&#x8BBF;&#x95EE;&#x7684;&#x7A0B;&#x5E8F;&#xFF0C;&#x4E5F;&#x6709;&#x6070;&#x597D;&#x672A;&#x53D1;&#x751F;<code>ConcurrentModificationException</code>&#x7684;&#x60C5;&#x51B5;&#x3002;</p>
+<blockquote>
+<p>Note that the fail-fast behavior of an iterator cannot be guaranteed as it is, generally speaking, impossible to make any hard guarantees in the presence of unsynchronized concurrent modification. Fail-fast iterators throw ConcurrentModificationException on a best-effort basis. Therefore, it would be wrong to write a program that depended on this exception for its correctness: the fail-fast behavior of iterators should be used only to detect bugs.<br>&#x6CE8;&#x610F;&#xFF0C;&#x8FED;&#x4EE3;&#x5668;&#x7684;&#x5FEB;&#x901F;&#x5931;&#x8D25;&#x884C;&#x4E3A;&#x65E0;&#x6CD5;&#x5F97;&#x5230;&#x4FDD;&#x8BC1;&#xFF0C;&#x56E0;&#x4E3A;&#x4E00;&#x822C;&#x6765;&#x8BF4;&#xFF0C;&#x4E0D;&#x53EF;&#x80FD;&#x5BF9;&#x662F;&#x5426;&#x51FA;&#x73B0;&#x4E0D;&#x540C;&#x6B65;&#x5E76;&#x53D1;&#x4FEE;&#x6539;&#x505A;&#x51FA;&#x4EFB;&#x4F55;&#x786C;&#x6027;&#x4FDD;&#x8BC1;&#x3002;&#x5FEB;&#x901F;&#x5931;&#x8D25;&#x8FED;&#x4EE3;&#x5668;&#x4F1A;&#x5C3D;&#x6700;&#x5927;&#x52AA;&#x529B;&#x629B;&#x51FA; ConcurrentModificationException&#x3002;&#x56E0;&#x6B64;&#xFF0C;&#x4E3A;&#x63D0;&#x9AD8;&#x8FD9;&#x7C7B;&#x8FED;&#x4EE3;&#x5668;&#x7684;&#x6B63;&#x786E;&#x6027;&#x800C;&#x7F16;&#x5199;&#x4E00;&#x4E2A;&#x4F9D;&#x8D56;&#x4E8E;&#x6B64;&#x5F02;&#x5E38;&#x7684;&#x7A0B;&#x5E8F;&#x662F;&#x9519;&#x8BEF;&#x7684;&#x505A;&#x6CD5;&#xFF1A;&#x8FED;&#x4EE3;&#x5668;&#x7684;&#x5FEB;&#x901F;&#x5931;&#x8D25;&#x884C;&#x4E3A;&#x5E94;&#x8BE5;&#x4EC5;&#x7528;&#x4E8E;&#x68C0;&#x6D4B; bug&#x3002;</p>
+</blockquote>
+<ul>
+<li>&#x4E0D;&#x80FD;&#x4F9D;&#x8D56;fail-fast&#x673A;&#x5236;&#x6765;&#x4FDD;&#x8BC1;&#x7A0B;&#x5E8F;&#x7684;&#x6B63;&#x786E;&#x6027;&#x3002;<code>ConcurrentModificationException</code>&#x53EA;&#x9002;&#x5408;&#x7528;&#x6765;&#x67E5;bug&#x3002;</li>
+</ul>
+<h5 id="fast-fail&#x7684;&#x6D4B;&#x8BD5;&#x4EE3;&#x7801;"><a href="#fast-fail&#x7684;&#x6D4B;&#x8BD5;&#x4EE3;&#x7801;" class="headerlink" title="fast-fail&#x7684;&#x6D4B;&#x8BD5;&#x4EE3;&#x7801;"></a>fast-fail&#x7684;&#x6D4B;&#x8BD5;&#x4EE3;&#x7801;</h5><ul>
+<li><code>failFastWorkTest</code>&#x7684;Thread t1&#x4F7F;&#x7528;&#x8FED;&#x4EE3;&#x5668;&#x6765;&#x8BBF;&#x95EE;&#x5BB9;&#x5668;&#xFF0C;&#x5728;&#x8BBF;&#x95EE;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;Thread t2&#x5BF9;&#x5BB9;&#x5668;&#x8C03;&#x7528;&#x4E86;<code>ArrayList.remove(element)</code>&#x64CD;&#x4F5C;&#xFF0C;&#x6B64;&#x540E;&#xFF0C;&#x5F53;t1&#x8FED;&#x4EE3;&#x5230;&#x4E0B;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#x65F6;&#x5019;&#xFF0C;&#xFF08;<code>next()</code>&#x4F1A;&#x68C0;&#x67E5;modCount, &#x5373;<code>checkForComodification</code>&#xFF09;&#x8FD9;&#x5C06;&#x5F15;&#x53D1;fast-fail.</li>
+<li><p>&#x6839;&#x636E;&#x4E0A;&#x9762;&#x63CF;&#x8FF0;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5199;&#x4E2A;demo&#x6765;&#x6D4B;&#x8BD5;ArrayList&#x7684;fast-fail&#xFF1A;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">failFastWorkTest</span><span class="params">()</span> <span class="keyword">throws</span> InterruptedException, ConcurrentModificationException     </span>{</span><br><span class="line">        Thread t1 = <span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable() {</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>{</span><br><span class="line">                Iterator&lt;Integer&gt; iterator = arrayList.iterator();</span><br><span class="line">                <span class="keyword">while</span>(iterator.hasNext()) {</span><br><span class="line">                    <span class="keyword">int</span> i = iterator.next();</span><br><span class="line">                    logger.info(<span class="string">&quot;thread t1 get item : {}&quot;</span>, i);</span><br><span class="line">                    <span class="keyword">try</span> {</span><br><span class="line">                        Thread.sleep(<span class="number">10</span>);</span><br><span class="line">                    } <span class="keyword">catch</span> (InterruptedException e) {</span><br><span class="line">                        e.printStackTrace();</span><br><span class="line">                    }</span><br><span class="line"></span><br><span class="line">                }</span><br><span class="line">            }</span><br><span class="line">        });</span><br><span class="line"></span><br><span class="line">        Thread t2 = <span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable() {</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>{</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) {</span><br><span class="line">                    <span class="keyword">if</span> (i == <span class="number">3</span>) {</span><br><span class="line"><span class="comment">//                        arrayList.remove(i);</span></span><br><span class="line">                        arrayList.add(i);</span><br><span class="line">                    }</span><br><span class="line"></span><br><span class="line">                }</span><br><span class="line">            }</span><br><span class="line">        });</span><br><span class="line"></span><br><span class="line">        runThreads(t1, t2);</span><br><span class="line">    }</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">runThreads</span><span class="params">(Thread t1, Thread t2)</span> <span class="keyword">throws</span> InterruptedException </span>{</span><br><span class="line">        logger.info(<span class="string">&quot;start thread 1 &quot;</span>);</span><br><span class="line">        t1.start();</span><br><span class="line">        logger.info(<span class="string">&quot;start thread 2 &quot;</span>);</span><br><span class="line">        t2.start();</span><br><span class="line">        t1.join();</span><br><span class="line">        logger.info(<span class="string">&quot;end thread1 &quot;</span>);</span><br><span class="line">        t2.join();</span><br><span class="line">        logger.info(<span class="string">&quot;end thread2 &quot;</span>);</span><br><span class="line">        logger.info(<span class="string">&quot;fail fast test done&quot;</span>);</span><br><span class="line"></span><br><span class="line">        logger.info(<span class="string">&quot;finnal array List&quot;</span>, arrayList);</span><br><span class="line">    }</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>failFastNoWorkTest</code>&#x7684;Thread t1&#x4F7F;&#x7528;&#x76F4;&#x63A5;&#x901A;&#x8FC7;ArrayList.get()&#x6765;&#x8BBF;&#x95EE;&#x5BB9;&#x5668;&#xFF0C;&#x5728;&#x8BBF;&#x95EE;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;Thread t2&#x5BF9;&#x5BB9;&#x5668;&#x8C03;&#x7528;&#x4E86;<code>ArrayList.remove(element)</code>&#x64CD;&#x4F5C;&#x3002;&#x672A;&#x4F7F;&#x7528;&#x8FED;&#x4EE3;&#x5668;&#xFF0C;&#x6240;&#x4EE5;&#x6CA1;&#x6709;modCount&#x6821;&#x9A8C;&#xFF0C;&#x6240;&#x4EE5;&#x4E0D;&#x4F1A;&#x53D1;&#x751F;fast-fail&#x3002;&#x5F53;&#x5B9E;&#x9645;&#x4E0A;&#xFF0C;&#x8FD9;&#x6837;&#x7684;&#x7A0B;&#x5E8F;&#x662F;&#x7EBF;&#x7A0B;&#x4E0D;&#x5B89;&#x5168;&#x7684;&#x3002;</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"> </span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">failFastNoWorkTest</span><span class="params">()</span> <span class="keyword">throws</span> InterruptedException </span>{</span><br><span class="line">    Thread t1 = <span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable() {</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>{</span><br><span class="line">            <span class="keyword">int</span> size = arrayList.size();</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; size; i++) {</span><br><span class="line">                <span class="keyword">int</span> value = arrayList.get(i);</span><br><span class="line">                logger.info(<span class="string">&quot;thread 1 run : {}&quot;</span>, value);</span><br><span class="line">                printPrivateField(AbstractList.class, <span class="string">&quot;modCount&quot;</span>, arrayList);</span><br><span class="line"></span><br><span class="line">                <span class="keyword">try</span> {</span><br><span class="line">                    Thread.sleep(<span class="number">10</span>);</span><br><span class="line">                } <span class="keyword">catch</span> (InterruptedException e) {</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                }</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">    });</span><br><span class="line"></span><br><span class="line">    Thread t2 = <span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable() {</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>{</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; RUN_TIMES; i++) {</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> (i == <span class="number">3</span>) {</span><br><span class="line">                    arrayList.remove(<span class="number">3</span>);</span><br><span class="line">                }</span><br><span class="line">                printPrivateField(AbstractList.class, <span class="string">&quot;modCount&quot;</span>, arrayList);</span><br><span class="line">                addElementByList(arrayList, <span class="number">100</span>);</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">    });</span><br><span class="line"></span><br><span class="line">    logger.info(<span class="string">&quot;before start thread ... &quot;</span>);</span><br><span class="line">    printPrivateField(AbstractList.class, <span class="string">&quot;modCount&quot;</span>, arrayList);</span><br><span class="line">    <span class="keyword">new</span> ListTest().runThreads(t1, t2);</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<h3 id="capacity"><a href="#capacity" class="headerlink" title="capacity"></a>capacity</h3><p>&#x53E6;&#x4E00;&#x4E2A;&#x503C;&#x5F97;&#x7814;&#x7A76;&#x7684;&#x77E5;&#x8BC6;&#x70B9;&#x662F;List&#x7684;&#x81EA;&#x52A8;&#x6269;&#x5BB9;&#xFF0C;&#x4E3B;&#x8981;&#x662F;ArrayList&#x548C;Vector&#x3002;</p>
+<blockquote>
+<p>ArrayList&#x548C;Vector&#x90FD;&#x662F;&#x4F7F;&#x7528;&#x6570;&#x7EC4;(Array)&#x6765;&#x63A7;&#x5236;&#x96C6;&#x5408;&#x4E2D;&#x7684;&#x5BF9;&#x8C61;&#x3002;&#x5F53;&#x4F60;&#x5411;&#x8FD9;&#x4E24;&#x79CD;&#x7C7B;&#x578B;&#x4E2D;&#x589E;&#x52A0;&#x5143;&#x7D20;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5982;&#x679C;&#x5143;&#x7D20;&#x7684;&#x6570;&#x76EE;&#x8D85;&#x51FA;&#x4E86;&#x5185;&#x90E8;&#x6570;&#x7EC4;&#x76EE;&#x524D;&#x7684;&#x957F;&#x5EA6;&#x5B83;&#x4EEC;&#x90FD;&#x9700;&#x8981;&#x6269;&#x5C55;&#x5185;&#x90E8;&#x6570;&#x7EC4;&#x7684;&#x957F;&#x5EA6;&#xFF0C;Vector&#x7F3A;&#x7701;&#x60C5;&#x51B5;&#x4E0B;&#x81EA;&#x52A8;&#x589E;&#x957F;&#x539F;&#x6765;&#x4E00;&#x500D;&#x7684;&#x6570;&#x7EC4;&#x957F;&#x5EA6;&#xFF0C;ArrayList&#x662F;&#x539F;&#x6765;&#x7684;50%,&#x6240;&#x4EE5;&#x6700;&#x540E;&#x4F60;&#x83B7;&#x5F97;&#x7684;&#x8FD9;&#x4E2A;&#x96C6;&#x5408;&#x6240;&#x5360;&#x7684;&#x7A7A;&#x95F4;&#x603B;&#x662F;&#x6BD4;&#x4F60;&#x5B9E;&#x9645;&#x9700;&#x8981;&#x7684;&#x8981;&#x5927;&#x3002;&#x6240;&#x4EE5;&#x5982;&#x679C;&#x4F60;&#x8981;&#x5728;&#x96C6;&#x5408;&#x4E2D;&#x4FDD;&#x5B58;&#x5927;&#x91CF;&#x7684;&#x6570;&#x636E;&#x90A3;&#x4E48;&#x4F7F;&#x7528;Vector&#x6709;&#x4E00;&#x4E9B;&#x4F18;&#x52BF;&#xFF0C;&#x56E0;&#x4E3A;&#x4F60;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x8BBE;&#x7F6E;&#x96C6;&#x5408;&#x7684;&#x521D;&#x59CB;&#x5316;&#x5927;&#x5C0F;&#x6765;&#x907F;&#x514D;&#x4E0D;&#x5FC5;&#x8981;&#x7684;&#x8D44;&#x6E90;&#x5F00;&#x9500;&#x3002;</p>
+</blockquote>
+<p>Vector<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">  * This implements the unsynchronized semantics of ensureCapacity.</span></span><br><span class="line"><span class="comment">  * Synchronized methods in this class can internally call this</span></span><br><span class="line"><span class="comment">  * method for ensuring capacity without incurring the cost of an</span></span><br><span class="line"><span class="comment">  * extra synchronization.</span></span><br><span class="line"><span class="comment">  *</span></span><br><span class="line"><span class="comment">  * <span class="doctag">@see</span> #ensureCapacity(int)</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"> <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">ensureCapacityHelper</span><span class="params">(<span class="keyword">int</span> minCapacity)</span> </span>{</span><br><span class="line">     <span class="comment">// overflow-conscious code</span></span><br><span class="line">     <span class="keyword">if</span> (minCapacity - elementData.length &gt; <span class="number">0</span>)</span><br><span class="line">         grow(minCapacity);</span><br><span class="line"> }</span><br><span class="line"> <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">grow</span><span class="params">(<span class="keyword">int</span> minCapacity)</span> </span>{</span><br><span class="line">     <span class="comment">// overflow-conscious code</span></span><br><span class="line">     <span class="keyword">int</span> oldCapacity = elementData.length;</span><br><span class="line">     <span class="keyword">int</span> newCapacity = oldCapacity + ((capacityIncrement &gt; <span class="number">0</span>) ?</span><br><span class="line">                                      capacityIncrement : oldCapacity);</span><br><span class="line">     <span class="keyword">if</span> (newCapacity - minCapacity &lt; <span class="number">0</span>)</span><br><span class="line">         newCapacity = minCapacity;</span><br><span class="line">     <span class="keyword">if</span> (newCapacity - MAX_ARRAY_SIZE &gt; <span class="number">0</span>)</span><br><span class="line">         newCapacity = hugeCapacity(minCapacity);</span><br><span class="line">     elementData = Arrays.copyOf(elementData, newCapacity);</span><br><span class="line"> }</span><br></pre></td></tr></table></figure></p>
+<p>ArrayList:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Increases the capacity to ensure that it can hold at least the</span></span><br><span class="line"><span class="comment"> * number of elements specified by the minimum capacity argument.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> minCapacity the desired minimum capacity</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">grow</span><span class="params">(<span class="keyword">int</span> minCapacity)</span> </span>{</span><br><span class="line">    <span class="comment">// overflow-conscious code</span></span><br><span class="line">    <span class="keyword">int</span> oldCapacity = elementData.length;</span><br><span class="line">    <span class="keyword">int</span> newCapacity = oldCapacity + (oldCapacity &gt;&gt; <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">if</span> (newCapacity - minCapacity &lt; <span class="number">0</span>)</span><br><span class="line">        newCapacity = minCapacity;</span><br><span class="line">    <span class="keyword">if</span> (newCapacity - MAX_ARRAY_SIZE &gt; <span class="number">0</span>)</span><br><span class="line">        newCapacity = hugeCapacity(minCapacity);</span><br><span class="line">    <span class="comment">// minCapacity is usually close to size, so this is a win:</span></span><br><span class="line">    elementData = Arrays.copyOf(elementData, newCapacity);</span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
+<p>&#x6240;&#x4EE5;&#xFF0C;&#x5982;&#x679C;&#x9700;&#x8981;&#x5B58;&#x50A8;&#x7684;&#x6570;&#x636E;&#x91CF;&#x6BD4;&#x8F83;&#x5927;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;<code>Vector</code>&#xFF0C;&#x4EE5;&#x51CF;&#x5C11;&#x6269;&#x5BB9;&#x6B21;&#x6570;&#x3002;&#x53E6;&#x5916;&#xFF0C;<code>Vector</code>&#x53EF;&#x4EE5;&#x8BBE;&#x7F6E;<code>capacityIncrement</code>&#xFF0C;&#x6765;&#x914D;&#x7F6E;&#x6BCF;&#x6B21;&#x6269;&#x5BB9;&#x7684;&#x589E;&#x957F;&#x91CF;&#xFF0C;&#x6BD4;&#x8F83;&#x7075;&#x6D3B;&#x3002;</p>
+<h2 id="&#x53C2;&#x8003;&#x94FE;&#x63A5;"><a href="#&#x53C2;&#x8003;&#x94FE;&#x63A5;" class="headerlink" title="&#x53C2;&#x8003;&#x94FE;&#x63A5;"></a>&#x53C2;&#x8003;&#x94FE;&#x63A5;</h2><p><a href="https://docs.oracle.com/javase/8/docs/api/?java/util/Collection.html" target="_blank" rel="noopener">ArrayList</a><br><a href="https://www.programcreek.com/simple-java/" target="_blank" rel="noopener">simpleJava</a><br><a href="https://blog.csdn.net/chenssy/article/details/38151189" target="_blank" rel="noopener">fail-fast</a><br><a href="http://www.hollischuang.com/archives/498" target="_blank" rel="noopener">SynchronizedList&#x548C;Vector&#x7684;&#x533A;&#x522B;, by Hollis</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/java/" rel="tag"><i class="fa fa-tag"></i>java</a>
+          
+            <a href="/tags/collection/" rel="tag"><i class="fa fa-tag"></i>collection</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/17/ProgramStudy/scala-for-impatients-ch4/" rel="next" title="Scala_for_impatients_Ch4">
+                <i class="fa fa-chevron-left"></i> Scala_for_impatients_Ch4
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/09/18/tools/swagger-convert-wiki-md/" rel="prev" title="Swagger转化为静态文档">
+                Swagger转化为静态文档 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="陈22" />
+          <p class="site-author-name" itemprop="name">陈22</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/jingchen2222" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#List"><span class="nav-number">1.</span> <span class="nav-text">List</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Overview"><span class="nav-number">1.1.</span> <span class="nav-text">Overview</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#List族最重要的几个特点："><span class="nav-number">1.1.0.1.</span> <span class="nav-text">List族最重要的几个特点：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Lis族集合类："><span class="nav-number">1.1.0.2.</span> <span class="nav-text">Lis族集合类：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ArrayList"><span class="nav-number">1.2.</span> <span class="nav-text">ArrayList</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#ArrayList是一种能够自动扩充长度的数组。"><span class="nav-number">1.2.0.1.</span> <span class="nav-text">ArrayList是一种能够自动扩充长度的数组。</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#性能"><span class="nav-number">1.2.1.</span> <span class="nav-text">性能</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#线程安全"><span class="nav-number">1.2.2.</span> <span class="nav-text">线程安全</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Vector"><span class="nav-number">1.3.</span> <span class="nav-text">Vector</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LinkedList"><span class="nav-number">1.4.</span> <span class="nav-text">LinkedList</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#性能："><span class="nav-number">1.4.1.</span> <span class="nav-text">性能：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#同步："><span class="nav-number">1.4.2.</span> <span class="nav-text">同步：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ArrayList-vs-Vector-vs-LinkedList"><span class="nav-number">1.5.</span> <span class="nav-text">ArrayList vs Vector vs LinkedList</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#几个值得深入思考的问题"><span class="nav-number">2.</span> <span class="nav-text">几个值得深入思考的问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#fail-fast"><span class="nav-number">2.1.</span> <span class="nav-text">fail-fast</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ConcurrentModificationException"><span class="nav-number">2.1.1.</span> <span class="nav-text">ConcurrentModificationException</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#fast-fail的测试代码"><span class="nav-number">2.1.1.1.</span> <span class="nav-text">fast-fail的测试代码</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#capacity"><span class="nav-number">2.2.</span> <span class="nav-text">capacity</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考链接"><span class="nav-number">3.</span> <span class="nav-text">参考链接</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">陈22</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+</span>
+<span id="busuanzi_container_site_uv">
+  本站访客数<span id="busuanzi_value_site_uv"></span>人次
+</span>
+<script>
+  var birthDay = new Date("11/20/2014");
+  var now = new Date();
+  var duration = now.getTime() - birthDay.getTime();
+  var total= Math.floor(duration / (1000 * 60 * 60 * 24));
+  document.getElementById("showDays").innerHTML = "本站已运行 "+total+" 天";
+</script>
+<span id="showDays"></span>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

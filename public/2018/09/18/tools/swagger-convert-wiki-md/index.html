@@ -1,0 +1,662 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="swagger," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="&amp;#x80CC;&amp;#x666F;&amp;#x6982;&amp;#x8981;&amp;#x516C;&amp;#x53F8;&amp;#x7684;spirng&amp;#x9879;&amp;#x76EE;&amp;#x4F7F;&amp;#x7528;swagger2&amp;#x6765;&amp;#x751F;&amp;#x6210;&amp;#x7EBF;&amp;#x4E0A;&amp;#x7684;Restful API&amp;#x6587;&amp;#x6863;&amp;#xFF0C;&amp;#x73B0;&amp;#x5728">
+<meta name="keywords" content="swagger">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Swagger转化为静态文档">
+<meta property="og:url" content="http://jingchen2222.github.io./2018/09/18/tools/swagger-convert-wiki-md/index.html">
+<meta property="og:site_name" content="Chen22&#39;S BLOG">
+<meta property="og:description" content="&amp;#x80CC;&amp;#x666F;&amp;#x6982;&amp;#x8981;&amp;#x516C;&amp;#x53F8;&amp;#x7684;spirng&amp;#x9879;&amp;#x76EE;&amp;#x4F7F;&amp;#x7528;swagger2&amp;#x6765;&amp;#x751F;&amp;#x6210;&amp;#x7EBF;&amp;#x4E0A;&amp;#x7684;Restful API&amp;#x6587;&amp;#x6863;&amp;#xFF0C;&amp;#x73B0;&amp;#x5728">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-09-20T13:47:50.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Swagger转化为静态文档">
+<meta name="twitter:description" content="&amp;#x80CC;&amp;#x666F;&amp;#x6982;&amp;#x8981;&amp;#x516C;&amp;#x53F8;&amp;#x7684;spirng&amp;#x9879;&amp;#x76EE;&amp;#x4F7F;&amp;#x7528;swagger2&amp;#x6765;&amp;#x751F;&amp;#x6210;&amp;#x7EBF;&amp;#x4E0A;&amp;#x7684;Restful API&amp;#x6587;&amp;#x6863;&amp;#xFF0C;&amp;#x73B0;&amp;#x5728">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://jingchen2222.github.io./2018/09/18/tools/swagger-convert-wiki-md/"/>
+
+
+  <title> Swagger转化为静态文档 | Chen22'S BLOG </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Chen22'S BLOG</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br />
+            
+            日程
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Swagger转化为静态文档
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-09-18T18:21:35+08:00" content="2018-09-18">
+              2018-09-18
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Tool/" itemprop="url" rel="index">
+                    <span itemprop="name">Tool</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="&#x80CC;&#x666F;&#x6982;&#x8981;"><a href="#&#x80CC;&#x666F;&#x6982;&#x8981;" class="headerlink" title="&#x80CC;&#x666F;&#x6982;&#x8981;"></a>&#x80CC;&#x666F;&#x6982;&#x8981;</h4><p>&#x516C;&#x53F8;&#x7684;spirng&#x9879;&#x76EE;&#x4F7F;&#x7528;swagger2&#x6765;&#x751F;&#x6210;&#x7EBF;&#x4E0A;&#x7684;Restful API&#x6587;&#x6863;&#xFF0C;&#x73B0;&#x5728;&#x9700;&#x8981;&#x65B9;&#x4FBF;&#x7684;&#x628A;&#x6700;&#x65B0;&#x7684;api&#x540C;&#x6B65;&#x5230;&#x516C;&#x53F8;wiki&#x4E2D;&#x3002;&#x56E0;&#x6B64;&#xFF0C;&#x9700;&#x8981;&#x628A;swagger&#x5DF2;&#x7ECF;&#x751F;&#x6210;&#x7684;api&#x6587;&#x6863;&#x683C;&#x5F0F;&#x5316;&#x6210;wiki&#x80FD;&#x652F;&#x6301;&#x7684;&#x683C;&#x5F0F;&#x3002;</p>
+<h3 id="&#x89E3;&#x51B3;&#x65B9;&#x6848;"><a href="#&#x89E3;&#x51B3;&#x65B9;&#x6848;" class="headerlink" title="&#x89E3;&#x51B3;&#x65B9;&#x6848;"></a>&#x89E3;&#x51B3;&#x65B9;&#x6848;</h3><h4 id="&#x4F7F;&#x7528;swagger-ui&#x751F;&#x6210;api&#x6587;&#x6863;"><a href="#&#x4F7F;&#x7528;swagger-ui&#x751F;&#x6210;api&#x6587;&#x6863;" class="headerlink" title="&#x4F7F;&#x7528;swagger-ui&#x751F;&#x6210;api&#x6587;&#x6863;"></a>&#x4F7F;&#x7528;swagger-ui&#x751F;&#x6210;api&#x6587;&#x6863;</h4><p>&#x8FD9;&#x90E8;&#x5206;&#x5DE5;&#x4F5C;&#x4E4B;&#x524D;&#x5C31;&#x5B8C;&#x6210;&#x4E86;&#xFF0C;&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#xFF0C;&#x4E4B;&#x524D;&#x7684;<code>swagger</code>&#x6CE8;&#x89E3;&#x4E0D;&#x591F;&#x89C4;&#x8303;&#xFF0C;&#x5F88;&#x591A;&#x53C2;&#x6570;&#x548C;&#x8FD4;&#x56DE;&#x7ED3;&#x679C;&#x6CA1;&#x6709;&#x5B9A;&#x4E49;&#x6E05;&#x6670;&#x7684;schema&#x3002;</p>
+<p>&#x4E3A;&#x6B64;&#xFF0C;&#x9700;&#x8981;&#x52A0;&#x5165;<code>ApiModelProperty</code>&#x5BF9;&#x5B9E;&#x4F53;(<code>Request</code>&#x548C;<code>Response</code>)&#x8FDB;&#x884C;&#x6CE8;&#x89E3;&#x548C;&#x8BF4;&#x660E;&#x3002;&#x8FD9;&#x6837;&#x751F;&#x6210;&#x7684;API&#x6587;&#x6863;&#x624D;&#x80FD;&#x6709;&#x6E05;&#x6670;&#x7684;desc&#x3002; &#x53E6;&#x5916;&#x6211;&#x52A0;&#x5165;&#x4E86;example&#xFF0C;&#x65B9;&#x4FBF;&#x524D;&#x7AEF;&#x540C;&#x5B66;&#x6D4B;&#x8BD5;&#x3002;<br><a id="more"></a></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DemoQueryRequest</span> <span class="keyword">extends</span> <span class="title">BaseListRequest</span> </span>{</span><br><span class="line"></span><br><span class="line">    <span class="meta">@ApiModelProperty</span>(value = <span class="string">&quot;&#x5A92;&#x4F53;&#x6E20;&#x9053;&#x82F1;&#x6587;&quot;</span>, example = <span class="string">&quot;sinanewsapp&quot;</span>)</span><br><span class="line">    <span class="keyword">private</span> String appCode;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@ApiModelProperty</span>(value = <span class="string">&quot;&#x6587;&#x6848;&#x6A21;&#x7CCA;&#x5339;&#x914D;&quot;</span>, example = <span class="string">&quot;&#x7626;&#x8EAB;&quot;</span>)</span><br><span class="line">    <span class="keyword">private</span> String titleLike;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@ApiModelProperty</span>(value = <span class="string">&quot;&#x521B;&#x610F;&#x56FE;&#x6570;&#x91CF;&quot;</span>, example = <span class="string">&quot;2&quot;</span>, allowableValues = <span class="string">&quot;{1, 2, 3}&quot;</span>)</span><br><span class="line">    <span class="keyword">private</span> Integer imageCount;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@ApiModelProperty</span>(value = <span class="string">&quot;&#x884C;&#x4E1A;&quot;</span>, example = <span class="string">&quot;&#x533B;&#x7597;&#x5065;&#x5EB7;&quot;</span>)</span><br><span class="line">    <span class="keyword">private</span> String manualType;</span><br><span class="line">    <span class="comment">//... &#x6B64;&#x5904;&#x7701;&#x7565;&#x65E0;&#x6570;</span></span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<h4 id="&#x4F7F;&#x7528;&#x63D2;&#x4EF6;&#x751F;&#x6210;&#x9759;&#x6001;&#x6587;&#x6863;"><a href="#&#x4F7F;&#x7528;&#x63D2;&#x4EF6;&#x751F;&#x6210;&#x9759;&#x6001;&#x6587;&#x6863;" class="headerlink" title="&#x4F7F;&#x7528;&#x63D2;&#x4EF6;&#x751F;&#x6210;&#x9759;&#x6001;&#x6587;&#x6863;"></a>&#x4F7F;&#x7528;&#x63D2;&#x4EF6;&#x751F;&#x6210;&#x9759;&#x6001;&#x6587;&#x6863;</h4><ul>
+<li>&#x5728;project&#x7684;gradle&#x4E2D;&#x52A0;&#x5165;&#x914D;&#x7F6E;</li>
+</ul>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">compile</span> <span class="keyword">group</span>: <span class="string">&apos;io.github.swagger2markup&apos;</span>, name: <span class="string">&apos;swagger2markup&apos;</span>, version: <span class="string">&apos;1.3.3&apos;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>&#x9009;&#x62E9;&#x53C2;&#x8003;&#x6587;&#x7AE0;&#x4E2D;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x4F7F;&#x7528;&#x4E00;&#x4E2A;UnitTest&#x6765;&#x751F;&#x6210;&#x9759;&#x6001;&#x6587;&#x6863;&#xFF0C;&#x7531;&#x4E8E;&#x6709;&#x4E9B;&#x81EA;&#x5B9A;&#x4E49;&#x7684;&#x64CD;&#x4F5C;&#xFF0C;&#x6240;&#x4EE5;&#x4E0D;&#x91C7;&#x7528;plugin&#x7684;&#x65B9;&#x5F0F;&#x3002;</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com._4paradigm.demo..api;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> io.github.swagger2markup.Swagger2MarkupConfig;</span><br><span class="line"><span class="keyword">import</span> io.github.swagger2markup.Swagger2MarkupConverter;</span><br><span class="line"><span class="keyword">import</span> io.github.swagger2markup.builder.Swagger2MarkupConfigBuilder;</span><br><span class="line"><span class="keyword">import</span> io.github.swagger2markup.markup.builder.MarkupLanguage;</span><br><span class="line"><span class="keyword">import</span> io.swagger.models.Swagger;</span><br><span class="line"><span class="keyword">import</span> io.swagger.parser.SwaggerParser;</span><br><span class="line"><span class="keyword">import</span> org.apache.commons.collections.CollectionUtils;</span><br><span class="line"><span class="keyword">import</span> org.apache.commons.io.FileUtils;</span><br><span class="line"><span class="keyword">import</span> org.assertj.core.util.Lists;</span><br><span class="line"><span class="keyword">import</span> org.junit.Test;</span><br><span class="line"><span class="keyword">import</span> org.junit.runner.RunWith;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.test.context.SpringBootTest;</span><br><span class="line"><span class="keyword">import</span> org.springframework.test.context.junit4.SpringRunner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.File;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.net.URL;</span><br><span class="line"><span class="keyword">import</span> java.nio.file.Paths;</span><br><span class="line"><span class="keyword">import</span> java.util.Collections;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * generate swagger api docs</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> chenjing</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@create</span> 2018/9/18</span></span><br><span class="line"><span class="comment"> **/</span></span><br><span class="line"><span class="meta">@RunWith</span>(SpringRunner.class)</span><br><span class="line"><span class="meta">@SpringBootTest</span>(classes = {DemoApiApplicationContext.class})</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ApiDocTest</span> </span>{</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String DOC_DIR = <span class="string">&quot;docs/wiki/generated&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * use unit test to generate wiki docs</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> Exception</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">generateWikiDocs</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>{</span><br><span class="line">        <span class="comment">//    &#x8F93;&#x51FA;Ascii&#x683C;&#x5F0F;</span></span><br><span class="line">        Swagger2MarkupConfig config = <span class="keyword">new</span> Swagger2MarkupConfigBuilder()</span><br><span class="line">                .withMarkupLanguage(MarkupLanguage.CONFLUENCE_MARKUP)</span><br><span class="line">                .withGeneratedExamples()</span><br><span class="line">                .build();</span><br><span class="line"></span><br><span class="line">        Swagger2MarkupConverter.from(<span class="keyword">new</span> URL(<span class="string">&quot;http://localhost:8065/v2/api-docs&quot;</span>))</span><br><span class="line">                .withConfig(config)</span><br><span class="line">                .build()</span><br><span class="line">                .toFolder(Paths.get(DOC_DIR));</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        generateOneWikiDoc();</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * &#x8BFB;&#x533A;{<span class="doctag">@CODE</span> Swagger2MarkupConverter}&#x751F;&#x6210;&#x7684;wiki&#x6587;&#x6863;&#xFF0C;</span></span><br><span class="line"><span class="comment">     * &#x52A0;&#x5165;&#x4E00;&#x4E9B;&#x5B57;&#x7B26;&#x4E32;&#x66FF;&#x6362;&#x903B;&#x8F91;&#xFF0C;&#x56E0;&#x4E3A;&#x516C;&#x53F8;&#x7684;wiki&#x5E76;&#x4E0D;&#x652F;&#x6301;language=json</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> wikiFileName</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> List&lt;String&gt; <span class="title">getWikiList</span><span class="params">(String wikiFileName)</span> </span>{</span><br><span class="line">        <span class="keyword">try</span> {</span><br><span class="line">            List&lt;String&gt; list = FileUtils.readLines(<span class="keyword">new</span> File(wikiFileName));</span><br><span class="line">            <span class="keyword">if</span> (CollectionUtils.isNotEmpty(list)) {</span><br><span class="line">                List&lt;String&gt; filtedList = Lists.newArrayList();</span><br><span class="line">                list.forEach(line -&gt; {</span><br><span class="line">                    <span class="keyword">if</span> (line.indexOf(<span class="string">&quot;{code:language=json}&quot;</span>) &gt;= <span class="number">0</span>) {</span><br><span class="line">                        line = line.replaceAll(<span class="string">&quot;code:language=json&quot;</span>, <span class="string">&quot;code:language=js&quot;</span>);</span><br><span class="line">                    }</span><br><span class="line">                    filtedList.add(line);</span><br><span class="line">                });</span><br><span class="line">                <span class="keyword">return</span> filtedList;</span><br><span class="line">            } <span class="keyword">else</span> {</span><br><span class="line">                <span class="keyword">return</span> Collections.EMPTY_LIST;</span><br><span class="line">            }</span><br><span class="line"></span><br><span class="line">        } <span class="keyword">catch</span> (IOException e) {</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> Collections.EMPTY_LIST;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * &#x5C06;Path&#x548C;Definitions&#x4EE5;&#x53CA;Overview&#x6587;&#x6863;&#x5408;&#x5E76;&#x6210;&#x4E00;&#x4E2A;&#x5927;&#x6587;&#x6863;&#xFF0C;&#x5E76;&#x6DFB;&#x52A0;&#x76EE;&#x5F55;</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">generateOneWikiDoc</span><span class="params">()</span> </span>{</span><br><span class="line">        List&lt;String&gt; finalList = Lists.newArrayList();</span><br><span class="line">        String toc = <span class="string">&quot;{toc:maxLevel=3}&quot;</span>;</span><br><span class="line">        String splitLine = <span class="string">&quot;----&quot;</span>;</span><br><span class="line">        finalList.add(toc);</span><br><span class="line">        finalList.addAll(getWikiList(DOC_DIR + <span class="string">&quot;/overview.txt&quot;</span>));</span><br><span class="line">        finalList.add(splitLine);</span><br><span class="line">        finalList.addAll(getWikiList(DOC_DIR + <span class="string">&quot;/paths.txt&quot;</span>));</span><br><span class="line">        finalList.add(splitLine);</span><br><span class="line">        finalList.addAll(getWikiList(DOC_DIR + <span class="string">&quot;/definitions.txt&quot;</span>));</span><br><span class="line">        finalList.add(splitLine);</span><br><span class="line">        finalList.addAll(getWikiList(DOC_DIR + <span class="string">&quot;/security.txt&quot;</span>));</span><br><span class="line">        finalList.add(splitLine);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span> {</span><br><span class="line">            FileUtils.writeLines(<span class="keyword">new</span> File(DOC_DIR + <span class="string">&quot;/wiki.txt&quot;</span>), finalList);</span><br><span class="line">        } <span class="keyword">catch</span> (IOException e) {</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<ul>
+<li>&#x8FD0;&#x884C;unit test</li>
+<li>&#x81F3;&#x6B64;&#x5C06;&#x5728;<code>docs/wiki/generated/</code>&#x76EE;&#x5F55;&#x4E0B;&#x751F;&#x6210;wiki.txt</li>
+<li>&#x5C06;wiki.txt&#x4E2D;&#x7684;&#x5185;&#x5BB9;copy&#x5230;wiki&#x7F16;&#x8F91;&#x5668;&#x4E2D;&#x5373;&#x53EF;</li>
+</ul>
+<h3 id="&#x53C2;&#x8003;&#x6587;&#x732E;"><a href="#&#x53C2;&#x8003;&#x6587;&#x732E;" class="headerlink" title="&#x53C2;&#x8003;&#x6587;&#x732E;"></a>&#x53C2;&#x8003;&#x6587;&#x732E;</h3><p><a href="https://blog.csdn.net/daijiguo/article/details/81350169" target="_blank" rel="noopener">&#x4F7F;&#x7528;Swagger2Markup&#x751F;&#x6210;&#x9759;&#x6001;&#x6587;&#x6863;: https://blog.csdn.net/daijiguo/article/details/81350169</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/swagger/" rel="tag"><i class="fa fa-tag"></i>swagger</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/09/01/ProgramStudy/JAVA/list/" rel="next" title="List study">
+                <i class="fa fa-chevron-left"></i> List study
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/09/18/ProgramStudy/JAVA/serialization/" rel="prev" title="serialization">
+                serialization <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="陈22" />
+          <p class="site-author-name" itemprop="name">陈22</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/jingchen2222" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#背景概要"><span class="nav-number">1.</span> <span class="nav-text">背景概要</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案"><span class="nav-number"></span> <span class="nav-text">解决方案</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#使用swagger-ui生成api文档"><span class="nav-number">1.</span> <span class="nav-text">使用swagger-ui生成api文档</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用插件生成静态文档"><span class="nav-number">2.</span> <span class="nav-text">使用插件生成静态文档</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考文献"><span class="nav-number"></span> <span class="nav-text">参考文献</span></a></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">陈22</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+</span>
+<span id="busuanzi_container_site_uv">
+  本站访客数<span id="busuanzi_value_site_uv"></span>人次
+</span>
+<script>
+  var birthDay = new Date("11/20/2014");
+  var now = new Date();
+  var duration = now.getTime() - birthDay.getTime();
+  var total= Math.floor(duration / (1000 * 60 * 60 * 24));
+  document.getElementById("showDays").innerHTML = "本站已运行 "+total+" 天";
+</script>
+<span id="showDays"></span>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
