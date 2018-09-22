@@ -77,7 +77,7 @@ pagination_dir: page
 # plugin:
 # - hexo-math
 ## Themes: https://hexo.io/themes/
-# theme: landscape
+#theme: landscape
 theme: next
 # theme: maupassant
 # Deployment
