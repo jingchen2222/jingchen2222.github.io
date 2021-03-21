@@ -161,9 +161,7 @@
                 <div class="post-heading">
                     <div class="tags">
                         
-                          <a class="tag" href="/tags/#Tool" title="Tool">Tool</a>
-                        
-                          <a class="tag" href="/tags/#Hexo" title="Hexo">Hexo</a>
+                          <a class="tag" href="/tags/#Tool:hero" title="Tool:hero">Tool:hero</a>
                         
                     </div>
                     <h1>Hexo搭建个人BLOG</h1>
@@ -244,6 +242,15 @@
 <p>edit tags/index.md</p>
 <figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># <span class="keyword">tags</span>/<span class="built_in">index</span>.md</span><br><span class="line"><span class="built_in">type</span>: <span class="string">"tags"</span></span><br><span class="line">layou<span class="variable">t:</span> <span class="string">"tags"</span></span><br></pre></td></tr></table></figure>
 <p>edit categoreis/index.md<br><figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">type:</span> <span class="string">"categories"</span></span><br><span class="line"><span class="symbol">layout:</span> <span class="string">"categories"</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="问题四："><a href="#问题四：" class="headerlink" title="问题四："></a>问题四：</h3><blockquote>
+<p>update at 2021.03.21</p>
+</blockquote>
+<p><a href="https://github.com/hexojs/hexo/issues/4263" target="_blank" rel="noopener">ERR_INVALID_ARG_TYPE-HELPPP</a></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo hexo deploy</span></span><br><span class="line">Password:</span><br><span class="line">INFO  Deploying: git</span><br><span class="line">INFO  Clearing .deploy_git folder...</span><br><span class="line">INFO  Copying files from public folder...</span><br><span class="line">FATAL Something's wrong. Maybe you can find the solution here: https://hexo.io/docs/troubleshooting.html</span><br><span class="line">TypeError [ERR_INVALID_ARG_TYPE]: The "mode" argument must be integer. Received an instance of Object</span><br><span class="line">    at copyFile (fs.js:1972:10)</span><br><span class="line">    at copyFile (/Users/chenjing/work/hexo/node_modules/graceful-fs/graceful-fs.js:181:12)</span><br><span class="line">    at tryCatcher (/Users/chenjing/work/hexo/node_modules/bluebird/js/release/util.js:16:23)</span><br><span class="line">    at ret (eval at makeNodePromisifiedEval (/usr/local/lib/node_modules/hexo-cli/node_modules/bluebird/js/release/promisify.js:184:12), &lt;anonymous&gt;:13:39)</span><br><span class="line">    at /Users/chenjing/work/hexo/node_modules/hexo-deployer-git/node_modules/hexo-fs/lib/fs.js:181:12</span><br><span class="line">    at tryCatcher (/Users/chenjing/work/hexo/node_modules/bluebird/js/release/util.js:16:23)</span><br><span class="line">    at Promise._settlePromiseFromHandler (/Users/chenjing/work/hexo/node_modules/bluebird/js/release/promise.js:547:31)</span><br><span class="line">    at Promise._settlePromise (/Users/chenjing/work/hexo/node_modules/bluebird/js/release/promise.js:604:18)</span><br><span class="line">    at Promise._settlePromise0 (/Users/chenjing/work/hexo/node_modules/bluebird/js/release/promise.js:649:10)</span><br><span class="line">    at Promise._settlePromises (/Users/chenjing/work/hexo/node_modules/bluebird/js/release/promise.js:729:18)</span><br><span class="line">    at Promise._fulfill (/Users/chenjing/work/hexo/node_modules/bluebird/js/release/promise.js:673:18)</span><br><span class="line">    at Promise._resolveCallback (/Users/chenjing/work/hexo/node_modules/bluebird/js/release/promise.js:466:57)</span><br><span class="line">    at Promise._settlePromiseFromHandler (/Users/chenjing/work/hexo/node_modules/bluebird/js/release/promise.js:559:17)</span><br></pre></td></tr></table></figure>
+<p>这个问题一般是node版本太高所致。我当时的node版本是<code>v14.16.0</code>。</p>
+<h4 id="Downgrade-node"><a href="#Downgrade-node" class="headerlink" title="Downgrade node"></a>Downgrade node</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> install n</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> npm install -g n</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> n 12</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> node -v</span></span><br><span class="line">v12.21.0</span><br></pre></td></tr></table></figure>
+<h4 id="Clean-amp-Deploy"><a href="#Clean-amp-Deploy" class="headerlink" title="Clean &amp; Deploy"></a>Clean &amp; Deploy</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> hexo clean</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> hexo generate</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> hexo deploy</span></span><br></pre></td></tr></table></figure>
+<p>That’s done</p>
 
 
                 <hr>
@@ -285,9 +292,7 @@
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
                        
-                          <a class="tag" href="/tags/#Tool" title="Tool">Tool</a>
-                        
-                          <a class="tag" href="/tags/#Hexo" title="Hexo">Hexo</a>
+                          <a class="tag" href="/tags/#Tool:hero" title="Tool:hero">Tool:hero</a>
                         
                     </div>
                 </section>
