@@ -87,11 +87,15 @@
 
                         
                         <li>
-                            <a href="/archives/">Archives</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
 
+                        
+                        <li>
+                            <a href="/archives/">Archives</a>
+                        </li>
                         
                     
 
@@ -99,9 +103,6 @@
                         <li>
                             <a href="/tags/">Tags</a>
                         </li>
-                        
-                    
-
                         
                     
                     
@@ -191,7 +192,7 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h2 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h2><ul>
+                <h2><span id="note">Note</span><a href="#note" class="header-anchor">#</a></h2><ul>
 <li>Use an Array if the length is fixed, and an ArrayBuffer if the length can vary.</li>
 <li>Don’t use new when supplying initial values.</li>
 <li>Use () to access elements.</li>
@@ -215,7 +216,7 @@
 </li>
 </ul>
 <a id="more"></a>
-<h2 id="Exercises"><a href="#Exercises" class="headerlink" title="Exercises"></a>Exercises</h2><ol>
+<h2><span id="exercises">Exercises</span><a href="#exercises" class="header-anchor">#</a></h2><ol>
 <li>Write a code snippet that sets a to an array of n random integers between 0 (inclusive) and n (exclusive).</li>
 </ol>
 <pre><code><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">def randNum(n:Int):Array[Int] = &#123;</span><br><span class="line">  val a = scala.util.Random</span><br><span class="line">  val b = new Array[<span class="string">Int</span>](<span class="link">n</span>)</span><br><span class="line">  for(i <span class="xml"><span class="tag">&lt;<span class="name">-</span> <span class="attr">0</span> <span class="attr">until</span> <span class="attr">b.length</span>) &#123;</span></span></span><br><span class="line"><span class="xml">    b(i) = a.nextInt(n)</span></span><br><span class="line"><span class="xml">  &#125;</span></span><br><span class="line"><span class="xml">  b</span></span><br><span class="line"><span class="xml">&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="xml">val n = 10</span></span><br><span class="line"><span class="xml">println(randNum(n).mkString(" "))</span></span><br></pre></td></tr></table></figure>
@@ -284,7 +285,7 @@
 
             </div>
     <!-- Side Catalog Container -->
-        
+        <!--  -->
 
     <!-- Sidebar Container -->
 

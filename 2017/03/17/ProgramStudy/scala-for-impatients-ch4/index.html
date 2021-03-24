@@ -87,11 +87,15 @@
 
                         
                         <li>
-                            <a href="/archives/">Archives</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
 
+                        
+                        <li>
+                            <a href="/archives/">Archives</a>
+                        </li>
                         
                     
 
@@ -99,9 +103,6 @@
                         <li>
                             <a href="/tags/">Tags</a>
                         </li>
-                        
-                    
-
                         
                     
                     
@@ -191,7 +192,7 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h1 id="Chapter-4-maps-and-tuples"><a href="#Chapter-4-maps-and-tuples" class="headerlink" title="Chapter 4: maps and tuples"></a>Chapter 4: maps and tuples</h1><h2 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h2><ul>
+                <h1><span id="chapter-4-maps-and-tuples">Chapter 4: maps and tuples</span><a href="#chapter-4-maps-and-tuples" class="header-anchor">#</a></h1><h2><span id="note">Note</span><a href="#note" class="header-anchor">#</a></h2><ul>
 <li>Scala has a pleasant syntax for creating, querying, and traversing maps.<ul>
 <li>the call map.get(key) returns an Option object that is either Some(value for key) or None.</li>
 <li>for ((k, v) &lt;- map) process k and v</li>
@@ -227,7 +228,7 @@
 </li>
 </ul>
 <a id="more"></a>
-<h2 id="Exercises"><a href="#Exercises" class="headerlink" title="Exercises"></a>Exercises</h2><ol>
+<h2><span id="exercises">Exercises</span><a href="#exercises" class="header-anchor">#</a></h2><ol>
 <li>Set up a map of prices for a number of gizmos that you covet. Then produce a second map with the same keys and the prices at a 10 percent discount.</li>
 </ol>
 <pre><code><figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">val prices = Map(<span class="string">"A"</span> -&gt; <span class="number">10</span>, <span class="string">"B"</span> -&gt; <span class="number">20</span>, <span class="string">"C"</span> -&gt; <span class="number">8</span>)</span><br><span class="line">val secondPrices = for((<span class="name">k</span>,v) &lt;- prices) yield (<span class="name">k</span>,<span class="number">0.9</span>*v)</span><br></pre></td></tr></table></figure>
@@ -294,7 +295,7 @@
 
             </div>
     <!-- Side Catalog Container -->
-        
+        <!--  -->
 
     <!-- Sidebar Container -->
 

@@ -87,11 +87,15 @@
 
                         
                         <li>
-                            <a href="/archives/">Archives</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
 
+                        
+                        <li>
+                            <a href="/archives/">Archives</a>
+                        </li>
                         
                     
 
@@ -99,9 +103,6 @@
                         <li>
                             <a href="/tags/">Tags</a>
                         </li>
-                        
-                    
-
                         
                     
                     
@@ -189,13 +190,13 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h2 id="List"><a href="#List" class="headerlink" title="List"></a>List</h2><h3 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h3><h5 id="List族最重要的几个特点："><a href="#List族最重要的几个特点：" class="headerlink" title="List族最重要的几个特点："></a>List族最重要的几个特点：</h5><ul>
+                <h2><span id="list">List</span><a href="#list" class="header-anchor">#</a></h2><h3><span id="overview">Overview</span><a href="#overview" class="header-anchor">#</a></h3><h5><span id="list-zu-zui-chong-yao-de-ji-ge-te-dian">List族最重要的几个特点：</span><a href="#list-zu-zui-chong-yao-de-ji-ge-te-dian" class="header-anchor">#</a></h5><ul>
 <li>有序</li>
 <li>允许重复元素</li>
 <li>支持add, remove, set, get</li>
 <li>可以随机访问元素</li>
 </ul>
-<h5 id="Lis族集合类："><a href="#Lis族集合类：" class="headerlink" title="Lis族集合类："></a>Lis族集合类：</h5><p><img src="https://www.programcreek.com/wp-content/uploads/2009/02/java-collection-hierarchy.jpeg" alt="java-collection-hierarchy.jpeg"></p>
+<h5><span id="lis-zu-ji-he-lei">Lis族集合类：</span><a href="#lis-zu-ji-he-lei" class="header-anchor">#</a></h5><p><img src="https://www.programcreek.com/wp-content/uploads/2009/02/java-collection-hierarchy.jpeg" alt="java-collection-hierarchy.jpeg"></p>
 <ul>
 <li>List族中，最主要的三种集合是<code>ArrayList</code>,<code>Vector</code>和<code>LinkedList</code>，后面将对这三种类进行分析和比较。</li>
 <li>可以简单对比一下List和Set</li>
@@ -227,7 +228,7 @@
 </tbody>
 </table>
 <a id="more"></a>
-<h3 id="ArrayList"><a href="#ArrayList" class="headerlink" title="ArrayList"></a>ArrayList</h3><p>Java Platform SE 8的描述：</p>
+<h3><span id="arraylist">ArrayList</span><a href="#arraylist" class="header-anchor">#</a></h3><p>Java Platform SE 8的描述：</p>
 <blockquote>
 <p>Resizable-array implementation of the List interface. Implements all optional list operations, and permits all elements, including null. In addition to implementing the List interface, this class provides methods to manipulate the size of the array that is used internally to store the list. (This class is roughly equivalent to Vector, except that it is unsynchronized.)</p>
 </blockquote>
@@ -237,13 +238,13 @@
 <li>允许null</li>
 <li>和Vector相似，但是unsynchronized</li>
 </ul>
-<h5 id="ArrayList是一种能够自动扩充长度的数组。"><a href="#ArrayList是一种能够自动扩充长度的数组。" class="headerlink" title="ArrayList是一种能够自动扩充长度的数组。"></a><span style="color:#ab4642">ArrayList是一种能够自动扩充长度的数组。</span></h5><h4 id="性能"><a href="#性能" class="headerlink" title="性能"></a>性能</h4><blockquote>
+<h5><span id="arraylist-shi-yi-chong-neng-gou-zi-dong-kuo-chong-chang-du-de-shu-zu"><span style="color:#ab4642">ArrayList是一种能够自动扩充长度的数组。</span></span><a href="#arraylist-shi-yi-chong-neng-gou-zi-dong-kuo-chong-chang-du-de-shu-zu" class="header-anchor">#</a></h5><h4><span id="xing-neng">性能</span><a href="#xing-neng" class="header-anchor">#</a></h4><blockquote>
 <p>The size, isEmpty, get, set, iterator, and listIterator operations run in constant time.<br>The add operation runs in amortized constant time, that is, adding n elements requires O(n) time. </p>
 </blockquote>
 <ul>
 <li><strong>ArrayList</strong>的性能可以类比<span style="color:#ab4642">数组</span>的性能，在随机访问性能好。增、删操作性能差。</li>
 </ul>
-<h4 id="线程安全"><a href="#线程安全" class="headerlink" title="线程安全"></a>线程安全</h4><blockquote>
+<h4><span id="xian-cheng-an-quan">线程安全</span><a href="#xian-cheng-an-quan" class="header-anchor">#</a></h4><blockquote>
 <p><span style="color:#ab4642">Note that this implementation is not synchronized…</span></p>
 </blockquote>
 <p><code>Collections.synchronizedList</code>: </p>
@@ -254,7 +255,7 @@
 </li>
 </ul>
 </blockquote>
-<h3 id="Vector"><a href="#Vector" class="headerlink" title="Vector"></a>Vector</h3><blockquote>
+<h3><span id="vector">Vector</span><a href="#vector" class="header-anchor">#</a></h3><blockquote>
 <p>The Vector class implements a growable array of objects. Like an array, it contains components that can be accessed using an integer index.</p>
 </blockquote>
 <blockquote>
@@ -270,19 +271,19 @@
 </ul>
 </li>
 </ul>
-<h3 id="LinkedList"><a href="#LinkedList" class="headerlink" title="LinkedList"></a>LinkedList</h3><blockquote>
+<h3><span id="linkedlist">LinkedList</span><a href="#linkedlist" class="header-anchor">#</a></h3><blockquote>
 <p>Doubly-linked list implementation of the List and Deque interfaces. Implements all optional list operations, and permits all elements (including null).<br>All of the operations perform as could be expected for a doubly-linked list. Operations that index into the list will traverse the list from the beginning or the end, whichever is closer to the specified index.</p>
 </blockquote>
-<h4 id="性能："><a href="#性能：" class="headerlink" title="性能："></a>性能：</h4><ul>
+<h4><span id="xing-neng">性能：</span><a href="#xing-neng" class="header-anchor">#</a></h4><ul>
 <li>具有链表的特点，对增加和删除节点的操作效率高（特别是表头或者表尾的操作）。但是，随机访问效率低。</li>
-<li><h4 id="同步："><a href="#同步：" class="headerlink" title="同步："></a>同步：</h4><blockquote>
+<li><h4><span id="tong-bu">同步：</span><a href="#tong-bu" class="header-anchor">#</a></h4><blockquote>
 <p>The iterators returned by this class’s iterator and listIterator methods are fail-fast</p>
 </blockquote>
 </li>
 <li>LinkedList是线程不安全的，需要包装：<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">List list = Collections.synchronizedList(<span class="keyword">new</span> LinkedList(...));</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h3 id="ArrayList-vs-Vector-vs-LinkedList"><a href="#ArrayList-vs-Vector-vs-LinkedList" class="headerlink" title="ArrayList vs Vector vs LinkedList"></a>ArrayList vs Vector vs LinkedList</h3><table>
+<h3><span id="arraylist-vs-vector-vs-linkedlist">ArrayList vs Vector vs LinkedList</span><a href="#arraylist-vs-vector-vs-linkedlist" class="header-anchor">#</a></h3><table>
 <thead>
 <tr>
 <th></th>
@@ -360,7 +361,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="几个值得深入思考的问题"><a href="#几个值得深入思考的问题" class="headerlink" title="几个值得深入思考的问题"></a>几个值得深入思考的问题</h2><h3 id="fail-fast"><a href="#fail-fast" class="headerlink" title="fail-fast"></a>fail-fast</h3><p> fail-fast 机制是java集合(Collection)中的一种错误机制。<code>ArrayList</code>,<code>Vector</code>, <code>LinkedList</code> 都满足fail-fast机制。官方文档中对fail-fast的解释如下：</p>
+<h2><span id="ji-ge-zhi-de-shen-ru-si-kao-de-wen-ti">几个值得深入思考的问题</span><a href="#ji-ge-zhi-de-shen-ru-si-kao-de-wen-ti" class="header-anchor">#</a></h2><h3><span id="fail-fast">fail-fast</span><a href="#fail-fast" class="header-anchor">#</a></h3><p> fail-fast 机制是java集合(Collection)中的一种错误机制。<code>ArrayList</code>,<code>Vector</code>, <code>LinkedList</code> 都满足fail-fast机制。官方文档中对fail-fast的解释如下：</p>
 <blockquote>
 <p>fail-fast: if the list is structurally modified at any time after the iterator is created, in any way except through the iterator’s own remove or add methods, the iterator will throw a <code>ConcurrentModificationException</code>. Thus, in the face of concurrent modification, the iterator fails quickly and cleanly, rather than risking arbitrary, non-deterministic behavior at an undetermined time in the future.</p>
 </blockquote>
@@ -370,7 +371,7 @@
 </blockquote>
 </li>
 </ul>
-<h4 id="ConcurrentModificationException"><a href="#ConcurrentModificationException" class="headerlink" title="ConcurrentModificationException"></a>ConcurrentModificationException</h4><ul>
+<h4><span id="concurrentmodificationexception">ConcurrentModificationException</span><a href="#concurrentmodificationexception" class="header-anchor">#</a></h4><ul>
 <li>容器使用迭代器来进行统一个容器访问操作。迭代器本质上只是容器的一个视图，迭代器里存放容器访问的游标，以及expectedModCount</li>
 <li><code>expectedModCount</code>是迭代器fail-fast机制的关键，</li>
 <li>迭代器在操作容器元素前，会<code>checkForComodification</code>，其实就是检查<code>expectedModCount==modCount</code></li>
@@ -385,7 +386,7 @@
 <ul>
 <li>不能依赖fail-fast机制来保证程序的正确性。<code>ConcurrentModificationException</code>只适合用来查bug。</li>
 </ul>
-<h5 id="fast-fail的测试代码"><a href="#fast-fail的测试代码" class="headerlink" title="fast-fail的测试代码"></a>fast-fail的测试代码</h5><ul>
+<h5><span id="fast-fail-de-ce-shi-dai-ma">fast-fail的测试代码</span><a href="#fast-fail-de-ce-shi-dai-ma" class="header-anchor">#</a></h5><ul>
 <li><code>failFastWorkTest</code>的Thread t1使用迭代器来访问容器，在访问过程中，Thread t2对容器调用了<code>ArrayList.remove(element)</code>操作，此后，当t1迭代到下一个元素时候，（<code>next()</code>会检查modCount, 即<code>checkForComodification</code>）这将引发fast-fail.</li>
 <li><p>根据上面描述，我们可以写个demo来测试ArrayList的fast-fail：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">failFastWorkTest</span><span class="params">()</span> <span class="keyword">throws</span> InterruptedException, ConcurrentModificationException     </span>&#123;</span><br><span class="line">        Thread t1 = <span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                Iterator&lt;Integer&gt; iterator = arrayList.iterator();</span><br><span class="line">                <span class="keyword">while</span>(iterator.hasNext()) &#123;</span><br><span class="line">                    <span class="keyword">int</span> i = iterator.next();</span><br><span class="line">                    logger.info(<span class="string">"thread t1 get item : &#123;&#125;"</span>, i);</span><br><span class="line">                    <span class="keyword">try</span> &#123;</span><br><span class="line">                        Thread.sleep(<span class="number">10</span>);</span><br><span class="line">                    &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                        e.printStackTrace();</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        Thread t2 = <span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (i == <span class="number">3</span>) &#123;</span><br><span class="line"><span class="comment">//                        arrayList.remove(i);</span></span><br><span class="line">                        arrayList.add(i);</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        runThreads(t1, t2);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">runThreads</span><span class="params">(Thread t1, Thread t2)</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</span><br><span class="line">        logger.info(<span class="string">"start thread 1 "</span>);</span><br><span class="line">        t1.start();</span><br><span class="line">        logger.info(<span class="string">"start thread 2 "</span>);</span><br><span class="line">        t2.start();</span><br><span class="line">        t1.join();</span><br><span class="line">        logger.info(<span class="string">"end thread1 "</span>);</span><br><span class="line">        t2.join();</span><br><span class="line">        logger.info(<span class="string">"end thread2 "</span>);</span><br><span class="line">        logger.info(<span class="string">"fail fast test done"</span>);</span><br><span class="line"></span><br><span class="line">        logger.info(<span class="string">"finnal array List"</span>, arrayList);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
@@ -394,14 +395,14 @@
 </li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"> </span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">failFastNoWorkTest</span><span class="params">()</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</span><br><span class="line">    Thread t1 = <span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">int</span> size = arrayList.size();</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; size; i++) &#123;</span><br><span class="line">                <span class="keyword">int</span> value = arrayList.get(i);</span><br><span class="line">                logger.info(<span class="string">"thread 1 run : &#123;&#125;"</span>, value);</span><br><span class="line">                printPrivateField(AbstractList.class, "modCount", arrayList);</span><br><span class="line"></span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    Thread.sleep(<span class="number">10</span>);</span><br><span class="line">                &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    Thread t2 = <span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; RUN_TIMES; i++) &#123;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> (i == <span class="number">3</span>) &#123;</span><br><span class="line">                    arrayList.remove(<span class="number">3</span>);</span><br><span class="line">                &#125;</span><br><span class="line">                printPrivateField(AbstractList.class, "modCount", arrayList);</span><br><span class="line">                addElementByList(arrayList, <span class="number">100</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    logger.info(<span class="string">"before start thread ... "</span>);</span><br><span class="line">    printPrivateField(AbstractList.class, "modCount", arrayList);</span><br><span class="line">    <span class="keyword">new</span> ListTest().runThreads(t1, t2);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="capacity"><a href="#capacity" class="headerlink" title="capacity"></a>capacity</h3><p>另一个值得研究的知识点是List的自动扩容，主要是ArrayList和Vector。</p>
+<h3><span id="capacity">capacity</span><a href="#capacity" class="header-anchor">#</a></h3><p>另一个值得研究的知识点是List的自动扩容，主要是ArrayList和Vector。</p>
 <blockquote>
 <p>ArrayList和Vector都是使用数组(Array)来控制集合中的对象。当你向这两种类型中增加元素的时候，如果元素的数目超出了内部数组目前的长度它们都需要扩展内部数组的长度，Vector缺省情况下自动增长原来一倍的数组长度，ArrayList是原来的50%,所以最后你获得的这个集合所占的空间总是比你实际需要的要大。所以如果你要在集合中保存大量的数据那么使用Vector有一些优势，因为你可以通过设置集合的初始化大小来避免不必要的资源开销。</p>
 </blockquote>
 <p>Vector<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">  * This implements the unsynchronized semantics of ensureCapacity.</span></span><br><span class="line"><span class="comment">  * Synchronized methods in this class can internally call this</span></span><br><span class="line"><span class="comment">  * method for ensuring capacity without incurring the cost of an</span></span><br><span class="line"><span class="comment">  * extra synchronization.</span></span><br><span class="line"><span class="comment">  *</span></span><br><span class="line"><span class="comment">  * <span class="doctag">@see</span> #ensureCapacity(int)</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"> <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">ensureCapacityHelper</span><span class="params">(<span class="keyword">int</span> minCapacity)</span> </span>&#123;</span><br><span class="line">     <span class="comment">// overflow-conscious code</span></span><br><span class="line">     <span class="keyword">if</span> (minCapacity - elementData.length &gt; <span class="number">0</span>)</span><br><span class="line">         grow(minCapacity);</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">grow</span><span class="params">(<span class="keyword">int</span> minCapacity)</span> </span>&#123;</span><br><span class="line">     <span class="comment">// overflow-conscious code</span></span><br><span class="line">     <span class="keyword">int</span> oldCapacity = elementData.length;</span><br><span class="line">     <span class="keyword">int</span> newCapacity = oldCapacity + ((capacityIncrement &gt; <span class="number">0</span>) ?</span><br><span class="line">                                      capacityIncrement : oldCapacity);</span><br><span class="line">     <span class="keyword">if</span> (newCapacity - minCapacity &lt; <span class="number">0</span>)</span><br><span class="line">         newCapacity = minCapacity;</span><br><span class="line">     <span class="keyword">if</span> (newCapacity - MAX_ARRAY_SIZE &gt; <span class="number">0</span>)</span><br><span class="line">         newCapacity = hugeCapacity(minCapacity);</span><br><span class="line">     elementData = Arrays.copyOf(elementData, newCapacity);</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure></p>
 <p>ArrayList:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Increases the capacity to ensure that it can hold at least the</span></span><br><span class="line"><span class="comment"> * number of elements specified by the minimum capacity argument.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> minCapacity the desired minimum capacity</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">grow</span><span class="params">(<span class="keyword">int</span> minCapacity)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// overflow-conscious code</span></span><br><span class="line">    <span class="keyword">int</span> oldCapacity = elementData.length;</span><br><span class="line">    <span class="keyword">int</span> newCapacity = oldCapacity + (oldCapacity &gt;&gt; <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">if</span> (newCapacity - minCapacity &lt; <span class="number">0</span>)</span><br><span class="line">        newCapacity = minCapacity;</span><br><span class="line">    <span class="keyword">if</span> (newCapacity - MAX_ARRAY_SIZE &gt; <span class="number">0</span>)</span><br><span class="line">        newCapacity = hugeCapacity(minCapacity);</span><br><span class="line">    <span class="comment">// minCapacity is usually close to size, so this is a win:</span></span><br><span class="line">    elementData = Arrays.copyOf(elementData, newCapacity);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>所以，如果需要存储的数据量比较大，可以使用<code>Vector</code>，以减少扩容次数。另外，<code>Vector</code>可以设置<code>capacityIncrement</code>，来配置每次扩容的增长量，比较灵活。</p>
-<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="https://docs.oracle.com/javase/8/docs/api/?java/util/Collection.html" target="_blank" rel="noopener">ArrayList</a><br><a href="https://www.programcreek.com/simple-java/" target="_blank" rel="noopener">simpleJava</a><br><a href="https://blog.csdn.net/chenssy/article/details/38151189" target="_blank" rel="noopener">fail-fast</a><br><a href="http://www.hollischuang.com/archives/498" target="_blank" rel="noopener">SynchronizedList和Vector的区别, by Hollis</a></p>
+<h2><span id="can-kao-lian-jie">参考链接</span><a href="#can-kao-lian-jie" class="header-anchor">#</a></h2><p><a href="https://docs.oracle.com/javase/8/docs/api/?java/util/Collection.html" target="_blank" rel="noopener">ArrayList</a><br><a href="https://www.programcreek.com/simple-java/" target="_blank" rel="noopener">simpleJava</a><br><a href="https://blog.csdn.net/chenssy/article/details/38151189" target="_blank" rel="noopener">fail-fast</a><br><a href="http://www.hollischuang.com/archives/498" target="_blank" rel="noopener">SynchronizedList和Vector的区别, by Hollis</a></p>
 
 
                 <hr>
@@ -427,7 +428,7 @@
 
             </div>
     <!-- Side Catalog Container -->
-        
+        <!--  -->
 
     <!-- Sidebar Container -->
 
