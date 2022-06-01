@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Love coding, Love San and QQ, in a way to finding self">
+    <meta name="keyword" content>
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+          Paper Notes: Pratical SIMD Programming - Chen22的博客 | Chen22&#39;S BLOG
+        
+    </title>
+
+    <link rel="canonical" href="http://jingchen2222.github.io./2021/03/20/TechNotes/TechNotes-compiler-SIMD01/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="../../../../../css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../../../../../css/hux-blog.min.css">
+
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="../../../../../css/highlight.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Chen22&#39;S BLOG</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archives/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    
+<!-- Image to hack wechat -->
+<!-- <img src="http://jingchen2222.github.io./img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}" width="0" height="0"> -->
+
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        background-image: url('/img/home-bg.jpg')
+    }
+</style>
+<header class="intro-header" >
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                          <a class="tag" href="/tags/#SIMD" title="SIMD">SIMD</a>
+                        
+                          <a class="tag" href="/tags/#Compiler" title="Compiler">Compiler</a>
+                        
+                    </div>
+                    <h1>Paper Notes: Pratical SIMD Programming</h1>
+                    <h2 class="subheading"></h2>
+                    <span class="meta">
+                        Posted by Chen22 on
+                        2021-03-20
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h1><span id="catalog">Catalog</span><a href="#catalog" class="header-anchor">#</a></h1><div class="toc">
+
+<!-- toc -->
+<ul>
+<li><a href="#reference">Reference</a></li>
+<li><a href="#outline">Outline</a><ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#body">Body</a><ul>
+<li><a href="#simd-concepts">SIMD Concepts</a></li>
+<li><a href="#data-parallelism">Data parallelism</a></li>
+<li><a href="#a-practical-example-c">A Practical Example: C++</a></li>
+<li><a href="#conditional-code-simd">Conditional Code &amp; SIMD</a><ul>
+<li><a href="#min-max">Min &amp; Max</a></li>
+<li><a href="#if-statement-most-important-part">If statement - Most important part</a></li>
+</ul>
+</li>
+<li><a href="#optimizing-and-debugging-simd-code-hints">Optimizing and Debugging SIMD Code, Hints</a><ul>
+<li><a href="#instruction-count">Instruction count</a></li>
+<li><a href="#floating-point-versus-integer">Floating point versus integer</a></li>
+<li><a href="#reduce-the-use-of-mm-set-ps">Reduce the use of _mm_set_ps</a></li>
+<li><a href="#avoid-gather-operations">Avoid gather operations</a></li>
+<li><a href="#data-alignment">Data alignment</a></li>
+<li><a href="#vectorize-bottlenecks-only">Vectorize bottlenecks only</a></li>
+<li><a href="#c-debugger">C++ debugger</a></li>
+<li><a href="#evade-fancy-simd-libraries">Evade fancy SIMD libraries</a></li>
+<li><a href="#closing-remarks">Closing Remarks</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+</div>
+
+<h1><span id="reference">Reference</span><a href="#reference" class="header-anchor">#</a></h1><p><a href="http://www.cs.uu.nl/docs/vakken/magr/2017-2018/files/SIMD%20Tutorial.pdf" target="_blank" rel="noopener">Practical SIMD Programming, Supplemental tutorial for INFOB3CC, INFOMOV &amp; INFOMAGR, Jacco Bikker, 2017</a></p>
+<h1><span id="outline">Outline</span><a href="#outline" class="header-anchor">#</a></h1><h2><span id="introduction">Introduction</span><a href="#introduction" class="header-anchor">#</a></h2><p>Recent CPUs use a radically different form of instruction level parallelism. These CPUs deploy a versatile set of vector operations: instructions that operate on 4 or 8 inputs1 , yielding 4 or 8 results, often in a single cycle. <strong>This is known as SIMD: Single Instruction, Multiple Data.</strong></p>
+<p>This document provides a practical introduction to SIMD programming in C++ and C#.</p>
+<h2><span id="body">Body</span><a href="#body" class="header-anchor">#</a></h2><h3><span id="simd-concepts">SIMD Concepts</span><a href="#simd-concepts" class="header-anchor">#</a></h3><p>Efficient SIMD code requires an efficient data layout; this must be done manually.</p>
+<h3><span id="data-parallelism">Data parallelism</span><a href="#data-parallelism" class="header-anchor">#</a></h3><p>For a data-parallel algorithm, each of the scalars in a SIMD register holds the data for one ‘thread’. We call the slots in the register lanes. The input data is called a stream.</p>
+<h3><span id="a-practical-example-c">A Practical Example: C++</span><a href="#a-practical-example-c" class="header-anchor">#</a></h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">The following code renders a Mandelbrot fractal:</span><br><span class="line"><span class="comment">// based on https://www.shadertoy.com/view/Mdy3Dw</span></span><br><span class="line"><span class="keyword">float</span> scale = <span class="number">1</span> + cosf( t );</span><br><span class="line">t += <span class="number">0.01f</span>;</span><br><span class="line"><span class="keyword">for</span>( <span class="keyword">int</span> y = <span class="number">0</span>; y &lt; SCRHEIGHT; y++ )</span><br><span class="line">&#123;</span><br><span class="line"> <span class="keyword">float</span> yoffs = ((<span class="keyword">float</span>)y / SCRHEIGHT - <span class="number">0.5f</span>) * scale;</span><br><span class="line"> <span class="keyword">float</span> xoffs = <span class="number">-0.5f</span> * scale, dx = scale / SCRWIDTH;</span><br><span class="line"> <span class="keyword">for</span>( <span class="keyword">int</span> x = <span class="number">0</span>; x &lt; SCRWIDTH; x++, xoffs += dx )</span><br><span class="line"> &#123;</span><br><span class="line">   	 <span class="keyword">float</span> ox = <span class="number">0</span>, oy = <span class="number">0</span>, py;</span><br><span class="line">     <span class="keyword">for</span>( <span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">99</span>; i++ ) </span><br><span class="line"> 		 px = ox, py = oy,</span><br><span class="line">     oy = -(py * py - px * px - <span class="number">0.55f</span> + xoffs),</span><br><span class="line">     ox = -(px * py + py * px - <span class="number">0.55f</span> + yoffs);</span><br><span class="line">   </span><br><span class="line">     <span class="keyword">int</span> r = <span class="built_in">min</span>( <span class="number">255</span>, <span class="built_in">max</span>( <span class="number">0</span>, (<span class="keyword">int</span>)(ox * <span class="number">255</span>) ) );</span><br><span class="line">     <span class="keyword">int</span> g = <span class="built_in">min</span>( <span class="number">255</span>, <span class="built_in">max</span>( <span class="number">0</span>, (<span class="keyword">int</span>)(oy * <span class="number">255</span>) ) );</span><br><span class="line">   </span><br><span class="line">     screen-&gt;Plot( x, y, (r &lt;&lt; <span class="number">16</span>) + (g &lt;&lt; <span class="number">8</span>) );</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>STEP 1: make a backup of the original code</p>
+<ul>
+<li>An  #if 1 … #else … #endif block</li>
+</ul>
+</li>
+<li><p>STEP 2: create four streams</p>
+<ul>
+<li><p>Start out by simulating the use of four streams. Working on four pixels at a time means that x increases in steps of 4. </p>
+</li>
+<li><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// my version</span></span><br><span class="line"><span class="keyword">for</span>( <span class="keyword">int</span> x = <span class="number">0</span>; x &lt; SCRWIDTH; x += <span class="number">4</span>, xoffs += dx * <span class="number">4</span> )</span><br><span class="line">&#123;</span><br><span class="line"> <span class="keyword">float</span> ox[<span class="number">4</span>] = &#123; <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span> &#125;, oy[<span class="number">4</span>] = &#123; <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span> &#125;;</span><br><span class="line"> <span class="keyword">for</span>( <span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">99</span>; i++ ) </span><br><span class="line">   	oy[<span class="number">0</span>] = -(oy[<span class="number">0</span>] * oy[<span class="number">0</span>] - ox[<span class="number">0</span>] * ox[<span class="number">0</span>] - <span class="number">0.55f</span> + xoffs + lane * dx), </span><br><span class="line">  	ox[<span class="number">0</span>] = -(ox[<span class="number">0</span>] * oy[<span class="number">0</span>] + oy[<span class="number">0</span>] * ox[<span class="number">0</span>] - <span class="number">0.55f</span> + yoffs);</span><br><span class="line">   	oy[<span class="number">1</span>] = -(oy[<span class="number">1</span>] * oy[<span class="number">1</span>] - ox[<span class="number">1</span>] * ox[<span class="number">1</span>] - <span class="number">0.55f</span> + xoffs + lane * dx), </span><br><span class="line">  	ox[<span class="number">1</span>] = -(ox[<span class="number">1</span>] * oy[<span class="number">1</span>] + oy[<span class="number">1</span>] * ox[<span class="number">1</span>] - <span class="number">0.55f</span> + yoffs);</span><br><span class="line">   	oy[<span class="number">2</span>] = -(oy[<span class="number">2</span>] * oy[<span class="number">2</span>] - ox[<span class="number">2</span>] * ox[<span class="number">2</span>] - <span class="number">0.55f</span> + xoffs + lane * dx), </span><br><span class="line">  	ox[<span class="number">2</span>] = -(ox[<span class="number">2</span>] * oy[<span class="number">2</span>] + oy[<span class="number">2</span>] * ox[<span class="number">2</span>] - <span class="number">0.55f</span> + yoffs);</span><br><span class="line">  	oy[<span class="number">3</span>] = -(oy[<span class="number">3</span>] * oy[<span class="number">3</span>] - ox[<span class="number">3</span>] * ox[<span class="number">3</span>] - <span class="number">0.55f</span> + xoffs + lane * dx), </span><br><span class="line">  	ox[<span class="number">3</span>] = -(ox[<span class="number">3</span>] * oy[<span class="number">3</span>] + oy[<span class="number">3</span>] * ox[<span class="number">3</span>] - <span class="number">0.55f</span> + yoffs);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>STEP 3: create the SIMD data structure</p>
+<ul>
+<li><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">union</span> &#123; __m128 ox4; <span class="keyword">float</span> ox[<span class="number">4</span>]; &#125;;</span><br><span class="line"><span class="keyword">union</span> &#123; __m128 oy4; <span class="keyword">float</span> oy[<span class="number">4</span>]; &#125;;</span><br><span class="line"><span class="comment">// uses an intrinsic to set the 128-bit vectors to zero.</span></span><br><span class="line">ox4 = oy4 = _mm_setzero_ps();</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>STEP 4: check functionality</p>
+</li>
+<li><p>STEP 5: convert the inner loop</p>
+<ul>
+<li><p>We use SIMD data structure <code>ox4</code> and <code>oxy</code> to represent each 4 <code>ox</code> and <code>oy</code></p>
+</li>
+<li><p>Regarding <code>xoffs4</code>: variable xoffs used to be incremented by <code>dx</code> at every iteration</p>
+</li>
+<li><p><code>oy4 = -(py4 * py4 - px4 * px4 - 0.55f + xoffs4)</code>; can be converted to:</p>
+<ul>
+<li><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 0 - (py4 * py4 - px4 * px4 - 0.55f + xoffs4)</span></span><br><span class="line">oy4 = _mm_sub_ps(_mm_setzero_ps(), (</span><br><span class="line">  <span class="comment">// py4 * py4 - px4 * px4 - 0.55f + xoffs4</span></span><br><span class="line">	_mm_add_ps(</span><br><span class="line">    <span class="comment">// py4 * py4 - px4 * px4 - 0.55f</span></span><br><span class="line">    _mm_sub_ps(</span><br><span class="line">      <span class="comment">// py4 * py4 - px4 * px4</span></span><br><span class="line">      _mm_sub_ps(</span><br><span class="line">        <span class="comment">//  py4 * py4</span></span><br><span class="line">      	_mm_mul_ps(py4, py4),</span><br><span class="line">        <span class="comment">// px4 * px4</span></span><br><span class="line">        _mm_mul_ps(px4, px4)</span><br><span class="line">      ),</span><br><span class="line">      _mm_set1_ps(<span class="number">0.55f</span>)), </span><br><span class="line">    xoffs4)</span><br><span class="line">))</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>Bringing everything together, we get the final vectorized program:</p>
+<ul>
+<li><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// my version</span></span><br><span class="line"><span class="keyword">for</span>( <span class="keyword">int</span> x = <span class="number">0</span>; x &lt; SCRWIDTH; x += <span class="number">4</span>, xoffs += dx * <span class="number">4</span> )</span><br><span class="line">&#123;</span><br><span class="line"> 	<span class="keyword">union</span> &#123; __m128 ox4; <span class="keyword">float</span> ox[<span class="number">4</span>]; &#125;;</span><br><span class="line"> 	<span class="keyword">union</span> &#123; __m128 oy4; <span class="keyword">float</span> oy[<span class="number">4</span>]; &#125;;</span><br><span class="line">  ox4 = oy4 = _mm_setzero_ps();</span><br><span class="line">  __m128 xoffs4 =  _mm_setr_ps(xoffs, xoffs + dx, xoffs + dx*<span class="number">2</span>, xoffs + dx*<span class="number">3</span>);</span><br><span class="line">  __m128 yoffs4 =  _mm_set_ps1(yoffs);</span><br><span class="line"> 	<span class="keyword">for</span>( <span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">99</span>; i++ ) </span><br><span class="line">    oy4 = _mm_sub_ps(_mm_setzero_ps(), (</span><br><span class="line">      _mm_add_ps(</span><br><span class="line">        _mm_sub_ps(</span><br><span class="line">          _mm_sub_ps(</span><br><span class="line">            _mm_mul_ps(py4, py4),</span><br><span class="line">            _mm_mul_ps(px4, px4)</span><br><span class="line">          ),</span><br><span class="line">          _mm_set1_ps(<span class="number">0.55f</span>)), </span><br><span class="line">        xoffs4),</span><br><span class="line">    ox4 = _mm_sub_ps(_mm_setzero_ps(), (</span><br><span class="line">      _mm_add_ps(</span><br><span class="line">        _mm_sub_ps(</span><br><span class="line">          _mm_sub_ps(</span><br><span class="line">            _mm_mul_ps(px4, py4),</span><br><span class="line">            _mm_mul_ps(py4, px4)</span><br><span class="line">          ),</span><br><span class="line">          _mm_set1_ps(<span class="number">0.55f</span>)), </span><br><span class="line">        xoffs4);</span><br><span class="line">	<span class="keyword">for</span>( <span class="keyword">int</span> lane = <span class="number">0</span>; lane &lt; <span class="number">4</span>; lane++ ) &#123;</span><br><span class="line"> 		<span class="keyword">int</span> r = <span class="built_in">min</span>( <span class="number">255</span>, <span class="built_in">max</span>( <span class="number">0</span>, (<span class="keyword">int</span>)(ox[lane] * <span class="number">255</span>) ) );</span><br><span class="line"> 		<span class="keyword">int</span> g = <span class="built_in">min</span>( <span class="number">255</span>, <span class="built_in">max</span>( <span class="number">0</span>, (<span class="keyword">int</span>)(oy[lane] * <span class="number">255</span>) ) );</span><br><span class="line"> 		screen-&gt;Plot( x + lane, y, (r &lt;&lt; <span class="number">16</span>) + (g &lt;&lt; <span class="number">8</span>) );</span><br><span class="line"> 	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3><span id="conditional-code-amp-simd">Conditional Code &amp; SIMD</span><a href="#conditional-code-amp-simd" class="header-anchor">#</a></h3><blockquote>
+<p>Clearly anything that is conditional may lead to scalar flows not executing the same code.</p>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>( <span class="keyword">int</span> lane = <span class="number">0</span>; lane &lt; <span class="number">4</span>; lane++ )</span><br><span class="line"> &#123;</span><br><span class="line"> <span class="keyword">int</span> r = <span class="built_in">min</span>( <span class="number">255</span>, <span class="built_in">max</span>( <span class="number">0</span>, (<span class="keyword">int</span>)(ox[lane] * <span class="number">255</span>) ) );</span><br><span class="line"> <span class="keyword">int</span> g = <span class="built_in">min</span>( <span class="number">255</span>, <span class="built_in">max</span>( <span class="number">0</span>, (<span class="keyword">int</span>)(oy[lane] * <span class="number">255</span>) ) );</span><br><span class="line"> screen-&gt;Plot( x + lane, y, (r &lt;&lt; <span class="number">16</span>) + (g &lt;&lt; <span class="number">8</span>) );</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<h4><span id="min-amp-max">Min &amp; Max</span><a href="#min-amp-max" class="header-anchor">#</a></h4><p>For the specific case of min and max, SSE and AVX offer an efficient solution: </p>
+ <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"> __m128 c4 = _mm_min_ps( a4, b4 );</span><br><span class="line">__m128 c4 = _mm_max_ps( a4, b4 );</span><br></pre></td></tr></table></figure>
+<h4><span id="if-statement-most-important-part">If statement - Most important part</span><a href="#if-statement-most-important-part" class="header-anchor">#</a></h4><p>Thinking about how to veterize Plot which contains a <code>if</code> statement.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Surface::Plot</span><span class="params">( <span class="keyword">int</span> x, <span class="keyword">int</span> y, Pixel c )</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"> <span class="keyword">if</span> ((x &gt;= <span class="number">0</span>) &amp;&amp; (y &gt;= <span class="number">0</span>) &amp;&amp; (x &lt; m_Width) &amp;&amp; (y &lt; m_Height))</span><br><span class="line"> m_Buffer[x + y * m_Pitch] = c;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p> I just wrote SSE and AVX do not have if statements, but they do in fact have comparison instructions. These do not yield ‘quadbools’, but they do return something useful: bitmasks. Here is an example:</p>
+ <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;  __m128 mask = _mm_cmpge_ps( x4, _mm_setzero_ps() ); <span class="comment">// if (x4 &gt;= 0</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p> The mask value is a 128-bit value. After the comparison, its contents reflect the result: 32 zeroes for a ‘false’, and 32 ones for a ‘true’. We can also combine comparisons: </p>
+ <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;  __m128 mask1 = _mm_cmpge_ps( x4, _mm_setzero_ps() ); <span class="comment">// if (x4 &gt;= 0) </span></span><br><span class="line">&gt;  __m128 mask2 = _mm_cmpge_ps( y4, _mm_setzero_ps() ); <span class="comment">// if (y4 &gt;= 0) </span></span><br><span class="line">&gt;  __m128 mask = _mm_and_ps( mask1, mask2 ); <span class="comment">// if (x4 &gt;= 0 &amp;&amp; y4 &gt;= 0</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+</blockquote>
+<p>The resulting bitmasks can be used in two distinctive ways. </p>
+<ul>
+<li><p>The first way is to break the vector instruction flow, and switch to scalar code to handle the result of the comparisons.</p>
+<ul>
+<li>The benefit is that we now at least did the comparisons using vector code. We didn’t solve the actual problem though: the conditional code still breaks our vector flow.</li>
+</ul>
+</li>
+<li><p><strong>The second way is to disable functionality for lanes</strong> </p>
+<ul>
+<li><p>Consider the actual conditional code: <code>m_Buffer[x + y * m_Pitch] = c;</code></p>
+</li>
+<li><p>Now, what if we replaced this address by some other safe location, for instance the address of a dummy variable? We would still perform the write, but this time it does not yield a visible pixel. Like a pixel happens to be off-screen</p>
+</li>
+<li><p>Replace the address calculation <code>x + y * m_Pitch</code> by <code>(x + y * m_Pitch) * mask</code> . And the address will be 0 if <code>mask</code> is 0</p>
+</li>
+<li><p>Let’s compute the full mask for the plot statement:</p>
+<ul>
+<li><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// if ((x &gt;= 0) &amp;&amp; (y &gt;= 0) &amp;&amp; (x &lt; m_Width) &amp;&amp; (y &lt; m_Height)) &#123; mask = 1&#125; else (mask = 0)</span></span><br><span class="line"></span><br><span class="line">__m128 x_ge_0 = _mm_cmpge_ps(x4, _mm_setzero_ps());</span><br><span class="line">__m128 y_ge_0 = _mm_cmpge_ps(y4, _mm_setzero_ps());</span><br><span class="line">__m128 x_lt_width = _mm_cmplt_ps(x4, _mm_set_ps1(m_Width));</span><br><span class="line">__m128 y_lt_Heigth = _mm_cmplt_ps(x4, _mm_set_ps1(m_Height));</span><br><span class="line">__m128 mask = _mm_and_ps(_mm_and_ps(_mm_and_ps(x_ge_0, y_ge_0), x_lt_width), y_lt_Heigth);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>Then we can calculate the four pixel addresses as follows:</p>
+<ul>
+<li><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Multiplying two 32-bit integers yields a 64-bit integer, which doesn’t fit in a 32-bit lane. </span></span><br><span class="line"><span class="comment">// The _mm_mullo_epi32 instruction discards the top 32-bit, which is fine in this case.</span></span><br><span class="line">__m128 address4 = _mm_add_ps(x4, _mm_mullo_epi32(y4, m_Pitch4)); </span><br><span class="line"></span><br><span class="line"><span class="comment">// There is no _mm_and_epi32 instruction; </span></span><br><span class="line"><span class="comment">// instead doing a bitwise and to integers operates directly on the 128 bits using _mm_and_si128.</span></span><br><span class="line"><span class="comment">// `*(__m128i*)&amp;mask` Our mask is a quadfloat, We thus convert it on-the-fly to the correct type.</span></span><br><span class="line">address4 = _mm_and_si128(address4, *(__m128i*)&amp;mask);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3><span id="optimizing-and-debugging-simd-code-hints">Optimizing and Debugging SIMD Code, Hints</span><a href="#optimizing-and-debugging-simd-code-hints" class="header-anchor">#</a></h3><p>In the previous sections, we have seen how code can be vectorized, and how to deal with conditional code. In this section we will discuss some common opportunities for improving the efficiency of SIMD code.</p>
+<h4><span id="instruction-count">Instruction count</span><a href="#instruction-count" class="header-anchor">#</a></h4><p>In principle every intrinsic compiles to a single compiler instruction.</p>
+<h4><span id="floating-point-versus-integer">Floating point versus integer</span><a href="#floating-point-versus-integer" class="header-anchor">#</a></h4><p>Floating point support in SSE and AVX is much better than integer support. S</p>
+<h4><span id="reduce-the-use-of-mm-set-ps">Reduce the use of _mm_set_ps</span><a href="#reduce-the-use-of-mm-set-ps" class="header-anchor">#</a></h4><p><code>_mm_set_ps</code> is an expensive function, as it takes four operands. </p>
+<ul>
+<li>Consider caching the result: calculate the quadfloat outside loops</li>
+</ul>
+<h4><span id="avoid-gather-operations">Avoid gather operations</span><a href="#avoid-gather-operations" class="header-anchor">#</a></h4><h4><span id="data-alignment">Data alignment</span><a href="#data-alignment" class="header-anchor">#</a></h4><p>One thing to keep in mind: a quadfloat in memory must always be stored at an address that is a multiple of 16. . Failure to do so will result in a crash.</p>
+<h4><span id="vectorize-bottlenecks-only">Vectorize bottlenecks only</span><a href="#vectorize-bottlenecks-only" class="header-anchor">#</a></h4><p>Vectorization is hard and you want to focus your effort on bottlenecks only. </p>
+<p>A lot of work focused in a tiny portion of code, screaming for close-to-the-metal optimization.</p>
+<h4><span id="c-debugger">C++ debugger</span><a href="#c-debugger" class="header-anchor">#</a></h4><p>Support for SIMD is well-integrated in the Visual Studio debugger. You can e.g. effortlessly inspect individual values in SIMD variables.</p>
+<h4><span id="evade-fancy-simd-libraries">Evade fancy SIMD libraries</span><a href="#evade-fancy-simd-libraries" class="header-anchor">#</a></h4><p>consider Agner Fog’s vector library: <a href="http://www.agner.org/optimize/#vectorclass" target="_blank" rel="noopener">http://www.agner.org/optimize/#vectorclass</a></p>
+<h4><span id="closing-remarks">Closing Remarks</span><a href="#closing-remarks" class="header-anchor">#</a></h4><p>Jacco Bikker : <a href="mailto:bikker.j@gmail.com" target="_blank" rel="noopener">bikker.j@gmail.com</a></p>
+
+
+                <hr>
+
+                
+
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2021/03/21/TechNotes/TechNotes-db-spark01/" data-toggle="tooltip" data-placement="top" title="Paper Notes: Spark: Cluster Computing with Working Sets">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/2018/09/20/tools/geeknote/" data-toggle="tooltip" data-placement="top" title="Geetnote的安装和使用">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                
+
+                
+
+            </div>
+    <!-- Side Catalog Container -->
+        <!--  -->
+
+    <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#SIMD" title="SIMD">SIMD</a>
+                        
+                          <a class="tag" href="/tags/#Compiler" title="Compiler">Compiler</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="http://blog.kaijun.rocks" target="_blank">Kaijun&#39;s Blog</a></li>
+                    
+                        <li><a href="http://huangxuan.me" target="_blank">Hux Blog</a></li>
+                    
+                </ul>
+                
+            </div>
+
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'always',
+          placement: 'right',
+          icon: '#'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/jingchen2222">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Chen22&#39;S BLOG 2022 
+                    <br>
+                    Theme by <a href="http://huangxuan.me">Hux</a> 
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                    Ported by <a href="http://blog.kaijun.rocks">Kaijun</a> | 
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=kaijun&repo=hexo-theme-huxblog&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="../../../../../js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="../../../../../js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="../../../../../js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://jingchen2222.github.io./js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- Side Catalog -->
+
+
+
+
+
+<!-- Image to hack wechat -->
+<img src="http://jingchen2222.github.io./img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>

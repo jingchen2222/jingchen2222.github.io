@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Love coding, Love San and QQ, in a way to finding self">
+    <meta name="keyword" content>
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+          List study - Chen22的博客 | Chen22&#39;S BLOG
+        
+    </title>
+
+    <link rel="canonical" href="http://jingchen2222.github.io./2018/09/01/ProgramStudy/JAVA/list/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="../../../../../../css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../../../../../../css/hux-blog.min.css">
+
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="../../../../../../css/highlight.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Chen22&#39;S BLOG</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archives/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    
+<!-- Image to hack wechat -->
+<!-- <img src="http://jingchen2222.github.io./img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}" width="0" height="0"> -->
+
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        background-image: url('/img/home-bg.jpg')
+    }
+</style>
+<header class="intro-header" >
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                          <a class="tag" href="/tags/#java" title="java">java</a>
+                        
+                          <a class="tag" href="/tags/#collection" title="collection">collection</a>
+                        
+                    </div>
+                    <h1>List study</h1>
+                    <h2 class="subheading"></h2>
+                    <span class="meta">
+                        Posted by Chen22 on
+                        2018-09-01
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h2><span id="list">List</span><a href="#list" class="header-anchor">#</a></h2><h3><span id="overview">Overview</span><a href="#overview" class="header-anchor">#</a></h3><h5><span id="list-zu-zui-chong-yao-de-ji-ge-te-dian">List族最重要的几个特点：</span><a href="#list-zu-zui-chong-yao-de-ji-ge-te-dian" class="header-anchor">#</a></h5><ul>
+<li>有序</li>
+<li>允许重复元素</li>
+<li>支持add, remove, set, get</li>
+<li>可以随机访问元素</li>
+</ul>
+<h5><span id="lis-zu-ji-he-lei">Lis族集合类：</span><a href="#lis-zu-ji-he-lei" class="header-anchor">#</a></h5><p><img src="https://www.programcreek.com/wp-content/uploads/2009/02/java-collection-hierarchy.jpeg" alt="java-collection-hierarchy.jpeg"></p>
+<ul>
+<li>List族中，最主要的三种集合是<code>ArrayList</code>,<code>Vector</code>和<code>LinkedList</code>，后面将对这三种类进行分析和比较。</li>
+<li>可以简单对比一下List和Set</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>List</th>
+<th>Set</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>有序</td>
+<td>Y</td>
+<td>N</td>
+</tr>
+<tr>
+<td>重复元素</td>
+<td>Y</td>
+<td>N</td>
+</tr>
+<tr>
+<td>随机访问</td>
+<td>Y</td>
+<td>N</td>
+</tr>
+</tbody>
+</table>
+<a id="more"></a>
+<h3><span id="arraylist">ArrayList</span><a href="#arraylist" class="header-anchor">#</a></h3><p>Java Platform SE 8的描述：</p>
+<blockquote>
+<p>Resizable-array implementation of the List interface. Implements all optional list operations, and permits all elements, including null. In addition to implementing the List interface, this class provides methods to manipulate the size of the array that is used internally to store the list. (This class is roughly equivalent to Vector, except that it is unsynchronized.)</p>
+</blockquote>
+<ul>
+<li>可变长数组</li>
+<li>实现所有list的操作</li>
+<li>允许null</li>
+<li>和Vector相似，但是unsynchronized</li>
+</ul>
+<h5><span id="arraylist-shi-yi-chong-neng-gou-zi-dong-kuo-chong-chang-du-de-shu-zu"><span style="color:#ab4642">ArrayList是一种能够自动扩充长度的数组。</span></span><a href="#arraylist-shi-yi-chong-neng-gou-zi-dong-kuo-chong-chang-du-de-shu-zu" class="header-anchor">#</a></h5><h4><span id="xing-neng">性能</span><a href="#xing-neng" class="header-anchor">#</a></h4><blockquote>
+<p>The size, isEmpty, get, set, iterator, and listIterator operations run in constant time.<br>The add operation runs in amortized constant time, that is, adding n elements requires O(n) time. </p>
+</blockquote>
+<ul>
+<li><strong>ArrayList</strong>的性能可以类比<span style="color:#ab4642">数组</span>的性能，在随机访问性能好。增、删操作性能差。</li>
+</ul>
+<h4><span id="xian-cheng-an-quan">线程安全</span><a href="#xian-cheng-an-quan" class="header-anchor">#</a></h4><blockquote>
+<p><span style="color:#ab4642">Note that this implementation is not synchronized…</span></p>
+</blockquote>
+<p><code>Collections.synchronizedList</code>: </p>
+<blockquote>
+<p>Returns a synchronized (thread-safe) list backed by the specified list. In order to guarantee serial access, it is critical that all access to the backing list is accomplished through the returned list.*</p>
+<ul>
+<li>不能依赖fail-fast进行程序同步控制，应该对ArrayList进行包装（<code>Collections.synchronizedList</code>），合法的ArrayList同步操作demo：<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">List list = Collections.synchronizedList(<span class="keyword">new</span> ArrayList());</span><br><span class="line">     ...</span><br><span class="line"> <span class="keyword">synchronized</span> (list) &#123;</span><br><span class="line">     Iterator i = list.iterator(); <span class="comment">// Must be in synchronized block</span></span><br><span class="line">     <span class="keyword">while</span> (i.hasNext())</span><br><span class="line">         foo(i.next());</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</blockquote>
+<h3><span id="vector">Vector</span><a href="#vector" class="header-anchor">#</a></h3><blockquote>
+<p>The Vector class implements a growable array of objects. Like an array, it contains components that can be accessed using an integer index.</p>
+</blockquote>
+<blockquote>
+<p>The iterators returned by this class’s iterator and listIterator methods are fail-fast:…</p>
+</blockquote>
+<blockquote>
+<p>…, If a thread-safe implementation is not needed, it is recommended to use ArrayList in place of Vector.</p>
+</blockquote>
+<ul>
+<li>Vector和ArrayList的性能相似，最重要的<span style="color:#ab4642">区别:</span>是:<ul>
+<li><code>Vector</code>是<span style="color:#ab4642">线程安全</span>的。</li>
+<li>扩容机制不一样，具体可以看后面的<strong>扩容代码解读：</strong></li>
+</ul>
+</li>
+</ul>
+<h3><span id="linkedlist">LinkedList</span><a href="#linkedlist" class="header-anchor">#</a></h3><blockquote>
+<p>Doubly-linked list implementation of the List and Deque interfaces. Implements all optional list operations, and permits all elements (including null).<br>All of the operations perform as could be expected for a doubly-linked list. Operations that index into the list will traverse the list from the beginning or the end, whichever is closer to the specified index.</p>
+</blockquote>
+<h4><span id="xing-neng">性能：</span><a href="#xing-neng" class="header-anchor">#</a></h4><ul>
+<li>具有链表的特点，对增加和删除节点的操作效率高（特别是表头或者表尾的操作）。但是，随机访问效率低。</li>
+<li><h4><span id="tong-bu">同步：</span><a href="#tong-bu" class="header-anchor">#</a></h4><blockquote>
+<p>The iterators returned by this class’s iterator and listIterator methods are fail-fast</p>
+</blockquote>
+</li>
+<li>LinkedList是线程不安全的，需要包装：<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">List list = Collections.synchronizedList(<span class="keyword">new</span> LinkedList(...));</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3><span id="arraylist-vs-vector-vs-linkedlist">ArrayList vs Vector vs LinkedList</span><a href="#arraylist-vs-vector-vs-linkedlist" class="header-anchor">#</a></h3><table>
+<thead>
+<tr>
+<th></th>
+<th>ArrayList</th>
+<th>Vector</th>
+<th>LinkedList</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>list接口</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr>
+<td>deque接口</td>
+<td>N</td>
+<td>N</td>
+<td>Y</td>
+</tr>
+<tr>
+<td>elements 允许null</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr>
+<td>growable</td>
+<td>Y</td>
+<td>Y</td>
+<td>N</td>
+</tr>
+<tr>
+<td>get</td>
+<td>O(1)</td>
+<td>O(1)</td>
+<td>O(n)</td>
+</tr>
+<tr>
+<td>set</td>
+<td>O(1)</td>
+<td>O(1)</td>
+<td>O(n)</td>
+</tr>
+<tr>
+<td>remove</td>
+<td>O(n)</td>
+<td>O(n)</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td>add</td>
+<td>O(n)</td>
+<td>O(n)</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td>synchronized</td>
+<td>N</td>
+<td>Y</td>
+<td>N</td>
+</tr>
+<tr>
+<td>synchronized</td>
+<td>N</td>
+<td>Y</td>
+<td>N</td>
+</tr>
+<tr>
+<td>fail-fast</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+</tbody>
+</table>
+<h2><span id="ji-ge-zhi-de-shen-ru-si-kao-de-wen-ti">几个值得深入思考的问题</span><a href="#ji-ge-zhi-de-shen-ru-si-kao-de-wen-ti" class="header-anchor">#</a></h2><h3><span id="fail-fast">fail-fast</span><a href="#fail-fast" class="header-anchor">#</a></h3><p> fail-fast 机制是java集合(Collection)中的一种错误机制。<code>ArrayList</code>,<code>Vector</code>, <code>LinkedList</code> 都满足fail-fast机制。官方文档中对fail-fast的解释如下：</p>
+<blockquote>
+<p>fail-fast: if the list is structurally modified at any time after the iterator is created, in any way except through the iterator’s own remove or add methods, the iterator will throw a <code>ConcurrentModificationException</code>. Thus, in the face of concurrent modification, the iterator fails quickly and cleanly, rather than risking arbitrary, non-deterministic behavior at an undetermined time in the future.</p>
+</blockquote>
+<ul>
+<li>fail-fast产生的原因就在于程序在对collection（如: ArrayList）进行迭代时，某个线程对该 collection <strong>在结构上对其做了修改</strong>，这时迭代器就会抛出 <code>ConcurrentModificationException</code> 异常信息，从而产生 <strong>fail-fast</strong><blockquote>
+<p>要了解fail-fast机制，我们首先要对ConcurrentModificationException 异常有所了解。当方法检测到对象的并发修改，但不允许这种修改时就抛出该异常。同时需要注意的是，该异常不会始终指出对象已经由不同线程并发修改，如果单线程违反了规则，同样也有可能会抛出改异常。</p>
+</blockquote>
+</li>
+</ul>
+<h4><span id="concurrentmodificationexception">ConcurrentModificationException</span><a href="#concurrentmodificationexception" class="header-anchor">#</a></h4><ul>
+<li>容器使用迭代器来进行统一个容器访问操作。迭代器本质上只是容器的一个视图，迭代器里存放容器访问的游标，以及expectedModCount</li>
+<li><code>expectedModCount</code>是迭代器fail-fast机制的关键，</li>
+<li>迭代器在操作容器元素前，会<code>checkForComodification</code>，其实就是检查<code>expectedModCount==modCount</code></li>
+<li>迭代器在对容器作结构性后，会刷新<code>expectedModCount = modCount</code>。</li>
+<li>换言之，如果在迭代器同步到最新的modCount后，有其他操作修改了容器的modCount，那么<code>checkForComodification</code>就会校验失败，于是就抛出<code>ConcurrentModificationException</code></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">Itr</span> <span class="keyword">implements</span> <span class="title">Iterator</span>&lt;<span class="title">E</span>&gt; </span>&#123;</span><br><span class="line">       <span class="comment">/**</span></span><br><span class="line"><span class="comment">        * Index of element to be returned by subsequent call to next.</span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line">       <span class="keyword">int</span> cursor = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">       <span class="comment">/**</span></span><br><span class="line"><span class="comment">        * Index of element returned by most recent call to next or</span></span><br><span class="line"><span class="comment">        * previous.  Reset to -1 if this element is deleted by a call</span></span><br><span class="line"><span class="comment">        * to remove.</span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line">       <span class="keyword">int</span> lastRet = -<span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">       <span class="comment">/**</span></span><br><span class="line"><span class="comment">        * The modCount value that the iterator believes that the backing</span></span><br><span class="line"><span class="comment">        * List should have.  If this expectation is violated, the iterator</span></span><br><span class="line"><span class="comment">        * has detected concurrent modification.</span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line">       <span class="keyword">int</span> expectedModCount = modCount;</span><br><span class="line"></span><br><span class="line">       <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">hasNext</span><span class="params">()</span> </span>&#123;</span><br><span class="line">           <span class="keyword">return</span> cursor != size();</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       <span class="function"><span class="keyword">public</span> E <span class="title">next</span><span class="params">()</span> </span>&#123;</span><br><span class="line">           checkForComodification();</span><br><span class="line">           <span class="keyword">try</span> &#123;</span><br><span class="line">               <span class="keyword">int</span> i = cursor;</span><br><span class="line">               E next = get(i);</span><br><span class="line">               lastRet = i;</span><br><span class="line">               cursor = i + <span class="number">1</span>;</span><br><span class="line">               <span class="keyword">return</span> next;</span><br><span class="line">           &#125; <span class="keyword">catch</span> (IndexOutOfBoundsException e) &#123;</span><br><span class="line">               checkForComodification();</span><br><span class="line">               <span class="keyword">throw</span> <span class="keyword">new</span> NoSuchElementException();</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">remove</span><span class="params">()</span> </span>&#123;</span><br><span class="line">           <span class="keyword">if</span> (lastRet &lt; <span class="number">0</span>)</span><br><span class="line">               <span class="keyword">throw</span> <span class="keyword">new</span> IllegalStateException();</span><br><span class="line">           checkForComodification();</span><br><span class="line"></span><br><span class="line">           <span class="keyword">try</span> &#123;</span><br><span class="line">               AbstractList.<span class="keyword">this</span>.remove(lastRet);</span><br><span class="line">               <span class="keyword">if</span> (lastRet &lt; cursor)</span><br><span class="line">                   cursor--;</span><br><span class="line">               lastRet = -<span class="number">1</span>;</span><br><span class="line">               expectedModCount = modCount;</span><br><span class="line">           &#125; <span class="keyword">catch</span> (IndexOutOfBoundsException e) &#123;</span><br><span class="line">               <span class="keyword">throw</span> <span class="keyword">new</span> ConcurrentModificationException();</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       <span class="function"><span class="keyword">final</span> <span class="keyword">void</span> <span class="title">checkForComodification</span><span class="params">()</span> </span>&#123;</span><br><span class="line">           <span class="keyword">if</span> (modCount != expectedModCount)</span><br><span class="line">               <span class="keyword">throw</span> <span class="keyword">new</span> ConcurrentModificationException();</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">       <span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">ListItr</span> <span class="keyword">extends</span> <span class="title">Itr</span> <span class="keyword">implements</span> <span class="title">ListIterator</span>&lt;<span class="title">E</span>&gt; </span>&#123;</span><br><span class="line">       ListItr(<span class="keyword">int</span> index) &#123;</span><br><span class="line">           cursor = index;</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">hasPrevious</span><span class="params">()</span> </span>&#123;</span><br><span class="line">           <span class="keyword">return</span> cursor != <span class="number">0</span>;</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       <span class="function"><span class="keyword">public</span> E <span class="title">previous</span><span class="params">()</span> </span>&#123;</span><br><span class="line">           checkForComodification();</span><br><span class="line">           <span class="keyword">try</span> &#123;</span><br><span class="line">               <span class="keyword">int</span> i = cursor - <span class="number">1</span>;</span><br><span class="line">               E previous = get(i);</span><br><span class="line">               lastRet = cursor = i;</span><br><span class="line">               <span class="keyword">return</span> previous;</span><br><span class="line">           &#125; <span class="keyword">catch</span> (IndexOutOfBoundsException e) &#123;</span><br><span class="line">               checkForComodification();</span><br><span class="line">               <span class="keyword">throw</span> <span class="keyword">new</span> NoSuchElementException();</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">nextIndex</span><span class="params">()</span> </span>&#123;</span><br><span class="line">           <span class="keyword">return</span> cursor;</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">previousIndex</span><span class="params">()</span> </span>&#123;</span><br><span class="line">           <span class="keyword">return</span> cursor-<span class="number">1</span>;</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">set</span><span class="params">(E e)</span> </span>&#123;</span><br><span class="line">           <span class="keyword">if</span> (lastRet &lt; <span class="number">0</span>)</span><br><span class="line">               <span class="keyword">throw</span> <span class="keyword">new</span> IllegalStateException();</span><br><span class="line">           checkForComodification();</span><br><span class="line"></span><br><span class="line">           <span class="keyword">try</span> &#123;</span><br><span class="line">               AbstractList.<span class="keyword">this</span>.set(lastRet, e);</span><br><span class="line">               expectedModCount = modCount;</span><br><span class="line">           &#125; <span class="keyword">catch</span> (IndexOutOfBoundsException ex) &#123;</span><br><span class="line">               <span class="keyword">throw</span> <span class="keyword">new</span> ConcurrentModificationException();</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(E e)</span> </span>&#123;</span><br><span class="line">           checkForComodification();</span><br><span class="line"></span><br><span class="line">           <span class="keyword">try</span> &#123;</span><br><span class="line">               <span class="keyword">int</span> i = cursor;</span><br><span class="line">               AbstractList.<span class="keyword">this</span>.add(i, e);</span><br><span class="line">               lastRet = -<span class="number">1</span>;</span><br><span class="line">               cursor = i + <span class="number">1</span>;</span><br><span class="line">               expectedModCount = modCount;</span><br><span class="line">           &#125; <span class="keyword">catch</span> (IndexOutOfBoundsException ex) &#123;</span><br><span class="line">               <span class="keyword">throw</span> <span class="keyword">new</span> ConcurrentModificationException();</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p>值得一提的时候，当不适用迭代器访问和操作容器的时候，不会抛出<code>ConcurrentModificationException</code>，但是并不意味着程序正确。即使，是迭代器访问的程序，也有恰好未发生<code>ConcurrentModificationException</code>的情况。</p>
+<blockquote>
+<p>Note that the fail-fast behavior of an iterator cannot be guaranteed as it is, generally speaking, impossible to make any hard guarantees in the presence of unsynchronized concurrent modification. Fail-fast iterators throw ConcurrentModificationException on a best-effort basis. Therefore, it would be wrong to write a program that depended on this exception for its correctness: the fail-fast behavior of iterators should be used only to detect bugs.<br>注意，迭代器的快速失败行为无法得到保证，因为一般来说，不可能对是否出现不同步并发修改做出任何硬性保证。快速失败迭代器会尽最大努力抛出 ConcurrentModificationException。因此，为提高这类迭代器的正确性而编写一个依赖于此异常的程序是错误的做法：迭代器的快速失败行为应该仅用于检测 bug。</p>
+</blockquote>
+<ul>
+<li>不能依赖fail-fast机制来保证程序的正确性。<code>ConcurrentModificationException</code>只适合用来查bug。</li>
+</ul>
+<h5><span id="fast-fail-de-ce-shi-dai-ma">fast-fail的测试代码</span><a href="#fast-fail-de-ce-shi-dai-ma" class="header-anchor">#</a></h5><ul>
+<li><code>failFastWorkTest</code>的Thread t1使用迭代器来访问容器，在访问过程中，Thread t2对容器调用了<code>ArrayList.remove(element)</code>操作，此后，当t1迭代到下一个元素时候，（<code>next()</code>会检查modCount, 即<code>checkForComodification</code>）这将引发fast-fail.</li>
+<li><p>根据上面描述，我们可以写个demo来测试ArrayList的fast-fail：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">failFastWorkTest</span><span class="params">()</span> <span class="keyword">throws</span> InterruptedException, ConcurrentModificationException     </span>&#123;</span><br><span class="line">        Thread t1 = <span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                Iterator&lt;Integer&gt; iterator = arrayList.iterator();</span><br><span class="line">                <span class="keyword">while</span>(iterator.hasNext()) &#123;</span><br><span class="line">                    <span class="keyword">int</span> i = iterator.next();</span><br><span class="line">                    logger.info(<span class="string">"thread t1 get item : &#123;&#125;"</span>, i);</span><br><span class="line">                    <span class="keyword">try</span> &#123;</span><br><span class="line">                        Thread.sleep(<span class="number">10</span>);</span><br><span class="line">                    &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                        e.printStackTrace();</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        Thread t2 = <span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (i == <span class="number">3</span>) &#123;</span><br><span class="line"><span class="comment">//                        arrayList.remove(i);</span></span><br><span class="line">                        arrayList.add(i);</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        runThreads(t1, t2);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">runThreads</span><span class="params">(Thread t1, Thread t2)</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</span><br><span class="line">        logger.info(<span class="string">"start thread 1 "</span>);</span><br><span class="line">        t1.start();</span><br><span class="line">        logger.info(<span class="string">"start thread 2 "</span>);</span><br><span class="line">        t2.start();</span><br><span class="line">        t1.join();</span><br><span class="line">        logger.info(<span class="string">"end thread1 "</span>);</span><br><span class="line">        t2.join();</span><br><span class="line">        logger.info(<span class="string">"end thread2 "</span>);</span><br><span class="line">        logger.info(<span class="string">"fail fast test done"</span>);</span><br><span class="line"></span><br><span class="line">        logger.info(<span class="string">"finnal array List"</span>, arrayList);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>failFastNoWorkTest</code>的Thread t1使用直接通过ArrayList.get()来访问容器，在访问过程中，Thread t2对容器调用了<code>ArrayList.remove(element)</code>操作。未使用迭代器，所以没有modCount校验，所以不会发生fast-fail。当实际上，这样的程序是线程不安全的。</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"> </span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">failFastNoWorkTest</span><span class="params">()</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</span><br><span class="line">    Thread t1 = <span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">int</span> size = arrayList.size();</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; size; i++) &#123;</span><br><span class="line">                <span class="keyword">int</span> value = arrayList.get(i);</span><br><span class="line">                logger.info(<span class="string">"thread 1 run : &#123;&#125;"</span>, value);</span><br><span class="line">                printPrivateField(AbstractList.class, "modCount", arrayList);</span><br><span class="line"></span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    Thread.sleep(<span class="number">10</span>);</span><br><span class="line">                &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    Thread t2 = <span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; RUN_TIMES; i++) &#123;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> (i == <span class="number">3</span>) &#123;</span><br><span class="line">                    arrayList.remove(<span class="number">3</span>);</span><br><span class="line">                &#125;</span><br><span class="line">                printPrivateField(AbstractList.class, "modCount", arrayList);</span><br><span class="line">                addElementByList(arrayList, <span class="number">100</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    logger.info(<span class="string">"before start thread ... "</span>);</span><br><span class="line">    printPrivateField(AbstractList.class, "modCount", arrayList);</span><br><span class="line">    <span class="keyword">new</span> ListTest().runThreads(t1, t2);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3><span id="capacity">capacity</span><a href="#capacity" class="header-anchor">#</a></h3><p>另一个值得研究的知识点是List的自动扩容，主要是ArrayList和Vector。</p>
+<blockquote>
+<p>ArrayList和Vector都是使用数组(Array)来控制集合中的对象。当你向这两种类型中增加元素的时候，如果元素的数目超出了内部数组目前的长度它们都需要扩展内部数组的长度，Vector缺省情况下自动增长原来一倍的数组长度，ArrayList是原来的50%,所以最后你获得的这个集合所占的空间总是比你实际需要的要大。所以如果你要在集合中保存大量的数据那么使用Vector有一些优势，因为你可以通过设置集合的初始化大小来避免不必要的资源开销。</p>
+</blockquote>
+<p>Vector<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">  * This implements the unsynchronized semantics of ensureCapacity.</span></span><br><span class="line"><span class="comment">  * Synchronized methods in this class can internally call this</span></span><br><span class="line"><span class="comment">  * method for ensuring capacity without incurring the cost of an</span></span><br><span class="line"><span class="comment">  * extra synchronization.</span></span><br><span class="line"><span class="comment">  *</span></span><br><span class="line"><span class="comment">  * <span class="doctag">@see</span> #ensureCapacity(int)</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"> <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">ensureCapacityHelper</span><span class="params">(<span class="keyword">int</span> minCapacity)</span> </span>&#123;</span><br><span class="line">     <span class="comment">// overflow-conscious code</span></span><br><span class="line">     <span class="keyword">if</span> (minCapacity - elementData.length &gt; <span class="number">0</span>)</span><br><span class="line">         grow(minCapacity);</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">grow</span><span class="params">(<span class="keyword">int</span> minCapacity)</span> </span>&#123;</span><br><span class="line">     <span class="comment">// overflow-conscious code</span></span><br><span class="line">     <span class="keyword">int</span> oldCapacity = elementData.length;</span><br><span class="line">     <span class="keyword">int</span> newCapacity = oldCapacity + ((capacityIncrement &gt; <span class="number">0</span>) ?</span><br><span class="line">                                      capacityIncrement : oldCapacity);</span><br><span class="line">     <span class="keyword">if</span> (newCapacity - minCapacity &lt; <span class="number">0</span>)</span><br><span class="line">         newCapacity = minCapacity;</span><br><span class="line">     <span class="keyword">if</span> (newCapacity - MAX_ARRAY_SIZE &gt; <span class="number">0</span>)</span><br><span class="line">         newCapacity = hugeCapacity(minCapacity);</span><br><span class="line">     elementData = Arrays.copyOf(elementData, newCapacity);</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure></p>
+<p>ArrayList:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Increases the capacity to ensure that it can hold at least the</span></span><br><span class="line"><span class="comment"> * number of elements specified by the minimum capacity argument.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> minCapacity the desired minimum capacity</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">grow</span><span class="params">(<span class="keyword">int</span> minCapacity)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// overflow-conscious code</span></span><br><span class="line">    <span class="keyword">int</span> oldCapacity = elementData.length;</span><br><span class="line">    <span class="keyword">int</span> newCapacity = oldCapacity + (oldCapacity &gt;&gt; <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">if</span> (newCapacity - minCapacity &lt; <span class="number">0</span>)</span><br><span class="line">        newCapacity = minCapacity;</span><br><span class="line">    <span class="keyword">if</span> (newCapacity - MAX_ARRAY_SIZE &gt; <span class="number">0</span>)</span><br><span class="line">        newCapacity = hugeCapacity(minCapacity);</span><br><span class="line">    <span class="comment">// minCapacity is usually close to size, so this is a win:</span></span><br><span class="line">    elementData = Arrays.copyOf(elementData, newCapacity);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>所以，如果需要存储的数据量比较大，可以使用<code>Vector</code>，以减少扩容次数。另外，<code>Vector</code>可以设置<code>capacityIncrement</code>，来配置每次扩容的增长量，比较灵活。</p>
+<h2><span id="can-kao-lian-jie">参考链接</span><a href="#can-kao-lian-jie" class="header-anchor">#</a></h2><p><a href="https://docs.oracle.com/javase/8/docs/api/?java/util/Collection.html" target="_blank" rel="noopener">ArrayList</a><br><a href="https://www.programcreek.com/simple-java/" target="_blank" rel="noopener">simpleJava</a><br><a href="https://blog.csdn.net/chenssy/article/details/38151189" target="_blank" rel="noopener">fail-fast</a><br><a href="http://www.hollischuang.com/archives/498" target="_blank" rel="noopener">SynchronizedList和Vector的区别, by Hollis</a></p>
+
+
+                <hr>
+
+                
+
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2018/09/18/tools/swagger-convert-wiki-md/" data-toggle="tooltip" data-placement="top" title="Swagger转化为静态文档">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/2017/03/17/ProgramStudy/scala-for-impatients-ch4/" data-toggle="tooltip" data-placement="top" title="Scala_for_impatients_Ch4">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                
+
+                
+
+            </div>
+    <!-- Side Catalog Container -->
+        <!--  -->
+
+    <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#java" title="java">java</a>
+                        
+                          <a class="tag" href="/tags/#collection" title="collection">collection</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="http://blog.kaijun.rocks" target="_blank">Kaijun&#39;s Blog</a></li>
+                    
+                        <li><a href="http://huangxuan.me" target="_blank">Hux Blog</a></li>
+                    
+                </ul>
+                
+            </div>
+
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'always',
+          placement: 'right',
+          icon: '#'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/jingchen2222">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Chen22&#39;S BLOG 2022 
+                    <br>
+                    Theme by <a href="http://huangxuan.me">Hux</a> 
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                    Ported by <a href="http://blog.kaijun.rocks">Kaijun</a> | 
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=kaijun&repo=hexo-theme-huxblog&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="../../../../../../js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="../../../../../../js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="../../../../../../js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://jingchen2222.github.io./js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- Side Catalog -->
+
+
+
+
+
+<!-- Image to hack wechat -->
+<img src="http://jingchen2222.github.io./img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>

@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Love coding, Love San and QQ, in a way to finding self">
+    <meta name="keyword" content>
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+          DDIA读书笔记-Replication复制（一） - Chen22的博客 | Chen22&#39;S BLOG
+        
+    </title>
+
+    <link rel="canonical" href="http://jingchen2222.github.io./2022/04/04/ReadingNote/ddia-part2-chapter-5/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="../../../../../css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../../../../../css/hux-blog.min.css">
+
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="../../../../../css/highlight.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Chen22&#39;S BLOG</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archives/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    
+<!-- Image to hack wechat -->
+<!-- <img src="http://jingchen2222.github.io./img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}" width="0" height="0"> -->
+
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        background-image: url('/img/home-bg.jpg')
+    }
+</style>
+<header class="intro-header" >
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                          <a class="tag" href="/tags/#Distributed system" title="Distributed system">Distributed system</a>
+                        
+                    </div>
+                    <h1>DDIA读书笔记-Replication复制（一）</h1>
+                    <h2 class="subheading"></h2>
+                    <span class="meta">
+                        Posted by Chen22 on
+                        2022-04-04
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h1><span id="replication-fu-zhi-yi">Replication复制（一）</span><a href="#replication-fu-zhi-yi" class="header-anchor">#</a></h1><h2><span id="why-wei-shi-me-wo-men-xu-yao-fu-zhi">Why: 为什么我们需要复制</span><a href="#why-wei-shi-me-wo-men-xu-yao-fu-zhi" class="header-anchor">#</a></h2><p><strong>What: 先说定义，什么是复制：</strong></p>
+<blockquote>
+<p>Replication means keeping a copy of the same data on multiple machines that are connected via a network.</p>
+</blockquote>
+<p>用我的话说就是，在一个分布式集群里，为一份数据，维护多分副本，存在多台设备上。</p>
+<p><strong>Why: 为什么我们需要复制？</strong></p>
+<p>对于分布式系统来说，可以说，几乎所有的设计都绕不开，可用性，可靠性，可扩展性，容错这几个目标。复制也不例外。</p>
+<ul>
+<li>高可用性(high availability): 集群里，一台或者某几台机器挂了，系统还可以继续运行（因为有relica，数据没有丢）</li>
+<li>降低延迟：数据可以复制并分布在不同的区域，地理上尽可能靠近用户。（geographically close to users）</li>
+<li>可扩展性: reads on replicas 可以提供读吞吐。（如何考虑复制引入写性能的瓶颈问题？）</li>
+</ul>
+<p>请注意，这一章节简化了复制的讨论场景，假设复制的数据都是一台机器足够装下的。（如果装不下怎么办？化整为零，分散存放。Sharding/Partitioning。因为Partition的引入会让复制的讨论更复杂，所以本章所讨论的复制数据集都是一个机器就可以完整存放的）</p>
+<p><strong>Chanllege: 复制引入的问题：</strong></p>
+<ul>
+<li>一致性</li>
+<li>容错（故障恢复和错误处理）</li>
+</ul>
+<h2><span id="how-ru-he-fu-zhi"><strong>How: 如何复制</strong></span><a href="#how-ru-he-fu-zhi" class="header-anchor">#</a></h2><p>如何复制看似很简单的问题，复制不就是构造一摸一样的数据内容吗？</p>
+<p>复制看似简单，实际上，里头很多需要考虑的问题。例如，原始的数据（主本）在哪里？副本存放在哪里？一种显而易见的方式就是先把数据写到一个节点上，其他的备份节点（relica）都从这个节点复制数据。这个写入数据的节点，我们叫leader,备份的节点，我们叫follower。</p>
+<h3><span id="leader-follow">Leader/Follow</span><a href="#leader-follow" class="header-anchor">#</a></h3><p><strong>按Leader/Follow的结构，复制可以分为：</strong></p>
+<ul>
+<li>Single-leader replication</li>
+<li>Multi-leader replication</li>
+<li>Leaderless replication</li>
+</ul>
+<p>Leader： 就是跟用户对接完成写操作的那个节点。从用户视角来说，Leader 确认写成功了(commit write)，用户就认为写完成了。</p>
+<p>Follower: followers负责保持和leader相同的数据副本。值得注意的是，follower对用户写是不可见的。用户写操作完成了，follower上可以还没有完成副本的写入。</p>
+<h3><span id="tong-bu-he-yi-bu-fu-zhi">同步和异步复制</span><a href="#tong-bu-he-yi-bu-fu-zhi" class="header-anchor">#</a></h3><p>在leader-based的复制机制下，用户写入复制的基本步骤就是：</p>
+<p>首先，用户往leader发写请求并传输写数据</p>
+<p>然后，leader写入数据。同时leader像其他的follower节点发出复制的请求。</p>
+<p>最后，leader回复用户写操作已完成。那么，问题来了。leader回复的呢？是等所有的follower回复确认之后，还是不等follower回复就直接响应用户呢？这就涉及到复制的同步和异步机制。</p>
+<ul>
+<li>同步地复制：Leader发起复制请求后，需阻塞等待直到收到follower确认回复后。图例中的Leader对Follower1就是同步复制。</li>
+<li>异步地复制：Leader发起复制请求后，不需要等待follower的回复。图例中的Leader对Follower2就是异步复制。</li>
+<li>半同步复制（semi-synchronous): Leader发起复制请求后，只需要等待一个Follower reponse。图例其实就是一个半同步的复制。</li>
+</ul>
+<p><img src="/2022/04/04/ReadingNote/ddia-part2-chapter-5/DDIA-5-2-synchronous.png" alt="Leader-based replication with one synchronous and one asynchronous follower"></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>优点</th>
+<th>缺点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>同步复制</td>
+<td>一致性。保证follower和leader的数据始终一致</td>
+<td>慢。更糟的是，一个follower复制的慢，或者没响应，会影响整体的写操作。</td>
+</tr>
+<tr>
+<td>异步复制</td>
+<td>快</td>
+<td>复制延迟。Leader/Followers数据不保证一致性。Follower的数据往往落后于Leader的数据。a write is not guaranteed to be durable, even if it has been confirmed to the client.</td>
+</tr>
+</tbody>
+</table>
+<p>弱一致性听起来似乎很扯，但事实上，异步复制广泛地被使用。我们要解决的<a href="#复制延迟">复制延迟带来的问题</a>。</p>
+<h2><span id="fu-zhi-guo-cheng-zhong-de-xin-zeng-jie-dian-he-jie-dian-shi-xiao-de-chu-li-ji-zhi">复制过程中的新增节点和节点失效的处理机制</span><a href="#fu-zhi-guo-cheng-zhong-de-xin-zeng-jie-dian-he-jie-dian-shi-xiao-de-chu-li-ji-zhi" class="header-anchor">#</a></h2><h3><span id="chu-li-xin-zeng-yi-ge-follower">处理新增一个Follower</span><a href="#chu-li-xin-zeng-yi-ge-follower" class="header-anchor">#</a></h3><p>Leader和Followers都是生活在集群里，我们难免遇到需要增加或者减少一个节点的情况。</p>
+<p>场景1：为了提高系统的可靠性，有时候可能需要增加副本数，这时就需要新增follower。</p>
+<p>场景2：旧的follower机器可能老化了，或者故障了，需要更换新的follower。</p>
+<p>无论何种场景，当我们需要新增一个follower的时候，需要解决就是如果使leader和新follower的数据一致。</p>
+<ul>
+<li>天真的办法：从leader上面一块一块的搬砖到follower上。这个方法显然不可取。需要锁住leader的数据，然后copy数据。整个系统会halt住</li>
+<li>一般的做法：snapshot + log<ol>
+<li>leader database定期保存snapshot</li>
+<li>copy snapshot to new follower. (background processs)</li>
+<li>Follower 连线leader，并请求snapshot 之后的replication log日志</li>
+<li>Follower用获得的replication log更新数据，直到追上leader的日志caught up。</li>
+</ol>
+</li>
+</ul>
+<blockquote>
+<p><strong>遗留的问题：</strong></p>
+<ol>
+<li>对snapshot的理解还有点模糊。snapshot对节点的性能的影响。</li>
+<li>follower获取从上一个snapshot到up-to-date之间的data change log，然后catch up这一部分的数据。与此同时，leader也在不断写入新数据。这个过程中额外增加的data change怎么追上呢？</li>
+</ol>
+</blockquote>
+<h3><span id="chu-li-jie-dian-shi-xiao-handing-node-outages">处理节点失效： Handing Node Outages</span><a href="#chu-li-jie-dian-shi-xiao-handing-node-outages" class="header-anchor">#</a></h3><h4><span id="follower-fail">Follower fail</span><a href="#follower-fail" class="header-anchor">#</a></h4><p>follower保持a logs of the data changes. Crashes之后恢复之需要跟leader同步从崩溃前的transations开始catch up后面的data changes就可以。</p>
+<h4><span id="leader-fail">Leader fail</span><a href="#leader-fail" class="header-anchor">#</a></h4><p>Leader fail相对麻烦一些。</p>
+<ol>
+<li>detect leader fail。使用timeout (heartbeat?)</li>
+<li>选新leader. （through an election process: raft, paxos ?)</li>
+<li>重新配置新leader. 客户端需要知道新leader(Page 214 Request Routing)</li>
+</ol>
+<p>引入的问题：</p>
+<ol>
+<li>如果系统使用的是异步的复制策略，新leader很可能没有同步到老leader的所有数据。新leader miss的那些写操作怎么处理？老leader 重新回到集群中，怎么解决写冲突？一般地做法就是，一切以新leader为准，miss掉的那些write操作直接忽略掉。当然，这就违背了客户的预期，undurability</li>
+<li>如果集群还需要与外库同步数据，选举新leader，直接丢弃miss掉的写操作可能会带来严重的后果。</li>
+<li>Split brain的问题。有一些系统提供leader detect机制，发现多leaders的时候，会shutdown一个。</li>
+<li>Leader的fail detect timeout 怎么设置合理？</li>
+</ol>
+<p>更多深入的讨论会在第八章，第九章。</p>
+<h3><span id="fu-zhi-ri-zhi-de-shi-xian-replication-logs">复制日志的实现：Replication Logs</span><a href="#fu-zhi-ri-zhi-de-shi-xian-replication-logs" class="header-anchor">#</a></h3><ul>
+<li>Statement logs<ul>
+<li>statement的执行可能是非确定性的。<code>Now(), Rand()</code>函数每一次执行结果可能都不同。这样就无法保证其他follower上执行statement之后的结果（状态）和leader一致</li>
+<li>有的语句的执行结果和执行顺序大有关系。比如包含autoincrease column的INSERT ROW等</li>
+<li>有的语句有副作用。</li>
+</ul>
+</li>
+<li>Write-ahead log(WAL) shipping<ul>
+<li>append every disk write to a log. </li>
+<li>这个策略的问题就是太低层了。详细到往disk的那个位置修改那个byte。和存储介质、存储格式都有紧密联系。</li>
+</ul>
+</li>
+<li>Logical (row-based) log replication。逻辑的日志复制<ul>
+<li>log的内容和底层存储以及编码解耦。</li>
+</ul>
+</li>
+<li>Trigger-based replication<ul>
+<li>暂时先不深入。</li>
+</ul>
+</li>
+</ul>
+<h2><span id="fu-zhi-yan-chi-dai-lai-de-wen-ti">复制延迟带来的问题</span><a href="#fu-zhi-yan-chi-dai-lai-de-wen-ti" class="header-anchor">#</a></h2><p><strong>什么是复制延迟？</strong></p>
+<p>上文讨论复制的同步、异步的时候，其实已经碰触到这个概念了。复制延迟，就是指，在异步复制的分布式系统里，Follower节点的数据往往会比Leader节点要落后一段时间。这段时间就是复制延迟时间replication lag。当然，只要系统是健康运转的，最终follower节点也会慢慢追上这些数据。我们称为主从数据具有最终一致性</p>
+<p>要知道leader-based的架构里，客户端从leader写，但是有可能从follower读。如果刚好所读的follower节点落后太多，那么就有可能读到过时的数据。这有时候会带来非常糟糕的体验。</p>
+<ul>
+<li><p>场景1: 用户想要浏览自己刚刚修改的信息，却发现还是修改前的数据。Reading your own writes。</p>
+<ul>
+<li><p>解法1: 浏览只有用户自己会修改的信息时，总是去leader读。比如用户自己的个人信息只有自己可以修改。永远去leader读取个人信息。这种方案很有局限性。很多信息都是会被很多其他用户修改的。</p>
+</li>
+<li><p>解法2: 跟踪Leader和Follower的上一次更新信息的时间。如果读取刚更新的信息（比如，1分钟以内修改的），就从leader读。如果读取更久远一点的信息，就从follower读。</p>
+</li>
+<li><p>解法3:在客户端上面根据客户端的上一次更新时间。然后和follower的最近一次更新时间比对。如果从库更老，就从其他从库读，或者从Leader读。</p>
+<ul>
+<li><p>这种方案的局限性就是需要维护到客户端的更新时间。并且，如果有多个客户端，跨平台的场景，跟踪用户的信息更新行为代价就要更大。</p>
+</li>
+<li><blockquote>
+<p>2.還有麻煩的一點 如果你的所有副本存儲在不同的datacenter 那很難保證不同的設備連到同一個數據中心(電腦連的有線網路跟手機連的無線網路連到的數據中心可能不同) 如果你想要讀同ㄧ主庫 你也需要有個中心存儲來保證同一個用戶永遠讀到同一個數據中心</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>场景2: 用户看到时光倒流。用户先后两次发起同样的查询。由于前面一次访问了一个update-to-date的follower，既而浏览最新的信息。第二次因为访问到一个很老的follower，看到的数据反而是老数据。既而有一种时光倒流感。</p>
+<ul>
+<li><blockquote>
+<p>為了避免這種情況 我們需要<strong>單調讀(Monotonic reads)</strong>的機制。這個保證比強一致性弱 但比最終一致性強 </p>
+</blockquote>
+</li>
+<li><p>解法1: 同一个用户的查询都指向同一个节点。但是，如果这个节点fail了，用户还是需要rerouted到一个其他节点。需要想办法保证不会路由到一个更老的节点。</p>
+</li>
+</ul>
+</li>
+<li><p>场景3: 一致前綴讀 Consistent Prefix Read。在很多场景下，数据前后有因果逻辑关系，这时，要求用户读出来的顺序应该同写入的顺序一致。可以慢，但顺序不可以错乱。</p>
+<ul>
+<li><blockquote>
+<p>實作方式是 確保任何因果相關的寫入都寫入相同的分區</p>
+</blockquote>
+</li>
+<li></li>
+</ul>
+</li>
+</ul>
+<h2><span id="can-kao-wen-xian">参考文献</span><a href="#can-kao-wen-xian" class="header-anchor">#</a></h2><p><a href="https://www.oreilly.com/library/view/designing-data-intensive-applications/9781491903063/" target="_blank" rel="noopener">1. Designing Data-Intensive Applications</a></p>
+<p><a href="https://github.com/jingchen2222/ddia" target="_blank" rel="noopener">2. 设计数据密集型应用 - 中文翻译</a></p>
+<p><a href="https://www.jyt0532.com/toc/designing_data_intensive-application/" target="_blank" rel="noopener">3. Designing Data-Intensive Applications 心得筆記，jyt0532’s Blog</a></p>
+
+
+                <hr>
+
+                
+
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2022/04/20/ReadingNote/ddia-replication-part2/" data-toggle="tooltip" data-placement="top" title="DDIA读书笔记-Replication复制（二）">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/2022/04/04/diary/i-am-going-to-update-my-blog-periodicly/" data-toggle="tooltip" data-placement="top" title="我要开始有规律的写文章了">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                
+
+                
+
+            </div>
+    <!-- Side Catalog Container -->
+        <!--  -->
+
+    <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#Distributed system" title="Distributed system">Distributed system</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="http://blog.kaijun.rocks" target="_blank">Kaijun&#39;s Blog</a></li>
+                    
+                        <li><a href="http://huangxuan.me" target="_blank">Hux Blog</a></li>
+                    
+                </ul>
+                
+            </div>
+
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'always',
+          placement: 'right',
+          icon: '#'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/jingchen2222">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Chen22&#39;S BLOG 2022 
+                    <br>
+                    Theme by <a href="http://huangxuan.me">Hux</a> 
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                    Ported by <a href="http://blog.kaijun.rocks">Kaijun</a> | 
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=kaijun&repo=hexo-theme-huxblog&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="../../../../../js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="../../../../../js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="../../../../../js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://jingchen2222.github.io./js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- Side Catalog -->
+
+
+
+
+
+<!-- Image to hack wechat -->
+<img src="http://jingchen2222.github.io./img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>

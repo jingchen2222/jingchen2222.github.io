@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Love coding, Love San and QQ, in a way to finding self">
+    <meta name="keyword" content>
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+          serialization - Chen22的博客 | Chen22&#39;S BLOG
+        
+    </title>
+
+    <link rel="canonical" href="http://jingchen2222.github.io./2018/09/18/ProgramStudy/JAVA/serialization/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="../../../../../../css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../../../../../../css/hux-blog.min.css">
+
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="../../../../../../css/highlight.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Chen22&#39;S BLOG</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archives/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    
+<!-- Image to hack wechat -->
+<!-- <img src="http://jingchen2222.github.io./img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}" width="0" height="0"> -->
+
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        background-image: url('/img/home-bg.jpg')
+    }
+</style>
+<header class="intro-header" >
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                          <a class="tag" href="/tags/#tech" title="tech">tech</a>
+                        
+                          <a class="tag" href="/tags/#Java" title="Java">Java</a>
+                        
+                          <a class="tag" href="/tags/#基础" title="基础">基础</a>
+                        
+                          <a class="tag" href="/tags/#Serializable" title="Serializable">Serializable</a>
+                        
+                    </div>
+                    <h1>serialization</h1>
+                    <h2 class="subheading"></h2>
+                    <span class="meta">
+                        Posted by Chen22 on
+                        2018-09-18
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h3><span id="shen-ru-li-jie-xu-lie-hua">深入理解序列化</span><a href="#shen-ru-li-jie-xu-lie-hua" class="header-anchor">#</a></h3><h4><span id="bei-jing">背景</span><a href="#bei-jing" class="header-anchor">#</a></h4><blockquote>
+<p>序列化是一种对象持久化的手段，普遍应用于网络传输对象，RMI等场景</p>
+</blockquote>
+<p>本文以Hollis博客中<a href="http://www.hollischuang.com/archives/1140" target="_blank" rel="noopener">深入分析Java的序列化与反序列化</a>一文为蓝本，学习序列化需要关注的几个重要问题</p>
+<blockquote>
+<p>怎么实现Java的序列化<br>为什么实现了<code>java.io.Serializable</code>接口，才能序列化<br><code>transient</code>的作用是什么<br>怎么自定义序列化策略<br>自定义的序列化策略是如何被调用的<br>ArrayList对序列化的实现有什么好处？</p>
+</blockquote>
+<h4><span id="ru-he-shi-xian-xu-lie-hua">如何实现序列化</span><a href="#ru-he-shi-xian-xu-lie-hua" class="header-anchor">#</a></h4><blockquote>
+<p>在Java中，只要一个类实现了java.io.Serializable接口，那么它就可以被序列化</p>
+</blockquote>
+<ul>
+<li>如果去掉Serializable接口,序列化操作时候会抛出<code>java.io.NotSerializableException</code></li>
+</ul>
+<blockquote>
+<p>Serializable明明就是一个空的接口，它是怎么保证只有实现了该接口的方法才能进行序列化与反序列化的呢？</p>
+</blockquote>
+<p><code>writeObject</code> —&gt; <code>writeObject0</code> —&gt; <code>writeOrdinaryObject</code> —&gt; <code>writeSerialData</code> —&gt; <code>invokeWriteObject</code></p>
+<p><code>writeObject0</code>方法中有这么一段代码：</p>
+<a id="more"></a>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (obj <span class="keyword">instanceof</span> String) &#123;</span><br><span class="line">                writeString((String) obj, unshared);</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (cl.isArray()) &#123;</span><br><span class="line">                writeArray(obj, desc, unshared);</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (obj <span class="keyword">instanceof</span> Enum) &#123;</span><br><span class="line">                writeEnum((Enum&lt;?&gt;) obj, desc, unshared);</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (obj <span class="keyword">instanceof</span> Serializable) &#123;</span><br><span class="line">                writeOrdinaryObject(obj, desc, unshared);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">if</span> (extendedDebugInfo) &#123;</span><br><span class="line">                    <span class="keyword">throw</span> <span class="keyword">new</span> NotSerializableException(</span><br><span class="line">                        cl.getName() + <span class="string">"\n"</span> + debugInfoStack.toString());</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="keyword">throw</span> <span class="keyword">new</span> NotSerializableException(cl.getName());</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br></pre></td></tr></table></figure>
+<p>所以当Object继承了<code>Serializable</code>的时候，就会调用<code>writeOrdinaryObject</code>(就是上文的那个调用路径）</p>
+<h3><span id="dan-li-mo-shi-yu-xu-lie-hua">单例模式与序列化</span><a href="#dan-li-mo-shi-yu-xu-lie-hua" class="header-anchor">#</a></h3><h5><span id="yue-du-cai-liao">阅读材料：</span><a href="#yue-du-cai-liao" class="header-anchor">#</a></h5><p><a href="http://www.hollischuang.com/archives/1144" target="_blank" rel="noopener">单例与序列化的那些事儿</a></p>
+<blockquote>
+<p>单例模式，是设计模式中最简单的一种。通过单例模式可以保证系统中一个类只有一个实例而且该实例易于外界访问，从而方便对实例个数的控制并节约系统资源。如果希望在系统中某个类的对象只能存在一个，单例模式是最好的解决方案。关于单例模式的使用方式，可以阅读<a href="http://www.hollischuang.com/archives/205" target="_blank" rel="noopener">单例模式的七种写法</a></p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Object obj;</span><br><span class="line">try &#123;</span><br><span class="line">    obj = desc.isInstantiable() ? desc.newInstance() : null;</span><br><span class="line">&#125; catch (Exception ex) &#123;</span><br><span class="line">    throw (IOException) new InvalidClassException(</span><br><span class="line">        desc.forClass().getName(),</span><br><span class="line">        &quot;unable to create instance&quot;).initCause(ex);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>isInstantiable：如果一个serializable/externalizable的类可以在运行时被实例化，那么该方法就返回true。针对serializable和externalizable我会在其他文章中介绍。<br>desc.newInstance：该方法通过反射的方式调用无参构造方法新建一个对象。</p>
+</blockquote>
+<p>由此可见，</p>
+<blockquote>
+<p>序列化会通过反射调用无参数的构造方法创建一个新的对象。</p>
+</blockquote>
+<h4><span id="fang-zhi-xu-lie-hua-po-pi-dan-li">防止序列化破坏单例</span><a href="#fang-zhi-xu-lie-hua-po-pi-dan-li" class="header-anchor">#</a></h4><blockquote>
+<p>先给出解决方案，然后再具体分析原理：<br>只要在Singleton类中定义readResolve就可以解决该问题：</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">singletonTestOk</span><span class="params">()</span> <span class="keyword">throws</span> IOException, ClassNotFoundException </span>&#123;</span><br><span class="line">      <span class="comment">//Write Obj to file</span></span><br><span class="line">      ObjectOutputStream oos = <span class="keyword">new</span> ObjectOutputStream(<span class="keyword">new</span> FileOutputStream(<span class="string">"tempFile"</span>));</span><br><span class="line">      oos.writeObject(SingletonOk.getSingleton());</span><br><span class="line">      <span class="comment">//Read Obj from file</span></span><br><span class="line">      File file = <span class="keyword">new</span> File(<span class="string">"tempFile"</span>);</span><br><span class="line">      ObjectInputStream ois =  <span class="keyword">new</span> ObjectInputStream(<span class="keyword">new</span> FileInputStream(file));</span><br><span class="line">      SingletonOk newInstance = (SingletonOk) ois.readObject();</span><br><span class="line">      <span class="comment">//判断是否是同一个对象</span></span><br><span class="line">      Assert.assertTrue(newInstance == SingletonOk.getSingleton());</span><br><span class="line">      logger.info(<span class="string">"the same is : &#123;&#125; "</span>, newInstance == SingletonOk.getSingleton());</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>具体实现原理，需要继续看源码：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Reads and returns "ordinary" (i.e., not a String, Class,</span></span><br><span class="line"><span class="comment"> * ObjectStreamClass, array, or enum constant) object, or null if object's</span></span><br><span class="line"><span class="comment"> * class is unresolvable (in which case a ClassNotFoundException will be</span></span><br><span class="line"><span class="comment"> * associated with object's handle).  Sets passHandle to object's assigned</span></span><br><span class="line"><span class="comment"> * handle.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> Object <span class="title">readOrdinaryObject</span><span class="params">(<span class="keyword">boolean</span> unshared)</span></span></span><br><span class="line"><span class="function">    <span class="keyword">throws</span> IOException</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line">    Object obj;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        obj = desc.isInstantiable() ? desc.newInstance() : <span class="keyword">null</span>;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (Exception ex) &#123;</span><br><span class="line">        <span class="keyword">throw</span> (IOException) <span class="keyword">new</span> InvalidClassException(</span><br><span class="line">            desc.forClass().getName(),</span><br><span class="line">            <span class="string">"unable to create instance"</span>).initCause(ex);</span><br><span class="line">    &#125;</span><br><span class="line">    ... </span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (obj != <span class="keyword">null</span> &amp;&amp;</span><br><span class="line">        handles.lookupException(passHandle) == <span class="keyword">null</span> &amp;&amp;</span><br><span class="line">        desc.hasReadResolveMethod())</span><br><span class="line">    &#123;</span><br><span class="line">        Object rep = desc.invokeReadResolve(obj);</span><br><span class="line">        <span class="keyword">if</span> (unshared &amp;&amp; rep.getClass().isArray()) &#123;</span><br><span class="line">            rep = cloneArray(rep);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (rep != obj) &#123;</span><br><span class="line">            handles.setObject(passHandle, obj = rep);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> obj;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p><code>hasReadResolveMethod</code>:如果实现了<code>serializable</code> 或者 <code>externalizable</code>接口的类中包含readResolve则返回true<br><code>invokeReadResolve</code> :通过反射的方式调用要被反序列化的类的<code>readResolve</code>方法。</p>
+</blockquote>
+<p><strong>所以，原理也就清楚了，主要在Singleton中定义readResolve方法，并在该方法中指定要返回的对象的生成策略，就可以防止单例被破坏。</strong></p>
+<h5><span id="zong-jie">总结</span><a href="#zong-jie" class="header-anchor">#</a></h5><p>在涉及到序列化的场景时，要格外注意他对单例的破坏。</p>
+<h3><span id="google-protocol-buffer-de-shi-yong-he-yuan-li">Google Protocol Buffer 的使用和原理</span><a href="#google-protocol-buffer-de-shi-yong-he-yuan-li" class="header-anchor">#</a></h3><p>本章节通过阅读<a href="https://www.ibm.com/developerworks/cn/linux/l-cn-gpb/" target="_blank" rel="noopener">Google Protocol Buffer 的使用和原理</a>学习Google protocal buffer</p>
+<h5><span id="shi-me-shi-google-protocal-buffer">什么事Google Protocal Buffer</span><a href="#shi-me-shi-google-protocal-buffer" class="header-anchor">#</a></h5><blockquote>
+<p>Google Protocol Buffer( 简称 Protobuf) 是 Google 公司内部的混合语言数据标准，目前已经正在使用的有超过 48,162 种报文格式定义和超过 12,183 个 .proto 文件。他们用于 RPC 系统和持续数据存储系统。</p>
+</blockquote>
+<blockquote>
+<p>Protocol Buffers 是一种轻便高效的结构化数据存储格式，可以用于结构化数据串行化，或者说序列化。它很适合做数据存储或 RPC 数据交换格式。可用于通讯协议、数据存储等领域的语言无关、平台无关、可扩展的序列化结构数据格式。目前提供了 C++、Java、Python 三种语言的 API。</p>
+</blockquote>
+<h4><span id="ren-wu-dong-shou-an-zhuang-protobuf-qie-cheng-gong-sheng-cheng-java-lei">任务：动手安装protobuf且成功生成java类</span><a href="#ren-wu-dong-shou-an-zhuang-protobuf-qie-cheng-gong-sheng-cheng-java-lei" class="header-anchor">#</a></h4><p>清单 1. proto 文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">package dovet22; </span><br><span class="line">message helloworld </span><br><span class="line">&#123; </span><br><span class="line">   required int32     id = 1;  // ID </span><br><span class="line">   required string    str = 2;  // str </span><br><span class="line">   optional int32     opt = 3;  //optional field </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>关键：</strong></p>
+<blockquote>
+<p>一个比较好的习惯是认真对待 proto 文件的文件名。比如将命名规则定于如下：<code>packageName.MessageName.proto</code></p>
+</blockquote>
+<h5><span id="bian-yi-proto-wen-jian">编译 .proto 文件</span><a href="#bian-yi-proto-wen-jian" class="header-anchor">#</a></h5><p>写好 proto 文件之后就可以用 Protobuf 编译器将该文件编译成目标语言了。本例中我们将使用 Java。<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> protoc -I=<span class="variable">$SRC_DIR</span> --cpp_out=<span class="variable">$DST_DIR</span> <span class="variable">$SRC_DIR</span>/addressbook.proto</span></span><br></pre></td></tr></table></figure></p>
+<p>命令将生成文件：<code>Dovet22Helloworld.java</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> dovet22;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">Dovet22Helloworld</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="title">Dovet22Helloworld</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">registerAllExtensions</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">      com.google.protobuf.ExtensionRegistry registry)</span> </span>&#123;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">helloworldOrBuilder</span> <span class="keyword">extends</span></span></span><br><span class="line">      // @@protoc_insertion_point(interface_extends:dovet22.helloworld)</span><br><span class="line">      com.google.protobuf.MessageOrBuilder &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * &lt;code&gt;required int32 id = 1;&lt;/code&gt;</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * &lt;pre&gt;</span></span><br><span class="line"><span class="comment">     * ID </span></span><br><span class="line"><span class="comment">     * &lt;/pre&gt;</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">hasId</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * &lt;code&gt;required int32 id = 1;&lt;/code&gt;</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * &lt;pre&gt;</span></span><br><span class="line"><span class="comment">     * ID </span></span><br><span class="line"><span class="comment">     * &lt;/pre&gt;</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">getId</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * &lt;code&gt;required string str = 2;&lt;/code&gt;</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * &lt;pre&gt;</span></span><br><span class="line"><span class="comment">     * str </span></span><br><span class="line"><span class="comment">     * &lt;/pre&gt;</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">hasStr</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * &lt;code&gt;required string str = 2;&lt;/code&gt;</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * &lt;pre&gt;</span></span><br><span class="line"><span class="comment">     * str </span></span><br><span class="line"><span class="comment">     * &lt;/pre&gt;</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    java.lang.<span class="function">String <span class="title">getStr</span><span class="params">()</span></span>;</span><br><span class="line">    ...</span><br><span class="line">  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5><span id="protobuf-de-you-dian">Protobuf 的优点</span><a href="#protobuf-de-you-dian" class="header-anchor">#</a></h5><p>Protobuf 有如 XML，不过它更小、更快、也更简单。你可以定义自己的数据结构，然后使用代码生成器生成的代码来读写这个数据结构。你甚至可以在无需重新部署程序的情况下更新数据结构。只需使用 Protobuf 对数据结构进行一次描述，即可利用各种不同语言或从各种不同数据流中对你的结构化数据轻松读写。</p>
+<blockquote>
+<p>它有一个非常棒的特性，即“向后”兼容性好，人们不必破坏已部署的、依靠“老”数据格式的程序就可以对数据结构进行升级。这样您的程序就可以不必担心因为消息结构的改变而造成的大规模的代码重构或者迁移的问题。因为添加新的消息中的 field 并不会引起已经发布的程序的任何改变。</p>
+</blockquote>
+<blockquote>
+<p>Protobuf 语义更清晰，无需类似 XML 解析器的东西（因为 Protobuf 编译器会将 .proto 文件编译生成对应的数据访问类以对 Protobuf 数据进行序列化、反序列化操作）。</p>
+</blockquote>
+<blockquote>
+<p>使用 Protobuf 无需学习复杂的文档对象模型，Protobuf 的编程模式比较友好，简单易学，同时它拥有良好的文档和示例，对于喜欢简单事物的人们而言，Protobuf 比其他的技术更加有吸引力。</p>
+</blockquote>
+<h5><span id="protobuf-de-bu-zu">Protobuf 的不足</span><a href="#protobuf-de-bu-zu" class="header-anchor">#</a></h5><blockquote>
+<p>Protbuf 与 XML 相比也有不足之处。它功能简单，无法用来表示复杂的概念。<br>XML 已经成为多种行业标准的编写工具，Protobuf 只是 Google 公司内部使用的工具，在通用性上还差很多。<br>由于文本并不适合用来描述数据结构，所以 Protobuf 也不适合用来对基于文本的标记文档（如 HTML）建模。另外，由于 XML 具有某种程度上的自解释性，它可以被人直接读取编辑，在这一点上 Protobuf 不行，它以二进制的方式存储，除非你有 .proto 定义，否则你没法直接读出 Protobuf 的任何内容【 2 】。</p>
+</blockquote>
+<h2><span id="gao-ji-hua-ti-xu-lie-hua-ni-ke-neng-bu-zhi-dao-de-wu-jian-shi">高级话题：序列化你可能不知道的五件事</span><a href="#gao-ji-hua-ti-xu-lie-hua-ni-ke-neng-bu-zhi-dao-de-wu-jian-shi" class="header-anchor">#</a></h2><h3><span id="xu-lie-hua-zhi-chi-chong-gou">序列化支持重构</span><a href="#xu-lie-hua-zhi-chi-chong-gou" class="header-anchor">#</a></h3><h5><span id="yue-du-cai-liao">阅读材料</span><a href="#yue-du-cai-liao" class="header-anchor">#</a></h5><p><a href="https://www.ibm.com/developerworks/cn/java/j-5things1/" target="_blank" rel="noopener">Java 对象序列化：你不知道的5件事</a></p>
+<h5><span id="bei-jing">背景</span><a href="#bei-jing" class="header-anchor">#</a></h5><blockquote>
+<p>大约一年前，一个负责管理应用程序所有用户设置的开发人员，决定将用户设置存储在一个 Hashtable 中，然后将这个 Hashtable 序列化到磁盘，以便持久化。当用户更改设置时，便重新将 Hashtable 写到磁盘。<br>这是一个优雅的、开放式的设置系统，但是，当团队决定从 Hashtable 迁移到 Java Collections 库中的 HashMap 时，这个系统便面临崩溃。<br>Hashtable 和 HashMap 在磁盘上的格式是不相同、不兼容的。除非对每个持久化的用户设置运行某种类型的数据转换实用程序（极其庞大的任务），否则以后似乎只能一直用 Hashtable 作为应用程序的存储格式。</p>
+</blockquote>
+<blockquote>
+<p>团队感到陷入僵局，但这只是因为他们不知道关于 Java 序列化的一个重要事实：Java 序列化允许随着时间的推移而改变类型。当我向他们展示如何自动进行序列化替换后，他们终于按计划完成了向 HashMap 的转变。</p>
+</blockquote>
+<h4><span id="1-xu-lie-hua-yun-xu-chong-gou">1. 序列化允许重构</span><a href="#1-xu-lie-hua-yun-xu-chong-gou" class="header-anchor">#</a></h4><h4><span id="can-kao-wen-xian">参考文献</span><a href="#can-kao-wen-xian" class="header-anchor">#</a></h4><p><a href="http://www.hollischuang.com/archives/1158" target="_blank" rel="noopener">《成神之路-基础篇》Java基础知识——序列化（已完结）</a><br><a href="http://www.hollischuang.com/archives/1140" target="_blank" rel="noopener">来自 Hollis 的博客:深入分析Java的序列化与反序列化</a></p>
+<p><a href="https://www.zhihu.com/question/278968863" target="_blank" rel="noopener">来自 Hollis 的博客:</a></p>
+<p><a href="http://www.hollischuang.com/archives/1144" target="_blank" rel="noopener">单例与序列化的那些事儿</a><br><a href="https://www.ibm.com/developerworks/cn/linux/l-cn-gpb/" target="_blank" rel="noopener">Google Protocol Buffer 的使用和原理</a></p>
+
+
+                <hr>
+
+                
+
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2018/09/19/ReadingNote/关于无效的碎片思考/" data-toggle="tooltip" data-placement="top" title="无效而琐碎的思考">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/2018/09/18/tools/swagger-convert-wiki-md/" data-toggle="tooltip" data-placement="top" title="Swagger转化为静态文档">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                
+
+                
+
+            </div>
+    <!-- Side Catalog Container -->
+        <!--  -->
+
+    <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#tech" title="tech">tech</a>
+                        
+                          <a class="tag" href="/tags/#Java" title="Java">Java</a>
+                        
+                          <a class="tag" href="/tags/#基础" title="基础">基础</a>
+                        
+                          <a class="tag" href="/tags/#Serializable" title="Serializable">Serializable</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="http://blog.kaijun.rocks" target="_blank">Kaijun&#39;s Blog</a></li>
+                    
+                        <li><a href="http://huangxuan.me" target="_blank">Hux Blog</a></li>
+                    
+                </ul>
+                
+            </div>
+
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'always',
+          placement: 'right',
+          icon: '#'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/jingchen2222">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Chen22&#39;S BLOG 2022 
+                    <br>
+                    Theme by <a href="http://huangxuan.me">Hux</a> 
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                    Ported by <a href="http://blog.kaijun.rocks">Kaijun</a> | 
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=kaijun&repo=hexo-theme-huxblog&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="../../../../../../js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="../../../../../../js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="../../../../../../js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://jingchen2222.github.io./js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- Side Catalog -->
+
+
+
+
+
+<!-- Image to hack wechat -->
+<img src="http://jingchen2222.github.io./img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>

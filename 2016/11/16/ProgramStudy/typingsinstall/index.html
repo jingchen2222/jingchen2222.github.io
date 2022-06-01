@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Love coding, Love San and QQ, in a way to finding self">
+    <meta name="keyword" content>
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+          Angular2项目demo——安装 - Chen22的博客 | Chen22&#39;S BLOG
+        
+    </title>
+
+    <link rel="canonical" href="http://jingchen2222.github.io./2016/11/16/ProgramStudy/typingsinstall/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="../../../../../css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../../../../../css/hux-blog.min.css">
+
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="../../../../../css/highlight.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Chen22&#39;S BLOG</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archives/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    
+<!-- Image to hack wechat -->
+<!-- <img src="http://jingchen2222.github.io./img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}" width="0" height="0"> -->
+
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        background-image: url('/img/home-bg.jpg')
+    }
+</style>
+<header class="intro-header" >
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                          <a class="tag" href="/tags/#Angular2" title="Angular2">Angular2</a>
+                        
+                          <a class="tag" href="/tags/#Typings" title="Typings">Typings</a>
+                        
+                          <a class="tag" href="/tags/#nodeJs" title="nodeJs">nodeJs</a>
+                        
+                    </div>
+                    <h1>Angular2项目demo——安装</h1>
+                    <h2 class="subheading"></h2>
+                    <span class="meta">
+                        Posted by Chen22 on
+                        2016-11-16
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <p>好友最近在学Angular2，刚完成一个feature，还提交到GIT上。我心下好奇，就准备玩一下他的这个小功能。谁知，卡在工程部署上。</p>
+<p><a href="https://github.com/Frey-Fu/ng2-echarts" title="Frey-Fu&#39;s ng2-echars" target="_blank" rel="noopener">Frey-Fu</a></p>
+<h2><span id="bu-shu-guo-cheng">部署过程</span><a href="#bu-shu-guo-cheng" class="header-anchor">#</a></h2><h3><span id="clone-xiang-mu-dao-ben-di">clone项目到本地</span><a href="#clone-xiang-mu-dao-ben-di" class="header-anchor">#</a></h3>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/Frey-Fu/ng2-echarts.git</span><br></pre></td></tr></table></figure>
+<h3><span id="yue-du-readme-md">阅读README.md</span><a href="#yue-du-readme-md" class="header-anchor">#</a></h3><blockquote>
+<p>This is ECharts for Angular2, code is in src/, there’s an example project in example/, feel free to use it. The example is based on angular2-webpack-starter.</p>
+</blockquote>
+<h4><span id="how-to-use">How to use:</span><a href="#how-to-use" class="header-anchor">#</a></h4><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cd example</span><br><span class="line">npm install</span><br><span class="line">typings install</span><br><span class="line">npm <span class="keyword">run</span><span class="bash"> build:prod</span></span><br><span class="line">npm <span class="keyword">run</span><span class="bash"> server:prod</span></span><br></pre></td></tr></table></figure>
+<h3><span id="an-zhuang-typings">安装typings</span><a href="#an-zhuang-typings" class="header-anchor">#</a></h3><p>查看官方手册：<br><a href="https://www.npmjs.com/package/typings" target="_blank" rel="noopener">https://www.npmjs.com/package/typings</a></p>
+<h4><span id="install-typings-cli-utility">Install Typings CLI utility.</span><a href="#install-typings-cli-utility" class="header-anchor">#</a></h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install typings --global</span><br></pre></td></tr></table></figure>
+<p>结果好像成功了：<br><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">typings@<span class="number">2.0</span><span class="number">.0</span> node_modules/typings</span><br><span class="line">├── elegant-spinner@<span class="number">1.0</span><span class="number">.1</span></span><br><span class="line">├── has-unicode@<span class="number">2.0</span><span class="number">.1</span></span><br><span class="line">├── listify@<span class="number">1.0</span><span class="number">.0</span></span><br><span class="line">...</span><br><span class="line">...</span><br></pre></td></tr></table></figure></p>
+<h3><span id="ce-shi-typings-bao-cuo">测试Typings,报错</span><a href="#ce-shi-typings-bao-cuo" class="header-anchor">#</a></h3><figure class="highlight excel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># <span class="built_in">Search</span> for definitions.</span><br><span class="line">typings <span class="built_in">search</span> tape</span><br></pre></td></tr></table></figure>
+<p>结果：</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="regexp">/usr/</span>local<span class="regexp">/lib/</span>node_modules<span class="regexp">/typings/</span>node_modules<span class="regexp">/typings-core/</span>node_modules<span class="regexp">/strip-bom/</span>index.<span class="string">js:</span><span class="number">2</span></span><br><span class="line"></span><br><span class="line">module.exports = x =&gt; &#123;</span><br><span class="line">                    ^</span><br><span class="line"><span class="string">SyntaxError:</span> Unexpected token &gt;</span><br><span class="line">    at Module._compile (module.<span class="string">js:</span><span class="number">439</span>:<span class="number">25</span>)</span><br><span class="line">    at Object.Module._extensions..j</span><br><span class="line">...</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<h3><span id="review-typings-de-an-zhuang-ri-zhi-fa-xian-yi-xie-jing-gao">Review typings的安装日志，发现一些警告</span><a href="#review-typings-de-an-zhuang-ri-zhi-fa-xian-yi-xie-jing-gao" class="header-anchor">#</a></h3><p>我的node版本低于要求<br><figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="built_in">npm</span> http <span class="number">304</span> https://registry.<span class="built_in">npm</span>.taobao.org/<span class="keyword">is</span>-utf8</span><br><span class="line"><span class="built_in">npm</span> WARN engine deep-extend@<span class="number">0.4</span><span class="number">.1</span>: wanted: &#123;<span class="string">"node"</span>:<span class="string">"&gt;=0.12.0"</span>,<span class="string">"iojs"</span>:<span class="string">"&gt;=1.0.0"</span>&#125; (current: &#123;<span class="string">"node"</span>:<span class="string">"v0.10.24"</span>,<span class="string">"npm"</span>:<span class="string">"1.3.21"</span>&#125;)</span><br><span class="line"><span class="built_in">npm</span> http GET https://registry.<span class="built_in">npm</span>.taobao.org/wrappy</span><br><span class="line"><span class="built_in">npm</span> http GET</span><br><span class="line">...</span><br></pre></td></tr></table></figure></p>
+<h2><span id="sheng-ji-node">升级node</span><a href="#sheng-ji-node" class="header-anchor">#</a></h2><p><a href="http://theholmesoffice.com/node-js-fundamentals-how-to-upgrade-the-node-js-version/" target="_blank" rel="noopener">http://theholmesoffice.com/node-js-fundamentals-how-to-upgrade-the-node-js-version/</a></p>
+<p>1: Check your current version of Node.</p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$<span class="keyword">node</span> <span class="title">-v</span></span><br></pre></td></tr></table></figure>
+<p>2: Clear your npm cache<br><figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo <span class="built_in">npm</span> cache clean -f</span><br></pre></td></tr></table></figure></p>
+<p>3: Install ‘n’<br><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo npm <span class="keyword">install</span> -g n</span><br></pre></td></tr></table></figure></p>
+<p>4: Upgrade to a stable version<br><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">sudo n stable</span></span><br></pre></td></tr></table></figure></p>
+<p>5: Check the running version of Node to verify that it has worked:<br><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$<span class="keyword">node</span> <span class="title">-v</span> v0.<span class="number">8.11</span></span><br></pre></td></tr></table></figure></p>
+<h2><span id="chong-zhuang-node">重装node</span><a href="#chong-zhuang-node" class="header-anchor">#</a></h2><p>参考1： <a href="http://linyehui.me/2016/03/03/reinstall-nodejs-on-osx.html" target="_blank" rel="noopener">http://linyehui.me/2016/03/03/reinstall-nodejs-on-osx.html</a></p>
+<p>参考2： <a href="http://icarus4.logdown.com/posts/175092-nodejs-installation-guide" target="_blank" rel="noopener">http://icarus4.logdown.com/posts/175092-nodejs-installation-guide</a></p>
+<h3><span id="zai-an-zhuang">再安装</span><a href="#zai-an-zhuang" class="header-anchor">#</a></h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">$ typings install</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">...</span><br><span class="line">npm WARN webpack-dev-server@2.1.0-beta.11 requires a peer of webpack@^2.1.0-beta.26 but none was installed.</span><br><span class="line">jingchen@chentekiair ~/work/gitlab/fuwei/ng2-echarts/example $ typings install</span><br><span class="line"></span><br><span class="line">└── echarts (global)</span><br></pre></td></tr></table></figure>
+<h3><span id="bian-yi-yun-xing">编译运行</span><a href="#bian-yi-yun-xing" class="header-anchor">#</a></h3><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm <span class="keyword">run</span><span class="bash"> build:prod</span></span><br><span class="line">npm <span class="keyword">run</span><span class="bash"> server:prod</span></span><br></pre></td></tr></table></figure>
+<p>服务启动成功，结果如下：</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&gt; angular2-webpack-starter@<span class="number">5.0</span><span class="number">.5</span> <span class="string">server:</span>prod <span class="regexp">/Users/</span>jingchen<span class="regexp">/work/</span>gitlab<span class="regexp">/fuwei/</span>ng2-echarts/example</span><br><span class="line">&gt; http-server dist --cors</span><br><span class="line"></span><br><span class="line">Starting up http-server, serving dist</span><br><span class="line">Available <span class="string">on:</span></span><br><span class="line"><span class="symbol">  http:</span><span class="comment">//127.0.0.1:8080</span></span><br></pre></td></tr></table></figure>
+<h3><span id="da-kai-ye-mian">打开页面</span><a href="#da-kai-ye-mian" class="header-anchor">#</a></h3><p><img src="http://ogqir9ige.bkt.clouddn.com/826660e135fa7da8393a25133803a9da.png" alt="fuwei_ng_echarts_demo"></p>
+
+
+                <hr>
+
+                
+
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2017/03/15/ProgramStudy/scala-for-impatients-ch2/" data-toggle="tooltip" data-placement="top" title="Scala_for_impatients_Ch2">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/2016/11/06/tools/2016-11-06-hexo1/" data-toggle="tooltip" data-placement="top" title="Hexo搭建个人BLOG">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                
+
+                
+
+            </div>
+    <!-- Side Catalog Container -->
+        <!--  -->
+
+    <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#Angular2" title="Angular2">Angular2</a>
+                        
+                          <a class="tag" href="/tags/#Typings" title="Typings">Typings</a>
+                        
+                          <a class="tag" href="/tags/#nodeJs" title="nodeJs">nodeJs</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="http://blog.kaijun.rocks" target="_blank">Kaijun&#39;s Blog</a></li>
+                    
+                        <li><a href="http://huangxuan.me" target="_blank">Hux Blog</a></li>
+                    
+                </ul>
+                
+            </div>
+
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'always',
+          placement: 'right',
+          icon: '#'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/jingchen2222">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Chen22&#39;S BLOG 2022 
+                    <br>
+                    Theme by <a href="http://huangxuan.me">Hux</a> 
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                    Ported by <a href="http://blog.kaijun.rocks">Kaijun</a> | 
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=kaijun&repo=hexo-theme-huxblog&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="../../../../../js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="../../../../../js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="../../../../../js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://jingchen2222.github.io./js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- Side Catalog -->
+
+
+
+
+
+<!-- Image to hack wechat -->
+<img src="http://jingchen2222.github.io./img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>

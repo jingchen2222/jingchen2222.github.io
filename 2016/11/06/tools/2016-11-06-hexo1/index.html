@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Love coding, Love San and QQ, in a way to finding self">
+    <meta name="keyword" content>
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+          Hexo搭建个人BLOG - Chen22的博客 | Chen22&#39;S BLOG
+        
+    </title>
+
+    <link rel="canonical" href="http://jingchen2222.github.io./2016/11/06/tools/2016-11-06-hexo1/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="../../../../../css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../../../../../css/hux-blog.min.css">
+
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="../../../../../css/highlight.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Chen22&#39;S BLOG</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archives/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    
+<!-- Image to hack wechat -->
+<!-- <img src="http://jingchen2222.github.io./img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}" width="0" height="0"> -->
+
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        background-image: url('/img/home-bg.jpg')
+    }
+</style>
+<header class="intro-header" >
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                          <a class="tag" href="/tags/#Tool:hero" title="Tool:hero">Tool:hero</a>
+                        
+                    </div>
+                    <h1>Hexo搭建个人BLOG</h1>
+                    <h2 class="subheading"></h2>
+                    <span class="meta">
+                        Posted by Chen22 on
+                        2016-11-06
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h2><span id="hexo-jie-shao">Hexo介绍</span><a href="#hexo-jie-shao" class="header-anchor">#</a></h2><p>[使用 Hexo 为自己在 Github 上建一个静态 Blog 站点][1]<br>[1]: <a href="http://xiaolai.li/2016/06/22/makecs-build-a-blog-with-hexo-on-github/" target="_blank" rel="noopener">http://xiaolai.li/2016/06/22/makecs-build-a-blog-with-hexo-on-github/</a> “使用 Hexo 为自己在 Github 上建一个静态 Blog 站点”</p>
+<p>[用 Hexo 搭建个人博客-01：6 步初体验][3]<br>[3]: <a href="http://www.jianshu.com/p/6bd12ab160fa" target="_blank" rel="noopener">http://www.jianshu.com/p/6bd12ab160fa</a> “用 Hexo 搭建个人博客-01：6 步初体验”</p>
+<p>本文介绍了<code>Hexo</code>搭建博客的主要步骤，以及迁移Hexo到新环境遇到的问题以及解决方案。</p>
+<a id="more"></a>
+<h2><span id="huan-jing-he-gong-ju-zhun-bei">环境和工具准备</span><a href="#huan-jing-he-gong-ju-zhun-bei" class="header-anchor">#</a></h2><h3><span id="gong-ju-zhun-bei">工具准备</span><a href="#gong-ju-zhun-bei" class="header-anchor">#</a></h3><ul>
+<li>git</li>
+<li>npm</li>
+<li>hexo</li>
+</ul>
+<h3><span id="git">GIT</span><a href="#git" class="header-anchor">#</a></h3><h4><span id="git-an-zhuang">GIT安装</span><a href="#git-an-zhuang" class="header-anchor">#</a></h4><p>关于GIT的用法，可以参考<a href="http://iissnan.com/progit/" title="《Pro Git》" target="_blank" rel="noopener">《Pro Git》</a>。</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">git -v</span></span><br></pre></td></tr></table></figure>
+<h3><span id="npm">NPM</span><a href="#npm" class="header-anchor">#</a></h3><figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">npm</span> -v</span><br></pre></td></tr></table></figure>
+<h2><span id="an-zhuang">安装</span><a href="#an-zhuang" class="header-anchor">#</a></h2><h3><span id="repo-zhun-bei">REPO准备</span><a href="#repo-zhun-bei" class="header-anchor">#</a></h3><ul>
+<li>准备一个REPO<ul>
+<li>自己本来就有</li>
+<li>REPO的申请方法可以参考</li>
+</ul>
+</li>
+</ul>
+<h3><span id="an-zhuang-hexo">安装HEXO</span><a href="#an-zhuang-hexo" class="header-anchor">#</a></h3><ul>
+<li>npm install hexo -g</li>
+<li>npm install hexo-cli -g<ul>
+<li>这一步出错，暂时不管</li>
+</ul>
+</li>
+</ul>
+<h3><span id="zhun-bei-ben-di-mu-lu">准备本地目录</span><a href="#zhun-bei-ben-di-mu-lu" class="header-anchor">#</a></h3><ul>
+<li>clone到本地，这部似乎是非必须的</li>
+<li>Hexo初始化本地目录</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hexo init yourname.github. c  youname.github.io</span><br><span class="line">npm install hexo-deployer-git --save</span><br><span class="line">hexo generate</span><br><span class="line">hexo server</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>在地址栏里输入： localhost:4000</p>
+</li>
+<li><p>发布到github上</p>
+<ul>
+<li>编辑_config.yml：</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">deploy</span><br><span class="line"><span class="symbol">  type:</span> git</span><br><span class="line"><span class="symbol">  repo:</span> https:<span class="comment">//github.com/yourname/yourname.github.io.git</span></span><br></pre></td></tr></table></figure>
+<h2><span id="pei-zhi">配置</span><a href="#pei-zhi" class="header-anchor">#</a></h2><h3><span id="biao-qian-ye">标签页</span><a href="#biao-qian-ye" class="header-anchor">#</a></h3><p>在终端窗口下，定位到 Hexo 站点目录下。使用 hexo new page 新建一个页面，命名为 tags ：<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ cd your-hexo-site</span><br><span class="line">$ hexo new<span class="built_in"> page </span>tags</span><br></pre></td></tr></table></figure></p>
+<h3><span id="fen-lei-ye">分类页</span><a href="#fen-lei-ye" class="header-anchor">#</a></h3><p>在终端窗口下，定位到 Hexo 站点目录下。使用 hexo new page 新建一个页面，命名为 categories ：<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ cd your-hexo-site</span><br><span class="line">$ hexo new<span class="built_in"> page </span>categories</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h2><span id="hexo-qian-yi">hexo迁移</span><a href="#hexo-qian-yi" class="header-anchor">#</a></h2><p>最近需要在另一台电脑部署hexo，将hexo的代码直接copy过去，遇到一些奇怪的问题。</p>
+<h3><span id="wen-ti-yi">问题一：</span><a href="#wen-ti-yi" class="header-anchor">#</a></h3><p>在hexo的目录里面执行hexo clean，提示：<br><figure class="highlight subunit"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ERROR </span>Plugin load failed: hexo-renderer-sass</span><br></pre></td></tr></table></figure></p>
+<p>采用很多方法，重装saas，安装也显示成功，最后还是不行。考虑到自己换了一个系统，可能hexo目录下面的node-moduels下面的库和npm版本并不兼容。采用<a href="https://github.com/sass/node-sass/issues/1527" target="_blank" rel="noopener">PabloEzequiel commented on 3 Jan 2017</a>的方法，删除node-module，重新安装依赖包<br><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rm -rf node_module </span><br><span class="line">npm <span class="keyword">install</span></span><br></pre></td></tr></table></figure></p>
+<p>果然，成功了。</p>
+<h3><span id="wen-ti-er">问题二：</span><a href="#wen-ti-er" class="header-anchor">#</a></h3><p>hexo g成功，但hexo s（server）时候，报错<br><figure class="highlight glsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">WARN No <span class="keyword">layout</span>: <span class="keyword">index</span>.html出现这个问题会删除<span class="keyword">index</span>.html的内容</span><br></pre></td></tr></table></figure></p>
+<p>出现这个问题，我先删除public里面的index.html文件。同时，发现theme里面文件不对，于是更新theme，然后重新generate</p>
+<h3><span id="wen-ti-san">问题三：</span><a href="#wen-ti-san" class="header-anchor">#</a></h3><p>tags和categoreis不生效，导致BLOG的分类和标签页没有正确显示。<br>具体做法：</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; hexo new<span class="built_in"> page </span><span class="string">"tags"</span></span><br></pre></td></tr></table></figure>
+<p>edit tags/index.md</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># <span class="keyword">tags</span>/<span class="built_in">index</span>.md</span><br><span class="line"><span class="built_in">type</span>: <span class="string">"tags"</span></span><br><span class="line">layou<span class="variable">t:</span> <span class="string">"tags"</span></span><br></pre></td></tr></table></figure>
+<p>edit categoreis/index.md<br><figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">type:</span> <span class="string">"categories"</span></span><br><span class="line"><span class="symbol">layout:</span> <span class="string">"categories"</span></span><br></pre></td></tr></table></figure></p>
+<h3><span id="wen-ti-si">问题四：</span><a href="#wen-ti-si" class="header-anchor">#</a></h3><blockquote>
+<p>update at 2021.03.21</p>
+</blockquote>
+<p><a href="https://github.com/hexojs/hexo/issues/4263" target="_blank" rel="noopener">ERR_INVALID_ARG_TYPE-HELPPP</a></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo hexo deploy</span></span><br><span class="line">Password:</span><br><span class="line">INFO  Deploying: git</span><br><span class="line">INFO  Clearing .deploy_git folder...</span><br><span class="line">INFO  Copying files from public folder...</span><br><span class="line">FATAL Something's wrong. Maybe you can find the solution here: https://hexo.io/docs/troubleshooting.html</span><br><span class="line">TypeError [ERR_INVALID_ARG_TYPE]: The "mode" argument must be integer. Received an instance of Object</span><br><span class="line">    at copyFile (fs.js:1972:10)</span><br><span class="line">    at copyFile (/Users/chenjing/work/hexo/node_modules/graceful-fs/graceful-fs.js:181:12)</span><br><span class="line">    at tryCatcher (/Users/chenjing/work/hexo/node_modules/bluebird/js/release/util.js:16:23)</span><br><span class="line">    at ret (eval at makeNodePromisifiedEval (/usr/local/lib/node_modules/hexo-cli/node_modules/bluebird/js/release/promisify.js:184:12), &lt;anonymous&gt;:13:39)</span><br><span class="line">    at /Users/chenjing/work/hexo/node_modules/hexo-deployer-git/node_modules/hexo-fs/lib/fs.js:181:12</span><br><span class="line">    at tryCatcher (/Users/chenjing/work/hexo/node_modules/bluebird/js/release/util.js:16:23)</span><br><span class="line">    at Promise._settlePromiseFromHandler (/Users/chenjing/work/hexo/node_modules/bluebird/js/release/promise.js:547:31)</span><br><span class="line">    at Promise._settlePromise (/Users/chenjing/work/hexo/node_modules/bluebird/js/release/promise.js:604:18)</span><br><span class="line">    at Promise._settlePromise0 (/Users/chenjing/work/hexo/node_modules/bluebird/js/release/promise.js:649:10)</span><br><span class="line">    at Promise._settlePromises (/Users/chenjing/work/hexo/node_modules/bluebird/js/release/promise.js:729:18)</span><br><span class="line">    at Promise._fulfill (/Users/chenjing/work/hexo/node_modules/bluebird/js/release/promise.js:673:18)</span><br><span class="line">    at Promise._resolveCallback (/Users/chenjing/work/hexo/node_modules/bluebird/js/release/promise.js:466:57)</span><br><span class="line">    at Promise._settlePromiseFromHandler (/Users/chenjing/work/hexo/node_modules/bluebird/js/release/promise.js:559:17)</span><br></pre></td></tr></table></figure>
+<p>这个问题一般是node版本太高所致。我当时的node版本是<code>v14.16.0</code>。</p>
+<h4><span id="downgrade-node">Downgrade node</span><a href="#downgrade-node" class="header-anchor">#</a></h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> install n</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> npm install -g n</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> n 12</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> node -v</span></span><br><span class="line">v12.21.0</span><br></pre></td></tr></table></figure>
+<h4><span id="clean-amp-deploy">Clean &amp; Deploy</span><a href="#clean-amp-deploy" class="header-anchor">#</a></h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> hexo clean</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> hexo generate</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> hexo deploy</span></span><br></pre></td></tr></table></figure>
+<p>That’s done</p>
+
+
+                <hr>
+
+                
+
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2016/11/16/ProgramStudy/typingsinstall/" data-toggle="tooltip" data-placement="top" title="Angular2项目demo——安装">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/2016/11/06/tools/markdown_syntax_help/" data-toggle="tooltip" data-placement="top" title="markdown 语法测试">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                
+
+                
+
+            </div>
+    <!-- Side Catalog Container -->
+        <!--  -->
+
+    <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#Tool:hero" title="Tool:hero">Tool:hero</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="http://blog.kaijun.rocks" target="_blank">Kaijun&#39;s Blog</a></li>
+                    
+                        <li><a href="http://huangxuan.me" target="_blank">Hux Blog</a></li>
+                    
+                </ul>
+                
+            </div>
+
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'always',
+          placement: 'right',
+          icon: '#'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/jingchen2222">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Chen22&#39;S BLOG 2022 
+                    <br>
+                    Theme by <a href="http://huangxuan.me">Hux</a> 
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                    Ported by <a href="http://blog.kaijun.rocks">Kaijun</a> | 
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=kaijun&repo=hexo-theme-huxblog&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="../../../../../js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="../../../../../js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="../../../../../js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://jingchen2222.github.io./js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- Side Catalog -->
+
+
+
+
+
+<!-- Image to hack wechat -->
+<img src="http://jingchen2222.github.io./img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>

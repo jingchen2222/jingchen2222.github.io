@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Love coding, Love San and QQ, in a way to finding self">
+    <meta name="keyword" content>
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+          Paper Notes: Spark: Cluster Computing with Working Sets - Chen22的博客 | Chen22&#39;S BLOG
+        
+    </title>
+
+    <link rel="canonical" href="http://jingchen2222.github.io./2021/03/21/TechNotes/TechNotes-db-spark01/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="../../../../../css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../../../../../css/hux-blog.min.css">
+
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="../../../../../css/highlight.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Chen22&#39;S BLOG</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archives/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    
+<!-- Image to hack wechat -->
+<!-- <img src="http://jingchen2222.github.io./img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}" width="0" height="0"> -->
+
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        background-image: url('/img/home-bg.jpg')
+    }
+</style>
+<header class="intro-header" >
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                          <a class="tag" href="/tags/#Spark" title="Spark">Spark</a>
+                        
+                          <a class="tag" href="/tags/#DistributeSystem" title="DistributeSystem">DistributeSystem</a>
+                        
+                    </div>
+                    <h1>Paper Notes: Spark: Cluster Computing with Working Sets</h1>
+                    <h2 class="subheading"></h2>
+                    <span class="meta">
+                        Posted by Chen22 on
+                        2021-03-21
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h1><span id="catalog">Catalog</span><a href="#catalog" class="header-anchor">#</a></h1><div class="toc">
+
+<!-- toc -->
+<ul>
+<li><a href="#reference">Reference</a></li>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#programming-model">Programming Model</a><ul>
+<li><a href="#a-driver-program">a <em>driver program</em></a><ul>
+<li><a href="#resilient-distributed-datasets-rdds">Resilient Distributed Datasets (RDDs)</a></li>
+<li><a href="#parallel-operations">Parallel Operations</a></li>
+<li><a href="#shared-variables">Shared Variables</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#exampels">Exampels</a><ul>
+<li><a href="#text-search">Text Search</a></li>
+</ul>
+</li>
+<li><a href="#implementation">Implementation</a></li>
+<li><a href="#related-work">Related Work</a></li>
+<li><a href="#future-work">Future Work</a></li>
+<li><a href="#my-future-work">My Future Work</a></li>
+</ul>
+<!-- tocstop -->
+</div>
+
+<h1><span id="reference">Reference</span><a href="#reference" class="header-anchor">#</a></h1><p><a href="https://amplab.cs.berkeley.edu/wp-content/uploads/2011/06/Spark-Cluster-Computing-with-Working-Sets.pdf" target="_blank" rel="noopener">Spark: Cluster Computing with Working Sets, Matei Zaharia, 2011</a></p>
+<h1><span id="introduction">Introduction</span><a href="#introduction" class="header-anchor">#</a></h1><p><code>RDD</code> is the most important concept of Sparl. It make it possible to access one DataSet </p>
+<blockquote>
+<p> The main abstraction in Spark is that of a <strong><em>resilient distributed dataset</em> (RDD),</strong> which represents a read-only collection of objects partitioned across a set of machines that can be rebuilt if a partition is lost. </p>
+</blockquote>
+<p><code>RDD</code> can be cached in memory.</p>
+<blockquote>
+<p>Users can explicitly cache an RDD in memory across machines and reuse it in multiple MapReduce-like <em>parallel operations</em>.</p>
+</blockquote>
+<ul>
+<li>a general shared memory abstraction</li>
+<li>represent a sweet-spot between expressivity</li>
+<li>scalability</li>
+<li>reliability </li>
+</ul>
+<blockquote>
+<p>We believe that Spark is the first system to allow an efficient, general-purpose programming language to be used interactively to process large datasets on a cluster.</p>
+</blockquote>
+<h1><span id="programming-model">Programming Model</span><a href="#programming-model" class="header-anchor">#</a></h1><h3><span id="a-driver-program">a <em>driver program</em></span><a href="#a-driver-program" class="header-anchor">#</a></h3><ul>
+<li><p><em>resilient distributed datasets</em> </p>
+</li>
+<li><p><em>parallel operations</em> </p>
+</li>
+</ul>
+<h2><span id="resilient-distributed-datasets-rdds">Resilient Distributed Datasets (RDDs)</span><a href="#resilient-distributed-datasets-rdds" class="header-anchor">#</a></h2><blockquote>
+<p> A resilient distributed dataset (RDD) is a read-only collection of objects partitioned across a set of machines that can be rebuilt if a partition is lost.</p>
+</blockquote>
+<ul>
+<li>read-only collection</li>
+<li>accross a set of machines</li>
+<li>can be rebuillt</li>
+</ul>
+<p>A handle to an RDD contains enough information to <em>compute</em> the RDD starting from data in reliable storage.</p>
+<p>Spark lets programmers construct RDDs in four ways:</p>
+<ul>
+<li><p>From a file in shared file system</p>
+</li>
+<li><p>By <em>“parallelizing”</em></p>
+</li>
+<li><p>By <em>transforming</em> an existing RDD</p>
+</li>
+<li><p>By changing the <em>persistence</em> of an existing RDD</p>
+<ul>
+<li><p>The <em>cache</em> action</p>
+<ul>
+<li><blockquote>
+<p><em>cache</em> action is only a hint, if there is not enough memory in the cluster to cache all partitions of a dataset, Spark will recompute them when they are used.</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p>The <em>save</em> action evaluates the dataset and writes it to a distributed filesystem such as HDFS.</p>
+</li>
+</ul>
+</li>
+<li><p>Q: what is the different between “parallelizing” and “transforming”</p>
+</li>
+</ul>
+<blockquote>
+<p>We also plan to extend Spark to support other levels of persistence (e.g., in-memory replication across multiple nodes). Our goal is to let users trade off between the cost of storing an RDD, the speed of accessing it, the proba- bility of losing part of it, and the cost of recomputing it.</p>
+</blockquote>
+<p>Spark plan to support in-memory replication.</p>
+<p>Let users trade off between storage, speed, data-lost and re-compute cost.</p>
+<h2><span id="parallel-operations">Parallel Operations</span><a href="#parallel-operations" class="header-anchor">#</a></h2><ul>
+<li>reduce: Produce a result at the driver program.</li>
+<li>collect: Sends all elements of the dataset to the driver program</li>
+<li>foreach: Passes each element through a user provided function</li>
+<li>to be supported:<ul>
+<li>shuffle</li>
+</ul>
+</li>
+</ul>
+<h2><span id="shared-variables">Shared Variables</span><a href="#shared-variables" class="header-anchor">#</a></h2><ul>
+<li><em>Broadcast variables</em><ul>
+<li>If a large read-only piece of data</li>
+</ul>
+</li>
+<li><em>Accumulators</em><ul>
+<li><strong>workers</strong> can only “<strong>add</strong>” </li>
+<li>only the <strong>driver can read</strong></li>
+</ul>
+</li>
+</ul>
+<h1><span id="exampels">Exampels</span><a href="#exampels" class="header-anchor">#</a></h1><h2><span id="text-search">Text Search</span><a href="#text-search" class="header-anchor">#</a></h2><p>Suppose that we wish to count the lines containing errors in a large log file stored in HDFS. </p>
+<ul>
+<li>firstly, create a distribute dataset</li>
+<li>secondly, transform it by operate <code>filter</code> op</li>
+<li>then we use <code>map</code> and <code>reduce</code> operations to count the dataset</li>
+</ul>
+<h1><span id="implementation">Implementation</span><a href="#implementation" class="header-anchor">#</a></h1><p>Spark is built on top of Mesos provides an API for applications to launch tasks on a cluster.</p>
+<p><strong>The core of Spark is</strong> the implementation of resilient dis- tributed datasets.</p>
+<p><img src="/2021/03/21/TechNotes/TechNotes-db-spark01/image-spark01-Figure1.png" alt="image-image-spark01-Figure1"></p>
+<p>Internally, each RDD object implements the same simple interface, which consists of three operations:</p>
+<ul>
+<li><em>getPartitions</em>, which returns a list of partition IDs.</li>
+<li><em>getIterator(partition)</em>, which iterates over a partition.</li>
+<li><em>getPreferredLocations(partition)</em>, which is used for task scheduling to achieve data locality.</li>
+</ul>
+<p>The different types of RDDs differ only in how they implement the RDD interface.</p>
+<p><strong>Shared Variables</strong></p>
+<blockquote>
+<p>The two types of shared variables in Spark, broadcast variables and accumulators, are implemented using classes with custom serialization formats.</p>
+</blockquote>
+<p>using classes with custom serialization formats</p>
+<h1><span id="related-work">Related Work</span><a href="#related-work" class="header-anchor">#</a></h1><ul>
+<li>Distributed Shared Memory</li>
+<li>Cluster Computing Frameworks</li>
+</ul>
+<h1><span id="future-work">Future Work</span><a href="#future-work" class="header-anchor">#</a></h1><blockquote>
+<p>Furthermore, we believe that the core idea behind RDDs, of a dataset handle that has enough information to (re)construct the dataset from data available in reliable storage, may prove useful in develop-ing other abstractions for programming clusters.</p>
+</blockquote>
+<ol>
+<li><strong>Formally characterize the properties</strong> of RDDs and Spark’s other abstractions</li>
+<li>Enhance the RDD abstraction <strong>to allow programmers to trade</strong> between storage cost and re-construction cost.</li>
+<li>Define new operations <code>shuffle</code></li>
+<li>Provide higher-level interactive interfaces</li>
+</ol>
+<h1><span id="my-future-work">My Future Work</span><a href="#my-future-work" class="header-anchor">#</a></h1><ul>
+<li><p>RDD is core of Spark</p>
+</li>
+<li><p>Do more research on Spark’s task schedule</p>
+</li>
+<li><p><code>HybridSE</code> may also use similar concept of Distribute Datasets or directly use Spark’s RDD. Then we have to:</p>
+<ul>
+<li>Make sure fedb implement HybridDD correctly</li>
+<li>Try to adapt Spark RDD to HybridDD</li>
+</ul>
+</li>
+</ul>
+
+
+                <hr>
+
+                
+
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2021/03/23/TechNotes/TechNotes-db-spark02/" data-toggle="tooltip" data-placement="top" title="Paper Notes: Resilient Distributed Datasets: A Fault-Tolerant Abstraction for In-Memory Cluster Computing">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/2021/03/20/TechNotes/TechNotes-compiler-SIMD01/" data-toggle="tooltip" data-placement="top" title="Paper Notes: Pratical SIMD Programming">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                
+
+                
+
+            </div>
+    <!-- Side Catalog Container -->
+        <!--  -->
+
+    <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#Spark" title="Spark">Spark</a>
+                        
+                          <a class="tag" href="/tags/#DistributeSystem" title="DistributeSystem">DistributeSystem</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="http://blog.kaijun.rocks" target="_blank">Kaijun&#39;s Blog</a></li>
+                    
+                        <li><a href="http://huangxuan.me" target="_blank">Hux Blog</a></li>
+                    
+                </ul>
+                
+            </div>
+
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'always',
+          placement: 'right',
+          icon: '#'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/jingchen2222">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Chen22&#39;S BLOG 2022 
+                    <br>
+                    Theme by <a href="http://huangxuan.me">Hux</a> 
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                    Ported by <a href="http://blog.kaijun.rocks">Kaijun</a> | 
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=kaijun&repo=hexo-theme-huxblog&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="../../../../../js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="../../../../../js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="../../../../../js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://jingchen2222.github.io./js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- Side Catalog -->
+
+
+
+
+
+<!-- Image to hack wechat -->
+<img src="http://jingchen2222.github.io./img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>

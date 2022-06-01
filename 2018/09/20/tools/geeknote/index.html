@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Love coding, Love San and QQ, in a way to finding self">
+    <meta name="keyword" content>
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+          Geetnote的安装和使用 - Chen22的博客 | Chen22&#39;S BLOG
+        
+    </title>
+
+    <link rel="canonical" href="http://jingchen2222.github.io./2018/09/20/tools/geeknote/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="../../../../../css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../../../../../css/hux-blog.min.css">
+
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="../../../../../css/highlight.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Chen22&#39;S BLOG</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archives/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    
+<!-- Image to hack wechat -->
+<!-- <img src="http://jingchen2222.github.io./img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}" width="0" height="0"> -->
+
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        background-image: url('/img/home-bg.jpg')
+    }
+</style>
+<header class="intro-header" >
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                          <a class="tag" href="/tags/#Tool:evernote" title="Tool:evernote">Tool:evernote</a>
+                        
+                    </div>
+                    <h1>Geetnote的安装和使用</h1>
+                    <h2 class="subheading"></h2>
+                    <span class="meta">
+                        Posted by Chen22 on
+                        2018-09-20
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h3><span id="geeknote-an-zhuang-he-shi-yong">geeknote安装和使用</span><a href="#geeknote-an-zhuang-he-shi-yong" class="header-anchor">#</a></h3><h4><span id="xie-zai-qian-mian">写在前面</span><a href="#xie-zai-qian-mian" class="header-anchor">#</a></h4><h3><span id="an-zhuang">安装</span><a href="#an-zhuang" class="header-anchor">#</a></h3><h4><span id="zhu-yi-yao-an-zhuang-zhong-guo-ban-de-yin-xiang-bi-ji-de-geeknote">注意要安装中国版的印象笔记的geeknote</span><a href="#zhu-yi-yao-an-zhuang-zhong-guo-ban-de-yin-xiang-bi-ji-de-geeknote" class="header-anchor">#</a></h4><p><a href="https://github.com/gmajian/geeknote" target="_blank" rel="noopener">geeknote 中国版印象笔记support版本</a></p>
+<p>官方安装步骤如下<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> Download the repository.</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git <span class="built_in">clone</span> git://github.com/gmajian/geeknote.git</span></span><br><span class="line"></span><br><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">cd</span> geeknote</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> Installation</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> [sudo] python setup.py install</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> Launch Geeknote and go through login procedure.</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> geeknote login</span></span><br></pre></td></tr></table></figure></p>
+<h3><span id="wen-ti-1-zai-yun-xing-geeknote-login-shi-bing-mei-you-jin-ru-deng-lu-cheng-xu">问题1: 在运行geeknote login时，并没有进入登陆程序。</span><a href="#wen-ti-1-zai-yun-xing-geeknote-login-shi-bing-mei-you-jin-ru-deng-lu-cheng-xu" class="header-anchor">#</a></h3><h4><span id="diao-shi">调试</span><a href="#diao-shi" class="header-anchor">#</a></h4><p>打开geeknote.pk,跟踪login代码：</p>
+<a id="more"></a>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@GeekNoneDBConnectOnly</span></span><br><span class="line"> <span class="function"><span class="keyword">def</span> <span class="title">login</span><span class="params">(self)</span>:</span></span><br><span class="line">     <span class="comment"># track from this</span></span><br><span class="line">     <span class="keyword">if</span> self.getEvernote().checkAuth():</span><br><span class="line">         print(<span class="string">"You have already logged in"</span>)</span><br><span class="line">         out.successMessage(<span class="string">"You have already logged in."</span>)</span><br><span class="line">         <span class="keyword">return</span> tools.exit()</span><br><span class="line"></span><br><span class="line">     <span class="keyword">if</span> self.getEvernote().auth():</span><br><span class="line">         out.successMessage(<span class="string">"You have successfully logged in."</span>)</span><br><span class="line">     <span class="keyword">else</span>:</span><br><span class="line">         out.failureMessage(<span class="string">"Login error."</span>)</span><br><span class="line">         <span class="keyword">return</span> tools.exit()</span><br></pre></td></tr></table></figure>
+<p>因为checkAuth返回401失败，而自己已经申请过dev token了，所以我在需要auth的地方都设置了dev token</p>
+<p>代码修改1<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">auth</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">print</span> <span class="string">"auth..."</span></span><br><span class="line">        GNA = GeekNoteAuth()</span><br><span class="line">        self.authToken = <span class="string">"my token"</span></span><br><span class="line">        <span class="keyword">print</span> self.authToken</span><br><span class="line">        userInfo = self.getUserInfo()</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> isinstance(userInfo, object):</span><br><span class="line">            logging.error(<span class="string">"User info not get"</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">        self.getStorage().createUser(self.authToken, userInfo)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br></pre></td></tr></table></figure></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">checkAuth</span><span class="params">(self)</span>:</span></span><br><span class="line">       <span class="keyword">print</span> <span class="string">"checkAuth"</span></span><br><span class="line">       self.authToken = <span class="string">"my token xxxx"</span></span><br><span class="line">       logging.debug(<span class="string">"oAuth token : %s"</span>, self.authToken)</span><br><span class="line">       <span class="keyword">if</span> self.authToken:</span><br><span class="line">           <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">       <span class="keyword">return</span> <span class="literal">False</span></span><br></pre></td></tr></table></figure>
+<h4><span id="zai-ci-yun-xing-login">再次运行login</span><a href="#zai-ci-yun-xing-login" class="header-anchor">#</a></h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> python geeknote.py login</span></span><br></pre></td></tr></table></figure>
+<p>成功</p>
+<h4><span id="hou-mian-jiu-ke-yi-zheng-chang-cao-zuo-evernote">后面就可以正常操作evernote</span><a href="#hou-mian-jiu-ke-yi-zheng-chang-cao-zuo-evernote" class="header-anchor">#</a></h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> python geeknote.py find -s <span class="string">"java"</span></span></span><br><span class="line"></span><br><span class="line">Search request: intitle:java</span><br><span class="line">Total found: 17</span><br><span class="line">  1 : 17.09.2018  java NIO - Rollen Holt - 博客园</span><br><span class="line">  2 : 10.09.2018  深入分析Java的序列化与反序列化-HollisChuang's Blog</span><br><span class="line">  3 : 10.09.2018  Java学习路径2018版</span><br><span class="line">  4 : 09.09.2018  TreeMap - Java 提高篇 - 极客学院Wiki</span><br><span class="line">  5 : 10.11.2017  22的JAVA学习计划</span><br><span class="line">  6 : 25.11.2017  深入理解Java枚举类型(enum) - zejian的博客 - CSDN博客</span><br><span class="line">  7 : 09.11.2017  Java核心技术——基础卷</span><br><span class="line">  8 : 10.11.2017  Java学习——参考</span><br><span class="line">  9 : 08.11.2017  Effective Java——item15:使可变性最小化</span><br><span class="line"> 10 : 24.10.2017  package com._4paradigm.predictor.component.antifraud;  import com._4paradigm.predictor.component.antifraud.ColumnsExpander; import org.slf4j.Logger; import org.slf4j.LoggerFactory; import com._4paradigm.antifraud.fe.schema.*; import java.text.SimpleDateFo</span><br><span class="line"> 11 : 10.10.2016  JAVA学习路径</span><br><span class="line"> 12 : 22.03.2017  Java面试</span><br><span class="line"> 13 : 09.10.2016  JAVA基础</span><br><span class="line"> 14 : 12.10.2016  JAVA高级篇</span><br><span class="line"> 15 : 05.12.2014  Java自定义URL协议</span><br><span class="line"> 16 : 03.12.2014  JAVA SOCKET 编程</span><br><span class="line"> 17 : 28.08.2014  JAVA/android调试打印栈信息的窍门</span><br></pre></td></tr></table></figure>
+
+
+                <hr>
+
+                
+
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2021/03/20/TechNotes/TechNotes-compiler-SIMD01/" data-toggle="tooltip" data-placement="top" title="Paper Notes: Pratical SIMD Programming">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/2018/09/19/ReadingNote/关于无效的碎片思考/" data-toggle="tooltip" data-placement="top" title="无效而琐碎的思考">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                
+
+                
+
+            </div>
+    <!-- Side Catalog Container -->
+        <!--  -->
+
+    <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#Tool:evernote" title="Tool:evernote">Tool:evernote</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="http://blog.kaijun.rocks" target="_blank">Kaijun&#39;s Blog</a></li>
+                    
+                        <li><a href="http://huangxuan.me" target="_blank">Hux Blog</a></li>
+                    
+                </ul>
+                
+            </div>
+
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'always',
+          placement: 'right',
+          icon: '#'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/jingchen2222">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Chen22&#39;S BLOG 2022 
+                    <br>
+                    Theme by <a href="http://huangxuan.me">Hux</a> 
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                    Ported by <a href="http://blog.kaijun.rocks">Kaijun</a> | 
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=kaijun&repo=hexo-theme-huxblog&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="../../../../../js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="../../../../../js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="../../../../../js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://jingchen2222.github.io./js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- Side Catalog -->
+
+
+
+
+
+<!-- Image to hack wechat -->
+<img src="http://jingchen2222.github.io./img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>
